@@ -4,6 +4,10 @@ import data from "@test-data";
 import Link from "next/link";
 import { useState } from "react";
 
+type BottomType = {
+  active: boolean;
+};
+
 const Navbar = () => {
   const [active, setActive] = useState(false);
 
@@ -24,7 +28,7 @@ const Navbar = () => {
           </span>
         </div>
       </TopContent>
-      <BottomContent className={`${active ? "active" : ""}`}>
+      <BottomContent active={active}>
         <div className="menu">
           {data.menuitems.map((menu, i) => (
             <div key={i}>
@@ -48,10 +52,6 @@ const Root = styled.nav`
   background-color: var(--nav-color);
   font-weight: var(--font-medium);
   color: var(--nav-text);
-
-  & .active {
-    display: block;
-  }
 `;
 
 const TopContent = styled.div`
@@ -72,10 +72,6 @@ const TopContent = styled.div`
   & div:first-child > span {
     cursor: pointer;
     margin: auto auto auto 0;
-
-    @media only screen and (min-width: 728px) {
-      display: none;
-    }
   }
 
   & div:last-child > span {
@@ -87,8 +83,8 @@ const TopContent = styled.div`
   }
 `;
 
-const BottomContent = styled.div`
-  display: flex;
+const BottomContent = styled.div<BottomType>`
+  display: ${(props) => (props.active ? "flex" : "none")};
   align-items: center;
   justify-content: center;
   padding: 0.5rem 0;
@@ -125,7 +121,7 @@ const BottomContent = styled.div`
   }
 
   @media only screen and (max-width: 728px) {
-    display: none;
+    display: ${(props) => (props.active ? "block" : "none")};
     justify-content: flex-start;
   }
 `;
