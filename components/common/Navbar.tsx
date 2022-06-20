@@ -84,10 +84,11 @@ const TopContent = styled.div`
 `;
 
 const BottomContent = styled.div<BottomType>`
-  display: ${(props) => (props.active ? "flex" : "none")};
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem 0;
+  transition: all 0.2s ease;
 
   & .menu {
     display: flex;
@@ -122,7 +123,18 @@ const BottomContent = styled.div<BottomType>`
 
   @media only screen and (max-width: 728px) {
     display: ${(props) => (props.active ? "block" : "none")};
+    transform-origin: top;
+    animation: growDown 300ms ease;
     justify-content: flex-start;
+  }
+
+  @keyframes growDown {
+    0% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
   }
 `;
 
