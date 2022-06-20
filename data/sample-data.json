@@ -1,3 +1,28 @@
 {
-  "sample-data": "Hello, data"
+  "menuitems": [
+    {
+      "title": "Home",
+      "url": "/home"
+    },
+    {
+      "title": "World",
+      "url": "/world"
+    },
+    {
+      "title": "Business",
+      "url": "/business"
+    },
+    {
+      "title": "Sport",
+      "url": "/sport"
+    },
+    {
+      "title": "Health",
+      "url": "/health"
+    },
+    {
+      "title": "Videos",
+      "url": "/videos"
+    }
+  ]
 }
