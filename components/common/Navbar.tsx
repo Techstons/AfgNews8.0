@@ -15,9 +15,9 @@ const Navbar = () => {
     <Root>
       <TopContent>
         <div>
-          <span onClick={() => setActive(!active)}>
+          <button onClick={() => setActive(!active)}>
             <MenuIcon width="25px" />
-          </span>
+          </button>
         </div>
         <div>
           <span>LOGO</span>
@@ -69,7 +69,7 @@ const TopContent = styled.div`
     font-weight: var(--font-bold);
   }
 
-  & div:first-child > span {
+  & div:first-child > button {
     cursor: pointer;
     margin: auto auto auto 0;
   }
