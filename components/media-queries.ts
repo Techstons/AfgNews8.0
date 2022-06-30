@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 export const useMediaQueries = () => {
   return {
     lg: useMediaQuery({ query: "(min-width: 1024px)" }),
-    md: useMediaQuery({ query: "(min-width: 728px)" }),
+    md: useMediaQuery({ query: "(min-width: 768px)" }),
     sm: useMediaQuery({ query: "(min-width: 640px)" }),
   };
 };

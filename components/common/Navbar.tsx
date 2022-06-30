@@ -1,12 +1,11 @@
 import { CloseIcon, MenuIcon, SearchIcon } from "@components/icons";
 import { Container } from "@components/ui";
-import { StockExchangeWidget } from "@components/widget";
+import { NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
 import data from "@test-data";
+import { format } from "date-fns";
 import Link from "next/link";
 import { useState } from "react";
-
-// test
 
 type BottomType = {
   active: boolean;
@@ -18,20 +17,9 @@ const Navbar = () => {
   return (
     <Root>
       <Container>
-        {/* <TopStrip>
-          languages here
-          <div>
-            <button>English</button>
-            <button>پشتو</button>
-            <button>فارسی</button>
-            <button>русский</button>
-          </div>
-          <div>
-            <span>{new Date().toDateString()}</span>
-          </div>
-        </TopStrip> */}
         <TopStrip>
-          <StockExchangeWidget />
+          <NavCurrencyWidget />
+          <div className="date">{format(new Date(), "E, d MMM")}</div>
         </TopStrip>
         <TopContent>
           <div>
@@ -59,9 +47,17 @@ const Navbar = () => {
               </div>
             ))}
           </div>
-          <div className="search">
-            <SearchIcon width="20px" />
-            <input />
+          <div className="right">
+            <div className="search">
+              <SearchIcon width="20px" />
+              <input />
+            </div>
+            <div className="languages">
+              <button>English</button>
+              <button>پشتو</button>
+              <button>فارسی</button>
+              <button>русский</button>
+            </div>
           </div>
         </BottomContent>
       </Container>
@@ -81,8 +77,16 @@ const Root = styled.nav`
 `;
 
 const TopStrip = styled.div`
+  display: flex;
   border-bottom: 1px solid white;
   font-size: 0.65rem;
+  align-items: center;
+  gap: 0.5rem;
+
+  & .date {
+    flex-grow: 1;
+    min-width: max-content;
+  }
 `;
 
 const TopContent = styled.div`
@@ -97,12 +101,14 @@ const TopContent = styled.div`
   }
 
   & > div:nth-of-type(2) {
+    // Refers to the logo
     font-size: 1.25rem;
     color: var(--primary-color);
     font-weight: var(--font-bold);
   }
 
   & div:first-of-type > button {
+    // Mobile navbar
     cursor: pointer;
     margin: auto auto auto 0;
 
@@ -112,14 +118,14 @@ const TopContent = styled.div`
   }
 
   & div:last-of-type > span {
+    // Refers to login/sign up
     margin-left: auto;
     display: flex;
     justify-content: flex-end;
-    flex-direction: column;
+    gap: 0.5rem;
 
-    @media only screen and (min-width: 768px) {
-      flex-direction: row;
-      gap: 0.5rem;
+    @media only screen and (max-width: 768px) {
+      font-size: 0.7rem;
     }
   }
 
@@ -131,46 +137,79 @@ const TopContent = styled.div`
 const BottomContent = styled.div<BottomType>`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0.5rem 0;
   transition: all 0.2s ease;
+  gap: 1rem;
 
   & .menu {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
 
     @media only screen and (max-width: 768px) {
       flex-direction: column;
     }
   }
 
-  & .search {
+  & .right {
     display: flex;
-    padding: 0.5rem;
-    background-color: #202224;
-    border-radius: 0.25rem;
-    margin-left: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
 
-    & input {
-      color: white;
-      width: 100%;
-      padding-left: 0.35rem;
-      outline: none;
-      border: none;
-      background-color: transparent;
+    & .search {
+      display: flex;
+      padding: 0.3rem;
+      background-color: #202224;
+      border-radius: 0.25rem;
+      max-width: 125px;
+      align-self: self-end;
+
+      & input {
+        color: white;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        width: 100%;
+        padding-left: 0.2rem;
+      }
+
+      @media only screen and (min-width: 768px) {
+        max-width: 100%;
+        align-self: auto;
+      }
     }
 
-    @media only screen and (max-width: 768px) {
-      margin-top: 1rem;
-      margin-left: 0;
+    & .languages {
+      display: block;
+      font-size: 0.5rem;
+      min-width: max-content;
+      align-self: flex-end;
+
+      & > * {
+        margin-left: 0.4rem;
+
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
+
+      @media only screen and (min-width: 768px) {
+        padding: 0.75rem 0;
+        align-self: auto;
+        font-size: 0.65rem;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      flex-direction: row;
     }
   }
 
   @media only screen and (max-width: 768px) {
-    display: ${(props) => (props.active ? "block" : "none")};
+    display: ${(props) => (props.active ? "flex" : "none")};
+    align-items: flex-start;
     transform-origin: top;
     animation: growDown 300ms ease;
-    justify-content: flex-start;
   }
 
   @keyframes growDown {

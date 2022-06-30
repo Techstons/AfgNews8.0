@@ -112,5 +112,42 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium dignissim efficitur. In tincidunt nisl."
       }
     ]
+  },
+  "widgets": {
+    "currencies": [
+      {
+        "base": "USD",
+        "currency": "UAH",
+        "value": 28.18,
+        "difference": -0.2
+      },
+      {
+        "base": "EUR",
+        "currency": "UAH",
+        "value": 32.18,
+        "difference": 0.9
+      },
+      {
+        "base": "PLN",
+        "currency": "UAH",
+        "value": 6.18,
+        "difference": 0
+      },
+      {
+        "base": "S&P",
+        "value": 4616.94,
+        "difference": 0.9
+      },
+      {
+        "base": "BTC",
+        "value": 47456,
+        "difference": 2.9
+      },
+      {
+        "base": "ETH",
+        "value": 3456,
+        "difference": 12.7
+      }
+    ]
   }
 }
