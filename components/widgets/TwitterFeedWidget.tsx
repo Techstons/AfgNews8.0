@@ -9,42 +9,46 @@ import { TwitterData } from "@types";
 
 const TwitterFeedWidget: FC<TwitterData> = ({ data, meta }) => {
   const renderTweets = () => {
-    return data.map((item, index) => {
-      return (
-        <TwitterFeedContainer key={index}>
-          <TwitterFeedHeader>
-            <div>
-              <div className="profile">
-                <Image
-                  src="/assets/flags/inr.png"
-                  alt="AFGNews Twitter account profile picture"
-                  layout="fixed"
-                  width="30px"
-                  height="30px"
-                />
+    return !!data ? (
+      data.map((item, index) => {
+        return (
+          <TwitterFeedContainer key={index}>
+            <TwitterFeedHeader>
+              <div>
+                <div className="profile">
+                  <Image
+                    src="/assets/flags/inr.png"
+                    alt="AFGNews Twitter account profile picture"
+                    layout="fixed"
+                    width="30px"
+                    height="30px"
+                  />
+                </div>
+                <div className="user">
+                  <p>
+                    AFGNews <Verified size={12} color="#1da1f2" />
+                  </p>
+                  <p>@AFGNews</p>
+                </div>
               </div>
-              <div className="user">
-                <p>
-                  AFGNews <Verified size={12} color="#1da1f2" />
-                </p>
-                <p>@AFGNews</p>
+              <div>
+                <Twitter size={24} />
               </div>
-            </div>
-            <div>
-              <Twitter size={24} />
-            </div>
-          </TwitterFeedHeader>
-          <TwitterContent>{item.text}</TwitterContent>
-          <TwitterFeedBottom>
-            <div>
-              <Heart size={16} />
-              <Share size={16} />
-            </div>
-            <div>{formatDistanceToNow(new Date(2014, 6, 2))}</div>
-          </TwitterFeedBottom>
-        </TwitterFeedContainer>
-      );
-    });
+            </TwitterFeedHeader>
+            <TwitterContent>{item.text}</TwitterContent>
+            <TwitterFeedBottom>
+              <div>
+                <Heart size={16} />
+                <Share size={16} />
+              </div>
+              <div>{formatDistanceToNow(new Date(2014, 6, 2))}</div>
+            </TwitterFeedBottom>
+          </TwitterFeedContainer>
+        );
+      })
+    ) : (
+      <div>No tweets available</div>
+    );
   };
 
   return (

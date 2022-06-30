@@ -12,7 +12,7 @@ interface IArticle {
 const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
   return variant === "primary" ? (
     <PrimaryWrapper>
-      <Link href={card.slug}>
+      <Link href={card.slug} passHref={true}>
         <a>
           <PrimaryAnchor>
             <div className="image-container">
@@ -38,7 +38,7 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
     </PrimaryWrapper>
   ) : (
     <SecondaryWrapper>
-      <Link href={card.slug}>
+      <Link href={card.slug} passHref={true}>
         <a>
           <SecondaryAnchor>
             <div className="image-container">

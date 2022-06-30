@@ -80,7 +80,7 @@ const Section: FC<ISection> = ({
     return (
       <Header>
         <h2>{title}</h2>
-        <Link href={slug}>
+        <Link href={slug} passHref={true}>
           <a>
             <HeaderLink>View more</HeaderLink>
           </a>

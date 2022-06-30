@@ -11,7 +11,7 @@ interface INewsCard {
 
 const NewsCard: FC<INewsCard> = ({ card, variant = "primary" }) => {
   return variant === "primary" ? (
-    <Link href={card.slug}>
+    <Link href={card.slug} passHref={true}>
       <Card>
         <Image
           src={card.image}
@@ -30,7 +30,7 @@ const NewsCard: FC<INewsCard> = ({ card, variant = "primary" }) => {
       </Card>
     </Link>
   ) : (
-    <Link href={card.slug}>
+    <Link href={card.slug} passHref={true}>
       <Card>
         <h3 className="slim">{card.title}</h3>
       </Card>

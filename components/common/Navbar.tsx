@@ -1,9 +1,12 @@
 import { CloseIcon, MenuIcon, SearchIcon } from "@components/icons";
 import { Container } from "@components/ui";
+import { StockExchangeWidget } from "@components/widget";
 import styled from "@emotion/styled";
 import data from "@test-data";
 import Link from "next/link";
 import { useState } from "react";
+
+// test
 
 type BottomType = {
   active: boolean;
@@ -15,7 +18,8 @@ const Navbar = () => {
   return (
     <Root>
       <Container>
-        <TopStrip>
+        {/* <TopStrip>
+          languages here
           <div>
             <button>English</button>
             <button>پشتو</button>
@@ -25,6 +29,9 @@ const Navbar = () => {
           <div>
             <span>{new Date().toDateString()}</span>
           </div>
+        </TopStrip> */}
+        <TopStrip>
+          <StockExchangeWidget />
         </TopStrip>
         <TopContent>
           <div>
@@ -46,7 +53,7 @@ const Navbar = () => {
           <div className="menu">
             {data.menuitems.map((menu, i) => (
               <div key={i}>
-                <Link href={menu.url}>
+                <Link href={menu.url} passHref={true}>
                   <MenuItem>{menu.title}</MenuItem>
                 </Link>
               </div>
@@ -74,16 +81,8 @@ const Root = styled.nav`
 `;
 
 const TopStrip = styled.div`
-  display: flex;
-  justify-content: space-between;
   border-bottom: 1px solid white;
   font-size: 0.65rem;
-
-  & > div:first-of-type {
-    & > * {
-      margin-right: 0.5rem;
-    }
-  }
 `;
 
 const TopContent = styled.div`

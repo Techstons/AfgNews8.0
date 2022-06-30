@@ -45,7 +45,7 @@ const Footer = () => {
               <p>Follow us: </p>
               {SocialLinks.map((item, index) => {
                 return (
-                  <Link href={item.url} key={index}>
+                  <Link href={item.url} key={index} passHref={true}>
                     <SocialCircle>
                       <item.icon size={18} />
                     </SocialCircle>
@@ -58,7 +58,7 @@ const Footer = () => {
             <div className="footer-links">
               {data.menuitems.map((item, index) => {
                 return (
-                  <Link href={item.url} key={index}>
+                  <Link href={item.url} key={index} passHref={true}>
                     <FooterLink>{item.title}</FooterLink>
                   </Link>
                 );
