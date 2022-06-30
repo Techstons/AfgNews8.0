@@ -30,24 +30,24 @@ const Footer = () => {
   return (
     <Wrapper>
       <Container>
-        <div className="logo">
-          <h1>Afgnews</h1>
-        </div>
         <div className="content">
           <FooterContainer>
+            <h2 className="logo">Afgnews</h2>
+
             <div className="newsletter">
               <p className="description">Join our news letter</p>
-              <div>
+              <div className="input-box">
                 <Input placeholder="Enter your email" />
                 <Button>OK</Button>
               </div>
             </div>
             <div className="socials">
+              <p>Follow us: </p>
               {SocialLinks.map((item, index) => {
                 return (
                   <Link href={item.url} key={index}>
                     <SocialCircle>
-                      <item.icon size={24} />
+                      <item.icon size={18} />
                     </SocialCircle>
                   </Link>
                 );
@@ -55,19 +55,21 @@ const Footer = () => {
             </div>
           </FooterContainer>
           <FooterContainer>
-            {data.menuitems.map((item, index) => {
-              return (
-                <Link href={item.url} key={index}>
-                  <FooterLink>{item.title}</FooterLink>
-                </Link>
-              );
-            })}
+            <div className="footer-links">
+              {data.menuitems.map((item, index) => {
+                return (
+                  <Link href={item.url} key={index}>
+                    <FooterLink>{item.title}</FooterLink>
+                  </Link>
+                );
+              })}
+            </div>
           </FooterContainer>
         </div>
         <BottomFooter>
           <p>{new Date().getFullYear()} AFGnews - All Rights Reserved</p>
           <div className="bottom_links">
-            About Us Privacy Policy Terms of Use Advertise
+            About Us - Privacy Policy - Terms of Use - Advertise
           </div>
         </BottomFooter>
       </Container>
@@ -82,18 +84,13 @@ const Wrapper = styled.footer`
   color: var(--nav-text);
   padding: 1rem 1.5rem;
 
-  & .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
   & .content {
     padding: 0.75rem 0;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: 1rem;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 880px) {
       display: block;
 
       & > * {
@@ -104,9 +101,6 @@ const Wrapper = styled.footer`
 `;
 
 const FooterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   background-color: var(--nav-color);
   color: var(--nav-text);
   font-size: 1.2rem;
@@ -114,10 +108,24 @@ const FooterContainer = styled.div`
   border-top: 1px solid var(--nav-color);
   border-bottom: 1px solid var(--nav-color);
 
+  & .logo {
+    font-size: 5rem;
+    font-weight: var(--font-extrabold);
+    padding-bottom: 1.5rem;
+
+    @media only screen and (max-width: 640px) {
+      font-size: 3.5rem;
+    }
+  }
+
   & .newsletter {
-    display: flex;
+    width: 100%;
     flex-direction: column;
     gap: 0.5rem;
+
+    & > * {
+      margin-bottom: 0.5rem;
+    }
   }
 
   & .description {
@@ -133,19 +141,40 @@ const FooterContainer = styled.div`
   & .socials {
     padding: 1rem 0;
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
+    align-items: center;
+    font-weight: var(--font-base);
+    text-transform: uppercase;
+
+    @media only screen and (max-width: 640px) {
+      font-size: 0.8rem;
+    }
+  }
+
+  & .footer-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 `;
 
 const SocialCircle = styled.a`
   display: flex;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
   border-radius: 100%;
-  width: 47px;
-  height: 47px;
+  width: 33px;
+  height: 33px;
   border: solid 2px white;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--nav-text);
+    color: var(--nav-color);
+    border: solid 2px black;
+  }
 `;
 
 const FooterLink = styled.a`

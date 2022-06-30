@@ -16,7 +16,7 @@ export default Input;
 const Wrapper = styled.div`
   display: flex;
   background-color: var(--primary-light);
-  border-radius: 0.25rem;
+  border-radius: var(--base-radius);
   padding: 0.4rem 0.5rem;
 `;
 

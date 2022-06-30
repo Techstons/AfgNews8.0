@@ -16,10 +16,11 @@ const Wrapper = styled.button`
   color: var(--nav-text);
   padding: 1rem 1.5rem;
   border: none;
-  border-radius: 0.5rem;
-  font-size: 1.2rem;
+  border-radius: var(--base-radius);
   font-weight: bold;
+  font-size: 1.2rem;
   cursor: pointer;
+
   transition: background-color 0.2s ease-in-out;
   &:hover {
     background-color: var(--primary-color-alt);
