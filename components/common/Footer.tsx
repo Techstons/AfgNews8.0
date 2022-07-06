@@ -1,4 +1,4 @@
-import { Button, Container, Input, SocialCircle } from "@components/ui";
+import { Button, Container, Input } from "@components/ui";
 import styled from "@emotion/styled";
 import data from "@test-data";
 import Link from "next/link";
