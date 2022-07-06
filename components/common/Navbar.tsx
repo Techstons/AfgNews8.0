@@ -32,8 +32,12 @@ const Navbar = () => {
           </div>
           <div>
             <span>
-              <button className="signIn">Sign in</button>
-              <button className="signUp">Sign up</button>
+              <Link href="/auth/login">
+                <a className="signIn">Sign in</a>
+              </Link>
+              <Link href="/auth/registration">
+                <a className="signUp">Sign up</a>
+              </Link>
             </span>
           </div>
         </TopContent>
@@ -84,6 +88,8 @@ const TopStrip = styled.div`
   gap: 0.5rem;
 
   & .date {
+    border-left: 1px solid white;
+    padding-left: 0.25rem;
     flex-grow: 1;
     min-width: max-content;
   }

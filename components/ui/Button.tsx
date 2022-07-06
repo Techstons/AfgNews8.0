@@ -14,12 +14,13 @@ export default Button;
 const Wrapper = styled.button`
   background-color: var(--primary-color);
   color: var(--nav-text);
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: var(--base-radius);
   font-weight: bold;
   font-size: 1.2rem;
   cursor: pointer;
+  width: 100%;
 
   transition: background-color 0.2s ease-in-out;
   &:hover {

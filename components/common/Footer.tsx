@@ -1,4 +1,4 @@
-import { Button, Container, Input } from "@components/ui";
+import { Button, Container, Input, SocialCircle } from "@components/ui";
 import styled from "@emotion/styled";
 import data from "@test-data";
 import Link from "next/link";
@@ -37,8 +37,8 @@ const Footer = () => {
             <div className="newsletter">
               <p className="description">Join our news letter</p>
               <div className="input-box">
-                <Input placeholder="Enter your email" />
-                <Button>OK</Button>
+                <Input className="input" placeholder="Enter your email" />
+                <Button className="btn">OK</Button>
               </div>
             </div>
             <div className="socials">
@@ -46,7 +46,7 @@ const Footer = () => {
               {SocialLinks.map((item, index) => {
                 return (
                   <Link href={item.url} key={index} passHref={true}>
-                    <SocialCircle>
+                    <SocialCircle size="33px">
                       <item.icon size={18} />
                     </SocialCircle>
                   </Link>
@@ -123,6 +123,15 @@ const FooterContainer = styled.div`
     flex-direction: column;
     gap: 0.5rem;
 
+    .input-box {
+      display: flex;
+      width: 100%;
+
+      .btn {
+        max-width: min-content;
+      }
+    }
+
     & > * {
       margin-bottom: 0.5rem;
     }
@@ -155,25 +164,6 @@ const FooterContainer = styled.div`
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-  }
-`;
-
-const SocialCircle = styled.a`
-  display: flex;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 100%;
-  width: 33px;
-  height: 33px;
-  border: solid 2px white;
-  transition: color 0.2s ease-in-out;
-
-  &:hover {
-    background-color: var(--nav-text);
-    color: var(--nav-color);
-    border: solid 2px black;
   }
 `;
 

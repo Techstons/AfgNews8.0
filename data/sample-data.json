@@ -2,7 +2,7 @@
   "menuitems": [
     {
       "title": "Home",
-      "url": "/home"
+      "url": "/"
     },
     {
       "title": "World",

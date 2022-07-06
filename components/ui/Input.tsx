@@ -15,14 +15,12 @@ export default Input;
 
 const Wrapper = styled.div`
   display: flex;
+  align-items: center;
   background-color: var(--primary-light);
   border-radius: var(--base-radius);
-  padding: 0.4rem 0.5rem;
 `;
 
 const StyledInput = styled.input`
-  display: flex;
-  all: unset;
-  padding: 0 0.75rem;
   width: 100%;
+  padding: 0 0.5rem;
 `;

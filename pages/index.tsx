@@ -5,23 +5,22 @@ import {
   WeatherWidget,
 } from "@components/widgets";
 import data from "@test-data";
+import { InferGetStaticPropsType } from "next";
 import { useState } from "react";
 
-// Fetches all apis
-// export async function getStaticProps() {
-//   const res = await tweetsFetcher;
-//   const tweets = await res.json();
+export async function getStaticProps() {
+  // const res = await tweetsFetcher;
+  // const tweets = await res.json();
 
-//   return {
-//     props: {
-//       tweets,
-//       data,
-//     }, // will be passed to the page component as props
-//   };
-// }
-// Test comment
+  return {
+    props: {
+      // tweets,
+      data,
+    }, // will be passed to the page component as props
+  };
+}
 
-const Home = () => {
+const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [currencies, setCurrencies] = useState<any>();
   const [weather, setWeather] = useState<any>();
   const [tweets, setTweets] = useState<any>();
