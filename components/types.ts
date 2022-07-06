@@ -1,9 +1,13 @@
 export type Article = {
+  id: string;
   title: string;
+  author: string;
   slug: string;
-  image: string;
+  featuredImage: string;
   category: string;
-  description: string;
+  createdAt: string;
+  excerpt: string;
+  body: string;
 };
 
 export type Currencies = "EUR" | "INR" | "IRR" | "PKR" | "USD";

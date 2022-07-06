@@ -7,7 +7,7 @@ import { FC, ReactNode } from "react";
 
 interface ISection {
   title: string;
-  card: Article[];
+  cards: Article[];
   variant: "primary" | "secondary" | "tertiary" | "quaternary";
   position?: PositionTypes;
   children?: ReactNode;
@@ -22,7 +22,7 @@ type ContainerType = {
 
 const Section: FC<ISection> = ({
   title,
-  card,
+  cards,
   variant,
   position = "left",
   children,
@@ -63,7 +63,7 @@ const Section: FC<ISection> = ({
     // Render only 3 items on 1024px small screens
     // const num = isMobile ? 3 : n;
 
-    return card.slice(0, n).map((item, i) => {
+    return cards.slice(0, n).map((item, i) => {
       if (i < column)
         return <ArticleCard variant="primary" key={i} card={item} />;
       return <ArticleCard variant="slim" key={i} card={item} />;
@@ -71,7 +71,7 @@ const Section: FC<ISection> = ({
   };
 
   const renderSlimArticles = (n: number) => {
-    return card.slice(0, n).map((item, i) => {
+    return cards.slice(0, n).map((item, i) => {
       return <ArticleCard variant="slim" key={i} card={item} />;
     });
   };
@@ -117,7 +117,7 @@ const Section: FC<ISection> = ({
             {renderHeader()}
 
             <TertiaryArticleContainer>
-              {card.slice(0, 4).map((item, i) => (
+              {cards.slice(0, 4).map((item, i) => (
                 <ArticleCard variant="primary" key={i} card={item} />
               ))}
             </TertiaryArticleContainer>
@@ -147,6 +147,7 @@ export default Section;
 const Wrapper = styled.section`
   display: grid;
   gap: 1rem;
+  padding: 1rem 0;
 `;
 
 const Header = styled.div`

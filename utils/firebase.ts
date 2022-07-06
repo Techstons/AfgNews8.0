@@ -6,6 +6,8 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
 } from "firebase/auth";
+import { getFirestore, collection, doc } from "firebase/firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,3 +26,13 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const useAuth = getAuth(app);
+export const db = getFirestore(app);
+
+// Firestore
+const articlesName = "articles";
+const messagesName = "messages";
+export const articleCollection = collection(db, articlesName);
+export const messagesCollection = collection(db, messagesName);
+export const articleRefById = (id: string) => {
+  return doc(db, articlesName, id);
+};

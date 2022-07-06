@@ -12,53 +12,49 @@ interface IArticle {
 const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
   return variant === "primary" ? (
     <PrimaryWrapper>
-      <Link href={card.slug} passHref={true}>
-        <a>
-          <PrimaryAnchor>
-            <div className="image-container">
-              <Image
-                src={card.image}
-                className="image"
-                alt={card.title}
-                layout="responsive"
-                width={1920}
-                height={1080}
-                quality={20}
-                objectFit="cover"
-              />
-            </div>
-            <div className="content">
-              <h3>{card.title}</h3>
-              <p>{card.category}</p>
-              <p className="description">{card.description}</p>
-            </div>
-          </PrimaryAnchor>
-        </a>
+      <Link href={`/articles/${card.id}`} passHref={true}>
+        <PrimaryAnchor>
+          <div className="image-container">
+            <Image
+              src={card.featuredImage ?? "/assets/placeholder.svg"}
+              className="image"
+              alt={card.title}
+              layout="responsive"
+              width={1920}
+              height={1080}
+              quality={20}
+              objectFit="cover"
+            />
+          </div>
+          <div className="content">
+            <h3>{card.title}</h3>
+            <p>{card.category}</p>
+            <p className="description">{card.excerpt}</p>
+          </div>
+        </PrimaryAnchor>
       </Link>
     </PrimaryWrapper>
   ) : (
     <SecondaryWrapper>
-      <Link href={card.slug} passHref={true}>
-        <a>
-          <SecondaryAnchor>
-            <div className="image-container">
-              <Image
-                src={card.image}
-                className="image"
-                alt={card.title}
-                layout="responsive"
-                width={1920}
-                height={1080}
-                quality={20}
-                objectFit="cover"
-              />
-            </div>
-            <div className="content">
-              <h3>{card.title}</h3>
-              <p>{card.category}</p>
-            </div>
-          </SecondaryAnchor>
-        </a>
+      <Link href={`/articles/${card.id}`} passHref={true}>
+        <SecondaryAnchor>
+          <div className="image-container">
+            <Image
+              src={card.featuredImage ?? "/assets/placeholder.svg"}
+              className="image"
+              alt={card.title}
+              layout="responsive"
+              width={1920}
+              height={1080}
+              quality={20}
+              objectFit="cover"
+            />
+          </div>
+          <div className="content">
+            <h3>{card.title}</h3>
+            <p>{card.category}</p>
+          </div>
+        </SecondaryAnchor>
       </Link>
     </SecondaryWrapper>
   );
@@ -81,7 +77,7 @@ const SecondaryWrapper = styled.article`
   position: relative;
 `;
 
-const PrimaryAnchor = styled.span`
+const PrimaryAnchor = styled.a`
   position: relative;
   cursor: pointer;
   display: grid;
@@ -121,7 +117,7 @@ const PrimaryAnchor = styled.span`
   }
 `;
 
-const SecondaryAnchor = styled.span`
+const SecondaryAnchor = styled.a`
   position: relative;
   cursor: pointer;
   display: grid;

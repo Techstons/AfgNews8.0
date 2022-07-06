@@ -11,26 +11,28 @@ interface INewsCard {
 
 const NewsCard: FC<INewsCard> = ({ card, variant = "primary" }) => {
   return variant === "primary" ? (
-    <Link href={card.slug} passHref={true}>
+    <Link href={`/articles/${card?.id}`} passHref={true}>
       <Card>
-        <Image
-          src={card.image}
-          className="image"
-          alt="An"
-          layout="responsive"
-          width={1920}
-          height={1080}
-          quality={20}
-          objectFit="cover"
-        />
+        {!!card?.featuredImage && (
+          <Image
+            src={card.featuredImage ?? "/assets/placeholder.svg"}
+            className="image"
+            alt="An"
+            layout="responsive"
+            width={1920}
+            height={1080}
+            quality={20}
+            objectFit="cover"
+          />
+        )}
         <div className="primary">
-          <h3>{card.title}</h3>
-          <p>{card.category}</p>
+          <h3>{card?.title}</h3>
+          <p>{card?.category}</p>
         </div>
       </Card>
     </Link>
   ) : (
-    <Link href={card.slug} passHref={true}>
+    <Link href={`/articles/${card?.id}`} passHref={true}>
       <Card>
         <h3 className="slim">{card.title}</h3>
       </Card>
@@ -43,13 +45,15 @@ export default NewsCard;
 const Card = styled.a`
   position: relative;
   cursor: pointer;
+  overflow: hidden;
+
+  &:hover .image {
+    filter: brightness(100%);
+  }
 
   & .image {
-    filter: brightness(75%);
-
-    &:hover {
-      filter: brightness(100%);
-    }
+    transition: filter 0.3s ease-in-out;
+    filter: brightness(50%);
   }
 
   & .primary {

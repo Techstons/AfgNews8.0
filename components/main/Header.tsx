@@ -1,16 +1,16 @@
 import { TopNewsCard } from "@components/news";
+import { Article } from "@components/types";
 import { Container } from "@components/ui";
 import styled from "@emotion/styled";
-import data from "@test-data";
 
-const Header = () => {
+const Header = ({ articles }: { articles: Article[] }) => {
   return (
     <Wrapper>
       <Container>
         <MainGrid>
-          <TopNewsCard card={data.mainPage.header[0]} />
+          <TopNewsCard card={articles[0]} />
           <SubGrid>
-            {data.mainPage.header.slice(1, 5).map((item, index) => (
+            {articles.slice(1, 5).map((item, index) => (
               <TopNewsCard key={index} card={item} />
             ))}
           </SubGrid>
@@ -23,7 +23,7 @@ const Header = () => {
 export default Header;
 
 const Wrapper = styled.header`
-  padding: 0.5rem 0;
+  margin: 1rem 0;
 `;
 
 const MainGrid = styled.div`

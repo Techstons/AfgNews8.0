@@ -1,11 +1,18 @@
 import {
   FacebookAuthProvider,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithPopup,
   TwitterAuthProvider,
   User,
 } from "firebase/auth";
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useAuth } from "utils/firebase";
 
 interface IApiContext {
@@ -105,6 +112,12 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logout = useAuth.signOut; // Implement logout function
+
+  useEffect(() => {
+    onAuthStateChanged(useAuth, (user) => {
+      setUser(user ?? undefined);
+    });
+  }, []);
 
   const value = {
     user,

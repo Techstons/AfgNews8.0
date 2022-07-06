@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["picsum.photos"],
+    domains: ["picsum.photos", "loremflickr.com", "lh3.googleusercontent.com"],
   },
   env: {
     WEATHER_ACCESS_TOKEN: process.env.WEATHER_ACCESS_TOKEN,

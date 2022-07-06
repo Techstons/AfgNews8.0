@@ -6,6 +6,16 @@ import { Facebook } from "@styled-icons/material/Facebook";
 import { Twitter } from "@styled-icons/bootstrap/Twitter";
 import { Youtube } from "@styled-icons/bootstrap/Youtube";
 import { Instagram } from "@styled-icons/bootstrap/Instagram";
+import { forwardRef, ReactNode } from "react";
+
+type LengthUnit = "px" | "em" | "rem";
+type Length = `${number}${LengthUnit}`;
+
+interface ISocialCircle {
+  variant?: "primary" | "secondary";
+  children: ReactNode;
+  size: Length;
+}
 
 const Footer = () => {
   const SocialLinks = [
@@ -187,5 +197,24 @@ const BottomFooter = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
+  }
+`;
+
+const SocialCircle = styled.a<ISocialCircle>`
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 100%;
+  width: ${(props) => props.size};
+  height: ${(props) => props.size};
+  border: solid 2px white;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--nav-text);
+    color: var(--nav-color);
+    border: solid 2px black;
   }
 `;
