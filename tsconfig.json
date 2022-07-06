@@ -19,7 +19,8 @@
       "@components/*": ["components/*"],
       "@test-data": ["data/sample-data.json"],
       "@hooks/*": ["hooks/*"],
-      "@types": ["types"]
+      "@types": ["types"],
+      "@utils": ["utils"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
