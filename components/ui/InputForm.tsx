@@ -54,6 +54,8 @@ const Wrapper = styled.div<IInputForm>`
   box-sizing: border-box;
   position: relative;
   border: 1px solid;
+  background-color: transparent;
+  z-index: 1;
   width: 100%;
 
   ${(props) => (props.error ? `var(--primary-color)` : `black`)};
@@ -88,7 +90,7 @@ const Input = styled.input`
 const Label = styled.label`
   position: absolute;
   z-index: -1;
-  color: var(--primary-light);
+  color: var(--text-color-alt);
   left: 0.5rem;
   top: 0.7rem;
   padding: 0 0.25rem;

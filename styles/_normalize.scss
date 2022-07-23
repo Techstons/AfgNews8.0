@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap');
 
 html,
 *, *::after, *::before {
@@ -22,11 +22,7 @@ h2, h3, h4 {
 }
 
 h5, h6 {
-    font-weight: var(--font-semibold);
-}
-
-small {
-    font-size: var(--font-light);
+    font-weight: var(--font-medium);
 }
 
 button,

@@ -1,23 +1,11 @@
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
-import { useMediaQueries } from "@components/media-queries";
 import styled from "@emotion/styled";
 import data from "@test-data";
-
+import Marquee from "react-fast-marquee";
 type CurrenyItem = {
   difference: number;
 };
 
 const NavCurrencyWidget = () => {
-  const { lg, md, sm } = useMediaQueries();
-  const [ref] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    mode: "free",
-    slides: {
-      perView: lg ? 5 : md ? 4 : sm ? 3 : 1.5,
-      spacing: 15,
-    },
-  });
   const renderStockCards = () => {
     return data.widgets.currencies.map((item, idx) => {
       const difference =
@@ -41,16 +29,17 @@ const NavCurrencyWidget = () => {
   };
 
   return (
-    <Wrapper ref={ref} className="keen-slider">
+    <Marquee gradientColor={[0, 0, 0]} gradientWidth={120}>
       {renderStockCards()}
-    </Wrapper>
+    </Marquee>
   );
 };
 
 export default NavCurrencyWidget;
 
-const Wrapper = styled.div``;
 const CurrencyItem = styled.div<CurrenyItem>`
+  margin-left: 2rem;
+
   & > * {
     margin-left: 0.25rem;
   }
@@ -60,7 +49,11 @@ const CurrencyItem = styled.div<CurrenyItem>`
       props.difference === 0
         ? "gray"
         : props.difference < 0
-        ? `var(--success-color)`
-        : `var(--failure-color)`};
+        ? `var(--success-color-alt)`
+        : `var(--failure-color-alt)`};
+  }
+
+  @media only screen and (min-width: 640px) {
+    margin-left: 1rem;
   }
 `;

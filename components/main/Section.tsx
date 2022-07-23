@@ -7,7 +7,7 @@ import { FC, ReactNode } from "react";
 
 interface ISection {
   title: string;
-  cards: Article[];
+  cards?: Article[];
   variant: "primary" | "secondary" | "tertiary" | "quaternary";
   position?: PositionTypes;
   children?: ReactNode;
@@ -28,42 +28,8 @@ const Section: FC<ISection> = ({
   children,
   slug,
 }) => {
-  // const [visible, setVisible] = useState(3);
-
-  // const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
-
-  // const showMoreItems = () => {
-  //   setVisible((prev) => prev + 2);
-  // };
-
-  // // Load more functionality
-  // const renderArticles = (isMobile: boolean) => {
-  //   if (isMobile)
-  //     return (
-  //       <>
-  //         {data.mainPage.header.slice(0, visible).map((item, i) => {
-  //           // On smaller screens, less data will be displayed
-  //           if (i < 3)
-  //             return <ArticleCard variant="primary" key={i} card={item} />;
-  //           return <ArticleCard variant="slim" key={i} card={item} />;
-  //         })}
-  //         {data.mainPage.header.length >= visible && ( // Only display button when data length is bigger than visible items
-  //           <Button onClick={showMoreItems}>Load more</Button>
-  //         )}
-  //       </>
-  //     );
-  //   else
-  //     return data.mainPage.header.map((item, i) => {
-  //       if (i < 3) return <ArticleCard variant="primary" key={i} card={item} />;
-  //       return <ArticleCard variant="slim" key={i} card={item} />;
-  //     });
-  // };
-
   const renderArticlesWithColumns = (column: number, n: number) => {
-    // Render only 3 items on 1024px small screens
-    // const num = isMobile ? 3 : n;
-
-    return cards.slice(0, n).map((item, i) => {
+    return cards?.slice(0, n).map((item, i) => {
       if (i < column)
         return <ArticleCard variant="primary" key={i} card={item} />;
       return <ArticleCard variant="slim" key={i} card={item} />;
@@ -71,7 +37,7 @@ const Section: FC<ISection> = ({
   };
 
   const renderSlimArticles = (n: number) => {
-    return cards.slice(0, n).map((item, i) => {
+    return cards?.slice(0, n).map((item, i) => {
       return <ArticleCard variant="slim" key={i} card={item} />;
     });
   };
@@ -90,16 +56,16 @@ const Section: FC<ISection> = ({
   };
 
   return (
-    <Container>
-      <Wrapper>
-        {variant === "primary" ? (
+    <section>
+      <Container>
+        {variant === "primary" ? ( // USED PER CATEGORY PAGE
           <>
             {renderHeader()}
             <PrimaryArticleContainer>
               {renderArticlesWithColumns(3, 9)}
             </PrimaryArticleContainer>
           </>
-        ) : variant === "secondary" ? (
+        ) : variant === "secondary" ? ( // ARTICLES WITH A WIDGET BESIDE
           <SecondaryContainer position={position}>
             <div>
               {renderHeader()}
@@ -112,17 +78,18 @@ const Section: FC<ISection> = ({
               {children}
             </SecondaryInfoContainer>
           </SecondaryContainer>
-        ) : variant === "tertiary" ? (
+        ) : variant === "tertiary" ? ( // FOUR ARTICLES IN A ROW
           <>
             {renderHeader()}
 
             <TertiaryArticleContainer>
-              {cards.slice(0, 4).map((item, i) => (
+              {cards?.slice(0, 4).map((item, i) => (
                 <ArticleCard variant="primary" key={i} card={item} />
               ))}
             </TertiaryArticleContainer>
           </>
         ) : (
+          // USED BY WORLD SECTION
           <SecondaryContainer position={position}>
             <div>
               {renderHeader()}
@@ -137,18 +104,12 @@ const Section: FC<ISection> = ({
             </SecondaryInfoContainer>
           </SecondaryContainer>
         )}
-      </Wrapper>
-    </Container>
+      </Container>
+    </section>
   );
 };
 
 export default Section;
-
-const Wrapper = styled.section`
-  display: grid;
-  gap: 1rem;
-  padding: 1rem 0;
-`;
 
 const Header = styled.div`
   display: flex;
@@ -168,11 +129,9 @@ const HeaderLink = styled.span`
 const PrimaryArticleContainer = styled.div`
   display: grid;
   gap: 1rem;
-
   @media only screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
-
   @media only screen and (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -180,11 +139,11 @@ const PrimaryArticleContainer = styled.div`
 
 const SecondaryContainer = styled.div<ContainerType>`
   display: grid;
-  gap: 1rem;
+  column-gap: 0.75rem;
 
   @media only screen and (min-width: 768px) {
     grid-template-columns: ${(props) =>
-      props.position === "left" ? "65% 35%" : "35% 65%"};
+      props.position === "left" ? "70% 29%" : "29% 70%"};
   }
 `;
 
@@ -203,7 +162,7 @@ const SecondaryInfoContainer = styled.div<ContainerType>`
 
 const TertiaryArticleContainer = styled.div`
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 
   @media only screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);

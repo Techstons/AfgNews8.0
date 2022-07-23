@@ -1,4 +1,4 @@
-import { currency_access_tokens } from "./keys";
+import { currency_access_tokens } from "../keys";
 
 export const currencyFetcher = fetch(
   "https://api.currencyapi.com/v3/latest?apikey=" +

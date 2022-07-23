@@ -1,12 +1,141 @@
 import { useApi } from "@components/context";
 import { Button, InputForm, SocialCircle } from "@components/ui";
 import styled from "@emotion/styled";
-import { Facebook, Google, Twitter } from "@styled-icons/bootstrap";
-import Link from "next/link";
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  TwitterAuthProvider,
+} from "firebase/auth";
 import Image from "next/image";
+import Link from "next/link";
+import Router from "next/router";
+import { FormEvent, useEffect, useState } from "react";
+import { useAuth } from "utils/firebase";
+
+type LocalAuth = {
+  email: string;
+  password: string;
+  passwordConfirm?: string;
+};
 
 const Login = () => {
-  const { googleLogin, facebookLogin, twitterLogin, user } = useApi();
+  const { user, setUser } = useApi();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const localAuth = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      return;
+    }
+
+    localLogin({ email, password });
+  };
+
+  const errorLogger = (err: any) => {
+    console.log(`
+          error code: ${err.errorCode}
+          error message: ${err.errorMessage}
+          error email: ${err.email}
+          error credential: ${err.credential}
+        `);
+  };
+
+  const localLogin = (auth: LocalAuth) => {
+    if (!auth.email || !auth.password) {
+      return alert("You must put an email and password");
+    }
+
+    signInWithEmailAndPassword(useAuth, auth.email, auth.password)
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        console.log(`Error Login: ${errorCode} - ${errorMessage}`);
+        alert(errorCode);
+      });
+  };
+
+  const googleLogin = () => {
+    signInWithPopup(useAuth, new GoogleAuthProvider())
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        // The signed-in user info.
+        setUser(result.user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+
+        errorLogger({ errorCode, errorMessage, email, credential });
+        alert(errorCode);
+      });
+  };
+
+  const facebookLogin = () => {
+    signInWithPopup(useAuth, new FacebookAuthProvider())
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const accessToken = credential?.accessToken;
+
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+
+        errorLogger({ errorCode, errorMessage, email, credential });
+        alert(errorCode);
+      });
+  };
+
+  const twitterLogin = () => {
+    signInWithPopup(useAuth, new TwitterAuthProvider())
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        const credential = TwitterAuthProvider.credentialFromResult(result);
+        const accessToken = credential?.accessToken;
+
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = TwitterAuthProvider.credentialFromError(error);
+
+        errorLogger({ errorCode, errorMessage, email, credential });
+        alert(errorCode);
+      });
+  };
 
   const SocialLinks = [
     {
@@ -26,6 +155,14 @@ const Login = () => {
     },
   ];
 
+  useEffect(() => {
+    if (useAuth.currentUser) {
+      Router.push({
+        pathname: "/",
+      });
+    }
+  }, [user]);
+
   return (
     <Wrapper>
       <Container>
@@ -34,17 +171,31 @@ const Login = () => {
           <h2>AFGNews</h2>
           <h3>Sign in</h3>
         </Header>
-        <Form>
-          <InputForm id="name" placeholder="Email or Username" />
-          <InputForm id="password" placeholder="Password" />
-          <Button>Sign in</Button>
+        <Form onSubmit={localAuth}>
+          <InputForm
+            id="email"
+            placeholder="Email"
+            value={email}
+            type="email"
+            autoComplete="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <InputForm
+            id="password"
+            placeholder="Password"
+            type="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button type="submit">Sign in</Button>
           <span>Dont have an account?</span>{" "}
           <Link href="/auth/registration" passHref={true}>
             <a className="registration">Click here</a>
           </Link>
         </Form>
         <SocialContainer>
-          <p>Or sign up using social media accounts</p>
+          <p>Or sign in using social media accounts</p>
 
           <div>
             {SocialLinks.map((item, index) => {

@@ -5,36 +5,28 @@ import Link from "next/link";
 import { Article } from "@components/types";
 
 interface INewsCard {
-  card: Article;
-  variant?: "primary" | "slim";
+  card?: Article;
 }
 
-const NewsCard: FC<INewsCard> = ({ card, variant = "primary" }) => {
-  return variant === "primary" ? (
-    <Link href={`/articles/${card?.id}`} passHref={true}>
+const NewsCard: FC<INewsCard> = ({ card }) => {
+  return (
+    <Link href={`/articles/${card?.slug}`} passHref={true}>
       <Card>
-        {!!card?.featuredImage && (
-          <Image
-            src={card.featuredImage ?? "/assets/placeholder.svg"}
-            className="image"
-            alt="An"
-            layout="responsive"
-            width={1920}
-            height={1080}
-            quality={20}
-            objectFit="cover"
-          />
-        )}
+        <Image
+          src={card?.featuredImage ? card.featuredImage : "/placeholder.svg"}
+          className="image"
+          alt="An"
+          layout="responsive"
+          width={1920}
+          height={1080}
+          quality={20}
+          priority={true}
+          objectFit="cover"
+        />
         <div className="primary">
           <h3>{card?.title}</h3>
           <p>{card?.category}</p>
         </div>
-      </Card>
-    </Link>
-  ) : (
-    <Link href={`/articles/${card?.id}`} passHref={true}>
-      <Card>
-        <h3 className="slim">{card.title}</h3>
       </Card>
     </Link>
   );
@@ -48,28 +40,35 @@ const Card = styled.a`
   overflow: hidden;
 
   &:hover .image {
-    filter: brightness(100%);
+    filter: brightness(115%);
+  }
+
+  &:hover .primary p {
+    color: white;
+    font-weight: 700;
   }
 
   & .image {
     transition: filter 0.3s ease-in-out;
-    filter: brightness(50%);
   }
 
   & .primary {
     position: absolute;
-    bottom: 1rem;
-    left: 0.5rem;
-    z-index: 1;
-    color: white;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: inset 0 0 60px rgb(0 0 0 / 60%);
+    padding: 0.5rem;
+
+    & h3 {
+      font-weight: 500;
+      font-size: 1rem;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
 
     & p {
-      color: var(--text-color-alt);
+      color: #cccccc;
     }
-  }
-
-  & .slim {
-    border-bottom: 1px solid var(--primary-light);
-    margin: 0 0.5rem;
   }
 `;

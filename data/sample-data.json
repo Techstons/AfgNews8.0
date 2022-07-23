@@ -13,106 +13,26 @@
       "url": "/business"
     },
     {
-      "title": "Sports",
-      "url": "/sports"
+      "title": "Science",
+      "url": "/science"
+    },
+    {
+      "title": "Technology",
+      "url": "/technology"
     },
     {
       "title": "Health",
       "url": "/health"
     },
     {
+      "title": "Sports",
+      "url": "/sports"
+    },
+    {
       "title": "Videos",
       "url": "/videos"
     }
   ],
-  "mainPage": {
-    "header": [
-      {
-        "title": "Macron to meet rival parties after losing majority",
-        "slug": "/macron-to-meet-rival-parties-after-losing-majority",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Business",
-        "description": "According to the officials of the department, there are 214 schools in the province, of which only 60 have buildings."
-      },
-      {
-        "title": "Brexit: 'Brexit is a lie'",
-        "slug": "/brexit-is-a-lie",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Business",
-        "description": "India had earlier pledged to provide 50,000 MTs of wheat to Afghanistan.  "
-      },
-      {
-        "title": "Vivamus vitae viverra ligula.",
-        "slug": "/vivamus-vitae-viverra-ligula",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Technology",
-        "description": "Whole families were lost in the earthquake in Giyan district of the…"
-      },
-      {
-        "title": "Vivamus vitae viverra ligula.",
-        "slug": "/vivamus-vitae-viverra-ligula",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Technology",
-        "description": "According to the officials of the department, there are 214 schools in the province, of which only 60 have buildings."
-      },
-      {
-        "title": "Vivamus vitae viverra ligula.",
-        "slug": "/vivamus-vitae-viverra-ligula",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Sport",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium dignissim efficitur. In tincidunt nisl."
-      },
-      {
-        "title": "Vivamus vitae viverra ligula.",
-        "slug": "/vivamus-vitae-viverra-ligula",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Sport",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium dignissim efficitur. In tincidunt nisl."
-      },
-      {
-        "title": "Vivamus vitae viverra ligula.",
-        "slug": "/vivamus-vitae-viverra-ligula",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Sport",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium dignissim efficitur. In tincidunt nisl."
-      },
-      {
-        "title": "Vivamus vitae viverra ligula.",
-        "slug": "/vivamus-vitae-viverra-ligula",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Sport",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium dignissim efficitur. In tincidunt nisl."
-      },
-      {
-        "title": "Vivamus vitae viverra ligula.",
-        "slug": "/vivamus-vitae-viverra-ligula",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Sport",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium dignissim efficitur. In tincidunt nisl."
-      },
-      {
-        "title": "Vivamus vitae viverra ligula.",
-        "slug": "/vivamus-vitae-viverra-ligula",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Sport",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium dignissim efficitur. In tincidunt nisl."
-      },
-      {
-        "title": "Vivamus vitae viverra ligula.",
-        "slug": "/vivamus-vitae-viverra-ligula",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Sport",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium dignissim efficitur. In tincidunt nisl."
-      },
-      {
-        "title": "Vivamus vitae viverra ligula.",
-        "slug": "/vivamus-vitae-viverra-ligula",
-        "image": "https://picsum.photos/1920/1080",
-        "category": "Sport",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium dignissim efficitur. In tincidunt nisl."
-      }
-    ]
-  },
   "widgets": {
     "currencies": [
       {
@@ -149,5 +69,18 @@
         "difference": 12.7
       }
     ]
-  }
+  },
+  "articles": [
+    {
+      "id": "test",
+      "title": "Omicron virus",
+      "author": "John Kim",
+      "slug": "omicron-virus",
+      "featuredImage": "https://loremflickr.com/320/240",
+      "category": "Health",
+      "createdAt": "1/22/2022",
+      "excerpt": "Try only",
+      "body": "Acting Minister of Defense Mawlawi Mohammad Yaqoob Mujahid said that Kabul and Doha are expected to sign an agreement for security cooperation. Returning from his visit from Qatar, Mawlawi Yaqoob said that the agreement will be assessed by the officials of the Islamic Emirate to decide whether or not it will be signed."
+    }
+  ]
 }

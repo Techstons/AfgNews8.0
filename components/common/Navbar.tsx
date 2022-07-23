@@ -1,29 +1,61 @@
-import { CloseIcon, MenuIcon, SearchIcon } from "@components/icons";
+import { useApi } from "@components/context";
+import { CloseIcon, MenuIcon } from "@components/icons";
+import { ArticleCard } from "@components/news";
 import { Container } from "@components/ui";
 import { NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
+import useFormattedDate from "@hooks/useFormattedDate";
+import { Moon, Sun } from "@styled-icons/bootstrap";
 import data from "@test-data";
-import { format } from "date-fns";
+import { onAuthStateChanged } from "firebase/auth";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useAuth } from "utils/firebase";
 
 type BottomType = {
   active: boolean;
 };
 
-const Navbar = () => {
+interface INavbar {
+  isDark: boolean;
+  setIsDark: Dispatch<SetStateAction<boolean>>;
+}
+
+const Navbar = ({ isDark, setIsDark }: INavbar) => {
   const [active, setActive] = useState(false);
+  const { user, setUser } = useApi();
+  const router = useRouter();
+
+  const logout = () =>
+    useAuth
+      .signOut()
+      .then(() => {
+        console.log("logout successfully");
+      })
+      .catch((err) => console.log(err)); // Implement logout function
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(useAuth, (user) => {
+      setUser(user ?? undefined);
+    });
+
+    return unsub;
+  }, []);
 
   return (
     <Root>
       <Container>
         <TopStrip>
           <NavCurrencyWidget />
-          <div className="date">{format(new Date(), "E, d MMM")}</div>
+          <div className="date">{useFormattedDate(new Date(), "nav")}</div>
         </TopStrip>
         <TopContent>
           <div>
-            <button onClick={() => setActive(!active)}>
+            <button
+              onClick={() => setActive(!active)}
+              aria-label="Navigation Toggle"
+            >
               {active ? <CloseIcon width="25px" /> : <MenuIcon width="25px" />}
             </button>
           </div>
@@ -32,31 +64,56 @@ const Navbar = () => {
           </div>
           <div>
             <span>
-              <Link href="/auth/login">
-                <a className="signIn">Sign in</a>
-              </Link>
-              <Link href="/auth/registration">
-                <a className="signUp">Sign up</a>
-              </Link>
+              {!!user ? (
+                <>
+                  <Link href="/profile">
+                    <a>Profile</a>
+                  </Link>
+                  <button className="logout" onClick={logout}>
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link href="/auth/login">
+                    <a className="signIn">Sign in</a>
+                  </Link>
+                  <Link href="/auth/registration">
+                    <a className="signUp">Sign up</a>
+                  </Link>
+                </>
+              )}
             </span>
           </div>
         </TopContent>
         <BottomContent active={active}>
           <div className="menu">
-            {data.menuitems.map((menu, i) => (
-              <div key={i}>
-                <Link href={menu.url} passHref={true}>
-                  <MenuItem>{menu.title}</MenuItem>
-                </Link>
-              </div>
-            ))}
+            {data.menuitems.map((menu, i) => {
+              return (
+                <div className="menu-item" key={i}>
+                  <Link href={menu.url} passHref={true}>
+                    <MenuItem>{menu.title}</MenuItem>
+                  </Link>
+                  {router.asPath !== menu.url && (
+                    <MenuDropDown className="menu-dropdown">
+                      <ArticleCard card={data.articles[0]} variant="slim" />
+                      <ArticleCard card={data.articles[0]} variant="slim" />
+                      <ArticleCard card={data.articles[0]} variant="slim" />
+                      <ArticleCard card={data.articles[0]} variant="slim" />
+                    </MenuDropDown>
+                  )}
+                </div>
+              );
+            })}
           </div>
           <div className="right">
-            <div className="search">
-              <SearchIcon width="20px" />
-              <input />
-            </div>
             <div className="languages">
+              <button
+                aria-label="Toggle dark mode"
+                onClick={() => setIsDark(!isDark)}
+              >
+                {isDark ? <Moon size={20} /> : <Sun size={20} />}
+              </button>
               <button>English</button>
               <button>پشتو</button>
               <button>فارسی</button>
@@ -68,6 +125,8 @@ const Navbar = () => {
     </Root>
   );
 };
+
+export default Navbar;
 
 const Root = styled.nav`
   padding: 0.5rem 1rem;
@@ -82,14 +141,11 @@ const Root = styled.nav`
 
 const TopStrip = styled.div`
   display: flex;
-  border-bottom: 1px solid white;
   font-size: 0.65rem;
   align-items: center;
   gap: 0.5rem;
 
   & .date {
-    border-left: 1px solid white;
-    padding-left: 0.25rem;
     flex-grow: 1;
     min-width: max-content;
   }
@@ -118,25 +174,29 @@ const TopContent = styled.div`
     cursor: pointer;
     margin: auto auto auto 0;
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 900px) {
       display: none;
     }
   }
 
-  & div:last-of-type > span {
-    // Refers to login/sign up
-    margin-left: auto;
+  & div:last-of-type {
+    // Refers to login/sign up/logout
     display: flex;
     justify-content: flex-end;
-    gap: 0.5rem;
 
     @media only screen and (max-width: 768px) {
       font-size: 0.7rem;
     }
   }
 
-  .signUp {
+  .logout {
     color: var(--primary-color);
+    margin-left: 0.5rem;
+  }
+
+  span .signUp {
+    color: var(--primary-color);
+    margin-left: 0.5rem;
   }
 `;
 
@@ -152,7 +212,17 @@ const BottomContent = styled.div<BottomType>`
     display: flex;
     gap: 1rem;
 
-    @media only screen and (max-width: 768px) {
+    & .menu-item {
+      &:hover .menu-dropdown {
+        display: grid;
+
+        @media only screen and (max-width: 900px) {
+          display: none;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 900px) {
       flex-direction: column;
     }
   }
@@ -161,29 +231,6 @@ const BottomContent = styled.div<BottomType>`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
-    & .search {
-      display: flex;
-      padding: 0.3rem;
-      background-color: #202224;
-      border-radius: 0.25rem;
-      max-width: 125px;
-      align-self: self-end;
-
-      & input {
-        color: white;
-        outline: none;
-        border: none;
-        background-color: transparent;
-        width: 100%;
-        padding-left: 0.2rem;
-      }
-
-      @media only screen and (min-width: 768px) {
-        max-width: 100%;
-        align-self: auto;
-      }
-    }
 
     & .languages {
       display: block;
@@ -202,7 +249,7 @@ const BottomContent = styled.div<BottomType>`
       @media only screen and (min-width: 768px) {
         padding: 0.75rem 0;
         align-self: auto;
-        font-size: 0.65rem;
+        font-size: 0.85rem;
       }
     }
 
@@ -211,7 +258,7 @@ const BottomContent = styled.div<BottomType>`
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 900px) {
     display: ${(props) => (props.active ? "flex" : "none")};
     align-items: flex-start;
     transform-origin: top;
@@ -230,12 +277,33 @@ const BottomContent = styled.div<BottomType>`
 
 const MenuItem = styled.a`
   cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s ease-in-out;
 
   &:hover {
-    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
   }
 `;
 
-export default Navbar;
+const MenuDropDown = styled.div`
+  z-index: 10;
+  position: absolute;
+  display: none;
+  grid-template-columns: 40% 60%;
+  left: 0;
+  background-color: black;
+  min-height: 150px;
+  width: 100%;
+  padding: 2rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  & h2 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    font-weight: var(--font-bold);
+    padding: 0.5rem;
+  }
+
+  & .article-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+`;

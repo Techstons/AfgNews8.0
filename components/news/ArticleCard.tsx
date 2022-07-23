@@ -12,11 +12,13 @@ interface IArticle {
 const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
   return variant === "primary" ? (
     <PrimaryWrapper>
-      <Link href={`/articles/${card.id}`} passHref={true}>
+      <Link href={`/articles/${card.slug}`} passHref={true}>
         <PrimaryAnchor>
           <div className="image-container">
             <Image
-              src={card.featuredImage ?? "/assets/placeholder.svg"}
+              src={
+                card?.featuredImage ? card.featuredImage : "/placeholder.svg"
+              }
               className="image"
               alt={card.title}
               layout="responsive"
@@ -28,19 +30,21 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
           </div>
           <div className="content">
             <h3>{card.title}</h3>
-            <p>{card.category}</p>
             <p className="description">{card.excerpt}</p>
+            <p className="category">{card.category}</p>
           </div>
         </PrimaryAnchor>
       </Link>
     </PrimaryWrapper>
   ) : (
     <SecondaryWrapper>
-      <Link href={`/articles/${card.id}`} passHref={true}>
+      <Link href={`/articles/${card.slug}`} passHref={true}>
         <SecondaryAnchor>
           <div className="image-container">
             <Image
-              src={card.featuredImage ?? "/assets/placeholder.svg"}
+              src={
+                card?.featuredImage ? card.featuredImage : "/placeholder.svg"
+              }
               className="image"
               alt={card.title}
               layout="responsive"
@@ -52,7 +56,7 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
           </div>
           <div className="content">
             <h3>{card.title}</h3>
-            <p>{card.category}</p>
+            <p className="category">{card.category}</p>
           </div>
         </SecondaryAnchor>
       </Link>
@@ -63,13 +67,14 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
 export default ArticleCard;
 
 const PrimaryWrapper = styled.article`
+  position: relative;
+
   &:hover {
     border-color: var(--primary-color);
   }
 
   @media only screen and (min-width: 1024px) {
     padding-bottom: 2rem;
-    border-bottom: 2px solid var(--primary-light);
   }
 `;
 
@@ -78,29 +83,45 @@ const SecondaryWrapper = styled.article`
 `;
 
 const PrimaryAnchor = styled.a`
-  position: relative;
   cursor: pointer;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
   & .content {
     width: 100%;
 
-    & .description {
-      display: none;
-    }
-  }
+    .category {
+      position: absolute;
+      bottom: 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.1rem;
 
-  & .image-container {
-    border: 1px solid transparent;
+      &::before {
+        content: " ";
+        display: inline-block;
+        margin-right: 0.5rem;
+        border-left: 2px solid var(--primary-color);
+        height: 0.75rem;
+        padding: 0;
+        width: 0;
+      }
+    }
+
+    .description {
+      display: none;
+      font-size: 0.8rem;
+      font-weight: 400;
+    }
   }
 
   &:hover {
-    & .image-container {
-      border: 1px solid var(--primary-color);
-    }
-
     .content {
       color: var(--primary-color);
     }
@@ -110,7 +131,7 @@ const PrimaryAnchor = styled.a`
     grid-template-columns: 1fr;
 
     & .content {
-      & .description {
+      .description {
         display: block;
       }
     }
@@ -124,19 +145,30 @@ const SecondaryAnchor = styled.a`
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 
-  & .content {
-    width: 100%;
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
   }
 
-  & .image-container {
-    border: 1px solid transparent;
+  & .content {
+    width: 100%;
+
+    .category {
+      font-size: 0.75rem;
+
+      &::before {
+        content: " ";
+        display: inline-block;
+        margin-right: 0.5rem;
+        border-left: 2px solid var(--primary-color);
+        height: 0.75rem;
+        padding: 0;
+        width: 0;
+      }
+    }
   }
 
   &:hover {
-    & .image-container {
-      border: 1px solid var(--primary-color);
-    }
-
     .content {
       color: var(--primary-color);
     }

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { PinMap } from "@styled-icons/bootstrap/PinMap";
 import { format } from "date-fns";
 import { HeaderWidget } from "./HeaderWidget";
+import useFormattedDate from "@hooks/useFormattedDate";
 const WeatherWidget: FC<WeatherInfo> = ({ data }) => {
   return (
     <Wrapper>
@@ -13,10 +14,9 @@ const WeatherWidget: FC<WeatherInfo> = ({ data }) => {
         <div className="date">
           <div>
             <div>Today</div>
-            <div>{format(new Date(), "h:m bb")}</div>
           </div>
           <div>
-            <div>{format(new Date(), "MMM, do")}</div>
+            <div>{useFormattedDate(new Date(), "widget")}</div>
           </div>
         </div>
 
@@ -101,7 +101,7 @@ const WeatherDeets = styled.div`
 
     & .weather {
       font-size: 1.75rem;
-      font-weight: var(--font-semibold);
+      font-weight: var(--font-medium);
     }
   }
 

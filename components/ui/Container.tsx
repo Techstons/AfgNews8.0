@@ -14,5 +14,5 @@ export default Container;
 const Wrapper = styled.div`
   max-width: var(--max-screen);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem;
 `;

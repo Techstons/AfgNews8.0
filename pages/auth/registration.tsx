@@ -1,29 +1,69 @@
 import { useApi } from "@components/context";
-import { Button, InputForm, SocialCircle } from "@components/ui";
+import { Button, InputForm } from "@components/ui";
 import styled from "@emotion/styled";
-import Image from "next/image";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import Link from "next/link";
+import router from "next/router";
+import { FormEvent, useEffect, useState } from "react";
+import { useAuth } from "utils/firebase";
 
 const Login = () => {
-  const { googleLogin, facebookLogin, twitterLogin, user } = useApi();
+  const { user, setUser } = useApi();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  const SocialLinks = [
-    {
-      icon: "/assets/icons/facebook.png",
-      url: "https://www.facebook.com/",
-      auth: facebookLogin,
-    },
-    {
-      icon: "/assets/icons/twitter.png",
-      url: "https://twitter.com/",
-      auth: twitterLogin,
-    },
-    {
-      icon: "/assets/icons/google.png",
-      url: "https://www.youtube.com/",
-      auth: googleLogin,
-    },
-  ];
+  type LocalAuth = {
+    email: string;
+    password: string;
+    passwordConfirm?: string;
+  };
+
+  const localRegister = (auth: LocalAuth) => {
+    if (!auth.email || !auth.password) {
+      return alert("You must put an email and password");
+    }
+
+    if (auth.passwordConfirm !== auth.password) {
+      return alert("Passwords must match");
+    }
+
+    createUserWithEmailAndPassword(useAuth, auth.email, auth.password)
+      .then((result) => {
+        setUser(result.user);
+        sendEmailVerification(result.user).then(() => {
+          console.log("Email sent");
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        console.log(`Error Sign up: ${errorCode} - ${errorMessage}`);
+        alert(errorCode);
+      });
+  };
+
+  const localAuth = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      return;
+    }
+
+    localRegister({ email, password, passwordConfirm });
+  };
+
+  useEffect(() => {
+    if (useAuth.currentUser) {
+      router.push({
+        pathname: "/",
+      });
+    }
+  }, [user]);
 
   return (
     <Wrapper>
@@ -33,34 +73,37 @@ const Login = () => {
           <h2>AFGNews</h2>
           <h3>Registration</h3>
         </Header>
-        <Form>
-          <InputForm id="name" placeholder="Email or Username" />
-          <InputForm id="password" placeholder="Password" />
-          <Button>Sign up</Button>
+        <Form onSubmit={localAuth}>
+          <InputForm
+            id="email"
+            placeholder="Email"
+            type="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <InputForm
+            id="password"
+            placeholder="Password"
+            type="password"
+            autoComplete="new-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <InputForm
+            id="passwordConfirm"
+            placeholder="Password Confirmation"
+            type="password"
+            autoComplete="new-password"
+            value={passwordConfirm}
+            onChange={(e) => setPasswordConfirm(e.target.value)}
+          />
+          <Button type="submit">Sign up</Button>
           <span>Already have an account?</span>{" "}
           <Link href="/auth/login" passHref={true}>
             <a className="login">Click here</a>
           </Link>
         </Form>
-        <SocialContainer>
-          <p>Or sign up using social media accounts</p>
-
-          <div>
-            {SocialLinks.map((item, index) => {
-              return (
-                <SocialCircle size="48px" key={index}>
-                  <Image
-                    src={item.icon}
-                    layout="fixed"
-                    alt="Social icons"
-                    width="24px"
-                    height="24px"
-                  />
-                </SocialCircle>
-              );
-            })}
-          </div>
-        </SocialContainer>
       </Container>
     </Wrapper>
   );
@@ -116,20 +159,5 @@ const Form = styled.form`
 
   .login {
     color: var(--primary-color);
-  }
-`;
-
-const SocialContainer = styled.div`
-  p {
-    text-align: center;
-  }
-
-  padding: 2rem 0;
-
-  div {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem 0;
   }
 `;

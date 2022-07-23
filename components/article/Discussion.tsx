@@ -2,6 +2,7 @@ import { useApi } from "@components/context";
 import { InputForm } from "@components/ui";
 import styled from "@emotion/styled";
 import { Send } from "@styled-icons/material";
+import { formatDistanceToNow } from "date-fns";
 import {
   addDoc,
   getDocs,
@@ -12,7 +13,7 @@ import {
   where,
 } from "firebase/firestore";
 import Image from "next/image";
-import { useEffect, useState, MouseEvent, KeyboardEvent } from "react";
+import { KeyboardEvent, MouseEvent, useEffect, useState } from "react";
 import { messagesCollection } from "utils/firebase";
 
 type CommentType = {
@@ -20,24 +21,29 @@ type CommentType = {
 };
 
 interface IDiscussion {
-  id: string;
+  id?: string;
   title: string;
 }
 
 interface IMessage {
-  id: string;
   articleId: string;
   message: string;
   uid: string;
   author: string;
   photoUrl: string;
-  createdAt: Timestamp;
+  createdAt: Timestamp | Date;
+}
+
+interface IMessageDoc extends IMessage {
+  id: string;
 }
 
 const Discussion = ({ id, title }: IDiscussion) => {
   const { user } = useApi();
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<IMessage[]>();
+  const [messages, setMessages] = useState<IMessageDoc[]>();
+  const [loading, setLoading] = useState(false);
+  const isDisabled = !!user && user.emailVerified ? false : true;
 
   const saveToDB = async (e: KeyboardEvent<HTMLInputElement> | MouseEvent) => {
     if (
@@ -46,18 +52,22 @@ const Discussion = ({ id, title }: IDiscussion) => {
       message.length > 0
     ) {
       try {
-        if (message) {
-          const newMsg = {
-            articleId: id,
+        if (message && user?.uid && user.displayName && user.photoURL) {
+          const newMsg: IMessage = {
+            articleId: id || "",
             createdAt: new Date(),
             message,
-            uid: user?.uid,
-            author: user?.displayName,
-            photoUrl: user?.photoURL,
+            uid: user.uid,
+            author: user.displayName,
+            photoUrl: user.photoURL,
           };
 
+          setLoading(true);
           await addDoc(messagesCollection, newMsg); // Saves to fire store
+          const localMsg = { ...newMsg, id: "Local:" + Date.now() }; // Adds temporary id since it is needed in IMessageDoc
+          setMessages((prev) => (prev ? [localMsg, ...prev] : [localMsg])); // Adds newly created message to state
           setMessage("");
+          setLoading(false);
         }
       } catch (err: any) {
         console.log(err);
@@ -79,7 +89,7 @@ const Discussion = ({ id, title }: IDiscussion) => {
 
         setMessages(
           snapshot.docs.map(
-            (doc) => ({ id: doc.id, ...doc.data() } as IMessage) // Normalize message fetched
+            (doc) => ({ id: doc.id, ...doc.data() } as IMessageDoc) // Normalize message fetched
           )
         );
       } catch (err: any) {
@@ -103,15 +113,19 @@ const Discussion = ({ id, title }: IDiscussion) => {
           inputEvent={saveToDB}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          disabled={!user}
+          disabled={isDisabled}
         />
-        {!user && <small>You must be signed in first to comment</small>}
+        {isDisabled && (
+          <small>
+            You must be signed in and have a verified email first to comment
+          </small>
+        )}
       </ChatGroup>
       <CommentsContainer>
         {!!messages &&
           messages.map((item) => {
             return (
-              <Comment key={item.id} isOwner={user?.uid === item.uid}>
+              <CommentWrapper key={item.id} isOwner={user?.uid === item.uid}>
                 <div className="avatar">
                   {!!item?.photoUrl && (
                     <Image
@@ -120,15 +134,22 @@ const Discussion = ({ id, title }: IDiscussion) => {
                       alt={item.uid}
                       width={50}
                       height={50}
-                      quality={10}
+                      quality={25}
                     />
                   )}
                 </div>
                 <div className="comment">
                   <div className="author">{item.author}</div>
                   <div className="content">{item.message}</div>
+                  <div className="date">
+                    {formatDistanceToNow(
+                      item.createdAt instanceof Timestamp
+                        ? item.createdAt.toDate()
+                        : item.createdAt
+                    )}
+                  </div>
                 </div>
-              </Comment>
+              </CommentWrapper>
             );
           })}
       </CommentsContainer>
@@ -141,6 +162,7 @@ export default Discussion;
 const Wrapper = styled.div`
   border: solid 1px #8a8c8e;
   border-radius: var(--base-radius);
+  margin-bottom: 2rem;
 `;
 
 const Header = styled.div`
@@ -177,13 +199,14 @@ const CommentsContainer = styled.div`
   gap: 1.5rem;
 `;
 
-const Comment = styled.div<CommentType>`
+const CommentWrapper = styled.div<CommentType>`
   display: flex;
   gap: 0.5rem;
   align-self: ${(props) => props.isOwner && "flex-end"};
   flex-direction: ${(props) => props.isOwner && "row-reverse"};
 
   .avatar {
+    overflow: hidden;
     width: 50px;
     height: 50px;
     border-radius: 100%;
@@ -193,16 +216,23 @@ const Comment = styled.div<CommentType>`
 
   .comment {
     background-color: var(--primary-color-alt);
-    padding: 1rem 1.5rem;
+    padding: 7px 12px 6px 12px;
     border-radius: var(--base-radius);
 
     .author {
       font-weight: bold;
       color: var(--primary-color);
+      padding: 0.25rem 0;
+      font-size: 0.75rem;
     }
     .content {
-      padding: 0.5rem 0;
+      color: var(--text-color);
       line-height: 1.5;
+    }
+    .date {
+      font-size: 0.75rem;
+      float: right;
+      color: var(--text-color-alt);
     }
   }
 `;

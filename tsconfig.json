@@ -18,7 +18,10 @@
     "paths": {
       "@components/*": ["components/*"],
       "@test-data": ["data/sample-data.json"],
-      "@hooks/*": ["hooks/*"],
+      "@hooks": ["hooks"],
+      "@hooks/*": [
+        "hooks/*"
+      ],
       "@types": ["types"],
       "@utils": ["utils"]
     }
