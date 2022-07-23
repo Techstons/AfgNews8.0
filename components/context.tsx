@@ -1,12 +1,14 @@
-import { User } from "firebase/auth";
+import { onAuthStateChanged, User } from "firebase/auth";
 import {
   createContext,
   Dispatch,
   ReactNode,
   SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from "react";
+import { useAuth } from "utils/firebase";
 
 interface IApiContext {
   user?: User;
@@ -17,6 +19,14 @@ const ApiContext = createContext<IApiContext>({} as IApiContext);
 
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(useAuth, (user) => {
+      setUser(user ?? undefined);
+    });
+
+    return unsub;
+  }, []);
 
   const value = {
     user,

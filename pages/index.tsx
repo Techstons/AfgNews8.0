@@ -45,21 +45,15 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
       />
       <Section
         cards={
-          articles?.perCategory.find((d) => d.category === "Science")?.articles
+          articles?.perCategory.find(
+            (d) => d.category === "Science" || d.category === "Technology"
+          )?.articles
         }
         variant="tertiary"
-        title="Science"
-        slug="/science"
+        title="Tech & Science"
+        slug="/tech-and-science"
       ></Section>
-      <Section
-        cards={
-          articles?.perCategory.find((d) => d.category === "Technology")
-            ?.articles
-        }
-        variant="tertiary"
-        title="Technology"
-        slug="/technology"
-      ></Section>
+
       <Section
         cards={
           articles?.perCategory.find((d) => d.category === "Health")?.articles

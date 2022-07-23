@@ -5,12 +5,12 @@ import { Container } from "@components/ui";
 import { NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
 import useFormattedDate from "@hooks/useFormattedDate";
-import { Moon, Sun } from "@styled-icons/bootstrap";
+import { MoonFill, SunFill } from "@styled-icons/bootstrap";
+import { Person } from "@styled-icons/material";
 import data from "@test-data";
-import { onAuthStateChanged } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useAuth } from "utils/firebase";
 
 type BottomType = {
@@ -22,9 +22,18 @@ interface INavbar {
   setIsDark: Dispatch<SetStateAction<boolean>>;
 }
 
+type DropdownProps = {
+  active: boolean;
+};
+
+type ToggleProps = {
+  active: boolean;
+};
+
 const Navbar = ({ isDark, setIsDark }: INavbar) => {
   const [active, setActive] = useState(false);
-  const { user, setUser } = useApi();
+  const [toggleDropdown, setToggleDropdown] = useState(false);
+  const { user } = useApi();
   const router = useRouter();
 
   const logout = () =>
@@ -35,14 +44,6 @@ const Navbar = ({ isDark, setIsDark }: INavbar) => {
       })
       .catch((err) => console.log(err)); // Implement logout function
 
-  useEffect(() => {
-    const unsub = onAuthStateChanged(useAuth, (user) => {
-      setUser(user ?? undefined);
-    });
-
-    return unsub;
-  }, []);
-
   return (
     <Root>
       <Container>
@@ -50,11 +51,12 @@ const Navbar = ({ isDark, setIsDark }: INavbar) => {
           <NavCurrencyWidget />
           <div className="date">{useFormattedDate(new Date(), "nav")}</div>
         </TopStrip>
-        <TopContent>
+        <TopContent active={toggleDropdown}>
           <div>
             <button
               onClick={() => setActive(!active)}
               aria-label="Navigation Toggle"
+              className="nav-toggle"
             >
               {active ? <CloseIcon width="25px" /> : <MenuIcon width="25px" />}
             </button>
@@ -63,27 +65,39 @@ const Navbar = ({ isDark, setIsDark }: INavbar) => {
             <span>AFGNews</span>
           </div>
           <div>
-            <span>
-              {!!user ? (
-                <>
-                  <Link href="/profile">
-                    <a>Profile</a>
-                  </Link>
-                  <button className="logout" onClick={logout}>
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link href="/auth/login">
-                    <a className="signIn">Sign in</a>
-                  </Link>
-                  <Link href="/auth/registration">
-                    <a className="signUp">Sign up</a>
-                  </Link>
-                </>
-              )}
-            </span>
+            <button
+              aria-label="User dropdown toggle"
+              className="toggle"
+              onClick={() => setToggleDropdown(!toggleDropdown)}
+            >
+              <Person size={30} />
+            </button>
+
+            {!!user ? (
+              <div
+                className="dropdown"
+                onClick={() => setToggleDropdown(!toggleDropdown)}
+              >
+                <Link href="/profile">
+                  <a>Profile</a>
+                </Link>
+                <button className="logout" onClick={logout}>
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div
+                className="dropdown"
+                onClick={() => setToggleDropdown(!toggleDropdown)}
+              >
+                <Link href="/auth/login">
+                  <a className="signIn">Sign in</a>
+                </Link>
+                <Link href="/auth/registration">
+                  <a className="signUp">Sign up</a>
+                </Link>
+              </div>
+            )}
           </div>
         </TopContent>
         <BottomContent active={active}>
@@ -92,14 +106,16 @@ const Navbar = ({ isDark, setIsDark }: INavbar) => {
               return (
                 <div className="menu-item" key={i}>
                   <Link href={menu.url} passHref={true}>
-                    <MenuItem>{menu.title}</MenuItem>
+                    <MenuItem onClick={() => setActive(false)}>
+                      {menu.title}
+                    </MenuItem>
                   </Link>
                   {router.asPath !== menu.url && (
                     <MenuDropDown className="menu-dropdown">
-                      <ArticleCard card={data.articles[0]} variant="slim" />
-                      <ArticleCard card={data.articles[0]} variant="slim" />
-                      <ArticleCard card={data.articles[0]} variant="slim" />
-                      <ArticleCard card={data.articles[0]} variant="slim" />
+                      <ArticleCard card={data.articles[0]} variant="primary" />
+                      <ArticleCard card={data.articles[0]} variant="primary" />
+                      <ArticleCard card={data.articles[0]} variant="primary" />
+                      <ArticleCard card={data.articles[0]} variant="primary" />
                     </MenuDropDown>
                   )}
                 </div>
@@ -108,12 +124,22 @@ const Navbar = ({ isDark, setIsDark }: INavbar) => {
           </div>
           <div className="right">
             <div className="languages">
-              <button
-                aria-label="Toggle dark mode"
-                onClick={() => setIsDark(!isDark)}
-              >
-                {isDark ? <Moon size={20} /> : <Sun size={20} />}
-              </button>
+              <ToggleDarkWrapper active={isDark}>
+                <input
+                  type="checkbox"
+                  aria-label="Toggle dark mode"
+                  onChange={() => setIsDark(!isDark)}
+                  checked={isDark}
+                  className="toggle-dark"
+                  id="toggle-dark"
+                  name="toggle-dark"
+                  value="toggle-dark"
+                  aria-checked={isDark}
+                />
+                <span className="slider">
+                  {!isDark ? <SunFill size={16} /> : <MoonFill size={16} />}
+                </span>
+              </ToggleDarkWrapper>
               <button>English</button>
               <button>پشتو</button>
               <button>فارسی</button>
@@ -146,12 +172,13 @@ const TopStrip = styled.div`
   gap: 0.5rem;
 
   & .date {
+    font-size: 0.85rem;
     flex-grow: 1;
     min-width: max-content;
   }
 `;
 
-const TopContent = styled.div`
+const TopContent = styled.div<DropdownProps>`
   display: flex;
   align-items: center;
   padding-top: 0.5rem;
@@ -169,7 +196,7 @@ const TopContent = styled.div`
     font-weight: var(--font-bold);
   }
 
-  & div:first-of-type > button {
+  & div:first-of-type > .nav-toggle {
     // Mobile navbar
     cursor: pointer;
     margin: auto auto auto 0;
@@ -180,23 +207,36 @@ const TopContent = styled.div`
   }
 
   & div:last-of-type {
-    // Refers to login/sign up/logout
-    display: flex;
-    justify-content: flex-end;
+    // Right side of the navbar
+    position: relative;
 
-    @media only screen and (max-width: 768px) {
-      font-size: 0.7rem;
+    .dropdown {
+      display: ${(props) => (props.active ? "flex" : "none")};
+      background-color: white;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: absolute;
+      color: black;
+      right: 0;
+      bottom: -5rem;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+      & > * {
+        transition: color, background-color 0.2s ease-in-out;
+        padding: 0.5rem 2rem;
+        white-space: nowrap;
+        z-index: 5;
+      }
+
+      & > *:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
     }
-  }
 
-  .logout {
-    color: var(--primary-color);
-    margin-left: 0.5rem;
-  }
-
-  span .signUp {
-    color: var(--primary-color);
-    margin-left: 0.5rem;
+    .toggle {
+      margin-left: auto;
+    }
   }
 `;
 
@@ -228,19 +268,14 @@ const BottomContent = styled.div<BottomType>`
   }
 
   & .right {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
     & .languages {
-      display: block;
+      display: flex;
+      gap: 0.5rem;
       font-size: 0.5rem;
       min-width: max-content;
       align-self: flex-end;
 
       & > * {
-        margin-left: 0.4rem;
-
         &:hover {
           color: var(--primary-color);
         }
@@ -294,6 +329,7 @@ const MenuDropDown = styled.div`
   width: 100%;
   padding: 2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3rem;
 
   & h2 {
     font-size: 3rem;
@@ -305,5 +341,43 @@ const MenuDropDown = styled.div`
   & .article-grid {
     display: grid;
     gap: 1.5rem;
+  }
+`;
+
+const ToggleDarkWrapper = styled.label<ToggleProps>`
+  position: relative;
+  display: inline-block;
+  background-color: #4d4d4d;
+  border-radius: 30px;
+  height: 24px;
+  transition: 0.2s;
+  width: 50px;
+  cursor: pointer;
+
+  & input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  & input:checked + .slider {
+    transform: translateX(22px);
+    left: auto;
+  }
+
+  & .slider {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 50%;
+    bottom: 0;
+    transition: 0.4s;
+    background-color: ${(props) => (props.active ? "white" : "black")};
+    color: ${(props) => (props.active ? "black" : "yellow")};
+    border-radius: 30px;
+    box-shadow: 0px 0px 0px 3px #4d4d4d;
   }
 `;

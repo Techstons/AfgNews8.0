@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import data from "@test-data";
 import Marquee from "react-fast-marquee";
+
 type CurrenyItem = {
   difference: number;
 };
@@ -11,11 +12,7 @@ const NavCurrencyWidget = () => {
       const difference =
         item.difference > 0 ? `+${item.difference}` : item.difference;
       return (
-        <CurrencyItem
-          key={idx}
-          className="keen-slider__slide"
-          difference={item.difference}
-        >
+        <CurrencyItem key={idx} difference={item.difference}>
           <span>
             {item.base}
             {!!item.currency && "/" + item.currency}
@@ -29,7 +26,7 @@ const NavCurrencyWidget = () => {
   };
 
   return (
-    <Marquee gradientColor={[0, 0, 0]} gradientWidth={120}>
+    <Marquee gradientColor={[0, 0, 0]} gradientWidth={120} speed={40}>
       {renderStockCards()}
     </Marquee>
   );
@@ -38,7 +35,7 @@ const NavCurrencyWidget = () => {
 export default NavCurrencyWidget;
 
 const CurrencyItem = styled.div<CurrenyItem>`
-  margin-left: 2rem;
+  margin-left: 1rem;
 
   & > * {
     margin-left: 0.25rem;
@@ -54,6 +51,6 @@ const CurrencyItem = styled.div<CurrenyItem>`
   }
 
   @media only screen and (min-width: 640px) {
-    margin-left: 1rem;
+    margin-left: 4rem;
   }
 `;
