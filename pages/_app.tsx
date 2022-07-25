@@ -1,9 +1,8 @@
-import "../styles/globals.scss";
-import type { AppProps } from "next/app";
 import { Layout } from "@components/common";
-import { SEOHeader } from "@components/seo";
 import { getArticlesOrdered } from "@hooks/article";
+import type { AppProps } from "next/app";
 import { useEffect } from "react";
+import "../styles/globals.scss";
 
 export const getStaticProps = async () => {
   const articles = await getArticlesOrdered();
@@ -24,7 +23,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Layout>
-      <SEOHeader canonical="" />
       <Component {...pageProps} />
     </Layout>
   );

@@ -1,4 +1,5 @@
 import { Header, Section } from "@components/main";
+import { SEOHeader } from "@components/seo";
 import { getArticlesOrdered } from "@hooks/article";
 import { InferGetStaticPropsType } from "next";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
@@ -19,6 +20,7 @@ export async function getStaticProps() {
 const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
+      <SEOHeader canonical="/" />
       <Header articles={articles?.allArticles} />
       <Section
         cards={
