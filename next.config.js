@@ -22,6 +22,7 @@ const nextConfig = {
     MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY,
     MAILCHIMP_API_SERVER: process.env.MAILCHIMP_API_SERVER,
     FORMSPREE_API: process.env.FORMSPREE_API,
+    STRIPE_KEY: process.env.STRIPE_KEY,
   },
 };
 
