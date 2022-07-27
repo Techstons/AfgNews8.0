@@ -1,22 +1,30 @@
 import { ContextProvider } from "@components/context";
 import styled from "@emotion/styled";
+import { Currency } from "@hooks/types";
 import { ReactNode, useState } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 interface ILayout {
   children: ReactNode;
+  currencies: Currency[];
+  articles: any;
 }
 
 type MainProps = {
   isDark?: boolean;
 };
 
-const Layout = ({ children }: ILayout) => {
+const Layout = ({ articles, currencies, children }: ILayout) => {
   const [isDark, setIsDark] = useState(false);
   return (
     <ContextProvider>
-      <Navbar isDark={isDark} setIsDark={setIsDark} />
+      <Navbar
+        articles={articles}
+        currencies={currencies}
+        isDark={isDark}
+        setIsDark={setIsDark}
+      />
       <Main isDark={isDark}>{children}</Main>
       <Footer />
     </ContextProvider>

@@ -1,25 +1,32 @@
 import styled from "@emotion/styled";
-import data from "@test-data";
+import { Currency } from "@hooks/types";
+import { FC } from "react";
 import Marquee from "react-fast-marquee";
+
+interface INavCurrencyWidget {
+  currencies: Currency[];
+}
 
 type CurrenyItem = {
   difference: number;
 };
 
-const NavCurrencyWidget = () => {
+const NavCurrencyWidget: FC<INavCurrencyWidget> = ({ currencies }) => {
   const renderStockCards = () => {
-    return data.widgets.currencies.map((item, idx) => {
+    return currencies?.map((curr, idx) => {
+      const item = curr["Realtime Currency Exchange Rate"];
+      // const difference = item["8. Bid Price"] - item["9. Ask Price"];
       const difference =
-        item.difference > 0 ? `+${item.difference}` : item.difference;
+        parseInt(item["5. Exchange Rate"]) - parseInt(item["8. Bid Price"]);
       return (
-        <CurrencyItem key={idx} difference={item.difference}>
+        <CurrencyItem key={idx} difference={difference}>
           <span>
-            {item.base}
-            {!!item.currency && "/" + item.currency}
+            {item["1. From_Currency Code"]}
+            {"/" + item["3. To_Currency Code"]}
           </span>
-          <span>{item.value}</span>
+          <span>{parseInt(item["5. Exchange Rate"]).toFixed(2)}</span>
           <span className="difference">{difference}</span>
-          <span className="difference">{`(${difference}%)`}</span>
+          <span className="difference">{`(${difference / 100}%)`}</span>
         </CurrencyItem>
       );
     });

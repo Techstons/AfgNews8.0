@@ -1,16 +1,19 @@
 import { Header, Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
 import { getArticlesOrdered } from "@hooks/article";
+import { getCurrency } from "@hooks/thirdpartyApi";
 import { InferGetStaticPropsType } from "next";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 export async function getStaticProps() {
   const articles = await getArticlesOrdered();
+  const currencies = await getCurrency();
 
   return {
     props: {
       // tweets,
       articles,
+      currencies,
     },
     // will be passed to the page component as props
     revalidate: 60,

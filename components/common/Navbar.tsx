@@ -4,6 +4,7 @@ import { ArticleCard } from "@components/news";
 import { Container } from "@components/ui";
 import { NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
+import { Currency } from "@hooks/types";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { MoonFill, SunFill } from "@styled-icons/bootstrap";
 import { Person } from "@styled-icons/material";
@@ -20,6 +21,8 @@ type BottomType = {
 interface INavbar {
   isDark: boolean;
   setIsDark: Dispatch<SetStateAction<boolean>>;
+  currencies: Currency[];
+  articles: any;
 }
 
 type DropdownProps = {
@@ -30,7 +33,7 @@ type ToggleProps = {
   active: boolean;
 };
 
-const Navbar = ({ isDark, setIsDark }: INavbar) => {
+const Navbar = ({ isDark, setIsDark, articles, currencies }: INavbar) => {
   const [active, setActive] = useState(false);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const { user } = useApi();
@@ -48,7 +51,7 @@ const Navbar = ({ isDark, setIsDark }: INavbar) => {
     <Root>
       <Container>
         <TopStrip>
-          <NavCurrencyWidget />
+          <NavCurrencyWidget currencies={currencies} />
           <div className="date">{useFormattedDate(new Date(), "nav")}</div>
         </TopStrip>
         <TopContent active={toggleDropdown}>
