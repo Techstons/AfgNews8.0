@@ -10,17 +10,6 @@ export type Article = {
   body: string;
 };
 
-export type Currencies = "EUR" | "INR" | "IRR" | "PKR" | "USD";
-
-export type CurrencyInfo = {
-  data: {
-    [key in Currencies]: {
-      code: string;
-      value: number;
-    };
-  };
-};
-
 export type WeatherInfo = {
   data: {
     current: {
