@@ -17,14 +17,14 @@ const NavCurrencyWidget: FC<INavCurrencyWidget> = ({ currencies }) => {
       const item = curr["Realtime Currency Exchange Rate"];
       // const difference = item["8. Bid Price"] - item["9. Ask Price"];
       const difference =
-        parseInt(item["5. Exchange Rate"]) - parseInt(item["8. Bid Price"]);
+        parseInt(item?.["9. Ask Price"]) - parseInt(item?.["8. Bid Price"]);
       return (
         <CurrencyItem key={idx} difference={difference}>
           <span>
-            {item["1. From_Currency Code"]}
-            {"/" + item["3. To_Currency Code"]}
+            {item?.["1. From_Currency Code"]}
+            {"/" + item?.["3. To_Currency Code"]}
           </span>
-          <span>{parseInt(item["5. Exchange Rate"]).toFixed(2)}</span>
+          <span>{parseInt(item?.["5. Exchange Rate"]).toFixed(2)}</span>
           <span className="difference">{difference}</span>
           <span className="difference">{`(${difference / 100}%)`}</span>
         </CurrencyItem>

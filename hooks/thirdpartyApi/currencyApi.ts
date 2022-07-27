@@ -5,7 +5,7 @@ const api = (FROM: string, TO: string) =>
   `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${FROM}&to_currency=${TO}&apikey=${currency_access_tokens}`;
 
 const TO = "AFN";
-const FROM = ["USD", "EUR"];
+const FROM = ["USD", "EUR", "BTC", "ETH", "USDT", "BNB"];
 
 export const getCurrency = async () => {
   const results = await Promise.all(
@@ -18,5 +18,7 @@ export const getCurrency = async () => {
     results.map((res) => res.json())
   )) as Currency[];
 
-  return data;
+  return data.filter((item) =>
+    item.hasOwnProperty("Realtime Currency Exchange Rate")
+  );
 };
