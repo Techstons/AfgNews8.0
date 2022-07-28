@@ -9,7 +9,6 @@ const nextConfig = {
     domains: ["loremflickr.com", "lh3.googleusercontent.com"],
   },
   env: {
-    WEATHER_ACCESS_TOKEN: process.env.WEATHER_ACCESS_TOKEN,
     CURRENCY_ACCESS_TOKEN: process.env.CURRENCY_ACCESS_TOKEN,
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
     FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
