@@ -50,7 +50,11 @@ const Layout = ({ articles, currencies, children }: ILayout) => {
         setIsDark={setIsDark}
       />
       <Main isDark={isDark}>{children}</Main>
-      <AccessibilityScroller isVisible={isVisible} onClick={scrollToTop}>
+      <AccessibilityScroller
+        isVisible={isVisible}
+        onClick={scrollToTop}
+        aria-label="Scroll to top button"
+      >
         <ArrowUp size={24} />
       </AccessibilityScroller>
       <Footer />
