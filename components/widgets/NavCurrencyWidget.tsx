@@ -58,6 +58,6 @@ const CurrencyItem = styled.div<CurrenyItem>`
   }
 
   @media only screen and (min-width: 640px) {
-    margin-left: 4rem;
+    margin-left: 6rem;
   }
 `;
