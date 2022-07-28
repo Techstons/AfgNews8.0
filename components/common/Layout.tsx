@@ -24,19 +24,20 @@ const Layout = ({ articles, currencies, children }: ILayout) => {
   const [isDark, setIsDark] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  const scrollEvent = () => {
-    if (window.scrollY > 0) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", () => scrollEvent);
+    const scrollEvent = () => {
+      const isVisible = window.scrollY > 0 ? true : false;
+      setIsVisible(isVisible);
+    };
+
+    window.addEventListener("scroll", () => scrollEvent());
 
     return () => {
-      window.removeEventListener("scroll", () => scrollEvent);
+      window.removeEventListener("scroll", () => scrollEvent());
     };
   }, []);
 
@@ -49,7 +50,7 @@ const Layout = ({ articles, currencies, children }: ILayout) => {
         setIsDark={setIsDark}
       />
       <Main isDark={isDark}>{children}</Main>
-      <AccessibilityScroller isVisible={isVisible}>
+      <AccessibilityScroller isVisible={isVisible} onClick={scrollToTop}>
         <ArrowUp size={24} />
       </AccessibilityScroller>
       <Footer />
