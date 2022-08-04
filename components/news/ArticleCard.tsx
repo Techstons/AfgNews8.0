@@ -9,12 +9,14 @@ interface IArticle {
   variant: "primary" | "slim";
 }
 
+// TODO: add images back in when we have them in the db
+
 const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
   return variant === "primary" ? (
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <PrimaryAnchor>
-          <div className="image-container">
+          {/* <div className="image-container">
             <Image
               src={
                 card?.featuredImage ? card.featuredImage : "/placeholder.svg"
@@ -27,7 +29,7 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
               quality={20}
               objectFit="cover"
             />
-          </div>
+          </div> */}
           <div className="content">
             <h3>{card.title}</h3>
             <p className="description">{card.excerpt}</p>
@@ -40,7 +42,7 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
     <SecondaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <SecondaryAnchor>
-          <div className="image-container">
+          {/* <div className="image-container">
             <Image
               src={
                 card?.featuredImage ? card.featuredImage : "/placeholder.svg"
@@ -53,7 +55,7 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
               quality={20}
               objectFit="cover"
             />
-          </div>
+          </div> */}
           <div className="content">
             <h3>{card.title}</h3>
             <p className="category">{card.category}</p>

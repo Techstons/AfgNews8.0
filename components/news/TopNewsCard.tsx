@@ -8,11 +8,13 @@ interface INewsCard {
   card?: Article;
 }
 
+// TODO: add images back in when we have them in the db
+
 const NewsCard: FC<INewsCard> = ({ card }) => {
   return (
     <Link href={`/articles/${card?.slug}`} passHref={true}>
       <Card>
-        <Image
+        {/* <Image
           src={card?.featuredImage ? card.featuredImage : "/placeholder.svg"}
           className="image"
           alt="An"
@@ -22,7 +24,7 @@ const NewsCard: FC<INewsCard> = ({ card }) => {
           quality={20}
           priority={true}
           objectFit="cover"
-        />
+        /> */}
         <div className="primary">
           <h3>{card?.title}</h3>
           <p>{card?.category}</p>
