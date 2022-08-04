@@ -1,0 +1,43 @@
+:root {
+  /* HEADER VARIABLES */
+  --nav-color: black;
+  --nav-text: white;
+
+  /* FOOTER VALUES */
+
+
+  /* COLORS */
+  --hue: 0;
+  --primary-color: hsl(var(--hue), 66%, 55%);
+  --primary-color-alt: hsl(var(--hue), 66%, 89%);
+  --primary-light: hsl(var(--hue), 4%, 30%);
+  --text-color: hsl(var(--hue), 0%, 10%);
+  --text-color-alt: hsl(0, 0%, 50%);
+  --container-color: #f9f9f9;
+  --success-color: #4F8A10;
+  --failure-color: #DA0A16;
+  --success-color-alt: #ABEC65;
+  --failure-color-alt: #FF9E9E;
+  
+  /* TYPOGRAPHY */
+  --font-extrabold: 900;
+  --font-bold: 700;
+  --font-medium: 500;
+  --font-base: 400;
+
+  --font-sm: 12px;
+  --font-md: 18px;
+  --font-lg: 24px;
+  --font-xl: 36px;
+  --font-2xl: 42px;
+
+  /* SCREENS */
+  --sm : 640px;
+  --md : 768px;
+  --lg : 1024px;
+  --xl : 1280px;
+  --max-screen: 80em;
+
+  /* B RADIUS */
+  --base-radius: .25rem;
+}
