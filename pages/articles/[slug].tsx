@@ -25,7 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
@@ -38,8 +38,6 @@ export const getStaticProps = async ({
     props: {
       article: article[0],
     },
-    notFound: article.length === 0,
-    revalidate: 60,
   };
 };
 
