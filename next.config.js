@@ -24,6 +24,7 @@ const nextConfig = {
     STRIPE_KEY: process.env.STRIPE_KEY,
     SPACE_ID: process.env.SPACE_ID,
     CONTENT_DELIVERY_TOKEN: process.env.CONTENT_DELIVERY_TOKEN,
+    CONTENT_MANAGEMENT_TOKEN: process.env.CONTENT_MANAGEMENT_TOKEN,
   },
 };
 
