@@ -1,14 +1,9 @@
+import { articleFields } from "./common";
+
 const getAllArticlesQuery = `
     query getAllArticles {
         articleCollection {
-        items {
-        title
-        slug
-        category {
-            name
-                }
-        excerpt
-            }
+            ${articleFields}
         }
     }`;
 
