@@ -149,9 +149,9 @@ const Footer = () => {
               <SearchIcon width="20px" />
               <input placeholder="search..." aria-label="search bar" />
             </div>
-            <Link href="/donate">
+            {/* <Link href="/donate">
               <a className="donate">Donate</a>
-            </Link>
+            </Link> */}
           </FooterContainer>
         </div>
         <BottomFooter>
