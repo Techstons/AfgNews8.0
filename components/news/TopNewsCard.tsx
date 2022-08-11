@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Article } from "@hooks/types";
+import { Article } from "@components/types";
 
 interface INewsCard {
   card?: Article;
@@ -30,7 +30,7 @@ const NewsCard: FC<INewsCard> = ({ card }) => {
         />
         <div className="primary">
           <h3>{card?.title}</h3>
-          <p>{card?.category.name}</p>
+          <p>{card?.category}</p>
         </div>
       </Card>
     </Link>

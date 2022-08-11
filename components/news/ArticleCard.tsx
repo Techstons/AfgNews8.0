@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Article } from "@hooks/types";
+import { Article } from "@components/types";
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,7 +35,7 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
           <div className="content">
             <h3>{card.title}</h3>
             <p className="description">{card.excerpt}</p>
-            <p className="category">{card.category.name}</p>
+            <p className="category">{card.category}</p>
           </div>
         </PrimaryAnchor>
       </Link>
@@ -62,7 +62,7 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
           </div>
           <div className="content">
             <h3>{card.title}</h3>
-            <p className="category">{card.category.name}</p>
+            <p className="category">{card.category}</p>
           </div>
         </SecondaryAnchor>
       </Link>
