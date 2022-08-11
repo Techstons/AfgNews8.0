@@ -3,7 +3,7 @@ import { ArticleCard } from "@components/news";
 import { SEOHeader } from "@components/seo";
 import { Container } from "@components/ui";
 import styled from "@emotion/styled";
-import { getArticleByProp, getArticles } from "@hooks/article";
+import { getArticleBySlug, getArticles } from "@hooks/article";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { Clock, Share } from "@styled-icons/bootstrap";
 import {
@@ -32,7 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps = async ({
   params,
 }: GetStaticPropsContext<{ slug: string }>) => {
-  const article = await getArticleByProp(params!.slug);
+  const article = await getArticleBySlug(params!.slug);
 
   return {
     props: {
@@ -48,7 +48,7 @@ const ArticlePage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   const articleDate = useFormattedDate(
-    article?.sys.publishedAt ? new Date(article.sys.publishedAt) : new Date(),
+    article?.createdAt ? new Date(article.createdAt) : new Date(),
     "distance"
   );
 
@@ -68,7 +68,7 @@ const ArticlePage = ({
       <Wrapper>
         <ArticleWrapper>
           <ArticleHeader>
-            <small className="category">{article?.category.name}</small>
+            <small className="category">{article?.category}</small>
             <h1 className="title">{article?.title}</h1>
             <p className="contributor">
               <span>
@@ -78,7 +78,7 @@ const ArticlePage = ({
             </p>
             <div className="date">
               <Clock size={18} />{" "}
-              <span>{article?.sys.publishedAt ? articleDate : "N/A"}</span>
+              <span>{article?.createdAt ? articleDate : "N/A"}</span>
             </div>
             <button className="share">
               <Share size={24} />

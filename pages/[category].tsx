@@ -1,8 +1,7 @@
 import { Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
-import { Article } from "@components/types";
 import styled from "@emotion/styled";
-import { getArticleByProp } from "@hooks/article/get-article";
+import { getArticleByCategory } from "@hooks/article";
 import data from "@test-data";
 import {
   GetStaticPaths,
@@ -28,8 +27,8 @@ export const getStaticProps = async ({
 }: GetStaticPropsContext<{ category: string }>) => {
   const category =
     params!.category.split("")[0].toUpperCase() + params!.category.slice(1);
-
-  const articles = (await getArticleByProp("category", category)) as Article[];
+  const limit = 10;
+  const articles = await getArticleByCategory({ category, limit });
 
   return {
     props: {
