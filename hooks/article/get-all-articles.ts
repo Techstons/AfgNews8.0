@@ -1,59 +1,13 @@
-import { getDocs, limit, orderBy, query, where } from "firebase/firestore";
-import { articleCollection } from "utils/firebase";
-import { normalizeArticle } from "../normalize";
-import data from "@test-data";
-import { API_URL } from "../keys";
-import { getAllArticles } from "../utils/queries";
+import { Article } from "@components/types";
 import fetcherApi from "@hooks/utils/fetch-api";
-import { Article, ArticleCollection } from "../types";
+import { normalizeArticle } from "../normalize";
+import { ArticleCollection } from "../types";
+import { getAllArticlesQuery } from "../utils/queries";
 
-export const getArticlesOrdered = async () => {
-  // All all latest article per category
-  const results = await Promise.all(
-    data.menuitems.map((item) => {
-      const q = query(
-        articleCollection,
-        orderBy("createdAt", "desc"),
-        where("category", "==", item.title),
-        limit(4)
-      );
-      return getDocs(q);
-    })
-  );
-
-  const q = query(articleCollection, orderBy("createdAt", "desc"), limit(11)); // Get all latest articles by default
-  const allArticles = normalizeArticle(await getDocs(q));
-
-  // check if article is empty
-  if (allArticles.length === 0) {
-    return null;
-  }
-
-  const perCategory = results.map((item, index) => {
-    const normalized = normalizeArticle(item);
-    return {
-      category: data.menuitems[index].title,
-      articles: normalized,
-    };
-  });
-
-  return {
-    allArticles,
-    perCategory,
-  };
-};
+export const getArticlesOrdered = async () => {};
 
 export const getArticles = async () => {
-  const res = await fetcherApi<ArticleCollection>(getAllArticles);
+  const res = await fetcherApi<ArticleCollection>(getAllArticlesQuery);
 
-  return res.articleCollection.items.map((item) => {
-    return {
-      ...item,
-      featuredImage: {
-        url: item.featuredImage[0].url,
-        width: item.featuredImage[0].width,
-        height: item.featuredImage[0].height,
-      },
-    };
-  });
+  return normalizeArticle(res.articleCollection.items);
 };
