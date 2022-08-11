@@ -1,11 +1,27 @@
+import { normalizeArticle } from "@hooks/normalize";
 import { ArticleCollection } from "@hooks/types";
 import fetcherApi from "@hooks/utils/fetch-api";
-import { getArticleBySlug } from "@hooks/utils/queries";
+import {
+  getArticleByCategoryQuery,
+  getArticleBySlugQuery,
+} from "@hooks/utils/queries";
 
-export const getArticleByProp = async (slug: string) => {
-  const res = await fetcherApi<ArticleCollection>(getArticleBySlug, slug);
+export const getArticleBySlug = async (slug: string) => {
+  const res = await fetcherApi<ArticleCollection>(getArticleBySlugQuery, slug);
 
-  const data = res.articleCollection.items[0];
+  const data = normalizeArticle(res.articleCollection.items);
 
-  return data;
+  return data[0];
+};
+
+export const getArticleByCategory = async (variables: {
+  category: string;
+  limit: number;
+}) => {
+  const res = await fetcherApi<ArticleCollection>(
+    getArticleByCategoryQuery,
+    variables
+  );
+
+  return normalizeArticle(res.articleCollection.items);
 };
