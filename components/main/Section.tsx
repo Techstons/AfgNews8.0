@@ -1,5 +1,5 @@
 import { ArticleCard } from "@components/news";
-import { Article } from "@components/types";
+import { Article } from "@hooks/types";
 import { Container } from "@components/ui";
 import styled from "@emotion/styled";
 import Link from "next/link";

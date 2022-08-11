@@ -115,10 +115,10 @@ const Navbar = ({ isDark, setIsDark, articles, currencies }: INavbar) => {
                   </Link>
                   {router.asPath !== menu.url && (
                     <MenuDropDown className="menu-dropdown">
+                      {/* <ArticleCard card={data.articles[0]} variant="primary" />
                       <ArticleCard card={data.articles[0]} variant="primary" />
                       <ArticleCard card={data.articles[0]} variant="primary" />
-                      <ArticleCard card={data.articles[0]} variant="primary" />
-                      <ArticleCard card={data.articles[0]} variant="primary" />
+                      <ArticleCard card={data.articles[0]} variant="primary" /> */}
                     </MenuDropDown>
                   )}
                 </div>
