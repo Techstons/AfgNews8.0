@@ -3,7 +3,9 @@ import { articleCollection } from "utils/firebase";
 import { normalizeArticle } from "../normalize";
 import data from "@test-data";
 import { API_URL } from "../keys";
-import { getAllArticles } from "../queries";
+import { getAllArticles } from "../utils/queries";
+import fetcherApi from "@hooks/utils/fetch-api";
+import { Article, ArticleCollection } from "../types";
 
 export const getArticlesOrdered = async () => {
   // All all latest article per category
@@ -42,16 +44,7 @@ export const getArticlesOrdered = async () => {
 };
 
 export const getArticles = async () => {
-  const articles = await fetch(API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer m_uF-Ek0k08YbtymuMKHO2ioBZLe3avqi18n0sS4ajY",
-    },
-    body: JSON.stringify({
-      query: getAllArticles,
-    }),
-  });
+  const res = await fetcherApi<ArticleCollection>(getAllArticles);
 
-  return await articles.json();
+  return res.articleCollection.items;
 };

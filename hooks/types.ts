@@ -1,17 +1,20 @@
-export type Article = {
+export type ArticleCollection = {
   articleCollection: {
-    items: {
-      title: string;
-      featuredImage: string;
-      excerpt: string;
-      category: {
-        name: string;
-      };
-      body: {
-        json: any;
-      };
-    };
+    items: Article[];
   };
+};
+
+export type Article = {
+  title: string;
+  featuredImage: string;
+  excerpt: string;
+  category: {
+    name: string;
+  };
+  body: {
+    json: any;
+  };
+  slug: string;
 };
 
 export type Currency = {

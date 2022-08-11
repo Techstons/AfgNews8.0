@@ -1,5 +1,5 @@
 import { ArticleCard, TopNewsCard } from "@components/news";
-import { Article } from "@components/types";
+import { Article } from "@hooks/types";
 import { Container } from "@components/ui";
 import styled from "@emotion/styled";
 
@@ -12,13 +12,13 @@ const Header = ({ articles }: { articles?: Article[] }) => {
           <TopNewsCard card={articles?.[0]} />
           <SubGrid>
             {articles?.slice(1, 5).map((item) => (
-              <TopNewsCard key={item.id} card={item} />
+              <TopNewsCard key={item.title} card={item} />
             ))}
           </SubGrid>
         </MainGrid>
         <ArticleContainer>
           {articles?.slice(5, 12).map((item) => (
-            <ArticleCard variant="slim" card={item} key={item.id} />
+            <ArticleCard variant="slim" card={item} key={item.title} />
           ))}
         </ArticleContainer>
       </Container>
