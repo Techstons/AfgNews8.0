@@ -1,3 +1,19 @@
+export type Article = {
+  articleCollection: {
+    items: {
+      title: string;
+      featuredImage: string;
+      excerpt: string;
+      category: {
+        name: string;
+      };
+      body: {
+        json: any;
+      };
+    };
+  };
+};
+
 export type Currency = {
   "Realtime Currency Exchange Rate": {
     "1. From_Currency Code": string;
