@@ -10,6 +10,8 @@ interface IArticle {
 }
 
 const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
+  console.log("Article", card);
+
   return variant === "primary" ? (
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
@@ -17,13 +19,15 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
           <div className="image-container">
             <Image
               src={
-                card?.featuredImage ? card.featuredImage : "/placeholder.svg"
+                card?.featuredImage.url
+                  ? card.featuredImage.url
+                  : "/placeholder.svg"
               }
               className="image"
               alt={card.title}
               layout="responsive"
-              width={1920}
-              height={1080}
+              width={card?.featuredImage.width ?? 1980}
+              height={card?.featuredImage.height ?? 1020}
               quality={20}
               objectFit="cover"
             />
@@ -43,13 +47,15 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
           <div className="image-container">
             <Image
               src={
-                card?.featuredImage ? card.featuredImage : "/placeholder.svg"
+                card?.featuredImage.url
+                  ? card.featuredImage.url
+                  : "/placeholder.svg"
               }
               className="image"
               alt={card.title}
               layout="responsive"
-              width={1920}
-              height={1080}
+              width={card?.featuredImage.width ?? 1980}
+              height={card?.featuredImage.height ?? 1020}
               quality={20}
               objectFit="cover"
             />

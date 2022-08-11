@@ -6,7 +6,12 @@ export type ArticleCollection = {
 
 export type Article = {
   title: string;
-  featuredImage: string;
+  featuredImage: {
+    url: string;
+    width: string;
+    height: string;
+  };
+
   excerpt: string;
   category: {
     name: string;
@@ -15,6 +20,10 @@ export type Article = {
     json: any;
   };
   slug: string;
+  sys: {
+    publishedAt: Date;
+  };
+  author: string;
 };
 
 export type Currency = {

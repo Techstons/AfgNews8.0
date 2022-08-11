@@ -32,13 +32,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps = async ({
   params,
 }: GetStaticPropsContext<{ slug: string }>) => {
-  const article = await getArticleByProp("slug", params!.slug);
+  const article = await getArticleByProp(params!.slug);
 
   return {
     props: {
-      article: article[0],
+      article: article,
     },
-    notFound: article.length === 0,
+    notFound: !!article,
     revalidate: 60,
   };
 };
@@ -48,7 +48,7 @@ const ArticlePage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   const articleDate = useFormattedDate(
-    article?.createdAt ? new Date(article.createdAt) : new Date(),
+    article?.sys.publishedAt ? new Date(article.sys.publishedAt) : new Date(),
     "distance"
   );
 
@@ -62,13 +62,13 @@ const ArticlePage = ({
         title={article?.title}
         author={article?.author}
         description={article?.excerpt}
-        ogImage={article?.featuredImage}
+        ogImage={article?.featuredImage.url}
         canonical={article?.slug}
       />
       <Wrapper>
         <ArticleWrapper>
           <ArticleHeader>
-            <small className="category">{article?.category}</small>
+            <small className="category">{article?.category.name}</small>
             <h1 className="title">{article?.title}</h1>
             <p className="contributor">
               <span>
@@ -78,7 +78,7 @@ const ArticlePage = ({
             </p>
             <div className="date">
               <Clock size={18} />{" "}
-              <span>{article?.createdAt ? articleDate : "N/A"}</span>
+              <span>{article?.sys.publishedAt ? articleDate : "N/A"}</span>
             </div>
             <button className="share">
               <Share size={24} />
@@ -88,7 +88,7 @@ const ArticlePage = ({
             {!!article?.featuredImage && (
               <Featured>
                 <Image
-                  src={article.featuredImage}
+                  src={article.featuredImage.url}
                   layout="responsive"
                   width={1920}
                   height={1080}
@@ -97,9 +97,9 @@ const ArticlePage = ({
               </Featured>
             )}
             <ArticleExcerpt>{article?.excerpt}</ArticleExcerpt>
-            <ArticleMdx>{article?.body}</ArticleMdx>
+            <ArticleMdx>{article?.body.json}</ArticleMdx>
           </ArticleBody>
-          <Discussion id={article?.id} title={article?.title} />
+          {/* <Discussion id={article?.id} title={article?.title} /> */}
         </ArticleWrapper>
         <Recommended>
           <h2>Recommended</h2>

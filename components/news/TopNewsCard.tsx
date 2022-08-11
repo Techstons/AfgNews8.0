@@ -9,16 +9,21 @@ interface INewsCard {
 }
 
 const NewsCard: FC<INewsCard> = ({ card }) => {
+  console.log("NewsCard", card);
   return (
     <Link href={`/articles/${card?.slug}`} passHref={true}>
       <Card>
         <Image
-          src={card?.featuredImage ? card.featuredImage : "/placeholder.svg"}
+          src={
+            card?.featuredImage.url
+              ? card.featuredImage.url
+              : "/placeholder.svg"
+          }
           className="image"
           alt="An"
           layout="responsive"
-          width={1920}
-          height={1080}
+          width={card?.featuredImage.width ?? 1980}
+          height={card?.featuredImage.height ?? 1020}
           quality={20}
           priority={true}
           objectFit="cover"

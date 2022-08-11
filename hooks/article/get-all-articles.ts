@@ -46,5 +46,14 @@ export const getArticlesOrdered = async () => {
 export const getArticles = async () => {
   const res = await fetcherApi<ArticleCollection>(getAllArticles);
 
-  return res.articleCollection.items;
+  return res.articleCollection.items.map((item) => {
+    return {
+      ...item,
+      featuredImage: {
+        url: item.featuredImage[0].url,
+        width: item.featuredImage[0].width,
+        height: item.featuredImage[0].height,
+      },
+    };
+  });
 };

@@ -1,11 +1,11 @@
-import { Article } from "@components/types";
-import { normalizeArticle } from "@hooks/normalize";
-import { getDocs, query, where } from "firebase/firestore";
-import { articleCollection } from "utils/firebase";
+import { ArticleCollection } from "@hooks/types";
+import fetcherApi from "@hooks/utils/fetch-api";
+import { getArticleBySlug } from "@hooks/utils/queries";
 
-export const getArticleByProp = async (prop: keyof Article, value: string) => {
-  const q = query(articleCollection, where(prop, "==", value));
-  const articleDoc = await getDocs(q);
+export const getArticleByProp = async (slug: string) => {
+  const res = await fetcherApi<ArticleCollection>(getArticleBySlug, slug);
 
-  return normalizeArticle(articleDoc);
+  const data = res.articleCollection.items[0];
+
+  return data;
 };

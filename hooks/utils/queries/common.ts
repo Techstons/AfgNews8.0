@@ -9,4 +9,7 @@ export const articleFields = `
                     body {
                         json
                     }
+                    sys {
+                        publishedAt
+                    }
                 }`;
