@@ -2,6 +2,8 @@ import { getDocs, limit, orderBy, query, where } from "firebase/firestore";
 import { articleCollection } from "utils/firebase";
 import { normalizeArticle } from "../normalize";
 import data from "@test-data";
+import { API_URL } from "../keys";
+import { getAllArticles } from "../queries";
 
 export const getArticlesOrdered = async () => {
   // All all latest article per category
@@ -40,6 +42,16 @@ export const getArticlesOrdered = async () => {
 };
 
 export const getArticles = async () => {
-  const docs = await getDocs(articleCollection);
-  return normalizeArticle(docs);
+  const articles = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer m_uF-Ek0k08YbtymuMKHO2ioBZLe3avqi18n0sS4ajY",
+    },
+    body: JSON.stringify({
+      query: getAllArticles,
+    }),
+  });
+
+  return await articles.json();
 };

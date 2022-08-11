@@ -2,11 +2,16 @@ const getArticleBySlugQuery = `
     query getArticleBySlug($slug: String!) {
         articleCollection (where: { slug: $slug }, limit: 1) {
                 items {
-                title
-                category {
-                name
+                    title
+                    featuredImage
+                    excerpt
+                    category {
+                        name
+                    }
+                    body {
+                        json
+                    }
                 }
-            }
         }
     }
 `;
