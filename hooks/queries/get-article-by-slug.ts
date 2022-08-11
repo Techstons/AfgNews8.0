@@ -5,9 +5,8 @@ const getArticleBySlug = `
                 title
                 category {
                 name
-                        }
-                
                 }
+            }
         }
     }
 `;
