@@ -6,12 +6,13 @@ export type ArticleCollection = {
 
 export type Article = {
   title: string;
-  featuredImage: {
-    url: string;
-    width: string;
-    height: string;
-  };
-
+  featuredImage: [
+    {
+      url: string;
+      width: string;
+      height: string;
+    }
+  ];
   excerpt: string;
   category: {
     name: string;
