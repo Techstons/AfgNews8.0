@@ -1,4 +1,4 @@
-const getAllArticlePaths = `
+const getAllArticlePathsQuery = `
     query getAllArticlePaths {
         articleCollection {
         items {
@@ -7,4 +7,4 @@ const getAllArticlePaths = `
         }
     }`;
 
-export default getAllArticlePaths;
+export default getAllArticlePathsQuery;

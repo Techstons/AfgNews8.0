@@ -1,4 +1,4 @@
-const getArticleBySlug = `
+const getArticleBySlugQuery = `
     query getArticleBySlug($slug: String!) {
         articleCollection (where: { slug: $slug }, limit: 1) {
                 items {
@@ -11,4 +11,4 @@ const getArticleBySlug = `
     }
 `;
 
-export default getArticleBySlug;
+export default getArticleBySlugQuery;

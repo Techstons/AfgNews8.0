@@ -1,4 +1,4 @@
-const getAllArticles = `
+const getAllArticlesQuery = `
     query getAllArticles {
         articleCollection {
         items {
@@ -12,4 +12,4 @@ const getAllArticles = `
         }
     }`;
 
-export default getAllArticles;
+export default getAllArticlesQuery;
