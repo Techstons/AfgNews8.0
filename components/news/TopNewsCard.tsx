@@ -9,7 +9,6 @@ interface INewsCard {
 }
 
 const NewsCard: FC<INewsCard> = ({ card }) => {
-  console.log("NewsCard", card);
   return (
     <Link href={`/articles/${card?.slug}`} passHref={true}>
       <Card>

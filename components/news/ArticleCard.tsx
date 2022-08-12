@@ -10,8 +10,6 @@ interface IArticle {
 }
 
 const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
-  console.log("Article", card);
-
   return variant === "primary" ? (
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
