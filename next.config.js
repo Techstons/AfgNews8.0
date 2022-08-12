@@ -6,7 +6,7 @@ const nextConfig = {
     defaultLocale: "en",
   },
   images: {
-    domains: ["loremflickr.com", "lh3.googleusercontent.com"],
+    domains: ["res.cloudinary.com", "lh3.googleusercontent.com"],
   },
   env: {
     CURRENCY_ACCESS_TOKEN: process.env.CURRENCY_ACCESS_TOKEN,
