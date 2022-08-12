@@ -27,6 +27,17 @@ export type Article = {
   author: string;
 };
 
+export type CategoryCollection = {
+  categoryCollection: {
+    items: Category[];
+  };
+};
+
+export type Category = {
+  name: string;
+  slug: string;
+};
+
 export type Currency = {
   "Realtime Currency Exchange Rate": {
     "1. From_Currency Code": string;
