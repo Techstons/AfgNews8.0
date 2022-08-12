@@ -5,6 +5,8 @@ import styled from "@emotion/styled";
 import { getAllArticlePaths, getArticleBySlug } from "@hooks/article";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { Clock, Share } from "@styled-icons/bootstrap";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+
 import {
   GetStaticPaths,
   GetStaticPropsContext,
@@ -24,20 +26,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
 export const getStaticProps = async ({
   params,
 }: GetStaticPropsContext<{ slug: string }>) => {
-  const article = await getArticleBySlug(params!.slug);
+  const article = await getArticleBySlug({ slug: params!.slug });
 
   return {
     props: {
       article: article,
     },
-    notFound: !!article,
+    notFound: !article,
     revalidate: 60,
   };
 };
@@ -96,7 +98,9 @@ const ArticlePage = ({
               </Featured>
             )}
             <ArticleExcerpt>{article?.excerpt}</ArticleExcerpt>
-            <ArticleMdx>{article?.body.json}</ArticleMdx>
+            <ArticleMdx>
+              {documentToReactComponents(article?.body.json)}
+            </ArticleMdx>
           </ArticleBody>
           {/* <Discussion id={article?.id} title={article?.title} /> */}
         </ArticleWrapper>
@@ -178,7 +182,7 @@ const ArticleExcerpt = styled.p`
   color: #8a8c8e;
 `;
 
-const ArticleMdx = styled.p`
+const ArticleMdx = styled.div`
   padding: 1rem 0;
   line-height: 1.5;
 `;

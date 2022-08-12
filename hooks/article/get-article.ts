@@ -6,7 +6,7 @@ import {
   getArticleBySlugQuery,
 } from "@hooks/utils/queries";
 
-export const getArticleBySlug = async (slug: string) => {
+export const getArticleBySlug = async (slug: { slug: string }) => {
   const res = await fetcherApi<ArticleCollection>(getArticleBySlugQuery, slug);
 
   const data = normalizeArticle(res.articleCollection.items);
