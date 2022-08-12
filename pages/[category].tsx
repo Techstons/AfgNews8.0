@@ -2,7 +2,7 @@ import { Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
 import styled from "@emotion/styled";
 import { getArticleByCategory } from "@hooks/article";
-import data from "@test-data";
+import { getAllCategories } from "@hooks/article/get-all-categories";
 import {
   GetStaticPaths,
   GetStaticPropsContext,
@@ -10,23 +10,26 @@ import {
 } from "next";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = data.menuitems.slice(1).map((category) => ({
+  const res = await getAllCategories();
+
+  const paths = res.map((category) => ({
     params: {
-      category: category.url.slice(1),
+      category: category.slug,
     },
   }));
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
 export const getStaticProps = async ({
   params,
-}: GetStaticPropsContext<{ category: string }>) => {
-  const category =
-    params!.category.split("")[0].toUpperCase() + params!.category.slice(1);
+}: GetStaticPropsContext<{ category: string; name: string }>) => {
+  const category = params!.category;
+
+  console.log("IS THIS CATEGORY?", category);
   const limit = 10;
   const articles = await getArticleByCategory({ category, limit });
 
