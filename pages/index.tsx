@@ -21,7 +21,6 @@ export async function getStaticProps() {
 }
 
 const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(articles);
   return (
     <>
       <SEOHeader canonical="/" />
