@@ -3,6 +3,7 @@ export const articleFields = `
                     title
                     featuredImage
                     excerpt
+                    slug
                     category {
                         name
                     }
