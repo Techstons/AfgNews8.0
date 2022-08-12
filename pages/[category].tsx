@@ -29,7 +29,6 @@ export const getStaticProps = async ({
 }: GetStaticPropsContext<{ category: string; name: string }>) => {
   const category = params!.category;
 
-  console.log("IS THIS CATEGORY?", category);
   const limit = 10;
   const articles = await getArticleByCategory({ category, limit });
 
