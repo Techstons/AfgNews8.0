@@ -1,11 +1,9 @@
-import { ContextProvider } from "@components/context";
 import styled from "@emotion/styled";
 import { Currency } from "@hooks/types";
-import { Arrow90degUp, ArrowUp } from "@styled-icons/bootstrap";
+import { ArrowUp } from "@styled-icons/bootstrap";
 import { ReactNode, useEffect, useState } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-
 interface ILayout {
   children: ReactNode;
   currencies: Currency[];
@@ -42,7 +40,7 @@ const Layout = ({ articles, currencies, children }: ILayout) => {
   }, []);
 
   return (
-    <ContextProvider>
+    <>
       <Navbar
         articles={articles}
         currencies={currencies}
@@ -58,7 +56,7 @@ const Layout = ({ articles, currencies, children }: ILayout) => {
         <ArrowUp size={24} />
       </AccessibilityScroller>
       <Footer />
-    </ContextProvider>
+    </>
   );
 };
 

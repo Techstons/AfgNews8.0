@@ -1,6 +1,4 @@
-import { useApi } from "@components/context";
 import { CloseIcon, MenuIcon } from "@components/icons";
-import { ArticleCard } from "@components/news";
 import { Container } from "@components/ui";
 import { NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
@@ -12,7 +10,6 @@ import data from "@test-data";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useState } from "react";
-import { useAuth } from "utils/firebase";
 
 type BottomType = {
   active: boolean;
@@ -36,16 +33,7 @@ type ToggleProps = {
 const Navbar = ({ isDark, setIsDark, articles, currencies }: INavbar) => {
   const [active, setActive] = useState(false);
   const [toggleDropdown, setToggleDropdown] = useState(false);
-  const { user } = useApi();
   const router = useRouter();
-
-  const logout = () =>
-    useAuth
-      .signOut()
-      .then(() => {
-        console.log("logout successfully");
-      })
-      .catch((err) => console.log(err)); // Implement logout function
 
   return (
     <Root>
@@ -75,32 +63,6 @@ const Navbar = ({ isDark, setIsDark, articles, currencies }: INavbar) => {
             >
               <Person size={30} />
             </button>
-
-            {!!user ? (
-              <div
-                className="dropdown"
-                onClick={() => setToggleDropdown(!toggleDropdown)}
-              >
-                <Link href="/profile">
-                  <a>Profile</a>
-                </Link>
-                <button className="logout" onClick={logout}>
-                  Logout
-                </button>
-              </div>
-            ) : (
-              <div
-                className="dropdown"
-                onClick={() => setToggleDropdown(!toggleDropdown)}
-              >
-                <Link href="/auth/login">
-                  <a className="signIn">Sign in</a>
-                </Link>
-                <Link href="/auth/registration">
-                  <a className="signUp">Sign up</a>
-                </Link>
-              </div>
-            )}
           </div>
         </TopContent>
         <BottomContent active={active}>

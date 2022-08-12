@@ -1,11 +1,11 @@
 import { ArticleCard } from "@components/news";
 import { SEOHeader } from "@components/seo";
 import { Container } from "@components/ui";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import styled from "@emotion/styled";
 import { getAllArticlePaths, getArticleBySlug } from "@hooks/article";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { Clock, Share } from "@styled-icons/bootstrap";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 import {
   GetStaticPaths,
