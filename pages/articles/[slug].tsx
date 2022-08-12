@@ -1,9 +1,8 @@
-import { Discussion } from "@components/article";
 import { ArticleCard } from "@components/news";
 import { SEOHeader } from "@components/seo";
 import { Container } from "@components/ui";
 import styled from "@emotion/styled";
-import { getArticleBySlug, getArticles } from "@hooks/article";
+import { getAllArticlePaths, getArticleBySlug } from "@hooks/article";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { Clock, Share } from "@styled-icons/bootstrap";
 import {
@@ -15,17 +14,17 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await getArticles();
+  const res = await getAllArticlePaths();
 
-  const paths = data.map((article) => ({
+  const paths = res.map((slug) => ({
     params: {
-      slug: article?.slug,
+      slug,
     },
   }));
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
