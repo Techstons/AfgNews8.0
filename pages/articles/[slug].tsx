@@ -1,4 +1,4 @@
-import { ArticleCard, CloudinaryImage } from "@components/news";
+import { ArticleCard, CloudinaryImage, Comments } from "@components/news";
 import { SEOHeader } from "@components/seo";
 import { Container } from "@components/ui";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -12,7 +12,6 @@ import {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from "next";
-import Image from "next/image";
 import { useRouter } from "next/router";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -99,7 +98,7 @@ const ArticlePage = ({
               {documentToReactComponents(article?.body.json)}
             </ArticleMdx>
           </ArticleBody>
-          {/* <Discussion id={article?.id} title={article?.title} /> */}
+          <Comments websiteId={7527} id={article.title} url={article.slug} />
         </ArticleWrapper>
         <Recommended>
           <h2>Recommended</h2>
