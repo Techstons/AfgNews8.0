@@ -1,4 +1,4 @@
-import { ArticleCard } from "@components/news";
+import { ArticleCard, CloudinaryImage } from "@components/news";
 import { SEOHeader } from "@components/seo";
 import { Container } from "@components/ui";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -88,12 +88,9 @@ const ArticlePage = ({
           <ArticleBody>
             {!!article?.featuredImage && (
               <Featured>
-                <Image
-                  src={article.featuredImage.url}
-                  layout="responsive"
-                  width={1920}
-                  height={1080}
-                  alt="Featured article image"
+                <CloudinaryImage
+                  featuredImage={article.featuredImage}
+                  title={article.title}
                 />
               </Featured>
             )}

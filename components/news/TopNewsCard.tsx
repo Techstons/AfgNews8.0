@@ -3,6 +3,7 @@ import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Article } from "@components/types";
+import CloudinaryImage from "./CloudinaryImage";
 
 interface INewsCard {
   card?: Article;
@@ -12,20 +13,9 @@ const NewsCard: FC<INewsCard> = ({ card }) => {
   return (
     <Link href={`/articles/${card?.slug}`} passHref={true}>
       <Card>
-        <Image
-          src={
-            card?.featuredImage.url
-              ? card.featuredImage.url
-              : "/placeholder.svg"
-          }
-          className="image"
-          alt="An"
-          layout="responsive"
-          width={card?.featuredImage.width ?? 1980}
-          height={card?.featuredImage.height ?? 1020}
-          quality={20}
-          priority={true}
-          objectFit="cover"
+        <CloudinaryImage
+          featuredImage={card?.featuredImage}
+          title={card?.title}
         />
         <div className="primary">
           <h3>{card?.title}</h3>

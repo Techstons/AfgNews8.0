@@ -11,6 +11,7 @@ export type Article = {
       url: string;
       width: string;
       height: string;
+      public_id: string;
     }
   ];
   excerpt: string;

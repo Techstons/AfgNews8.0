@@ -3,6 +3,7 @@ export interface Article {
     url: string;
     width: string;
     height: string;
+    id: string;
   };
   category: string;
   createdAt: Date;

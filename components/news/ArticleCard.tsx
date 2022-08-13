@@ -3,6 +3,7 @@ import { Article } from "@components/types";
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import CloudinaryImage from "./CloudinaryImage";
 
 interface IArticle {
   card: Article;
@@ -15,19 +16,9 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <PrimaryAnchor>
           <div className="image-container">
-            <Image
-              src={
-                card?.featuredImage.url
-                  ? card.featuredImage.url
-                  : "/placeholder.svg"
-              }
-              className="image"
-              alt={card.title}
-              layout="responsive"
-              width={card?.featuredImage.width ?? 1980}
-              height={card?.featuredImage.height ?? 1020}
-              quality={20}
-              objectFit="cover"
+            <CloudinaryImage
+              featuredImage={card.featuredImage}
+              title={card.title}
             />
           </div>
           <div className="content">
@@ -43,19 +34,9 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <SecondaryAnchor>
           <div className="image-container">
-            <Image
-              src={
-                card?.featuredImage.url
-                  ? card.featuredImage.url
-                  : "/placeholder.svg"
-              }
-              className="image"
-              alt={card.title}
-              layout="responsive"
-              width={card?.featuredImage.width ?? 1980}
-              height={card?.featuredImage.height ?? 1020}
-              quality={20}
-              objectFit="cover"
+            <CloudinaryImage
+              featuredImage={card.featuredImage}
+              title={card.title}
             />
           </div>
           <div className="content">
