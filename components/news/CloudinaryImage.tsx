@@ -1,23 +1,12 @@
 import { Article } from "@components/types";
 import Image from "next/image";
-import { buildUrl } from "cloudinary-build-url";
 
 type CloudinaryImageProps = Pick<Partial<Article>, "featuredImage" | "title">;
 
 const CloudinaryImage = ({ featuredImage, title }: CloudinaryImageProps) => {
-  const url = buildUrl(featuredImage?.id ?? "cld-sample", {
-    cloud: {
-      cloudName: "domgv4rvm",
-    },
-    transformations: {
-      effect: "blur:1000",
-      quality: 1,
-    },
-  });
-
   return (
     <Image
-      src={url}
+      src={featuredImage?.id ?? "cld-sample"}
       className="image"
       alt={title}
       layout="responsive"
