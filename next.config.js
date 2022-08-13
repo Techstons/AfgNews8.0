@@ -7,6 +7,7 @@ const nextConfig = {
   },
   images: {
     domains: ["res.cloudinary.com"],
+    formats: ["image/avif", "image/webp"],
   },
   env: {
     CURRENCY_ACCESS_TOKEN: process.env.CURRENCY_ACCESS_TOKEN,
