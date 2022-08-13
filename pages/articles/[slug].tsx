@@ -183,6 +183,79 @@ const ArticleExcerpt = styled.p`
 `;
 
 const ArticleMdx = styled.div`
-  padding: 1rem 0;
+  padding: 1rem;
   line-height: 1.5;
+  word-wrap: break-word;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  blockquote {
+    border-left: 10px solid var(--primary-color);
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+  }
+
+  blockquote:before {
+    color: var(--primary-color);
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+
+  blockquote p {
+    display: inline;
+    font-style: oblique;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.25rem;
+  }
+
+  ul li::marker {
+    color: var(--primary-color);
+  }
+
+  a {
+    color: var(--primary-color);
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
