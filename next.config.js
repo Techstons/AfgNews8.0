@@ -6,8 +6,10 @@ const nextConfig = {
     defaultLocale: "en",
   },
   images: {
-    domains: ["res.cloudinary.com"],
     formats: ["image/avif", "image/webp"],
+
+    loader: "cloudinary",
+    path: "https://res.cloudinary.com/domgv4rvm/image/upload/",
   },
   env: {
     CURRENCY_ACCESS_TOKEN: process.env.CURRENCY_ACCESS_TOKEN,
