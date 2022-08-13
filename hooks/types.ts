@@ -8,7 +8,7 @@ export type Article = {
   title: string;
   featuredImage: [
     {
-      url: string;
+      secure_url: string;
       width: string;
       height: string;
       public_id: string;
