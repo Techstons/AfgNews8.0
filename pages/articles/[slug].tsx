@@ -98,10 +98,9 @@ const ArticlePage = ({
               {documentToReactComponents(article?.body.json)}
             </ArticleMdx>
           </ArticleBody>
-          <Comments websiteId={7527} id={article.title} url={article.slug} />
+          <Comments websiteId={7527} title={article.title} loadMode="scroll" />
         </ArticleWrapper>
         <Recommended>
-          <h2>Recommended</h2>
           <ArticleCard card={article} variant="slim" />
           <ArticleCard card={article} variant="slim" />
           <ArticleCard card={article} variant="slim" />
@@ -121,7 +120,7 @@ const Wrapper = styled.div`
   margin: 2rem 0;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
   }
 `;
 
@@ -169,7 +168,9 @@ const ArticleBody = styled.div`
   padding: 2rem 0;
 `;
 
-const Featured = styled.div``;
+const Featured = styled.div`
+  display: block;
+`;
 
 const ArticleExcerpt = styled.p`
   padding: 1rem 0;
@@ -179,7 +180,6 @@ const ArticleExcerpt = styled.p`
 `;
 
 const ArticleMdx = styled.div`
-  padding: 1rem;
   line-height: 1.5;
   word-wrap: break-word;
 
@@ -194,27 +194,27 @@ const ArticleMdx = styled.div`
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.25rem;
   }
 
   h2 {
-    font-size: 2.5rem;
+    font-size: 1.85rem;
   }
 
   h3 {
-    font-size: 2rem;
+    font-size: 1.65rem;
   }
 
   h4 {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
   }
 
   h5 {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   }
 
   h6 {
-    font-size: 1rem;
+    font-size: 1.15rem;
   }
 
   blockquote {
