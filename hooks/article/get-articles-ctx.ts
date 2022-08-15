@@ -1,40 +1,50 @@
+import { Article as ComponentArticle } from "@components/types";
 import { normalizeArticle } from "@hooks/normalize";
 import { Article } from "@hooks/types";
 import fetcherApi from "@hooks/utils/fetch-api";
 import { getArticlesCtxQuery } from "@hooks/utils/queries";
 
+type Keys = "Home" | "World" | "Business" | "Tech" | "Health" | "Sports";
+
 type ArticleCtx = {
-  All: {
+  [key in Keys]: {
     items: Article[];
   };
-  World: {
-    items: Article[];
-  };
-  Business: {
-    items: Article[];
-  };
-  Tech: {
-    items: Article[];
-  };
-  Health: {
-    items: Article[];
-  };
-  Sports: {
-    items: Article[];
+};
+
+export type ReturnValue = {
+  [key in Keys]: {
+    items: ComponentArticle[];
   };
 };
 
 export const getArticlesCtx = async () => {
   const res = await fetcherApi<ArticleCtx>(getArticlesCtxQuery);
 
-  const normalized = Object.entries(res).map((entry) => {
-    const [key, value] = entry;
-    return {
-      [key]: normalizeArticle(value.items),
-    };
-  });
+  let temp: ReturnValue = {
+    Home: {
+      items: [],
+    },
+    World: {
+      items: [],
+    },
+    Business: {
+      items: [],
+    },
+    Tech: {
+      items: [],
+    },
+    Health: {
+      items: [],
+    },
+    Sports: {
+      items: [],
+    },
+  };
 
-  console.log(normalized);
+  for (const [k, v] of Object.entries(res)) {
+    temp[k as Keys].items = normalizeArticle(v.items);
+  }
 
-  return normalized;
+  return temp;
 };

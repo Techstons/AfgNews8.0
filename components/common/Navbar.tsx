@@ -1,7 +1,10 @@
 import { CloseIcon, MenuIcon } from "@components/icons";
+import { ArticleCard } from "@components/news";
+import { Article } from "@components/types";
 import { Container } from "@components/ui";
 import { NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
+import { ReturnValue } from "@hooks/article/get-articles-ctx";
 import { Currency } from "@hooks/types";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { MoonFill, SunFill } from "@styled-icons/bootstrap";
@@ -19,7 +22,7 @@ interface INavbar {
   isDark: boolean;
   setIsDark: Dispatch<SetStateAction<boolean>>;
   currencies: Currency[];
-  articles: any;
+  articles: ReturnValue;
 }
 
 type DropdownProps = {
@@ -75,14 +78,28 @@ const Navbar = ({ isDark, setIsDark, articles, currencies }: INavbar) => {
                       {menu.title}
                     </MenuItem>
                   </Link>
-                  {router.asPath !== menu.url && (
-                    <MenuDropDown className="menu-dropdown">
-                      {/* <ArticleCard card={data.articles[0]} variant="primary" />
-                      <ArticleCard card={data.articles[0]} variant="primary" />
-                      <ArticleCard card={data.articles[0]} variant="primary" />
-                      <ArticleCard card={data.articles[0]} variant="primary" /> */}
-                    </MenuDropDown>
-                  )}
+                  {!!articles &&
+                    Object.keys(articles).length > 0 &&
+                    router.asPath !== menu.url &&
+                    menu.title !== "Videos" && (
+                      <MenuDropDown className="menu-dropdown">
+                        {articles[
+                          menu.title === "Tech & Science"
+                            ? "Tech"
+                            : (menu.title as keyof ReturnValue)
+                        ].items
+                          .slice(0, 4)
+                          .map((item: Article) => {
+                            return (
+                              <ArticleCard
+                                key={item.title}
+                                card={item}
+                                variant="primary"
+                              />
+                            );
+                          })}
+                      </MenuDropDown>
+                    )}
                 </div>
               );
             })}
@@ -287,7 +304,6 @@ const MenuDropDown = styled.div`
   z-index: 10;
   position: absolute;
   display: none;
-  grid-template-columns: 40% 60%;
   left: 0;
   background-color: black;
   min-height: 150px;
@@ -295,18 +311,6 @@ const MenuDropDown = styled.div`
   padding: 2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 3rem;
-
-  & h2 {
-    font-size: 3rem;
-    color: var(--primary-color);
-    font-weight: var(--font-bold);
-    padding: 0.5rem;
-  }
-
-  & .article-grid {
-    display: grid;
-    gap: 1.5rem;
-  }
 `;
 
 const ToggleDarkWrapper = styled.label<ToggleProps>`

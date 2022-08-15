@@ -24,9 +24,9 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <SEOHeader canonical="/" />
-      <Header articles={articles[0].All} />
+      <Header articles={articles.Home.items} />
       <Section
-        cards={articles[1].World}
+        cards={articles.World.items}
         variant="quaternary"
         title="World"
         slug="/world"
@@ -38,27 +38,27 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
         />
       </Section>
       <Section
-        cards={articles[2].Business}
+        cards={articles.Business.items}
         variant="tertiary"
         position="left"
         title="Business"
         slug="/business"
       />
       <Section
-        cards={articles[3].Tech}
+        cards={articles.Tech.items}
         variant="tertiary"
         title="Tech & Science"
         slug="/tech-and-science"
       ></Section>
 
       <Section
-        cards={articles[4].Health}
+        cards={articles.Health.items}
         variant="tertiary"
         title="Health"
         slug="/health"
       ></Section>
       <Section
-        cards={articles[5].Sports}
+        cards={articles.Sports.items}
         variant="tertiary"
         title="Sports"
         slug="/sports"

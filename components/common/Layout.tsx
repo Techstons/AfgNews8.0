@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ReturnValue } from "@hooks/article/get-articles-ctx";
 import { Currency } from "@hooks/types";
 import { ArrowUp } from "@styled-icons/bootstrap";
 import { ReactNode, useEffect, useState } from "react";
@@ -7,7 +8,7 @@ import Navbar from "./Navbar";
 interface ILayout {
   children: ReactNode;
   currencies: Currency[];
-  articles: any;
+  articles: ReturnValue;
 }
 
 type MainProps = {

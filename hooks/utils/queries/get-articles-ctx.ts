@@ -2,7 +2,7 @@ import { articleFields } from "./common";
 
 const getArticlesCtxQuery = `
 query getArticlesCtxQuery {
-  All:articleCollection(order: sys_publishedAt_DESC, limit: 11)  {
+  Home:articleCollection(order: sys_publishedAt_DESC, limit: 11)  {
       ${articleFields}
   }
   World:articleCollection(order: sys_publishedAt_DESC, where: {category: {name: "World"}}, limit: 4) {
