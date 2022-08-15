@@ -59,6 +59,12 @@ const Card = styled.a`
       font-size: 1rem;
       color: white;
       margin-bottom: 0.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
 
     & p {
