@@ -53,6 +53,7 @@ export default ArticleCard;
 
 const PrimaryWrapper = styled.article`
   position: relative;
+  padding-bottom: 0.5rem;
 
   &:hover {
     border-color: var(--primary-color);
@@ -65,6 +66,7 @@ const PrimaryWrapper = styled.article`
 
 const SecondaryWrapper = styled.article`
   position: relative;
+  padding-bottom: 1rem;
 `;
 
 const PrimaryAnchor = styled.a`
@@ -76,6 +78,12 @@ const PrimaryAnchor = styled.a`
   h3 {
     font-size: 1rem;
     margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   & .content {
@@ -103,6 +111,12 @@ const PrimaryAnchor = styled.a`
       display: none;
       font-size: 0.8rem;
       font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* 3 number of lines to show */
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
     }
   }
 
@@ -133,6 +147,12 @@ const SecondaryAnchor = styled.a`
   h3 {
     font-size: 1rem;
     margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   & .content {
