@@ -5,6 +5,7 @@ import { Container } from "@components/ui";
 import { NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
 import { ReturnValue } from "@hooks/article/get-articles-ctx";
+import { getCurrency } from "@hooks/thirdpartyApi";
 import { Currency } from "@hooks/types";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { MoonFill, SunFill } from "@styled-icons/bootstrap";
@@ -12,7 +13,7 @@ import { Person } from "@styled-icons/material";
 import data from "@test-data";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 type BottomType = {
   active: boolean;
@@ -21,7 +22,6 @@ type BottomType = {
 interface INavbar {
   isDark: boolean;
   setIsDark: Dispatch<SetStateAction<boolean>>;
-  currencies: Currency[];
   articles: ReturnValue;
 }
 
@@ -33,10 +33,20 @@ type ToggleProps = {
   active: boolean;
 };
 
-const Navbar = ({ isDark, setIsDark, articles, currencies }: INavbar) => {
+const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   const [active, setActive] = useState(false);
+  const [currencies, setCurrencies] = useState<Currency[]>();
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const getCurrencies = async () => {
+      const res = await getCurrency();
+      setCurrencies(res);
+    };
+
+    getCurrencies();
+  }, []);
 
   return (
     <Root>

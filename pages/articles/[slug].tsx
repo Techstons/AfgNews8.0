@@ -53,7 +53,6 @@ const ArticlePage = ({
   article,
   recommended,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(recommended);
   const router = useRouter();
   const articleDate = useFormattedDate(
     article?.createdAt ? new Date(article.createdAt) : new Date(),

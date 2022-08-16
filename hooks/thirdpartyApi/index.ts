@@ -1,1 +1,1 @@
-export { getCurrency } from "./currencyApi";
+export { getCurrency } from "./get-currencies";

@@ -4,7 +4,7 @@ import { FC } from "react";
 import Marquee from "react-fast-marquee";
 
 interface INavCurrencyWidget {
-  currencies: Currency[];
+  currencies?: Currency[];
 }
 
 type CurrenyItem = {

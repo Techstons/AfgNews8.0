@@ -1,13 +1,11 @@
 import styled from "@emotion/styled";
 import { ReturnValue } from "@hooks/article/get-articles-ctx";
-import { Currency } from "@hooks/types";
 import { ArrowUp } from "@styled-icons/bootstrap";
 import { ReactNode, useEffect, useState } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 interface ILayout {
   children: ReactNode;
-  currencies: Currency[];
   articles: ReturnValue;
 }
 
@@ -19,7 +17,7 @@ type Scroller = {
   isVisible: boolean;
 };
 
-const Layout = ({ articles, currencies, children }: ILayout) => {
+const Layout = ({ articles, children }: ILayout) => {
   const [isDark, setIsDark] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -42,12 +40,7 @@ const Layout = ({ articles, currencies, children }: ILayout) => {
 
   return (
     <>
-      <Navbar
-        articles={articles}
-        currencies={currencies}
-        isDark={isDark}
-        setIsDark={setIsDark}
-      />
+      <Navbar articles={articles} isDark={isDark} setIsDark={setIsDark} />
       <Main isDark={isDark}>{children}</Main>
       <AccessibilityScroller
         isVisible={isVisible}

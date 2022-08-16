@@ -4,7 +4,7 @@ import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout articles={pageProps.articles} currencies={pageProps.currencies}>
+    <Layout articles={pageProps.articles}>
       <Component {...pageProps} />
     </Layout>
   );
