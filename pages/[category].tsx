@@ -1,8 +1,11 @@
 import { Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
 import styled from "@emotion/styled";
-import { getArticleByCategory } from "@hooks/article";
-import { getAllCategories } from "@hooks/article/get-all-categories";
+import {
+  getArticleByCategory,
+  getAllCategories,
+  getArticlesCtx,
+} from "@hooks/article";
 import {
   GetStaticPaths,
   GetStaticPropsContext,
@@ -12,11 +15,13 @@ import {
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await getAllCategories();
 
-  const paths = res.map((category) => ({
-    params: {
-      category: category.slug,
-    },
-  }));
+  const paths = res
+    .filter((d) => d.name !== "Home")
+    .map((category) => ({
+      params: {
+        category: category.slug,
+      },
+    }));
 
   return {
     paths,
@@ -27,22 +32,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps = async ({
   params,
 }: GetStaticPropsContext<{ category: string; name: string }>) => {
-  const category = params!.category;
+  const category =
+    params!.category[0].toUpperCase() + params!.category.slice(1);
+
+  let categoryName =
+    category === "Tech-and-science" ? "Tech & Science" : category;
 
   const limit = 10;
-  const articles = await getArticleByCategory({ category, limit });
+  const articlesPerCategory = await getArticleByCategory({
+    category: categoryName,
+    limit,
+  });
+
+  const articles = await getArticlesCtx();
 
   return {
     props: {
       articles,
-      category,
+      articlesPerCategory,
+      category: categoryName,
     },
     revalidate: 60,
   };
 };
 
 const Category = ({
-  articles,
+  articlesPerCategory,
   category,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -50,7 +65,7 @@ const Category = ({
       <SEOHeader title={`${category} | AFGNews`} canonical={category} />
       <Section
         variant="primary"
-        cards={articles}
+        cards={articlesPerCategory}
         title={category}
         slug={`/${category}`}
       />
