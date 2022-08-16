@@ -183,16 +183,6 @@ const ArticleMdx = styled.div`
   line-height: 1.5;
   word-wrap: break-word;
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-  }
-
   h1 {
     font-size: 2.25rem;
   }
