@@ -3,7 +3,11 @@ import { SEOHeader } from "@components/seo";
 import { Container } from "@components/ui";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import styled from "@emotion/styled";
-import { getAllArticlePaths, getArticleBySlug } from "@hooks/article";
+import {
+  getAllArticlePaths,
+  getArticleBySlug,
+  getRecommended,
+} from "@hooks/article";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { Clock, Share } from "@styled-icons/bootstrap";
 
@@ -33,10 +37,12 @@ export const getStaticProps = async ({
   params,
 }: GetStaticPropsContext<{ slug: string }>) => {
   const article = await getArticleBySlug({ slug: params!.slug });
+  const recommended = await getRecommended();
 
   return {
     props: {
       article: article,
+      recommended,
     },
     notFound: !article,
     revalidate: 60,
@@ -45,7 +51,9 @@ export const getStaticProps = async ({
 
 const ArticlePage = ({
   article,
+  recommended,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log(recommended);
   const router = useRouter();
   const articleDate = useFormattedDate(
     article?.createdAt ? new Date(article.createdAt) : new Date(),
@@ -101,10 +109,10 @@ const ArticlePage = ({
           <Comments websiteId={7527} title={article.title} loadMode="scroll" />
         </ArticleWrapper>
         <Recommended>
-          <ArticleCard card={article} variant="slim" />
-          <ArticleCard card={article} variant="slim" />
-          <ArticleCard card={article} variant="slim" />
-          <ArticleCard card={article} variant="slim" />
+          {!!recommended &&
+            recommended.map((article) => (
+              <ArticleCard key={article.title} card={article} variant="slim" />
+            ))}
         </Recommended>
       </Wrapper>
     </Container>

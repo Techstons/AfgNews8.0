@@ -11,7 +11,7 @@ export const normalizeArticle = (article: Article[]) => {
         id: item.featuredImage[0].public_id,
       },
       category: item.category.name,
-      createdAt: item.sys.publishedAt,
+      createdAt: item?.sys?.publishedAt ?? "",
     };
   });
 };
