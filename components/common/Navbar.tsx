@@ -2,7 +2,7 @@ import { CloseIcon, MenuIcon } from "@components/icons";
 import { ArticleCard } from "@components/news";
 import { Article } from "@components/types";
 import { Container } from "@components/ui";
-import { NavCurrencyWidget } from "@components/widgets";
+import { LocaleSwitcher, NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
 import { ReturnValue } from "@hooks/article/get-articles-ctx";
 import { getCurrency } from "@hooks/thirdpartyApi";
@@ -132,10 +132,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                   {!isDark ? <SunFill size={16} /> : <MoonFill size={16} />}
                 </span>
               </ToggleDarkWrapper>
-              <button>English</button>
-              <button>پشتو</button>
-              <button>فارسی</button>
-              <button>русский</button>
+              <LocaleSwitcher />
             </div>
           </div>
         </BottomContent>
