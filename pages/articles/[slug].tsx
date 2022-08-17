@@ -6,6 +6,7 @@ import styled from "@emotion/styled";
 import {
   getAllArticlePaths,
   getArticleBySlug,
+  getArticlesCtx,
   getRecommended,
 } from "@hooks/article";
 import useFormattedDate from "@hooks/useFormattedDate";
@@ -38,11 +39,13 @@ export const getStaticProps = async ({
 }: GetStaticPropsContext<{ slug: string }>) => {
   const article = await getArticleBySlug({ slug: params!.slug });
   const recommended = await getRecommended();
+  const articles = await getArticlesCtx();
 
   return {
     props: {
-      article: article,
+      article,
       recommended,
+      articles,
     },
     notFound: !article,
     revalidate: 60,
