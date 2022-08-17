@@ -344,7 +344,7 @@ const BottomContent = styled.div<BottomType>`
 
 const MenuItem = styled.a`
   cursor: pointer;
-
+  padding-bottom: 1rem;
   &:hover {
     color: var(--primary-color);
   }
@@ -355,6 +355,7 @@ const MenuDropDown = styled.div`
   position: absolute;
   display: none;
   left: 0;
+  transform: translateY(1rem);
   background-color: black;
   min-height: 150px;
   width: 100%;
