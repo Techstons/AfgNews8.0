@@ -63,7 +63,6 @@ const Section: FC<ISection> = ({
       <Container>
         {variant === "primary" ? ( // USED PER CATEGORY PAGE
           <>
-            {renderHeader()}
             <PrimaryArticleContainer>
               {renderArticlesWithColumns(3, 9)}
             </PrimaryArticleContainer>
