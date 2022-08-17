@@ -11,12 +11,12 @@ import {
 } from "@hooks/article";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { Clock, Share } from "@styled-icons/bootstrap";
-
 import {
   GetStaticPaths,
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -36,6 +36,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = async ({
   params,
+  locale,
 }: GetStaticPropsContext<{ slug: string }>) => {
   const article = await getArticleBySlug({ slug: params!.slug });
   const recommended = await getRecommended();
@@ -46,6 +47,7 @@ export const getStaticProps = async ({
       article,
       recommended,
       articles,
+      ...(await serverSideTranslations(locale || "en", ["common"])),
     },
     notFound: !article,
     revalidate: 60,

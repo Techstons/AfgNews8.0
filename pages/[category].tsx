@@ -2,8 +2,8 @@ import { Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
 import styled from "@emotion/styled";
 import {
-  getArticleByCategory,
   getAllCategories,
+  getArticleByCategory,
   getArticlesCtx,
 } from "@hooks/article";
 import {
@@ -11,6 +11,7 @@ import {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await getAllCategories();
@@ -25,12 +26,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
 export const getStaticProps = async ({
   params,
+  locale,
 }: GetStaticPropsContext<{ category: string; name: string }>) => {
   const category =
     params!.category[0].toUpperCase() + params!.category.slice(1);
@@ -51,6 +53,7 @@ export const getStaticProps = async ({
       articles,
       articlesPerCategory,
       category: categoryName,
+      ...(await serverSideTranslations(locale || "en", ["common"])),
     },
     revalidate: 60,
   };
