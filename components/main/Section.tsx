@@ -141,11 +141,11 @@ const PrimaryArticleContainer = styled.div`
 
 const SecondaryContainer = styled.div<ContainerType>`
   display: grid;
-  column-gap: 0.75rem;
+  gap: 2rem;
 
   @media only screen and (min-width: 768px) {
     grid-template-columns: ${(props) =>
-      props.position === "left" ? "70% 29%" : "29% 70%"};
+      props.position === "left" ? "1.3fr .7fr" : ".3fr 1.7fr"};
   }
 `;
 
