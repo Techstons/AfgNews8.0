@@ -1,19 +1,9 @@
 /** @type {import('next').NextConfig} */
+const { i18n } = require("./next-i18next.config");
+
 const nextConfig = {
   reactStrictMode: true,
-  i18n: {
-    // These are all the locales you want to support in
-    // your application
-    // en-US English (United States)
-    // ru-RU Russian (Russia)
-    // ps-AR Pashto (Afghanistan)
-    // fa-IR Farsi (Iran)
-    locales: ["en-US", "ru-RU", "ps-AR", "fa-IR"],
-    // This is the default locale you want to be used when visiting
-    // a non-locale prefixed path e.g. `/hello`
-    defaultLocale: "en-US",
-    localeDetection: true,
-  },
+  i18n,
   images: {
     formats: ["image/avif", "image/webp"],
 

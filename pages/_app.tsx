@@ -1,4 +1,5 @@
 import { Layout } from "@components/common";
+import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
 import "../styles/globals.scss";
 
@@ -10,4 +11,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

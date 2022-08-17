@@ -10,7 +10,7 @@ import { Currency } from "@hooks/types";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { MoonFill, SunFill } from "@styled-icons/bootstrap";
 import { Person } from "@styled-icons/material";
-import data from "@test-data";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
@@ -38,6 +38,38 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   const [currencies, setCurrencies] = useState<Currency[]>();
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const router = useRouter();
+  const { t } = useTranslation();
+
+  const navLinks = [
+    {
+      title: t("common:home"),
+      slug: "/",
+    },
+    {
+      title: t("common:world"),
+      slug: "/world",
+    },
+    {
+      title: t("common:business"),
+      slug: "/business",
+    },
+    {
+      title: t("common:tech"),
+      slug: "/tech-and-science",
+    },
+    {
+      title: t("common:health"),
+      slug: "/health",
+    },
+    {
+      title: t("common:sports"),
+      slug: "/sports",
+    },
+    {
+      title: t("common:videos"),
+      slug: "/videos",
+    },
+  ];
 
   useEffect(() => {
     const getCurrencies = async () => {
@@ -80,24 +112,24 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
         </TopContent>
         <BottomContent active={active}>
           <div className="menu">
-            {data.menuitems.map((menu, i) => {
+            {navLinks.map((menu, i) => {
               return (
                 <div className="menu-item" key={i}>
-                  <Link href={menu.url} passHref={true}>
+                  <Link href={menu.slug} passHref={true}>
                     <MenuItem onClick={() => setActive(false)}>
                       {menu.title}
                     </MenuItem>
                   </Link>
                   {!!articles &&
                     Object.keys(articles).length > 0 &&
-                    router.asPath !== menu.url &&
+                    router.asPath !== menu.slug &&
                     menu.title !== "Videos" && (
                       <MenuDropDown className="menu-dropdown">
                         {articles[
                           menu.title === "Tech & Science"
                             ? "Tech"
                             : (menu.title as keyof ReturnValue)
-                        ].items
+                        ]?.items
                           .slice(0, 4)
                           .map((item: Article) => {
                             return (

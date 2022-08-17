@@ -3,11 +3,17 @@ import { Article } from "@components/types";
 import { Container } from "@components/ui";
 import styled from "@emotion/styled";
 
-const Header = ({ articles }: { articles?: Article[] }) => {
+const Header = ({
+  title,
+  articles,
+}: {
+  articles?: Article[];
+  title: string;
+}) => {
   return (
     <Wrapper>
       <Container>
-        <HeaderTitle>Top News</HeaderTitle>
+        <HeaderTitle>{title}</HeaderTitle>
         <MainGrid>
           <TopNewsCard card={articles?.[0]} />
           <SubGrid>

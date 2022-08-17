@@ -7,16 +7,16 @@ export default function LocaleSwitcher() {
   const { locales, pathname, query, asPath } = router;
 
   const languages = {
-    "en-US": {
+    en: {
       title: "English",
     },
-    "ru-RU": {
+    ru: {
       title: "Русский",
     },
-    "ps-AR": {
+    ps: {
       title: "پښتو",
     },
-    "fa-IR": {
+    fa: {
       title: "فارسی",
     },
   };

@@ -4,6 +4,7 @@ import { Container } from "@components/ui";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { FC, ReactNode } from "react";
+import { useTranslation } from "next-i18next";
 
 interface ISection {
   title: string;
@@ -28,6 +29,8 @@ const Section: FC<ISection> = ({
   children,
   slug,
 }) => {
+  const { t } = useTranslation();
+
   const renderArticlesWithColumns = (column: number, n: number) => {
     return cards?.slice(0, n).map((item, i) => {
       if (i < column)
@@ -48,7 +51,7 @@ const Section: FC<ISection> = ({
         <h2>{title}</h2>
         <Link href={slug} passHref={true}>
           <a>
-            <HeaderLink>View more</HeaderLink>
+            <HeaderLink>{t("home:view_more")}</HeaderLink>
           </a>
         </Link>
       </Header>

@@ -1,34 +1,34 @@
 import { Header, Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
 import { getArticlesCtx } from "@hooks/article";
-import { getCurrency } from "@hooks/thirdpartyApi";
-import { InferGetStaticPropsType } from "next";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const articles = await getArticlesCtx();
-  const currencies = await getCurrency();
 
   return {
     props: {
-      // tweets,
       articles,
-      currencies,
+      ...(await serverSideTranslations(locale ?? "en", ["common", "home"])),
     },
-    // will be passed to the page component as props
     revalidate: 60,
   };
-}
+};
 
 const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { t } = useTranslation();
+
   return (
     <>
       <SEOHeader canonical="/" />
-      <Header articles={articles.Home.items} />
+      <Header articles={articles.Home.items} title={t("home:top_news")} />
       <Section
         cards={articles.World.items}
         variant="quaternary"
-        title="World"
+        title={t("common:world")}
         slug="/world"
       >
         <TwitterTimelineEmbed
@@ -41,26 +41,26 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
         cards={articles.Business.items}
         variant="tertiary"
         position="left"
-        title="Business"
+        title={t("common:business")}
         slug="/business"
       />
       <Section
         cards={articles.Tech.items}
         variant="tertiary"
-        title="Tech & Science"
+        title={t("common:tech")}
         slug="/tech-and-science"
       ></Section>
 
       <Section
         cards={articles.Health.items}
         variant="tertiary"
-        title="Health"
+        title={t("common:health")}
         slug="/health"
       ></Section>
       <Section
         cards={articles.Sports.items}
         variant="tertiary"
-        title="Sports"
+        title={t("common:sports")}
         slug="/sports"
       ></Section>
     </>
