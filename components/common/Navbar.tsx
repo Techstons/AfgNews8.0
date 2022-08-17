@@ -80,6 +80,17 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
     getCurrencies();
   }, []);
 
+  // change direction of the page
+  useEffect(() => {
+    const changeDir = () => {
+      let dir = router.locale == "ps" || router.locale === "fa" ? "rtl" : "ltr";
+
+      document?.querySelector("html")?.setAttribute("dir", dir);
+    };
+
+    changeDir();
+  }, [router.locale]);
+
   return (
     <Root>
       <Container>
