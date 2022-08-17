@@ -9,6 +9,7 @@ import { Facebook } from "@styled-icons/material/Facebook";
 import data from "@test-data";
 import Link from "next/link";
 import { FormEvent, ReactNode, useState } from "react";
+import { useTranslation } from "next-i18next";
 
 type LengthUnit = "px" | "em" | "rem";
 type Length = `${number}${LengthUnit}`;
@@ -21,6 +22,7 @@ interface ISocialCircle {
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const { t } = useTranslation();
 
   const SocialLinks = [
     {
@@ -102,7 +104,7 @@ const Footer = () => {
             <h2 className="logo">Afgnews</h2>
 
             <div className="newsletter">
-              <p className="description">Join our news letter</p>
+              <p className="description">{t("common:news_letter_title")}</p>
               <form
                 onSubmit={subscribeToNewsLetter}
                 className="input-box"
@@ -110,7 +112,7 @@ const Footer = () => {
               >
                 <Input
                   className="input"
-                  placeholder="Enter your email"
+                  placeholder={t("common:news_letter_placeholder")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -123,7 +125,7 @@ const Footer = () => {
               </form>
             </div>
             <div className="socials">
-              <p>Follow us: </p>
+              <p>{t("common:follow_us")}: </p>
               {SocialLinks.map((item, index) => {
                 return (
                   <Link href={item.url} key={index} passHref={true}>
@@ -147,7 +149,10 @@ const Footer = () => {
             </div>
             <div className="search">
               <SearchIcon width="20px" />
-              <input placeholder="search..." aria-label="search bar" />
+              <input
+                placeholder={t("common:search_placeholder")}
+                aria-label="search bar"
+              />
             </div>
             {/* <Link href="/donate">
               <a className="donate">Donate</a>
@@ -156,11 +161,12 @@ const Footer = () => {
         </div>
         <BottomFooter>
           <p>
-            {useFormattedDate(new Date(), "footer")} AFGnews - All Rights
-            Reserved
+            {useFormattedDate(new Date(), "footer")} AFGnews -{" "}
+            {t("common:rights")}
           </p>
           <div className="bottom_links">
-            About Us - Privacy Policy - Terms of Use - Advertise
+            {t("common:about")} - {t("common:privacy")} - {t("common:terms")}-
+            {t("common:advertise")}
           </div>
         </BottomFooter>
       </Container>
