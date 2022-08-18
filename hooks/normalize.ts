@@ -12,6 +12,7 @@ export const normalizeArticle = (article: Article[]) => {
       },
       category: item.category.name,
       createdAt: item?.sys?.publishedAt ?? "",
+      author: item?.author?.name ?? "",
     };
   });
 };

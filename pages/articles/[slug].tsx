@@ -113,6 +113,7 @@ const ArticlePage = ({
           <Comments websiteId={7527} title={article.title} loadMode="scroll" />
         </ArticleWrapper>
         <Recommended>
+          <h2>Recommended</h2>
           {!!recommended &&
             recommended.map((article) => (
               <ArticleCard key={article.title} card={article} variant="slim" />

@@ -25,7 +25,9 @@ export type Article = {
   sys: {
     publishedAt: Date;
   };
-  author: string;
+  author: {
+    name: string;
+  };
 };
 
 export type CategoryCollection = {
