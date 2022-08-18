@@ -1,24 +1,20 @@
 import { Currency } from "@hooks/types";
-import { currency_access_tokens } from "../keys";
 
-const api = (FROM: string, TO: string) =>
-  `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${FROM}&to_currency=${TO}&apikey=${currency_access_tokens}`;
+// const api = (FROM: string, TO: string) =>
+//   `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${FROM}&to_currency=${TO}&apikey=${currency_access_tokens}`;
 
-const TO = "AFN";
-const FROM = ["USD", "EUR", "BTC", "ETH", "BNB"];
+const getApi = (from: string) => {
+  return `https://api.exchangerate.host/convert?from=${from}&to=AFN`;
+};
 
-export const getCurrency = async () => {
+const FROM = ["USD", "EUR", "GBP", "CAD", "BTC", "ADA"];
+
+export const getCurrencies = async () => {
   const results = await Promise.all(
     FROM.map((from) => {
-      return fetch(api(from, TO));
+      return fetch(getApi(from));
     })
   );
 
-  const data = (await Promise.all(
-    results.map((res) => res.json())
-  )) as Currency[];
-
-  return data.filter((item) =>
-    item.hasOwnProperty("Realtime Currency Exchange Rate")
-  );
+  return (await Promise.all(results.map((res) => res.json()))) as Currency[];
 };

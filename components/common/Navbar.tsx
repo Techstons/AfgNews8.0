@@ -5,8 +5,6 @@ import { Container } from "@components/ui";
 import { LocaleSwitcher, NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
 import { ReturnValue } from "@hooks/article/get-articles-ctx";
-import { getCurrency } from "@hooks/thirdpartyApi";
-import { Currency } from "@hooks/types";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { MoonFill, SunFill } from "@styled-icons/bootstrap";
 import { Person } from "@styled-icons/material";
@@ -35,7 +33,6 @@ type ToggleProps = {
 
 const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   const [active, setActive] = useState(false);
-  const [currencies, setCurrencies] = useState<Currency[]>();
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const router = useRouter();
   const { t } = useTranslation();
@@ -71,15 +68,6 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
     },
   ];
 
-  useEffect(() => {
-    const getCurrencies = async () => {
-      const res = await getCurrency();
-      setCurrencies(res);
-    };
-
-    getCurrencies();
-  }, []);
-
   // change direction of the page
   useEffect(() => {
     const changeDir = () => {
@@ -95,7 +83,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
     <Root>
       <Container>
         <TopStrip>
-          <NavCurrencyWidget currencies={currencies} />
+          <NavCurrencyWidget />
           <div className="date">{useFormattedDate(new Date(), "nav")}</div>
         </TopStrip>
         <TopContent active={toggleDropdown}>

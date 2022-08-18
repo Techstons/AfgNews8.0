@@ -1,36 +1,34 @@
 import styled from "@emotion/styled";
+import { getCurrencies } from "@hooks/thirdpartyApi";
 import { Currency } from "@hooks/types";
-import { FC } from "react";
+import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 
-interface INavCurrencyWidget {
-  currencies?: Currency[];
-}
+const NavCurrencyWidget = () => {
+  const [currencies, setCurrencies] = useState<Currency[]>();
 
-type CurrenyItem = {
-  difference: number;
-};
-
-const NavCurrencyWidget: FC<INavCurrencyWidget> = ({ currencies }) => {
   const renderStockCards = () => {
     return currencies?.map((curr, idx) => {
-      const item = curr["Realtime Currency Exchange Rate"];
-      // const difference = item["8. Bid Price"] - item["9. Ask Price"];
-      const difference =
-        parseInt(item?.["9. Ask Price"]) - parseInt(item?.["8. Bid Price"]);
       return (
-        <CurrencyItem key={idx} difference={difference}>
+        <CurrencyItem key={idx}>
           <span>
-            {item?.["1. From_Currency Code"]}
-            {"/" + item?.["3. To_Currency Code"]}
+            {curr.query.from} / {curr.query.to}
           </span>
-          <span>{parseInt(item?.["5. Exchange Rate"]).toFixed(2)}</span>
-          <span className="difference">{difference}</span>
-          <span className="difference">{`(${difference / 100}%)`}</span>
+          <span className="value">
+            {Math.round(curr.info.rate * 100) / 100}
+          </span>
         </CurrencyItem>
       );
     });
   };
+
+  useEffect(() => {
+    const fetchCurrencies = async () => {
+      setCurrencies(await getCurrencies());
+    };
+
+    fetchCurrencies();
+  }, []);
 
   return (
     <Marquee gradientColor={[0, 0, 0]} gradientWidth={120} speed={40}>
@@ -41,23 +39,14 @@ const NavCurrencyWidget: FC<INavCurrencyWidget> = ({ currencies }) => {
 
 export default NavCurrencyWidget;
 
-const CurrencyItem = styled.div<CurrenyItem>`
+const CurrencyItem = styled.div`
   margin-left: 1rem;
 
   & > * {
     margin-left: 0.25rem;
   }
 
-  & .difference {
-    color: ${(props) =>
-      props.difference === 0
-        ? "gray"
-        : props.difference < 0
-        ? `var(--success-color-alt)`
-        : `var(--failure-color-alt)`};
-  }
-
   @media only screen and (min-width: 640px) {
-    margin-left: 6rem;
+    margin-left: 6.5rem;
   }
 `;
