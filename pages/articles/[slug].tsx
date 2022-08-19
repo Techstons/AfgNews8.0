@@ -19,14 +19,21 @@ import {
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const res = await getAllArticlePaths();
 
-  const paths = res.map((slug) => ({
-    params: {
-      slug,
-    },
-  }));
+  const paths = res
+    .map((slug) => {
+      return locales!.map((locale) => {
+        return {
+          params: {
+            slug,
+          },
+          locale,
+        };
+      });
+    })
+    .flat();
 
   return {
     paths,
@@ -38,6 +45,7 @@ export const getStaticProps = async ({
   params,
   locale,
 }: GetStaticPropsContext<{ slug: string }>) => {
+  console.log("SLUG LOCALE", locale);
   const article = await getArticleBySlug({ slug: params!.slug, locale });
   const recommended = await getRecommended({ locale });
   const articles = await getArticlesCtx({ locale });

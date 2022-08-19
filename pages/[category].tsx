@@ -2,7 +2,7 @@ import { Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
 import styled from "@emotion/styled";
 import {
-  getAllCategories,
+  getAllCategoriesSlugs,
   getArticleByCategory,
   getArticlesCtx,
 } from "@hooks/article";
@@ -13,16 +13,21 @@ import {
 } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await getAllCategories();
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+  const res = await getAllCategoriesSlugs();
 
   const paths = res
-    .filter((d) => d.name !== "Home")
-    .map((category) => ({
-      params: {
-        category: category.slug,
-      },
-    }));
+    .map((category) => {
+      return locales!.map((locale) => {
+        return {
+          params: {
+            category: category.slug,
+          },
+          locale,
+        };
+      });
+    })
+    .flat();
 
   return {
     paths,
@@ -44,10 +49,10 @@ export const getStaticProps = async ({
   const articlesPerCategory = await getArticleByCategory({
     category: categoryName,
     limit,
-    locale
+    locale,
   });
 
-  const articles = await getArticlesCtx();
+  const articles = await getArticlesCtx({ locale });
 
   return {
     props: {

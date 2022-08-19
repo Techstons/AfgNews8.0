@@ -1,8 +1,7 @@
 const getAllCategoryQuery = `
-query getCategoryCollectionQuery($locale: String!) {
-  categoryCollection(locale: $locale) {
+query getCategoryCollectionQuery {
+  categoryCollection {
     items {
-      name
       slug
     }
   }

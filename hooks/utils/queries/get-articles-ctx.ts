@@ -1,7 +1,7 @@
 import { cardArticleFields } from "./common";
 
 const getArticlesCtxQuery = `
-query getArticlesCtxQuery($locale: String!) {
+query getArticlesCtxQuery($locale: String) {
   Home:articleCollection(order: sys_publishedAt_DESC, limit: 11, locale: $locale)  {
       ${cardArticleFields}
   }

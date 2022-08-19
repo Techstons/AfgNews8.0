@@ -37,7 +37,7 @@ export type CategoryCollection = {
 };
 
 export type Category = {
-  name: string;
+  name?: string;
   slug: string;
 };
 

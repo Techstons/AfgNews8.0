@@ -1,5 +1,5 @@
 const getRecommendedQuery = `
-    query getRecommended($locale: String!) {
+    query getRecommended($locale: String) {
         articleCollection ( limit: 4, order:sys_publishedAt_DESC, locale: $locale) {
             items {
                 title
