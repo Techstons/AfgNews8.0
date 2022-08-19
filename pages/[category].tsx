@@ -44,6 +44,7 @@ export const getStaticProps = async ({
   const articlesPerCategory = await getArticleByCategory({
     category: categoryName,
     limit,
+    locale
   });
 
   const articles = await getArticlesCtx();

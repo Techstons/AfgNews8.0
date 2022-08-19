@@ -18,8 +18,8 @@ export type ReturnValue = {
   };
 };
 
-export const getArticlesCtx = async () => {
-  const res = await fetcherApi<ArticleCtx>(getArticlesCtxQuery);
+export const getArticlesCtx = async (variables?: { locale?: string }) => {
+  const res = await fetcherApi<ArticleCtx>(getArticlesCtxQuery, variables);
 
   let temp: ReturnValue = {
     Home: {

@@ -6,8 +6,14 @@ import {
   getArticleBySlugQuery,
 } from "@hooks/utils/queries";
 
-export const getArticleBySlug = async (slug: { slug: string }) => {
-  const res = await fetcherApi<ArticleCollection>(getArticleBySlugQuery, slug);
+export const getArticleBySlug = async (variables: {
+  slug: string;
+  locale?: string;
+}) => {
+  const res = await fetcherApi<ArticleCollection>(
+    getArticleBySlugQuery,
+    variables
+  );
 
   const data = normalizeArticle(res.articleCollection.items);
 
@@ -17,6 +23,7 @@ export const getArticleBySlug = async (slug: { slug: string }) => {
 export const getArticleByCategory = async (variables: {
   category: string;
   limit: number;
+  locale?: string;
 }) => {
   const res = await fetcherApi<ArticleCollection>(
     getArticleByCategoryQuery,
