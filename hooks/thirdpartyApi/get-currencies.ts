@@ -3,18 +3,27 @@ import { Currency } from "@hooks/types";
 // const api = (FROM: string, TO: string) =>
 //   `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${FROM}&to_currency=${TO}&apikey=${currency_access_tokens}`;
 
-const getApi = (from: string) => {
-  return `https://api.exchangerate.host/convert?from=${from}&to=AFN`;
+const getApi = (from: string, to: string) => {
+  return `https://api.exchangerate.host/convert?from=${from}&to=${to}`;
 };
 
-const FROM = ["USD", "EUR", "GBP", "CAD", "BTC", "ADA"];
+const FOREX = ["USD", "EUR", "GBP", "CAD"];
+const CRYPTO = ["BTC", "ADA"];
 
 export const getCurrencies = async () => {
-  const results = await Promise.all(
-    FROM.map((from) => {
-      return fetch(getApi(from));
+  const currencies = await Promise.all(
+    FOREX.map((from) => {
+      return fetch(getApi(from, "AFN"));
     })
   );
 
-  return (await Promise.all(results.map((res) => res.json()))) as Currency[];
+  const cryptos = await Promise.all(
+    CRYPTO.map((from) => {
+      return fetch(getApi(from, "USD"));
+    })
+  );
+
+  return (await Promise.all(currencies.map((res) => res.json()))).concat(
+    await Promise.all(cryptos.map((res) => res.json()))
+  ) as Currency[];
 };

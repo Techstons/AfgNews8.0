@@ -11,12 +11,23 @@ const NavCurrencyWidget = () => {
     return currencies?.map((curr, idx) => {
       return (
         <CurrencyItem key={idx}>
-          <span>
-            {curr.query.from} / {curr.query.to}
-          </span>
-          <span className="value">
-            {Math.round(curr.info.rate * 100) / 100}
-          </span>
+          {curr.query.to === "AFN" ? (
+            <>
+              <span>
+                {curr.query.from} / {curr.query.to}
+              </span>
+              <span className="value">
+                {Math.round(curr.info.rate * 100) / 100}
+              </span>
+            </>
+          ) : (
+            <>
+              <span>{curr.query.from}</span>
+              <span className="value">
+                {"$ " + Math.round(curr.info.rate * 100) / 100}
+              </span>
+            </>
+          )}
         </CurrencyItem>
       );
     });
@@ -47,6 +58,6 @@ const CurrencyItem = styled.div`
   }
 
   @media only screen and (min-width: 640px) {
-    margin-left: 6.5rem;
+    margin-left: 7rem;
   }
 `;
