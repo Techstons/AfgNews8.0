@@ -8,7 +8,7 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
 
     loader: "cloudinary",
-    path: "https://res.cloudinary.com/domgv4rvm/image/upload/",
+    path: "https://res.cloudinary.com/dssf8vpym/image/upload/",
   },
   env: {
     CURRENCY_ACCESS_TOKEN: process.env.CURRENCY_ACCESS_TOKEN,
