@@ -7,15 +7,17 @@ import CloudinaryImage from "./CloudinaryImage";
 
 interface INewsCard {
   card?: Article;
+  priority?: boolean;
 }
 
-const NewsCard: FC<INewsCard> = ({ card }) => {
+const NewsCard: FC<INewsCard> = ({ card, priority }) => {
   return (
     <Link href={`/articles/${card?.slug}`} passHref={true}>
       <Card>
         <CloudinaryImage
           featuredImage={card?.featuredImage}
           title={card?.title}
+          priority={priority}
         />
         <div className="primary">
           <h3>{card?.title}</h3>

@@ -15,7 +15,7 @@ const Header = ({
       <Container>
         <HeaderTitle>{title}</HeaderTitle>
         <MainGrid>
-          <TopNewsCard card={articles?.[0]} />
+          <TopNewsCard card={articles?.[0]} priority={true} />
           <SubGrid>
             {articles?.slice(1, 5).map((item) => (
               <TopNewsCard key={item.title} card={item} />

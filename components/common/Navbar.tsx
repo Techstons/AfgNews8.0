@@ -12,6 +12,7 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import Image from "next/image";
 
 type BottomType = {
   active: boolean;
@@ -97,7 +98,19 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
             </button>
           </div>
           <div>
-            <span>AFGNews</span>
+            <span>
+              <Link href="/">
+                <a aria-label="AFGNews Logo which links to home when clicked">
+                  <Image
+                    src="c_limit,h_50,q_auto:low,w_100/assets/logo_wjawfm.png"
+                    alt="AFGNews Logo"
+                    layout="fixed"
+                    height={45}
+                    width={100}
+                  />
+                </a>
+              </Link>
+            </span>
           </div>
           <div>
             <button

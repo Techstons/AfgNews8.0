@@ -3,7 +3,11 @@ import Image from "next/image";
 
 type CloudinaryImageProps = Pick<Partial<Article>, "featuredImage" | "title">;
 
-const CloudinaryImage = ({ featuredImage, title }: CloudinaryImageProps) => {
+const CloudinaryImage = ({
+  featuredImage,
+  title,
+  priority,
+}: CloudinaryImageProps & { priority?: boolean }) => {
   return (
     <Image
       src={`q_auto/f_auto/${featuredImage?.id}` ?? "cld-sample"}
@@ -15,6 +19,7 @@ const CloudinaryImage = ({ featuredImage, title }: CloudinaryImageProps) => {
       quality={20}
       blurDataURL={`w_9/${featuredImage?.id}`}
       objectFit="cover"
+      priority={priority}
     />
   );
 };
