@@ -45,7 +45,6 @@ export const getStaticProps = async ({
   params,
   locale,
 }: GetStaticPropsContext<{ slug: string }>) => {
-  console.log("SLUG LOCALE", locale);
   const article = await getArticleBySlug({ slug: params!.slug, locale });
   const recommended = await getRecommended({ locale });
   const articles = await getArticlesCtx({ locale });

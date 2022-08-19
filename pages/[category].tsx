@@ -38,16 +38,10 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 export const getStaticProps = async ({
   params,
   locale,
-}: GetStaticPropsContext<{ category: string; name: string }>) => {
-  const category =
-    params!.category[0].toUpperCase() + params!.category.slice(1);
-
-  let categoryName =
-    category === "Tech-and-science" ? "Tech & Science" : category;
-
+}: GetStaticPropsContext<{ category: string }>) => {
   const limit = 10;
   const articlesPerCategory = await getArticleByCategory({
-    category: categoryName,
+    category: params!.category,
     limit,
     locale,
   });
@@ -58,7 +52,7 @@ export const getStaticProps = async ({
     props: {
       articles,
       articlesPerCategory,
-      category: categoryName,
+      category: params!.category,
       ...(await serverSideTranslations(locale || "en", ["common"])),
     },
     revalidate: 60,
@@ -76,7 +70,7 @@ const Category = ({
         variant="primary"
         cards={articlesPerCategory}
         title={category}
-        slug={`/${category}`}
+        slug={category}
       />
     </Wrapper>
   );
