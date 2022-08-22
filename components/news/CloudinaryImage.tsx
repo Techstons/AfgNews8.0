@@ -17,6 +17,7 @@ const CloudinaryImage = ({
       width={featuredImage?.width ?? 1980}
       height={featuredImage?.height ?? 1020}
       quality={20}
+      placeholder="blur"
       blurDataURL={`w_9/${featuredImage?.id}`}
       objectFit="cover"
       priority={priority}
