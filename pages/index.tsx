@@ -66,8 +66,9 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
       ></Section>
       <Script
         src="https://platform.twitter.com/widgets.js"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         id="twitter-embed"
+        defer={true}
       ></Script>
     </>
   );
