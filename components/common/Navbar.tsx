@@ -288,9 +288,10 @@ const BottomContent = styled.div<BottomType>`
     & .languages {
       display: flex;
       gap: 0.5rem;
-      font-size: 0.5rem;
+      font-size: 0.65rem;
       min-width: max-content;
       align-self: flex-end;
+      align-items: center;
 
       & > * {
         &:hover {
