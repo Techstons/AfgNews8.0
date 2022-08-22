@@ -7,7 +7,6 @@ import styled from "@emotion/styled";
 import { ReturnValue } from "@hooks/article/get-articles-ctx";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { MoonFill, SunFill } from "@styled-icons/bootstrap";
-import { Person } from "@styled-icons/material";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
@@ -101,39 +100,25 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
           <div className="date">{useFormattedDate(new Date(), "nav")}</div>
         </TopStrip>
         <TopContent active={toggleDropdown}>
-          <div>
-            <button
-              onClick={() => setActive(!active)}
-              aria-label="Navigation Toggle"
-              className="nav-toggle"
-            >
-              {active ? <CloseIcon width="25px" /> : <MenuIcon width="25px" />}
-            </button>
-          </div>
-          <div>
-            <span>
-              <Link href="/">
-                <a aria-label="AFGNews Logo which links to home when clicked">
-                  <Image
-                    src="c_limit,h_50,q_auto:low,w_100/assets/logo_wjawfm.png"
-                    alt="AFGNews Logo"
-                    layout="fixed"
-                    height={45}
-                    width={100}
-                  />
-                </a>
-              </Link>
-            </span>
-          </div>
-          <div>
-            <button
-              aria-label="User dropdown toggle"
-              className="toggle"
-              onClick={() => setToggleDropdown(!toggleDropdown)}
-            >
-              <Person size={30} />
-            </button>
-          </div>
+          <button
+            onClick={() => setActive(!active)}
+            aria-label="Navigation Toggle"
+            className="nav-toggle"
+          >
+            {active ? <CloseIcon width="25px" /> : <MenuIcon width="25px" />}
+          </button>
+
+          <Link href="/">
+            <a aria-label="AFGNews Logo which links to home when clicked">
+              <Image
+                src="c_limit,h_50,q_auto:low,w_100/assets/logo_wjawfm.png"
+                alt="AFGNews Logo"
+                layout="fixed"
+                height={45}
+                width={100}
+              />
+            </a>
+          </Link>
         </TopContent>
         <BottomContent active={active}>
           <div className="menu">
@@ -221,27 +206,17 @@ const TopStrip = styled.div`
 `;
 
 const TopContent = styled.div<DropdownProps>`
+  position: relative;
   display: flex;
-  align-items: center;
+  justify-content: center;
   padding-top: 0.5rem;
 
-  & div {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  & > div:nth-of-type(2) {
-    // Refers to the logo
-    font-size: 1.25rem;
-    color: var(--primary-color);
-    font-weight: var(--font-bold);
-  }
-
-  & div:first-of-type > .nav-toggle {
+  .nav-toggle {
     // Mobile navbar
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
     cursor: pointer;
-    margin: auto auto auto 0;
 
     @media only screen and (min-width: 900px) {
       display: none;
