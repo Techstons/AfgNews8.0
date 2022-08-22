@@ -9,10 +9,10 @@ import useFormattedDate from "@hooks/useFormattedDate";
 import { MoonFill, SunFill } from "@styled-icons/bootstrap";
 import { Person } from "@styled-icons/material";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import Image from "next/image";
 
 type BottomType = {
   active: boolean;
@@ -32,38 +32,51 @@ type ToggleProps = {
   active: boolean;
 };
 
+type NavLinks = {
+  default: keyof ReturnValue;
+  title: string;
+  slug: string;
+};
+
 const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   const [active, setActive] = useState(false);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const router = useRouter();
   const { t } = useTranslation();
 
-  const navLinks = [
+  const navLinks: NavLinks[] = [
     {
+      default: "Home",
       title: t("common:home"),
       slug: "/",
     },
     {
+      default: "World",
       title: t("common:world"),
       slug: "/world",
     },
     {
+      default: "Business",
       title: t("common:business"),
       slug: "/business",
     },
     {
+      default: "Tech",
       title: t("common:tech"),
       slug: "/tech-and-science",
     },
     {
+      default: "Health",
       title: t("common:health"),
       slug: "/health",
     },
     {
+      default: "Sports",
       title: t("common:sports"),
       slug: "/sports",
     },
     {
+      default: "Videos",
       title: t("common:videos"),
       slug: "/videos",
     },
@@ -133,15 +146,11 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                     </MenuItem>
                   </Link>
                   {!!articles &&
-                    Object.keys(articles).length > 0 &&
+                    articles[menu.default]?.items?.length > 0 &&
                     router.asPath !== menu.slug &&
                     menu.title !== "Videos" && (
                       <MenuDropDown className="menu-dropdown">
-                        {articles[
-                          menu.title === "Tech & Science"
-                            ? "Tech"
-                            : (menu.title as keyof ReturnValue)
-                        ]?.items
+                        {articles[menu.default]?.items
                           .slice(0, 4)
                           .map((item: Article) => {
                             return (

@@ -4,16 +4,23 @@ import { Article } from "@hooks/types";
 import fetcherApi from "@hooks/utils/fetch-api";
 import { getArticlesCtxQuery } from "@hooks/utils/queries";
 
-type Keys = "Home" | "World" | "Business" | "Tech" | "Health" | "Sports";
+type CategoryKeys =
+  | "Home"
+  | "World"
+  | "Business"
+  | "Tech"
+  | "Health"
+  | "Sports"
+  | "Videos";
 
 type ArticleCtx = {
-  [key in Keys]: {
+  [key in CategoryKeys]: {
     items: Article[];
   };
 };
 
 export type ReturnValue = {
-  [key in Keys]: {
+  [key in CategoryKeys]: {
     items: ComponentArticle[];
   };
 };
@@ -40,10 +47,13 @@ export const getArticlesCtx = async (variables?: { locale?: string }) => {
     Sports: {
       items: [],
     },
+    Videos: {
+      items: [],
+    },
   };
 
   for (const [k, v] of Object.entries(res)) {
-    temp[k as Keys].items = normalizeArticle(v.items);
+    temp[k as CategoryKeys].items = normalizeArticle(v.items);
   }
 
   return temp;
