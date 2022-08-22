@@ -2,9 +2,9 @@ import { ArticleCard } from "@components/news";
 import { Article } from "@components/types";
 import { Container } from "@components/ui";
 import styled from "@emotion/styled";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { FC, ReactNode } from "react";
-import { useTranslation } from "next-i18next";
 
 interface ISection {
   title: string;
@@ -140,10 +140,9 @@ const PrimaryArticleContainer = styled.div`
 `;
 
 const SecondaryContainer = styled.div<ContainerType>`
-  display: grid;
-  gap: 2rem;
-
   @media only screen and (min-width: 768px) {
+    display: grid;
+    gap: 2rem;
     grid-template-columns: ${(props) =>
       props.position === "left" ? "1.3fr .7fr" : ".3fr 1.7fr"};
   }
