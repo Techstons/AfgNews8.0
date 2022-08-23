@@ -12,9 +12,9 @@ interface ISEO {
   twitterHandle?: string;
 }
 
-const DOMAIN = "https://afgnews.vercel.app";
+const DOMAIN = "https://www.afgnews.com/";
 const DEFAULT_OG_IMAGE =
-  "https://storage.googleapis.com/brandflow-bucket/personal/blog/portfolio-og.jpg"; // TODO: Change default image to something more relevant
+  "https://res.cloudinary.com/dssf8vpym/image/upload/v1660912190/assets/logo_wjawfm.png";
 
 const SEOHeader = ({
   title = "AFGNews | #1 News Source for Afghanistan",
