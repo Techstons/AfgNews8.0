@@ -75,6 +75,14 @@ const ArticlePage = ({
     return <div>Loading...</div>;
   }
 
+  const fullPath = `https://www.afgnews.com/articles/${article.slug}`;
+
+  const invokeShare = () => {
+    navigator.share({
+      url: fullPath,
+    });
+  };
+
   return (
     <Container>
       <SEOHeader
@@ -102,7 +110,7 @@ const ArticlePage = ({
               </div>
             </div>
 
-            <button className="share">
+            <button className="share" onClick={invokeShare}>
               <Share size={16} />
             </button>
           </ArticleHeader>
@@ -125,7 +133,7 @@ const ArticlePage = ({
           <Comments
             websiteId={7660}
             title={article.title}
-            url={`https://www.afgnews.com/articles/${article.slug}`}
+            url={fullPath}
             loadMode="scroll"
           />
         </ArticleWrapper>
