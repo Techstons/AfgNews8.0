@@ -101,7 +101,7 @@ const Footer = () => {
       <Container>
         <div className="content">
           <FooterContainer>
-            <h2 className="logo">Afgnews</h2>
+            <h2 className="logo">AfgNews</h2>
 
             <div className="newsletter">
               <p className="description">{t("common:news_letter_title")}</p>
@@ -161,7 +161,7 @@ const Footer = () => {
         </div>
         <BottomFooter>
           <p>
-            {useFormattedDate(new Date(), "footer")} AFGnews -{" "}
+            {useFormattedDate(new Date(), "footer")} AfgNews -{" "}
             {t("common:rights")}
           </p>
           <div className="bottom_links">
