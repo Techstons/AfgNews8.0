@@ -87,20 +87,23 @@ const ArticlePage = ({
       <Wrapper>
         <ArticleWrapper>
           <ArticleHeader>
-            <small className="category">{article?.category}</small>
+            <p className="category">{article?.category}</p>
             <h1 className="title">{article?.title}</h1>
-            <p className="contributor">
-              <span>
-                By <strong> {article?.author}</strong> <br />
-                AFGNews Team
-              </span>
-            </p>
-            <div className="date">
-              <Clock size={18} />{" "}
-              <span>{article?.createdAt ? articleDate : "N/A"}</span>
+            <div>
+              <p className="contributor">
+                <span>
+                  <strong>By {article?.author || "AfgNews"} Team</strong>
+                </span>
+              </p>
+              <div className="date">
+                <Clock size={12} className="clock" />
+                {"  "}
+                <span>{article?.createdAt ? articleDate : "N/A"}</span>
+              </div>
             </div>
+
             <button className="share">
-              <Share size={24} />
+              <Share size={16} />
             </button>
           </ArticleHeader>
           <ArticleBody>
@@ -162,16 +165,16 @@ const ArticleHeader = styled.header`
   padding-bottom: 2rem;
 
   .title {
-    font-size: 2rem;
+    font-size: 2.15rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.65rem;
     letter-spacing: 0.1em;
   }
 
   .share {
     background-color: var(--primary-color);
     color: white;
-    padding: 0.5rem;
+    padding: 0.4rem 0.5rem 0.5rem;
     border-radius: var(--base-radius);
     width: max-content;
   }
@@ -181,11 +184,25 @@ const ArticleHeader = styled.header`
     color: white;
     padding: 0.25rem;
     border-radius: var(--base-radius);
+    font-weight: 100;
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
     width: max-content;
   }
 
+  .contributor,
+  .date {
+    font-size: 0.65rem;
+  }
+
+  .date {
+    .clock {
+      margin-right: 0.15rem;
+    }
+  }
+
   & > *:not(.category) {
-    margin-top: 1rem;
+    margin-top: 0.85rem;
   }
 `;
 
