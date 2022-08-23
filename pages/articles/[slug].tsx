@@ -117,7 +117,12 @@ const ArticlePage = ({
               {documentToReactComponents(article?.body.json)}
             </ArticleMdx>
           </ArticleBody>
-          <Comments websiteId={7660} title={article.title} loadMode="scroll" />
+          <Comments
+            websiteId={7527}
+            title={article.title}
+            url={`https://www.afgnews.com/articles/${article.slug}`}
+            loadMode="scroll"
+          />
         </ArticleWrapper>
         <Recommended>
           <h2>Recommended</h2>
