@@ -118,7 +118,7 @@ const ArticlePage = ({
             </ArticleMdx>
           </ArticleBody>
           <Comments
-            websiteId={7527}
+            websiteId={7660}
             title={article.title}
             url={`https://www.afgnews.com/articles/${article.slug}`}
             loadMode="scroll"
