@@ -115,7 +115,9 @@ const ArticlePage = ({
                 />
               </Featured>
             )}
-            <ArticleExcerpt>{article?.excerpt}</ArticleExcerpt>
+            <ArticleExcerpt>
+              <i>{article?.excerpt}</i>
+            </ArticleExcerpt>
             <ArticleMdx>
               {documentToReactComponents(article?.body.json)}
             </ArticleMdx>
@@ -215,10 +217,11 @@ const Featured = styled.div`
 `;
 
 const ArticleExcerpt = styled.p`
-  padding: 1rem 0;
+  margin-bottom: 2.25rem;
+  margin-top: 0.5rem;
   font-size: 1.25rem;
   line-height: 1.5;
-  color: #8a8c8e;
+  font-weight: var(--font-medium);
 `;
 
 const ArticleMdx = styled.div`
@@ -285,5 +288,9 @@ const ArticleMdx = styled.div`
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  p {
+    margin-bottom: 1.25rem;
   }
 `;
