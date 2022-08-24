@@ -99,7 +99,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
           <NavCurrencyWidget />
           <div className="date">{useFormattedDate(new Date(), "nav")}</div>
         </TopStrip>
-        <TopContent active={toggleDropdown}>
+        <TopContent active={active}>
           <button
             onClick={() => setActive(!active)}
             aria-label="Navigation Toggle"
@@ -287,6 +287,10 @@ const BottomContent = styled.div<BottomType>`
           display: none;
         }
       }
+
+      &:hover .menu-dropdown:focus-within {
+        display: none;
+      }
     }
 
     .youtube {
@@ -305,6 +309,7 @@ const BottomContent = styled.div<BottomType>`
 
     @media only screen and (max-width: 900px) {
       flex-direction: column;
+      align-items: baseline;
     }
   }
 
