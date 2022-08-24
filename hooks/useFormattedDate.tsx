@@ -1,5 +1,4 @@
 import { format, formatDistanceToNow } from "date-fns";
-import JalaliDate from "jalaali-js";
 import { useState, useEffect } from "react";
 
 type FormatedDateProps = "nav" | "footer" | "widget" | "distance";
