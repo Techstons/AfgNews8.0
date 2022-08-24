@@ -288,8 +288,8 @@ const BottomContent = styled.div<BottomType>`
         }
       }
 
-      &:hover .menu-dropdown:active {
-        display: none;
+      &:hover .menu-dropdown:focus-within {
+        opacity: 0;
       }
     }
 
