@@ -288,7 +288,7 @@ const BottomContent = styled.div<BottomType>`
         }
       }
 
-      &:hover .menu-dropdown:focus-within {
+      &:hover .menu-dropdown:active {
         display: none;
       }
     }
