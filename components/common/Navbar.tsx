@@ -282,6 +282,7 @@ const BottomContent = styled.div<BottomType>`
     & .menu-item {
       &:hover .menu-dropdown {
         display: grid;
+        min-height: 150px;
 
         @media only screen and (max-width: 900px) {
           display: none;
@@ -290,6 +291,7 @@ const BottomContent = styled.div<BottomType>`
 
       &:hover .menu-dropdown:focus-within {
         opacity: 0;
+        min-height: 0;
       }
     }
 
@@ -372,7 +374,6 @@ const MenuDropDown = styled.div`
   left: 0;
   transform: translateY(1rem);
   background-color: black;
-  min-height: 150px;
   width: 100%;
   padding: 2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
