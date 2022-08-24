@@ -39,8 +39,8 @@ type NavLinks = {
 
 const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   const [active, setActive] = useState(false);
-  const [toggleDropdown, setToggleDropdown] = useState(false);
   const router = useRouter();
+
   const { t } = useTranslation();
 
   const navLinks: NavLinks[] = [
@@ -97,7 +97,9 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
       <Container>
         <TopStrip>
           <NavCurrencyWidget />
-          <div className="date">{useFormattedDate(new Date(), "nav")}</div>
+          <div className="date">
+            {useFormattedDate(new Date(), "nav", router.locale)}
+          </div>
         </TopStrip>
         <TopContent active={active}>
           <button
@@ -291,7 +293,8 @@ const BottomContent = styled.div<BottomType>`
 
       &:hover .menu-dropdown:focus-within {
         opacity: 0;
-        min-height: 0;
+        transform: scaleY(0);
+        transition-delay: 100ms;
       }
     }
 
