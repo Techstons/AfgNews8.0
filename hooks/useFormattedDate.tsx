@@ -1,6 +1,5 @@
 import { format, formatDistanceToNow } from "date-fns";
-import { enUS, faIR } from "date-fns/locale";
-
+import JalaliDate from "jalaali-js";
 import { useState, useEffect } from "react";
 
 type FormatedDateProps = "nav" | "footer" | "widget" | "distance";
@@ -15,7 +14,14 @@ const useFormattedDate = (
   useEffect(() => {
     if (type === "nav")
       setFormattedDate(
-        format(date, "E, do MMM", { locale: locale === "en" ? enUS : faIR })
+        locale === "en"
+          ? new Intl.DateTimeFormat("en", { dateStyle: "full" }).format(date)
+          : new Intl.DateTimeFormat("fa", {
+              month: "numeric",
+              day: "numeric",
+              year: "numeric",
+              weekday: "long",
+            }).format(date)
       );
 
     if (type === "widget") setFormattedDate(format(date, "MMM, do"));
