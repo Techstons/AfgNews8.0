@@ -75,9 +75,9 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
       slug: "/sports",
     },
     {
-      default: "Videos",
-      title: t("common:videos"),
-      slug: "/videos",
+      default: "Crypto",
+      title: t("common:crypto"),
+      slug: "/crypto",
     },
   ];
 

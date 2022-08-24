@@ -11,7 +11,7 @@ type CategoryKeys =
   | "Tech"
   | "Health"
   | "Sports"
-  | "Videos";
+  | "Crypto";
 
 type ArticleCtx = {
   [key in CategoryKeys]: {
@@ -47,7 +47,7 @@ export const getArticlesCtx = async (variables?: { locale?: string }) => {
     Sports: {
       items: [],
     },
-    Videos: {
+    Crypto: {
       items: [],
     },
   };
