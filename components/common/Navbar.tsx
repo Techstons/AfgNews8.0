@@ -6,7 +6,7 @@ import { LocaleSwitcher, NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
 import { ReturnValue } from "@hooks/article/get-articles-ctx";
 import useFormattedDate from "@hooks/useFormattedDate";
-import { MoonFill, SunFill } from "@styled-icons/bootstrap";
+import { MoonFill, SunFill, Youtube } from "@styled-icons/bootstrap";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
@@ -65,6 +65,11 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
       slug: "/tech-and-science",
     },
     {
+      default: "Crypto",
+      title: t("common:crypto"),
+      slug: "/crypto",
+    },
+    {
       default: "Health",
       title: t("common:health"),
       slug: "/health",
@@ -73,11 +78,6 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
       default: "Sports",
       title: t("common:sports"),
       slug: "/sports",
-    },
-    {
-      default: "Crypto",
-      title: t("common:crypto"),
-      slug: "/crypto",
     },
   ];
 
@@ -107,7 +107,6 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
           >
             {active ? <CloseIcon width="25px" /> : <MenuIcon width="25px" />}
           </button>
-
           <Link href="/">
             <a aria-label="AFGNews Logo which links to home when clicked">
               <Image
@@ -151,6 +150,16 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                 </div>
               );
             })}
+            <div className="youtube">
+              <a
+                href="https://www.youtube.com/channel/UC1JjrqGsFWlcVpcImM98Xjw"
+                target={"_blank"}
+                rel="noreferrer"
+                aria-label="AfgNews Youtube Channel"
+              >
+                <Youtube className="youtube-logo" height={22} width={26} />
+              </a>
+            </div>
           </div>
           <div className="right">
             <div className="languages">
@@ -268,6 +277,7 @@ const BottomContent = styled.div<BottomType>`
   & .menu {
     display: flex;
     gap: 1rem;
+    align-items: center;
 
     & .menu-item {
       &:hover .menu-dropdown {
@@ -275,6 +285,20 @@ const BottomContent = styled.div<BottomType>`
 
         @media only screen and (max-width: 900px) {
           display: none;
+        }
+      }
+    }
+
+    .youtube {
+      .youtube-logo {
+        color: white;
+        border: 2px solid var(--primary-color);
+        border-radius: 0.5rem;
+        padding: 0.025rem 0.05rem;
+        transition: color 0.2s ease-in-out;
+        &:hover {
+          background-color: white;
+          color: var(--primary-color);
         }
       }
     }

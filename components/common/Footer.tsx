@@ -128,11 +128,16 @@ const Footer = () => {
               <p>{t("common:follow_us")}: </p>
               {SocialLinks.map((item, index) => {
                 return (
-                  <Link href={item.url} key={index} passHref={true}>
-                    <SocialCircle size="33px" aria-label={item.name}>
-                      <item.icon size={18} />
-                    </SocialCircle>
-                  </Link>
+                  <SocialCircle
+                    size="33px"
+                    href={item.url}
+                    aria-label={item.name}
+                    key={index}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <item.icon size={18} />
+                  </SocialCircle>
                 );
               })}
             </div>
