@@ -14,7 +14,7 @@ const useFormattedDate = (
     if (type === "nav")
       setFormattedDate(
         locale === "en"
-          ? new Intl.DateTimeFormat("en", { dateStyle: "full" }).format(date)
+          ? format(date, "E, MMM d, yyyy")
           : new Intl.DateTimeFormat("fa", {
               month: "numeric",
               day: "numeric",
