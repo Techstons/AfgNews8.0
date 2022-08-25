@@ -398,7 +398,7 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
   cursor: pointer;
 
   @media only screen and (min-width: 901px) {
-    width: 40px;
+    width: 38px;
   }
 
   & input {
