@@ -10,8 +10,8 @@ interface ISocialCircle extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
 }
 
-const SocialCircle = ({ children, size, href }: ISocialCircle) => (
-  <Wrapper href={href} size={size}>
+const SocialCircle = ({ children, size, href, ...rest }: ISocialCircle) => (
+  <Wrapper href={href} size={size} {...rest}>
     {children}
   </Wrapper>
 );
