@@ -58,6 +58,7 @@ export default Layout;
 
 const Main = styled.main<MainProps>`
   min-height: 100vh;
+  padding: 1rem 0;
   background-color: ${(props) =>
     props.isDark ? "var(--text-color)" : "var(--container-color)"};
   color: ${(props) =>

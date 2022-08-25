@@ -112,11 +112,11 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
           <Link href="/">
             <a aria-label="AFGNews Logo which links to home when clicked">
               <Image
-                src="c_limit,h_50,q_auto:low,w_100/assets/logo_wjawfm.png"
+                src="c_limit,h_60,q_auto:low,w_130/assets/logo_wjawfm.png"
                 alt="AFGNews Logo"
                 layout="fixed"
-                height={45}
-                width={100}
+                height={60}
+                width={130}
               />
             </a>
           </Link>
@@ -272,7 +272,6 @@ const BottomContent = styled.div<BottomType>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 0;
   transition: all 0.2s ease;
   gap: 1rem;
 
