@@ -284,7 +284,7 @@ const BottomContent = styled.div<BottomType>`
   justify-content: space-between;
   transition: all 0.2s ease;
   gap: 1rem;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 0;
 
   & .menu {
     display: flex;
