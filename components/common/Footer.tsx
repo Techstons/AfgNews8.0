@@ -2,50 +2,16 @@ import { SearchIcon } from "@components/icons";
 import { Button, Container, Input } from "@components/ui";
 import styled from "@emotion/styled";
 import useFormattedDate from "@hooks/useFormattedDate";
-import { Instagram } from "@styled-icons/bootstrap/Instagram";
-import { Twitter } from "@styled-icons/bootstrap/Twitter";
-import { Youtube } from "@styled-icons/bootstrap/Youtube";
-import { Facebook } from "@styled-icons/material/Facebook";
 import data from "@test-data";
 import Link from "next/link";
 import { FormEvent, ReactNode, useState } from "react";
 import { useTranslation } from "next-i18next";
-
-type LengthUnit = "px" | "em" | "rem";
-type Length = `${number}${LengthUnit}`;
-
-interface ISocialCircle {
-  variant?: "primary" | "secondary";
-  children: ReactNode;
-  size: Length;
-}
+import SocialLinks from "./SocialLinks";
+import { SocialCircle } from "@components/ui";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
   const { t } = useTranslation();
-
-  const SocialLinks = [
-    {
-      name: "Facebook",
-      icon: Facebook,
-      url: "https://www.facebook.com/AFG-News-104199542368566/about/?ref=page_internal",
-    },
-    {
-      name: "Twitter",
-      icon: Twitter,
-      url: "https://twitter.com/AFGNEWS_",
-    },
-    {
-      name: "Youtube",
-      icon: Youtube,
-      url: "https://www.youtube.com/channel/UC1JjrqGsFWlcVpcImM98Xjw",
-    },
-    {
-      name: "Instagram",
-      icon: Instagram,
-      url: "https://www.instagram.com/",
-    },
-  ];
 
   const subscribeToNewsLetter = async (e: FormEvent) => {
     e.preventDefault();
@@ -314,24 +280,5 @@ const BottomFooter = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
-  }
-`;
-
-const SocialCircle = styled.a<ISocialCircle>`
-  display: flex;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 100%;
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
-  border: solid 2px white;
-  transition: color 0.2s ease-in-out;
-
-  &:hover {
-    background-color: var(--nav-text);
-    color: var(--nav-color);
-    border: solid 2px black;
   }
 `;
