@@ -111,7 +111,7 @@ const ArticlePage = ({
               <div className="date">
                 <Clock size={12} className="clock" />
                 {"  "}
-                <span>{article?.createdAt ? articleDate : "N/A"}</span>
+                <span>{article?.createdAt ? articleDate : "N/A"} ago</span>
               </div>
             </div>
 
