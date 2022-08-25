@@ -394,7 +394,7 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
   border-radius: 30px;
   height: 20px;
   transition: 0.2s;
-  width: 46px;
+  width: 44px;
   cursor: pointer;
 
   @media only screen and (min-width: 901px) {
