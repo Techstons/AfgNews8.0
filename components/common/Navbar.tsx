@@ -144,7 +144,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               />
             </a>
           </Link>
-          <div className="socials">{renderSocialIcons()}</div>
+          {/* <div className="socials">{renderSocialIcons()}</div> */}
         </TopContent>
         <BottomContent active={active}>
           <div className="menu">
