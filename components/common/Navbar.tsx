@@ -240,7 +240,7 @@ const TopStrip = styled.div`
     flex-grow: 1;
     min-width: max-content;
 
-    @media screen and (width < 900px) {
+    @media screen and (max-width: 901px) {
       font-size: 0.65rem;
     }
   }
@@ -260,7 +260,7 @@ const TopContent = styled.div<DropdownProps>`
     top: 1.6rem;
     cursor: pointer;
 
-    @media only screen and (width > 900px) {
+    @media only screen and (min-width: 901px) {
       display: none;
     }
   }
@@ -272,7 +272,7 @@ const TopContent = styled.div<DropdownProps>`
     display: flex;
     gap: 0.5rem;
 
-    @media only screen and (width < 901px) {
+    @media only screen and (max-width: 901px) {
       display: none;
     }
   }
@@ -343,13 +343,13 @@ const BottomContent = styled.div<BottomType>`
       display: flex;
       gap: 0.5rem;
 
-      @media only screen and (width > 901px) {
+      @media screen and (min-width: 901px) {
         display: none;
       }
     }
   }
 
-  @media only screen and (max-width: 900px) {
+  @media screen and (max-width: 901px) {
     display: ${(props) => (props.active ? "flex" : "none")};
     align-items: flex-start;
     transform-origin: top;
