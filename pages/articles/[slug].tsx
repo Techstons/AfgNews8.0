@@ -78,6 +78,11 @@ const ArticlePage = ({
   const fullPath = `https://www.afgnews.com/articles/${article.slug}`;
 
   const invokeShare = () => {
+    if (!navigator.canShare) {
+      navigator.clipboard.writeText(fullPath);
+      return;
+    }
+
     navigator.share({
       url: fullPath,
     });
@@ -187,6 +192,53 @@ const ArticleHeader = styled.header`
     padding: 0.4rem 0.5rem 0.5rem;
     border-radius: var(--base-radius);
     width: max-content;
+    position: relative;
+
+    &:before {
+      content: "Link copied!";
+      position: absolute;
+
+      /* vertically center */
+      top: 50%;
+      transform: translateY(-50%);
+
+      /* move to right */
+      left: 100%;
+      margin-left: 15px; /* and add a small left margin */
+
+      width: 125px;
+      padding: 10px;
+      border-radius: 3px;
+      background: #000;
+      color: #fff;
+      text-align: center;
+
+      display: none; /* hide by default */
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+
+      /* position tooltip correctly */
+      left: 100%;
+      margin-left: -5px;
+
+      /* vertically center */
+      top: 50%;
+      transform: translateY(-50%);
+
+      /* the arrow */
+      border: 10px solid #000;
+      border-color: transparent black transparent transparent;
+
+      display: none;
+    }
+
+    &:focus-within:before,
+    &:focus-within:after {
+      display: block;
+    }
   }
 
   .category {
