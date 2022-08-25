@@ -1,7 +1,7 @@
 import { CloseIcon, MenuIcon } from "@components/icons";
 import { ArticleCard } from "@components/news";
 import { Article } from "@components/types";
-import { Container } from "@components/ui";
+import { Container, SocialCircle } from "@components/ui";
 import { LocaleSwitcher, NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
 import { ReturnValue } from "@hooks/article/get-articles-ctx";
@@ -12,6 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import SocialLinks from "./SocialLinks";
 
 type BottomType = {
   active: boolean;
@@ -81,6 +82,24 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
     },
   ];
 
+  const renderSocialIcons = () =>
+    SocialLinks.filter((social) => social.name !== "Youtube").map(
+      (item, index) => {
+        return (
+          <SocialCircle
+            size="24px"
+            href={item.url}
+            aria-label={item.name}
+            key={index}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <item.icon size={14} />
+          </SocialCircle>
+        );
+      }
+    );
+
   // change direction of the page
   useEffect(() => {
     const changeDir = () => {
@@ -107,7 +126,11 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
             aria-label="Navigation Toggle"
             className="nav-toggle"
           >
-            {active ? <CloseIcon width="25px" /> : <MenuIcon width="25px" />}
+            {active ? (
+              <CloseIcon width="25px" height="25px" />
+            ) : (
+              <MenuIcon width="25px" height="25px" />
+            )}
           </button>
           <Link href="/">
             <a aria-label="AFGNews Logo which links to home when clicked">
@@ -117,9 +140,11 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                 layout="fixed"
                 height={60}
                 width={130}
+                className="logo"
               />
             </a>
           </Link>
+          <div className="socials">{renderSocialIcons()}</div>
         </TopContent>
         <BottomContent active={active}>
           <div className="menu">
@@ -164,7 +189,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
             </div>
           </div>
           <div className="right">
-            <div className="languages">
+            <div className="toggle-and-languages">
               <ToggleDarkWrapper active={isDark}>
                 <input
                   type="checkbox"
@@ -183,6 +208,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               </ToggleDarkWrapper>
               <LocaleSwitcher />
             </div>
+            <div className="socials">{renderSocialIcons()}</div>
           </div>
         </BottomContent>
       </Container>
@@ -213,6 +239,10 @@ const TopStrip = styled.div`
     font-size: 0.85rem;
     flex-grow: 1;
     min-width: max-content;
+
+    @media screen and (width < 900px) {
+      font-size: 0.65rem;
+    }
   }
 `;
 
@@ -220,50 +250,30 @@ const TopContent = styled.div<DropdownProps>`
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-top: 0.5rem;
 
   .nav-toggle {
     // Mobile navbar
     position: absolute;
-    left: 1rem;
-    top: 1.2rem;
+    left: -5px;
+    top: 1.6rem;
     cursor: pointer;
 
-    @media only screen and (min-width: 900px) {
+    @media only screen and (width > 900px) {
       display: none;
     }
   }
 
-  & div:last-of-type {
-    // Right side of the navbar
-    position: relative;
+  .socials {
+    position: absolute;
+    right: -5px;
+    top: 1.6rem;
+    display: flex;
+    gap: 0.5rem;
 
-    .dropdown {
-      display: ${(props) => (props.active ? "flex" : "none")};
-      background-color: white;
-      flex-direction: column;
-      gap: 0.5rem;
-      position: absolute;
-      color: black;
-      right: 0;
-      bottom: -5rem;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-      & > * {
-        transition: color, background-color 0.2s ease-in-out;
-        padding: 0.5rem 2rem;
-        white-space: nowrap;
-        z-index: 5;
-      }
-
-      & > *:hover {
-        background-color: var(--primary-color);
-        color: white;
-      }
-    }
-
-    .toggle {
-      margin-left: auto;
+    @media only screen and (width < 900px) {
+      display: none;
     }
   }
 `;
@@ -274,6 +284,7 @@ const BottomContent = styled.div<BottomType>`
   justify-content: space-between;
   transition: all 0.2s ease;
   gap: 1rem;
+  padding-bottom: 0.5rem;
 
   & .menu {
     display: flex;
@@ -318,29 +329,22 @@ const BottomContent = styled.div<BottomType>`
   }
 
   & .right {
-    & .languages {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .toggle-and-languages {
       display: flex;
       gap: 0.5rem;
-      font-size: 0.65rem;
-      min-width: max-content;
-      align-self: flex-end;
-      align-items: center;
-
-      & > * {
-        &:hover {
-          color: var(--primary-color);
-        }
-      }
-
-      @media only screen and (min-width: 768px) {
-        padding: 0.75rem 0;
-        align-self: auto;
-        font-size: 0.85rem;
-      }
     }
 
-    @media only screen and (min-width: 768px) {
-      flex-direction: row;
+    .socials {
+      display: flex;
+      gap: 0.5rem;
+      @media only screen and (width > 900px) {
+        display: none;
+      }
     }
   }
 
@@ -387,10 +391,14 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
   display: inline-block;
   background-color: #4d4d4d;
   border-radius: 30px;
-  height: 24px;
+  height: 20px;
   transition: 0.2s;
-  width: 50px;
+  width: 46px;
   cursor: pointer;
+
+  @media only screen and (width > 900px) {
+    width: 40px;
+  }
 
   & input {
     opacity: 0;
