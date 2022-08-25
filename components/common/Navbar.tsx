@@ -272,7 +272,7 @@ const TopContent = styled.div<DropdownProps>`
     display: flex;
     gap: 0.5rem;
 
-    @media only screen and (width < 900px) {
+    @media only screen and (width < 901px) {
       display: none;
     }
   }
@@ -342,7 +342,8 @@ const BottomContent = styled.div<BottomType>`
     .socials {
       display: flex;
       gap: 0.5rem;
-      @media only screen and (width > 900px) {
+
+      @media only screen and (width > 901px) {
         display: none;
       }
     }
