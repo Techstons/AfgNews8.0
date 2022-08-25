@@ -117,7 +117,11 @@ const ArticlePage = ({
               </div>
             </div>
 
-            <button className="share" onClick={invokeShare}>
+            <button
+              data-text="Link copied!"
+              className="share"
+              onClick={invokeShare}
+            >
               <Share size={16} />
             </button>
           </ArticleHeader>
@@ -197,7 +201,7 @@ const ArticleHeader = styled.header`
     position: relative;
 
     &:before {
-      content: "Link copied!";
+      content: attr(data-text);
       position: absolute;
 
       /* vertically center */
