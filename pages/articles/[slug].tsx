@@ -16,6 +16,7 @@ import {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from "next";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
@@ -54,7 +55,7 @@ export const getStaticProps = async ({
       article,
       recommended,
       articles,
-      ...(await serverSideTranslations(locale || "en", ["common"])),
+      ...(await serverSideTranslations(locale || "en", ["common", "slug"])),
     },
     notFound: !article,
     revalidate: 60,
@@ -65,6 +66,7 @@ const ArticlePage = ({
   article,
   recommended,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { t } = useTranslation();
   const router = useRouter();
   const articleDate = useFormattedDate(
     article?.createdAt ? new Date(article.createdAt) : new Date(),
@@ -143,7 +145,7 @@ const ArticlePage = ({
           />
         </ArticleWrapper>
         <Recommended>
-          <h2>Recommended</h2>
+          <h2>{t("slug:recommended")}</h2>
           {!!recommended &&
             recommended.map((article) => (
               <ArticleCard key={article.title} card={article} variant="slim" />

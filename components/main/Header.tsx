@@ -13,7 +13,7 @@ const Header = ({
   return (
     <Wrapper>
       <Container>
-        <HeaderTitle>{title}</HeaderTitle>
+        <HeaderTitle>{title === "Afghanistan" ? "AFG" : title}</HeaderTitle>
         <MainGrid>
           <TopNewsCard card={articles?.[0]} priority={true} />
           <SubGrid>
