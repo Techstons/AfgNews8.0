@@ -187,8 +187,8 @@ export default ArticlePage;
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 65% 35%;
-  gap: 1rem;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 4rem;
 
   @media (max-width: 768px) {
     grid-template-columns: 100%;
@@ -199,7 +199,7 @@ const ArticleWrapper = styled.div``;
 
 const Aside = styled.aside`
   display: flex;
-  gap: 3rem;
+  gap: 6rem;
   flex-direction: column;
 
   div {
