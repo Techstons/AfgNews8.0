@@ -114,8 +114,8 @@ const PrimaryAnchor = styled.a`
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      -webkit-line-clamp: 3; /* 3 number of lines to show */
-      line-clamp: 3;
+      -webkit-line-clamp: 2; /* 2 number of lines to show */
+      line-clamp: 2;
       -webkit-box-orient: vertical;
     }
   }
