@@ -258,7 +258,7 @@ const TopContent = styled.div<DropdownProps>`
     // Mobile navbar
     position: absolute;
     left: -5px;
-    top: 1.6rem;
+    top: 2.35rem;
     cursor: pointer;
 
     @media only screen and (min-width: 901px) {
