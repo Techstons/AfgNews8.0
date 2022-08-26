@@ -145,7 +145,8 @@ const ArticlePage = ({
             websiteId={7660}
             title={article.title}
             url={fullPath}
-            loadMode="scroll"
+            loadMode="load"
+            id={article.slug + article.sys.publishedAt}
           />
         </ArticleWrapper>
         <Recommended>
