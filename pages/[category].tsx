@@ -1,6 +1,5 @@
 import { Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
-import styled from "@emotion/styled";
 import {
   getAllCategoriesSlugs,
   getArticleByCategory,
@@ -53,7 +52,7 @@ export const getStaticProps = async ({
       articles,
       articlesPerCategory,
       slug: params!.category,
-      category: articlesPerCategory[0]?.category,
+      category: articlesPerCategory[0]?.category || params!.category,
       ...(await serverSideTranslations(locale || "en", ["common"])),
     },
     revalidate: 60,
@@ -66,7 +65,7 @@ const Category = ({
   category,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Wrapper>
+    <>
       <SEOHeader title={`${category} | AFGNews`} canonical={slug} />
       <Section
         variant="primary"
@@ -74,10 +73,8 @@ const Category = ({
         title={category}
         slug={category}
       />
-    </Wrapper>
+    </>
   );
 };
 
 export default Category;
-
-const Wrapper = styled.div``;

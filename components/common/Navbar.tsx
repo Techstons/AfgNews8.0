@@ -1,11 +1,8 @@
 import { CloseIcon, MenuIcon } from "@components/icons";
-import { ArticleCard } from "@components/news";
-import { Article } from "@components/types";
 import { Container, SocialCircle } from "@components/ui";
 import { LocaleSwitcher, NavCurrencyWidget } from "@components/widgets";
 import styled from "@emotion/styled";
 import { ReturnValue } from "@hooks/article/get-articles-ctx";
-import useFormattedDate from "@hooks/useFormattedDate";
 import { MoonFill, SunFill, Youtube } from "@styled-icons/bootstrap";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
