@@ -156,7 +156,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                       {menu.title}
                     </MenuItem>
                   </Link>
-                  {!!articles &&
+                  {/* {!!articles &&
                     articles[menu.default]?.items?.length > 0 &&
                     router.asPath !== menu.slug &&
                     menu.title !== "Videos" && (
@@ -173,7 +173,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                             );
                           })}
                       </MenuDropDown>
-                    )}
+                    )} */}
                 </div>
               );
             })}
@@ -281,7 +281,7 @@ const TopContent = styled.div<DropdownProps>`
 const BottomContent = styled.div<BottomType>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   transition: all 0.2s ease;
   gap: 1rem;
   padding: 0.5rem 0;
@@ -354,6 +354,7 @@ const BottomContent = styled.div<BottomType>`
     align-items: flex-start;
     transform-origin: top;
     animation: growDown 300ms ease;
+    justify-content: space-between;
   }
 
   @keyframes growDown {
