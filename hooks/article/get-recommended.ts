@@ -1,13 +1,25 @@
 import { normalizeArticle } from "@hooks/normalize";
-import { ArticleCollection } from "@hooks/types";
+import { Article, ArticleCollection } from "@hooks/types";
 import fetcherApi from "@hooks/utils/fetch-api";
 import { getRecommendedQuery } from "@hooks/utils/queries";
 
-export const getRecommended = async (variables?: { locale?: string }) => {
-  const res = await fetcherApi<ArticleCollection>(
-    getRecommendedQuery,
-    variables
-  );
+interface GetRecommended {
+  latest: {
+    items: Article[];
+  };
+  recommended: {
+    items: Article[];
+  };
+}
 
-  return normalizeArticle(res.articleCollection.items);
+export const getRecommended = async (variables?: {
+  locale?: string;
+  category: string;
+}) => {
+  const res = await fetcherApi<GetRecommended>(getRecommendedQuery, variables);
+
+  return {
+    latest: normalizeArticle(res.latest.items),
+    recommended: normalizeArticle(res.recommended.items),
+  };
 };

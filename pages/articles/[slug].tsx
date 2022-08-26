@@ -47,7 +47,10 @@ export const getStaticProps = async ({
   locale,
 }: GetStaticPropsContext<{ slug: string }>) => {
   const article = await getArticleBySlug({ slug: params!.slug, locale });
-  const recommended = await getRecommended({ locale });
+  const recommended = await getRecommended({
+    locale,
+    category: article.category,
+  });
   const articles = await getArticlesCtx({ locale });
 
   return {
@@ -149,13 +152,32 @@ const ArticlePage = ({
             id={article.slug + article.sys.publishedAt}
           />
         </ArticleWrapper>
-        <Recommended>
-          <h2>{t("slug:recommended")}</h2>
-          {!!recommended &&
-            recommended.map((article) => (
-              <ArticleCard key={article.title} card={article} variant="slim" />
-            ))}
-        </Recommended>
+        <Aside>
+          <div>
+            <h2>Latest news</h2>
+            {!!recommended.latest &&
+              recommended.latest.length !== 0 &&
+              recommended.latest.map((article) => (
+                <ArticleCard
+                  key={article.title}
+                  card={article}
+                  variant="slim"
+                />
+              ))}
+          </div>
+          <div>
+            <h2>{t("slug:recommended")}</h2>
+            {!!recommended.recommended &&
+              recommended.recommended.length !== 0 &&
+              recommended.recommended.map((article) => (
+                <ArticleCard
+                  key={article.title}
+                  card={article}
+                  variant="slim"
+                />
+              ))}
+          </div>
+        </Aside>
       </Wrapper>
     </Container>
   );
@@ -175,10 +197,16 @@ const Wrapper = styled.div`
 
 const ArticleWrapper = styled.div``;
 
-const Recommended = styled.div`
+const Aside = styled.aside`
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   flex-direction: column;
+
+  div {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
 `;
 
 const ArticleHeader = styled.header`
