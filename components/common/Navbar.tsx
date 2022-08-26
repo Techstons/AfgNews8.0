@@ -116,8 +116,24 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
       <Container>
         <TopStrip>
           <NavCurrencyWidget />
-          <div className="date">
-            {useFormattedDate(new Date(), "nav", router.locale)}
+          <div className="toggle-and-languages">
+            <ToggleDarkWrapper active={isDark}>
+              <input
+                type="checkbox"
+                aria-label="Toggle dark mode"
+                onChange={() => setIsDark(!isDark)}
+                checked={isDark}
+                className="toggle-dark"
+                id="toggle-dark"
+                name="toggle-dark"
+                value="toggle-dark"
+                aria-checked={isDark}
+              />
+              <span className="slider">
+                {!isDark ? <SunFill size={16} /> : <MoonFill size={16} />}
+              </span>
+            </ToggleDarkWrapper>
+            <LocaleSwitcher />
           </div>
         </TopStrip>
         <TopContent active={active}>
@@ -189,25 +205,6 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
             </div>
           </div>
           <div className="right">
-            <div className="toggle-and-languages">
-              <ToggleDarkWrapper active={isDark}>
-                <input
-                  type="checkbox"
-                  aria-label="Toggle dark mode"
-                  onChange={() => setIsDark(!isDark)}
-                  checked={isDark}
-                  className="toggle-dark"
-                  id="toggle-dark"
-                  name="toggle-dark"
-                  value="toggle-dark"
-                  aria-checked={isDark}
-                />
-                <span className="slider">
-                  {!isDark ? <SunFill size={16} /> : <MoonFill size={16} />}
-                </span>
-              </ToggleDarkWrapper>
-              <LocaleSwitcher />
-            </div>
             <div className="socials">{renderSocialIcons()}</div>
           </div>
         </BottomContent>
@@ -235,14 +232,10 @@ const TopStrip = styled.div`
   align-items: center;
   gap: 0.5rem;
 
-  & .date {
-    font-size: 0.85rem;
-    flex-grow: 1;
-    min-width: max-content;
-
-    @media screen and (max-width: 901px) {
-      font-size: 0.65rem;
-    }
+  .toggle-and-languages {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
   }
 `;
 
@@ -329,16 +322,6 @@ const BottomContent = styled.div<BottomType>`
   }
 
   & .right {
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
-    align-items: flex-end;
-
-    .toggle-and-languages {
-      display: flex;
-      gap: 0.5rem;
-    }
-
     .socials {
       display: flex;
       gap: 0.5rem;

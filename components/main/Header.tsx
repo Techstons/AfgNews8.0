@@ -2,6 +2,8 @@ import { ArticleCard, TopNewsCard } from "@components/news";
 import { Article } from "@components/types";
 import { Container } from "@components/ui";
 import styled from "@emotion/styled";
+import useFormattedDate from "@hooks/useFormattedDate";
+import { useRouter } from "next/router";
 
 const Header = ({
   title,
@@ -10,10 +12,18 @@ const Header = ({
   articles?: Article[];
   title: string;
 }) => {
+  const router = useRouter();
+
   return (
     <Wrapper>
       <Container>
-        <HeaderTitle>{title === "Afghanistan" ? "AFG" : title}</HeaderTitle>
+        <Top>
+          <HeaderTitle>{title === "Afghanistan" ? "AFG" : title}</HeaderTitle>
+          <div className="date">
+            {useFormattedDate(new Date(), "nav", router.locale)}
+          </div>
+        </Top>
+
         <MainGrid>
           <TopNewsCard card={articles?.[0]} priority={true} />
           <SubGrid>
@@ -40,7 +50,18 @@ const Wrapper = styled.header`
 
 const HeaderTitle = styled.h2`
   text-transform: uppercase;
+`;
+
+const Top = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 0.5rem;
+
+  .date {
+    color: var(--text-color-alt);
+    font-size: 24px;
+  }
 `;
 
 const MainGrid = styled.div`

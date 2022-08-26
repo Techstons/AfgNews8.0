@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -27,13 +28,21 @@ export default function LocaleSwitcher() {
         ?.filter((l) => l !== locale) // Filter out the current locale
         .map((locale) => {
           return (
-            <span key={"locale-" + locale}>
+            <Wrapper key={"locale-" + locale}>
               <Link href={{ pathname, query }} as={asPath} locale={locale}>
-                <a>{languages[locale as keyof typeof languages].title}</a>
+                <a>
+                  {locale === "fa"
+                    ? languages[locale as keyof typeof languages].title
+                    : locale}
+                </a>
               </Link>
-            </span>
+            </Wrapper>
           );
         })}
     </>
   );
 }
+
+const Wrapper = styled.span`
+  text-transform: uppercase;
+`;
