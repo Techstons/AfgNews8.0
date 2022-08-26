@@ -167,7 +167,6 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 65% 35%;
   gap: 1rem;
-  margin: 2rem 0;
 
   @media (max-width: 768px) {
     grid-template-columns: 100%;
@@ -261,6 +260,7 @@ const ArticleHeader = styled.header`
 
   .contributor,
   .date {
+    margin-bottom: 0.3rem;
     font-size: 0.65rem;
   }
 
