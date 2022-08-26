@@ -285,6 +285,8 @@ const BottomContent = styled.div<BottomType>`
     align-items: center;
 
     & .menu-item {
+      font-size: 1.15rem;
+
       &:hover .menu-dropdown {
         display: grid;
         min-height: 150px;
