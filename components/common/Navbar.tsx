@@ -281,12 +281,11 @@ const BottomContent = styled.div<BottomType>`
 
   & .menu {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     align-items: center;
+    padding-top: 0.25rem;
 
     & .menu-item {
-      font-size: 1.15rem;
-
       &:hover .menu-dropdown {
         display: grid;
         min-height: 150px;
