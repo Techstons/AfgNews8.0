@@ -64,7 +64,7 @@ const Section: FC<ISection> = ({
         {variant === "primary" ? ( // USED PER CATEGORY PAGE
           <>
             <h2 className="header-title">
-              {title.toLowerCase() === "afg" ? "Afghanistan" : title}
+              {title?.toLowerCase() === "afg" ? "Afghanistan" : title}
             </h2>
             <PrimaryArticleContainer>
               {renderArticlesWithColumns(3, 9)}
