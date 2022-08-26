@@ -66,7 +66,7 @@ const Category = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <SEOHeader title={`${category} | AFGNews`} canonical={slug} />
+      <SEOHeader title={`${category} | AfgNews`} canonical={slug} />
       <Section
         variant="primary"
         cards={articlesPerCategory}
