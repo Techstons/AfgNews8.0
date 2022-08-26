@@ -6,7 +6,7 @@ interface ISEO {
   author?: string;
   keywords?: string[];
   siteName?: string;
-  canonical: string;
+  canonical?: string;
   ogImage?: string;
   ogType?: string;
   twitterHandle?: string;
@@ -75,7 +75,7 @@ const SEOHeader = ({
         property="twitter:description"
         content={description}
       />
-      <link rel="canonical" href={`${DOMAIN}/${canonical ? slug : ""}`} />
+      <link rel="canonical" href={`${DOMAIN}${canonical ? slug : ""}`} />
       <link rel="shortcut icon" href="/favicon.ico" />
     </Head>
   );

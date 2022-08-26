@@ -22,7 +22,7 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
   return (
     <>
-      <SEOHeader canonical="/" />
+      <SEOHeader />
       <Header articles={articles.Home.items} title={t("home:top_news")} />
       <Section
         cards={articles.World.items}
