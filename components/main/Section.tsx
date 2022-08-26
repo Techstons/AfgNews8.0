@@ -63,6 +63,7 @@ const Section: FC<ISection> = ({
       <Container>
         {variant === "primary" ? ( // USED PER CATEGORY PAGE
           <>
+            <h2 className="header-title">{title}</h2>
             <PrimaryArticleContainer>
               {renderArticlesWithColumns(3, 9)}
             </PrimaryArticleContainer>
@@ -115,6 +116,13 @@ export default Section;
 
 const Wrapper = styled.section`
   padding: 1rem 0;
+
+  .header-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-size: 2rem;
+  }
 `;
 
 const Header = styled.div`

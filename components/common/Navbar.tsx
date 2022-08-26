@@ -51,6 +51,11 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
       slug: "/",
     },
     {
+      default: "Afg",
+      title: "Afg",
+      slug: "/afg",
+    },
+    {
       default: "World",
       title: t("common:world"),
       slug: "/world",
@@ -149,7 +154,10 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
             )}
           </button>
           <Link href="/">
-            <a aria-label="AFGNews Logo which links to home when clicked">
+            <a
+              aria-label="AFGNews Logo which links to home when clicked"
+              className="logo"
+            >
               <Image
                 src="c_limit,h_60,q_auto:low,w_130/assets/logo_wjawfm.png"
                 alt="AFGNews Logo"
@@ -244,7 +252,7 @@ const TopContent = styled.div<DropdownProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 0.5rem;
+  padding-top: 0.65rem;
 
   .nav-toggle {
     // Mobile navbar
@@ -256,6 +264,10 @@ const TopContent = styled.div<DropdownProps>`
     @media only screen and (min-width: 901px) {
       display: none;
     }
+  }
+
+  .logo {
+    margin: 0.5rem 0;
   }
 
   .socials {
@@ -286,6 +298,8 @@ const BottomContent = styled.div<BottomType>`
     padding-top: 0.25rem;
 
     & .menu-item {
+      text-transform: uppercase;
+
       &:hover .menu-dropdown {
         display: grid;
         min-height: 150px;

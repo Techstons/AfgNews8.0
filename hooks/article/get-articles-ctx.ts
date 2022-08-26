@@ -6,6 +6,7 @@ import { getArticlesCtxQuery } from "@hooks/utils/queries";
 
 type CategoryKeys =
   | "Home"
+  | "Afg"
   | "World"
   | "Business"
   | "Tech"
@@ -30,6 +31,9 @@ export const getArticlesCtx = async (variables?: { locale?: string }) => {
 
   let temp: ReturnValue = {
     Home: {
+      items: [],
+    },
+    Afg: {
       items: [],
     },
     World: {
