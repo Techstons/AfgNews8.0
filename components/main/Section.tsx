@@ -59,7 +59,7 @@ const Section: FC<ISection> = ({
   };
 
   return (
-    <section>
+    <Wrapper>
       <Container>
         {variant === "primary" ? ( // USED PER CATEGORY PAGE
           <>
@@ -107,11 +107,15 @@ const Section: FC<ISection> = ({
           </SecondaryContainer>
         )}
       </Container>
-    </section>
+    </Wrapper>
   );
 };
 
 export default Section;
+
+const Wrapper = styled.section`
+  padding: 1rem 0;
+`;
 
 const Header = styled.div`
   display: flex;
