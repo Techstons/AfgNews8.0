@@ -17,11 +17,11 @@ const DEFAULT_OG_IMAGE =
   "https://res.cloudinary.com/dssf8vpym/image/upload/v1660912190/assets/logo_wjawfm.png";
 
 const SEOHeader = ({
-  title = "AFGNews | #1 News Source for Afghanistan",
-  description = "AFGNews is the #1 news source for Afghanistan. We are the only news source in the world that provides the latest news and updates on Afghanistan.",
+  title = "Simplified Digestible Daily News Of Afghanistan And Around The World.",
+  description = "Brought to you by new Afghan Generation for the New Afghan Generation.",
   keywords = ["afghanistan", "news", "latest", "updates"],
-  author = "AFGNews",
-  siteName = "AFGNews",
+  author = "AfgNews",
+  siteName = "AfgNews",
   canonical,
   ogImage = DEFAULT_OG_IMAGE,
   ogType = "website",
