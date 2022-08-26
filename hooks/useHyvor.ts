@@ -4,6 +4,7 @@ export function addScript(src: string, id: string) {
   var script = document.createElement("script");
   script.src = src;
   script.id = id;
+  script.async = true;
 
   document.body.appendChild(script);
 }
