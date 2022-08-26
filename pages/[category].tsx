@@ -52,7 +52,8 @@ export const getStaticProps = async ({
     props: {
       articles,
       articlesPerCategory,
-      category: params!.category,
+      slug: params!.category,
+      category: articlesPerCategory[0]?.category,
       ...(await serverSideTranslations(locale || "en", ["common"])),
     },
     revalidate: 60,
@@ -61,11 +62,12 @@ export const getStaticProps = async ({
 
 const Category = ({
   articlesPerCategory,
+  slug,
   category,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Wrapper>
-      <SEOHeader title={`${category} | AFGNews`} canonical={category} />
+      <SEOHeader title={`${category} | AFGNews`} canonical={slug} />
       <Section
         variant="primary"
         cards={articlesPerCategory}
