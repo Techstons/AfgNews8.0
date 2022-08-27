@@ -315,7 +315,7 @@ const BottomContent = styled.div<BottomType>`
 
     .youtube {
       .youtube-logo {
-        color: white;
+        color: black;
         border: 2px solid var(--primary-color);
         border-radius: 0.5rem;
         padding: 0.025rem 0.05rem;

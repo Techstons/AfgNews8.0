@@ -42,7 +42,7 @@ const NavCurrencyWidget = () => {
   }, []);
 
   return (
-    <Marquee gradientColor={[0, 0, 0]} gradientWidth={120} speed={40}>
+    <Marquee gradientWidth={120} speed={40}>
       {renderStockCards()}
     </Marquee>
   );
