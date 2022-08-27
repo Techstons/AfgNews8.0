@@ -43,7 +43,6 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
         title={t("common:tech")}
         slug="/tech-and-science"
       ></Section>
-
       <Section
         cards={articles.Health.items}
         variant="tertiary"
