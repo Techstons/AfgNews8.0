@@ -118,25 +118,6 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
       <Container>
         <TopStrip>
           <NavCurrencyWidget />
-          <div className="toggle-and-languages">
-            <ToggleDarkWrapper active={isDark}>
-              <input
-                type="checkbox"
-                aria-label="Toggle dark mode"
-                onChange={() => setIsDark(!isDark)}
-                checked={isDark}
-                className="toggle-dark"
-                id="toggle-dark"
-                name="toggle-dark"
-                value="toggle-dark"
-                aria-checked={isDark}
-              />
-              <span className="slider">
-                {!isDark ? <SunFill size={16} /> : <MoonFill size={16} />}
-              </span>
-            </ToggleDarkWrapper>
-            <LocaleSwitcher />
-          </div>
         </TopStrip>
         <TopContent active={active}>
           <TopBanner>
@@ -148,6 +129,16 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               height={3}
             />
           </TopBanner>
+          <BottomBanner>
+            <Image
+              src="f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa.webp"
+              alt="Topbar flag colors"
+              layout="fill"
+              width={1280}
+              height={3}
+            />
+          </BottomBanner>
+
           <button
             onClick={() => setActive(!active)}
             aria-label="Navigation Toggle"
@@ -220,6 +211,25 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               <div className="socials">{renderSocialIcons()}</div>
             </div>
           </BottomContent>
+          <div className="toggle-and-languages">
+            <ToggleDarkWrapper active={isDark}>
+              <input
+                type="checkbox"
+                aria-label="Toggle dark mode"
+                onChange={() => setIsDark(!isDark)}
+                checked={isDark}
+                className="toggle-dark"
+                id="toggle-dark"
+                name="toggle-dark"
+                value="toggle-dark"
+                aria-checked={isDark}
+              />
+              <span className="slider">
+                {!isDark ? <SunFill size={16} /> : <MoonFill size={16} />}
+              </span>
+            </ToggleDarkWrapper>
+            <LocaleSwitcher />
+          </div>
           {/* <div className="socials">{renderSocialIcons()}</div> */}
         </TopContent>
       </Container>
@@ -230,6 +240,14 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
 export default Navbar;
 
 const TopBanner = styled.div`
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  left: 0;
+  top: 3px;
+`;
+
+const BottomBanner = styled.div`
   position: absolute;
   height: 5px;
   width: 100%;
@@ -266,6 +284,8 @@ const TopContent = styled.div<DropdownProps>`
   position: relative;
   display: flex;
   align-items: center;
+  margin-top: 0.75rem;
+  justify-content: space-between;
 
   .nav-toggle {
     // Mobile navbar
