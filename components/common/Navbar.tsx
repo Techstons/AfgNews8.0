@@ -116,6 +116,16 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   return (
     <Root>
       <Container>
+        <div className="top-banner">
+          <Image
+            src="f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa.webp"
+            alt="Topbar flag colors"
+            layout="fill"
+            width={1280}
+            height={3}
+          />
+        </div>
+
         <TopStrip>
           <NavCurrencyWidget />
           <div className="toggle-and-languages">
@@ -226,6 +236,14 @@ const Root = styled.nav`
   font-weight: var(--font-medium);
   color: var(--nav-text);
 
+  .top-banner {
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
   @media only screen and (max-width: 640px) {
     padding: 0.25rem 0.5rem;
   }
@@ -236,6 +254,7 @@ const TopStrip = styled.div`
   font-size: 0.65rem;
   align-items: center;
   gap: 0.5rem;
+  margin-top: 0.2rem;
 
   .toggle-and-languages {
     display: flex;
