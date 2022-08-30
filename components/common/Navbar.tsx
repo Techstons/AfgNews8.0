@@ -393,8 +393,16 @@ const MenuItem = styled.a`
   background-color: black;
 
   &:hover {
+    background-image: linear-gradient(
+      to right,
+      black 0%,
+      black 65%,
+      #d32011 60%,
+      #d32011 85%,
+      #007a36 67%,
+      #007a36 100%
+    );
     font-weight: 700;
-    background-image: linear-gradient(90deg, #000000, #d32011, #007a36);
   }
 
   &::before {
