@@ -398,10 +398,10 @@ const MenuItem = styled.a<ToggleProps>`
       props.active
         ? `linear-gradient(
       125deg,
-      #d32111c6 0%,
-      #d32111c6 40%,
-      #007a36 40%,
-      #007a36 100%
+      white 0%,
+      white 40%,
+      #007a377d 40%,
+      #007a377d 100%
     )`
         : `linear-gradient(
       125deg,
