@@ -125,7 +125,6 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
             height={3}
           />
         </div>
-
         <TopStrip>
           <NavCurrencyWidget />
           <div className="toggle-and-languages">
@@ -253,6 +252,7 @@ const Root = styled.nav`
 `;
 
 const TopStrip = styled.div`
+  direction: ltr;
   display: flex;
   font-size: 0.65rem;
   align-items: center;
