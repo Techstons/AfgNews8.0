@@ -127,7 +127,7 @@ const PrimaryWrapper = styled.div`
     text-transform: uppercase;
     font-size: 2.25rem;
     font-weight: 400;
-    font-family: "DM Serif Display", serif;
+    font-family: "Vollkorn SC", serif;
   }
 `;
 

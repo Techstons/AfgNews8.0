@@ -109,7 +109,6 @@ const PrimaryAnchor = styled.a`
 
     .description {
       display: none;
-      font-size: 0.8rem;
       font-weight: 400;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -126,7 +125,7 @@ const PrimaryAnchor = styled.a`
     }
   }
 
-  @media only screen and (max-width: 450px) {
+  @media only screen and (max-width: 950px) {
     padding-bottom: 1rem; // Adds padding-bottom on screens smaller than 450px so category doesn't touch the description
   }
 

@@ -392,6 +392,7 @@ const MenuItem = styled.a<ToggleProps>`
   -webkit-background-clip: text;
   color: transparent;
   background-color: ${(props) => (props.active ? "white" : "black")};
+  font-family: "Vollkorn SC", serif;
 
   &:hover {
     background-image: ${(props) =>
