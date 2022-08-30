@@ -388,6 +388,7 @@ const MenuItem = styled.a`
   -webkit-background-clip: text;
   color: transparent;
   background-color: black;
+  font-weight: 700;
 
   /* background-size: 0% 3px;
   background-repeat: no-repeat;
