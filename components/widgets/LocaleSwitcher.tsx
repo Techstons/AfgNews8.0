@@ -9,13 +9,13 @@ export default function LocaleSwitcher() {
 
   const languages = {
     en: {
-      title: "English",
+      title: "en",
     },
     ru: {
-      title: "Русский",
+      title: "ru",
     },
     ps: {
-      title: "پښتو",
+      title: "پشتو",
     },
     fa: {
       title: "فارسی",
@@ -30,11 +30,7 @@ export default function LocaleSwitcher() {
           return (
             <Wrapper key={"locale-" + locale}>
               <Link href={{ pathname, query }} as={asPath} locale={locale}>
-                <a>
-                  {locale === "fa"
-                    ? languages[locale as keyof typeof languages].title
-                    : locale}
-                </a>
+                <a>{languages[locale as keyof typeof languages].title}</a>
               </Link>
             </Wrapper>
           );
