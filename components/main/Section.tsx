@@ -63,9 +63,9 @@ const Section: FC<ISection> = ({
       <Container>
         {variant === "primary" ? ( // USED PER CATEGORY PAGE
           <>
-            <h2 className="header-title">
+            <h1 className="header-title">
               {title?.toLowerCase() === "afg" ? "Afghanistan" : title}
-            </h2>
+            </h1>
             <PrimaryArticleContainer>
               {renderArticlesWithColumns(3, 9)}
             </PrimaryArticleContainer>
@@ -123,7 +123,6 @@ const Wrapper = styled.section`
     text-align: center;
     margin-bottom: 2rem;
     text-transform: uppercase;
-    font-size: 2rem;
   }
 `;
 
@@ -134,6 +133,10 @@ const Header = styled.div`
   border-bottom: 1px solid var(--primary-light);
   margin-bottom: 1rem;
   text-transform: uppercase;
+
+  h2 {
+    font-size: 1rem;
+  }
 `;
 
 const HeaderLink = styled.span`

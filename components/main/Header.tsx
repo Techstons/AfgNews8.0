@@ -50,6 +50,7 @@ const Wrapper = styled.header`
 
 const HeaderTitle = styled.h2`
   text-transform: uppercase;
+  font-size: 1rem;
 `;
 
 const Top = styled.div`
@@ -60,7 +61,7 @@ const Top = styled.div`
 
   .date {
     color: var(--text-color-alt);
-    font-size: 24px;
+    font-size: 1rem;
   }
 `;
 

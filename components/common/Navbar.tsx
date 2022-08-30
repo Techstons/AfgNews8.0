@@ -388,19 +388,9 @@ const MenuItem = styled.a`
   -webkit-background-clip: text;
   color: transparent;
   background-color: black;
-  font-weight: 700;
-
-  /* background-size: 0% 3px;
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  transition: background-size 300ms ease;
 
   &:hover {
-    color: var(--primary-color);
-    background-size: 100% 3px;
-  } */
-
-  &:hover {
+    font-weight: 700;
     background-image: linear-gradient(90deg, #000000, #d32011, #007a36);
   }
 `;
