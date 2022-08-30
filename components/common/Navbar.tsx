@@ -183,7 +183,10 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               return (
                 <div className="menu-item" key={i}>
                   <Link href={menu.slug} passHref={true}>
-                    <MenuItem onClick={() => setActive(false)}>
+                    <MenuItem
+                      onClick={() => setActive(false)}
+                      title={menu.title}
+                    >
                       {menu.title}
                     </MenuItem>
                   </Link>
@@ -392,6 +395,15 @@ const MenuItem = styled.a`
   &:hover {
     font-weight: 700;
     background-image: linear-gradient(90deg, #000000, #d32011, #007a36);
+  }
+
+  &::before {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
   }
 `;
 
