@@ -126,6 +126,10 @@ const PrimaryAnchor = styled.a`
     }
   }
 
+  @media only screen and (max-width: 450px) {
+    padding-bottom: 1rem; // Adds padding-bottom on screens smaller than 450px so category doesn't touch the description
+  }
+
   @media only screen and (min-width: 1024px) {
     grid-template-columns: 1fr;
 
