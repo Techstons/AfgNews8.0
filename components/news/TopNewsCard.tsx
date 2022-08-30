@@ -12,19 +12,21 @@ interface INewsCard {
 
 const NewsCard: FC<INewsCard> = ({ card, priority }) => {
   return (
-    <Link href={`/articles/${card?.slug}`} passHref={true}>
-      <Card>
-        <CloudinaryImage
-          featuredImage={card?.featuredImage}
-          title={card?.title}
-          priority={priority}
-        />
-        <div className="primary">
-          <h3>{card?.title}</h3>
-          <p>{card?.category}</p>
-        </div>
-      </Card>
-    </Link>
+    <article>
+      <Link href={`/articles/${card?.slug}`} passHref={true}>
+        <Card>
+          <CloudinaryImage
+            featuredImage={card?.featuredImage}
+            title={card?.title}
+            priority={priority}
+          />
+          <div className="primary">
+            <h3>{card?.title}</h3>
+            <p>{card?.category}</p>
+          </div>
+        </Card>
+      </Link>
+    </article>
   );
 };
 
@@ -49,12 +51,23 @@ const Card = styled.a`
   }
 
   & .primary {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    float: none;
     width: 100%;
-    box-shadow: inset 0 0 60px rgb(0 0 0 / 60%);
-    padding: 0.5rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0;
+    height: auto;
+    padding: 15% 0.75rem 0.75rem 0.75rem;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorStr=#00000000, endColorStr=#DD000000);
+    background-color: rgba(0, 0, 0, 0);
+    background-image: -webkit-linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.8)
+    );
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+    background-position-y: -1px;
+    bottom: -1px;
 
     & h3 {
       font-weight: 500;
