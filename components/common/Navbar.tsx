@@ -116,16 +116,6 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   return (
     <Root>
       <Container>
-        <div className="top-banner">
-          <Image
-            src="f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa.webp"
-            alt="Topbar flag colors"
-            layout="fill"
-            width={1280}
-            height={3}
-          />
-        </div>
-
         <TopStrip>
           <NavCurrencyWidget />
           <div className="toggle-and-languages">
@@ -149,6 +139,15 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
           </div>
         </TopStrip>
         <TopContent active={active}>
+          <TopBanner>
+            <Image
+              src="f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa.webp"
+              alt="Topbar flag colors"
+              layout="fill"
+              width={1280}
+              height={3}
+            />
+          </TopBanner>
           <button
             onClick={() => setActive(!active)}
             aria-label="Navigation Toggle"
@@ -175,19 +174,17 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               />
             </a>
           </Link>
-          {/* <div className="socials">{renderSocialIcons()}</div> */}
-        </TopContent>
-        <BottomContent active={active}>
-          <div className="menu">
-            {navLinks.map((menu, i) => {
-              return (
-                <div className="menu-item" key={i}>
-                  <Link href={menu.slug} passHref={true}>
-                    <MenuItem onClick={() => setActive(false)}>
-                      {menu.title}
-                    </MenuItem>
-                  </Link>
-                  {/* {!!articles &&
+          <BottomContent active={active}>
+            <div className="menu">
+              {navLinks.map((menu, i) => {
+                return (
+                  <div className="menu-item" key={i}>
+                    <Link href={menu.slug} passHref={true}>
+                      <MenuItem onClick={() => setActive(false)}>
+                        {menu.title}
+                      </MenuItem>
+                    </Link>
+                    {/* {!!articles &&
                     articles[menu.default]?.items?.length > 0 &&
                     router.asPath !== menu.slug &&
                     menu.title !== "Videos" && (
@@ -205,24 +202,26 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                           })}
                       </MenuDropDown>
                     )} */}
-                </div>
-              );
-            })}
-            <div className="youtube">
-              <a
-                href="https://www.youtube.com/channel/UC1JjrqGsFWlcVpcImM98Xjw"
-                target={"_blank"}
-                rel="noreferrer"
-                aria-label="AfgNews Youtube Channel"
-              >
-                <Youtube className="youtube-logo" height={22} width={26} />
-              </a>
+                  </div>
+                );
+              })}
+              <div className="youtube">
+                <a
+                  href="https://www.youtube.com/channel/UC1JjrqGsFWlcVpcImM98Xjw"
+                  target={"_blank"}
+                  rel="noreferrer"
+                  aria-label="AfgNews Youtube Channel"
+                >
+                  <Youtube className="youtube-logo" height={22} width={26} />
+                </a>
+              </div>
             </div>
-          </div>
-          <div className="right">
-            <div className="socials">{renderSocialIcons()}</div>
-          </div>
-        </BottomContent>
+            <div className="right">
+              <div className="socials">{renderSocialIcons()}</div>
+            </div>
+          </BottomContent>
+          {/* <div className="socials">{renderSocialIcons()}</div> */}
+        </TopContent>
       </Container>
     </Root>
   );
@@ -230,19 +229,19 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
 
 export default Navbar;
 
+const TopBanner = styled.div`
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+`;
+
 const Root = styled.nav`
   padding: 0.5rem 1rem;
   background-color: var(--nav-color);
   font-weight: var(--font-medium);
   color: var(--nav-text);
-
-  .top-banner {
-    position: absolute;
-    height: 5px;
-    width: 100%;
-    left: 0;
-    top: 0;
-  }
 
   @media only screen and (max-width: 640px) {
     padding: 0.25rem 0.5rem;
@@ -266,9 +265,7 @@ const TopStrip = styled.div`
 const TopContent = styled.div<DropdownProps>`
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding-top: 0.65rem;
 
   .nav-toggle {
     // Mobile navbar
@@ -300,6 +297,9 @@ const TopContent = styled.div<DropdownProps>`
 `;
 
 const BottomContent = styled.div<BottomType>`
+  position: absolute;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
