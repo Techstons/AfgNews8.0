@@ -397,19 +397,19 @@ const MenuItem = styled.a<ToggleProps>`
     background-image: ${(props) =>
       props.active
         ? `linear-gradient(
-      to right,
+      125deg,
       #d32011 0%,
       #d32011 50%,
       #007a36 50%,
       #007a36 100%
     )`
         : `linear-gradient(
-      to right,
+      125deg,
       black 0%,
-      black 33%,
-      #d32011 33%,
-      #d32011 66%,
-      #007a36 66%,
+      black 30%,
+      #d32011 30%,
+      #d32011 55%,
+      #007a36 55%,
       #007a36 100%
     )`};
   }
