@@ -114,7 +114,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   }, [router.locale]);
 
   return (
-    <Root>
+    <Root active={isDark}>
       <Container>
         <div className="top-banner">
           <Image
@@ -126,7 +126,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
           />
         </div>
         <TopStrip>
-          <NavCurrencyWidget />
+          <NavCurrencyWidget isDark={isDark} />
           <div className="toggle-and-languages">
             <ToggleDarkWrapper active={isDark}>
               <input
@@ -185,6 +185,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                     <MenuItem
                       onClick={() => setActive(false)}
                       title={menu.title}
+                      active={isDark}
                     >
                       {menu.title}
                     </MenuItem>
@@ -232,11 +233,12 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
 
 export default Navbar;
 
-const Root = styled.nav`
+const Root = styled.nav<ToggleProps>`
   padding: 0.5rem 1rem;
-  background-color: var(--nav-color);
+  background-color: ${(props) =>
+    props.active ? "var(--nav-text)" : "var(--nav-color)"};
   font-weight: var(--font-medium);
-  color: var(--nav-text);
+  color: ${(props) => (props.active ? "var(--nav-color)" : "var(--nav-text)")};
 
   .top-banner {
     position: absolute;
@@ -337,7 +339,6 @@ const BottomContent = styled.div<BottomType>`
 
     .youtube {
       .youtube-logo {
-        color: black;
         border: 2px solid var(--primary-color);
         border-radius: 0.5rem;
         padding: 0.025rem 0.05rem;
@@ -384,16 +385,25 @@ const BottomContent = styled.div<BottomType>`
   }
 `;
 
-const MenuItem = styled.a`
+const MenuItem = styled.a<ToggleProps>`
   cursor: pointer;
   padding-bottom: 1rem;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-color: black;
+  background-color: ${(props) => (props.active ? "white" : "black")};
 
   &:hover {
-    background-image: linear-gradient(
+    background-image: ${(props) =>
+      props.active
+        ? `linear-gradient(
+      to right,
+      #d32011 0%,
+      #d32011 50%,
+      #007a36 50%,
+      #007a36 100%
+    )`
+        : `linear-gradient(
       to right,
       black 0%,
       black 33%,
@@ -401,7 +411,7 @@ const MenuItem = styled.a`
       #d32011 66%,
       #007a36 66%,
       #007a36 100%
-    );
+    )`};
   }
 `;
 

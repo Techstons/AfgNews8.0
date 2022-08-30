@@ -4,7 +4,11 @@ import { Currency } from "@hooks/types";
 import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 
-const NavCurrencyWidget = () => {
+interface INavCurrencyWidget {
+  isDark: boolean;
+}
+
+const NavCurrencyWidget = ({ isDark }: INavCurrencyWidget) => {
   const [currencies, setCurrencies] = useState<Currency[]>();
 
   const renderStockCards = () => {
@@ -42,7 +46,11 @@ const NavCurrencyWidget = () => {
   }, []);
 
   return (
-    <Marquee gradientWidth={120} speed={40}>
+    <Marquee
+      gradientColor={isDark ? [0, 0, 0] : [255, 255, 255]}
+      gradientWidth={120}
+      speed={40}
+    >
       {renderStockCards()}
     </Marquee>
   );
