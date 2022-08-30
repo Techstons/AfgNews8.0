@@ -23,7 +23,7 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <SEOHeader />
-      <Header articles={articles.Home.items} title={t("home:top_news")} />
+      <Header articles={articles.Home.items} title={t("common:afg")} />
       <Section
         cards={articles.World.items}
         variant="tertiary"

@@ -49,7 +49,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
     },
     {
       default: "Afg",
-      title: "Afg",
+      title: t("common:afg") === "Afghanistan" ? "AFG" : t("common:afg"),
       slug: "/afg",
     },
     {
