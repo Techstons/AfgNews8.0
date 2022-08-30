@@ -402,16 +402,6 @@ const MenuItem = styled.a`
       #007a36 67%,
       #007a36 100%
     );
-    font-weight: 700;
-  }
-
-  &::before {
-    display: block;
-    content: attr(title);
-    font-weight: bold;
-    height: 0;
-    overflow: hidden;
-    visibility: hidden;
   }
 `;
 
