@@ -35,6 +35,11 @@ export default function LocaleSwitcher() {
             </Wrapper>
           );
         })}
+      <Wrapper key={"locale-" + locale}>
+        <Link href={{}}>
+          <a>{languages["ps"].title}</a>
+        </Link>
+      </Wrapper>
     </>
   );
 }
