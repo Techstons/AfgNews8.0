@@ -62,14 +62,14 @@ const Section: FC<ISection> = ({
     <Wrapper>
       <Container>
         {variant === "primary" ? ( // USED PER CATEGORY PAGE
-          <>
+          <PrimaryWrapper>
             <h1 className="header-title">
               {title?.toLowerCase() === "afg" ? "Afghanistan" : title}
             </h1>
             <PrimaryArticleContainer>
               {renderArticlesWithColumns(3, 9)}
             </PrimaryArticleContainer>
-          </>
+          </PrimaryWrapper>
         ) : variant === "secondary" ? ( // ARTICLES WITH A WIDGET BESIDE
           <SecondaryContainer position={position}>
             <div>
@@ -118,11 +118,16 @@ export default Section;
 
 const Wrapper = styled.section`
   padding: 1rem 0;
+`;
 
+const PrimaryWrapper = styled.div`
   .header-title {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3.5rem;
     text-transform: uppercase;
+    font-size: 2.25rem;
+    font-weight: 400;
+    font-family: "DM Serif Display", serif;
   }
 `;
 
