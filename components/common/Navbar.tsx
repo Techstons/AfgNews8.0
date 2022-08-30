@@ -384,8 +384,23 @@ const BottomContent = styled.div<BottomType>`
 const MenuItem = styled.a`
   cursor: pointer;
   padding-bottom: 1rem;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-color: black;
+
+  /* background-size: 0% 3px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 300ms ease;
+
   &:hover {
     color: var(--primary-color);
+    background-size: 100% 3px;
+  } */
+
+  &:hover {
+    background-image: linear-gradient(90deg, #000000, #d32011, #007a36);
   }
 `;
 
