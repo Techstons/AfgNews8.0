@@ -396,10 +396,10 @@ const MenuItem = styled.a`
     background-image: linear-gradient(
       to right,
       black 0%,
-      black 65%,
-      #d32011 60%,
-      #d32011 85%,
-      #007a36 67%,
+      black 33%,
+      #d32011 33%,
+      #d32011 66%,
+      #007a36 66%,
       #007a36 100%
     );
   }
