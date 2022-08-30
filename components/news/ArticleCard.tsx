@@ -76,7 +76,7 @@ const PrimaryAnchor = styled.a`
   gap: 1rem;
 
   h3 {
-    font-size: 1rem;
+    font-size: 1.15rem;
     margin-bottom: 0.5rem;
     overflow: hidden;
     text-overflow: ellipsis;

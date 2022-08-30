@@ -71,7 +71,7 @@ const Card = styled.a`
 
     & h3 {
       font-weight: 500;
-      font-size: 1rem;
+      font-size: 1.15rem;
       color: white;
       margin-bottom: 0.5rem;
       overflow: hidden;
