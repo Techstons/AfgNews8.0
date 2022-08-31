@@ -143,7 +143,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                 aria-checked={isDark}
               />
               <span className="slider">
-                {!isDark ? <SunFill size={16} /> : <MoonFill size={16} />}
+                {!isDark ? <SunFill size={12} /> : <MoonFill size={12} />}
               </span>
             </ToggleDarkWrapper>
             <LocaleSwitcher />
@@ -317,7 +317,7 @@ const BottomContent = styled.div<BottomType>`
   & .menu {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
 
     /* & .menu-item {
       text-transform: uppercase;
@@ -437,9 +437,9 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
   display: inline-block;
   background-color: #4d4d4d;
   border-radius: 30px;
-  height: 20px;
+  height: 16px;
   transition: 0.2s;
-  width: 44px;
+  width: 16px;
   cursor: pointer;
 
   @media only screen and (min-width: 901px) {
@@ -464,7 +464,7 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
     justify-content: center;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 45%;
     bottom: 0;
     transition: 0.4s;
     background-color: ${(props) => (props.active ? "white" : "black")};

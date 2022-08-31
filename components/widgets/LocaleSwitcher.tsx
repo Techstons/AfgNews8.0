@@ -9,10 +9,10 @@ export default function LocaleSwitcher() {
 
   const languages = {
     en: {
-      title: "en",
+      title: "EN",
     },
     ru: {
-      title: "ru",
+      title: "РУС",
     },
     ps: {
       title: "پشتو",
@@ -24,6 +24,11 @@ export default function LocaleSwitcher() {
 
   return (
     <>
+      <Wrapper key={"locale-" + locale}>
+        <Link href={{}}>
+          <a>{languages["ru"].title}</a>
+        </Link>
+      </Wrapper>
       {locales
         ?.filter((l) => l !== locale) // Filter out the current locale
         .map((locale) => {
