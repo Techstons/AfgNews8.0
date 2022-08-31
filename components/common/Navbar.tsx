@@ -275,7 +275,7 @@ const TopContent = styled.div<DropdownProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.1rem 0;
+  padding: 1rem 0;
 
   .nav-toggle {
     // Mobile navbar
@@ -391,8 +391,8 @@ const MenuItem = styled.a<ToggleProps>`
   -webkit-background-clip: text;
   color: transparent;
   background-color: ${(props) => (props.active ? "white" : "black")};
-  font-family: "Mate", serif;
   font-size: 1.05rem;
+  font-family: "Vollkorn SC", serif;
 
   &:hover {
     background-image: ${(props) =>
