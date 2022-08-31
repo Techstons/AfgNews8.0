@@ -392,7 +392,7 @@ const MenuItem = styled.a<ToggleProps>`
   -webkit-background-clip: text;
   color: transparent;
   background-color: ${(props) => (props.active ? "white" : "black")};
-  font-family: "Mate", serif;
+  font-family: "Vollkorn SC", serif;
 
   &:hover {
     background-image: ${(props) =>
@@ -400,8 +400,8 @@ const MenuItem = styled.a<ToggleProps>`
         ? `linear-gradient(
       180deg,
       white 0%,
-      white 29%,
-      #007a37bf 28%,
+      white 40%,
+      #007a37bf 40%,
       #007a37bf 100%
     )`
         : `linear-gradient(
