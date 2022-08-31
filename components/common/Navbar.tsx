@@ -395,7 +395,7 @@ const MenuItem = styled.a<ToggleProps>`
   color: transparent;
   background-color: ${(props) => (props.active ? "white" : "black")};
   font-family: "Vollkorn SC", serif;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 
   &:hover {
     background-image: ${(props) =>
