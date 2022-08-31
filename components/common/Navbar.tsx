@@ -220,7 +220,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                 rel="noreferrer"
                 aria-label="AfgNews Youtube Channel"
               >
-                <Youtube className="youtube-logo" height={18} width={22} />
+                <Youtube className="youtube-logo" height={20} width={24} />
               </a>
             </div>
           </div>
@@ -342,7 +342,7 @@ const BottomContent = styled.div<BottomType>`
       .youtube-logo {
         border: 2px solid var(--primary-color);
         border-radius: 0.5rem;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.25rem;
         transition: color 0.2s ease-in-out;
         &:hover {
           background-color: white;
@@ -394,7 +394,7 @@ const MenuItem = styled.a<ToggleProps>`
   background-color: ${(props) => (props.active ? "white" : "black")};
   font-family: "Vollkorn SC", serif;
   text-transform: uppercase;
-  font-size: 19px;
+  font-size: 1.1rem;
 
   &:hover {
     background-image: ${(props) =>
