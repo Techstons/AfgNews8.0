@@ -261,7 +261,7 @@ const TopStrip = styled.div`
   font-size: 0.65rem;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 
   .toggle-and-languages {
     display: flex;
@@ -275,7 +275,7 @@ const TopContent = styled.div<DropdownProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 
   .nav-toggle {
     // Mobile navbar
@@ -392,7 +392,7 @@ const MenuItem = styled.a<ToggleProps>`
   color: transparent;
   background-color: ${(props) => (props.active ? "white" : "black")};
   font-size: 1.05rem;
-  font-family: "Vollkorn SC", serif;
+  font-family: "Mate", serif;
 
   &:hover {
     background-image: ${(props) =>

@@ -45,7 +45,7 @@ const Header = ({
 export default Header;
 
 const Wrapper = styled.header`
-  margin-bottom: 1rem;
+  min-height: calc(100vh - 124px);
 `;
 
 const HeaderTitle = styled.h2`
