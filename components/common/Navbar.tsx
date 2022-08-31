@@ -118,11 +118,13 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
       <Container>
         <div className="top-banner">
           <Image
-            src="f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa.webp"
+            src={
+              isDark
+                ? "f_auto,q_10/assets/nrf_flag_npojzb.webp"
+                : "f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa.webp"
+            }
             alt="Topbar flag colors"
             layout="fill"
-            width={1280}
-            height={3}
           />
         </div>
         <TopStrip>
@@ -242,7 +244,7 @@ const Root = styled.nav<ToggleProps>`
 
   .top-banner {
     position: absolute;
-    height: 5px;
+    height: 7px;
     width: 100%;
     left: 0;
     top: 0;
@@ -393,15 +395,16 @@ const MenuItem = styled.a<ToggleProps>`
   color: transparent;
   background-color: ${(props) => (props.active ? "white" : "black")};
   font-family: "Vollkorn SC", serif;
+  font-size: 1.25rem;
 
   &:hover {
     background-image: ${(props) =>
       props.active
         ? `linear-gradient(
-      150deg,
+      180deg,
       white 0%,
-      white 35%,
-      #007a37bf 35%,
+      white 29%,
+      #007a37bf 28%,
       #007a37bf 100%
     )`
         : `linear-gradient(
