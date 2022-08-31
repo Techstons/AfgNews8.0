@@ -120,7 +120,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
           <Image
             src={
               isDark
-                ? "f_auto,q_10/assets/nrf_flag_npojzb.webp"
+                ? "f_auto,q_10/assets/nrf_flag_d6jiaa.webp"
                 : "f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa.webp"
             }
             alt="Topbar flag colors"
