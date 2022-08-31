@@ -220,7 +220,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                 rel="noreferrer"
                 aria-label="AfgNews Youtube Channel"
               >
-                <Youtube className="youtube-logo" height={22} width={26} />
+                <Youtube className="youtube-logo" height={18} width={22} />
               </a>
             </div>
           </div>
@@ -241,6 +241,7 @@ const Root = styled.nav<ToggleProps>`
     props.active ? "var(--nav-text)" : "var(--nav-color)"};
   font-weight: var(--font-medium);
   color: ${(props) => (props.active ? "var(--nav-color)" : "var(--nav-text)")};
+  border-bottom: 1px solid var(--text-color-alt);
 
   .top-banner {
     position: absolute;
@@ -276,7 +277,7 @@ const TopContent = styled.div<DropdownProps>`
   justify-content: center;
   align-items: center;
   padding-top: 0.5rem;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.3rem;
 
   .nav-toggle {
     // Mobile navbar
@@ -315,11 +316,10 @@ const BottomContent = styled.div<BottomType>`
 
   & .menu {
     display: flex;
-    gap: 2rem;
     align-items: center;
-    padding-top: 0.25rem;
+    gap: 1.5rem;
 
-    & .menu-item {
+    /* & .menu-item {
       text-transform: uppercase;
 
       &:hover .menu-dropdown {
@@ -336,13 +336,13 @@ const BottomContent = styled.div<BottomType>`
         transform: scaleY(0);
         transition-delay: 100ms;
       }
-    }
+    } */
 
     .youtube {
       .youtube-logo {
         border: 2px solid var(--primary-color);
         border-radius: 0.5rem;
-        padding: 0.025rem 0.05rem;
+        margin-bottom: 0.2rem;
         transition: color 0.2s ease-in-out;
         &:hover {
           background-color: white;
@@ -392,8 +392,9 @@ const MenuItem = styled.a<ToggleProps>`
   -webkit-background-clip: text;
   color: transparent;
   background-color: ${(props) => (props.active ? "white" : "black")};
-  font-size: 1.05rem;
   font-family: "Vollkorn SC", serif;
+  text-transform: uppercase;
+  font-size: 19px;
 
   &:hover {
     background-image: ${(props) =>
