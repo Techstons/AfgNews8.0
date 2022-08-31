@@ -311,7 +311,6 @@ const BottomContent = styled.div<BottomType>`
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-  gap: 1rem;
   padding: 0.5rem 0;
 
   & .menu {
@@ -389,13 +388,11 @@ const BottomContent = styled.div<BottomType>`
 
 const MenuItem = styled.a<ToggleProps>`
   cursor: pointer;
-  padding-bottom: 1rem;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   background-color: ${(props) => (props.active ? "white" : "black")};
-  font-family: "Vollkorn SC", serif;
-  font-size: 1.1rem;
+  font-family: "Mate", serif;
 
   &:hover {
     background-image: ${(props) =>
