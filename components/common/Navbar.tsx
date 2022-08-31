@@ -87,18 +87,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   const renderSocialIcons = () =>
     SocialLinks.filter((social) => social.name !== "Youtube").map(
       (item, index) => {
-        return (
-          <SocialCircle
-            size="24px"
-            href={item.url}
-            aria-label={item.name}
-            key={index}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <item.icon size={14} />
-          </SocialCircle>
-        );
+        return <item.icon key={item.name} size={14} />;
       }
     );
 
@@ -115,40 +104,41 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
 
   return (
     <Root active={isDark}>
-      <Container>
-        <div className="top-banner">
-          <Image
-            src={
-              isDark
-                ? "f_auto,q_10/assets/nrf_flag_d6jiaa.webp"
-                : "f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa.webp"
-            }
-            alt="Topbar flag colors"
-            layout="fill"
-          />
+      <div className="top-banner">
+        <Image
+          src={
+            isDark
+              ? "f_auto,q_10/assets/nrf_flag_d6jiaa.webp"
+              : "f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa.webp"
+          }
+          alt="Topbar flag colors"
+          layout="fill"
+        />
+      </div>
+      <TopStrip>
+        <SocialsWrapper>{renderSocialIcons()}</SocialsWrapper>
+        <NavCurrencyWidget isDark={isDark} />
+        <div className="toggle-and-languages">
+          <ToggleDarkWrapper active={isDark}>
+            <input
+              type="checkbox"
+              aria-label="Toggle dark mode"
+              onChange={() => setIsDark(!isDark)}
+              checked={isDark}
+              className="toggle-dark"
+              id="toggle-dark"
+              name="toggle-dark"
+              value="toggle-dark"
+              aria-checked={isDark}
+            />
+            <span className="slider">
+              {!isDark ? <SunFill size={12} /> : <MoonFill size={12} />}
+            </span>
+          </ToggleDarkWrapper>
+          <LocaleSwitcher />
         </div>
-        <TopStrip>
-          <NavCurrencyWidget isDark={isDark} />
-          <div className="toggle-and-languages">
-            <ToggleDarkWrapper active={isDark}>
-              <input
-                type="checkbox"
-                aria-label="Toggle dark mode"
-                onChange={() => setIsDark(!isDark)}
-                checked={isDark}
-                className="toggle-dark"
-                id="toggle-dark"
-                name="toggle-dark"
-                value="toggle-dark"
-                aria-checked={isDark}
-              />
-              <span className="slider">
-                {!isDark ? <SunFill size={12} /> : <MoonFill size={12} />}
-              </span>
-            </ToggleDarkWrapper>
-            <LocaleSwitcher />
-          </div>
-        </TopStrip>
+      </TopStrip>
+      <Container>
         <TopContent active={active}>
           <button
             onClick={() => setActive(!active)}
@@ -236,12 +226,20 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
 export default Navbar;
 
 const Root = styled.nav<ToggleProps>`
-  padding: 0.5rem 1rem;
   background-color: ${(props) =>
     props.active ? "var(--nav-text)" : "var(--nav-color)"};
   font-weight: var(--font-medium);
   color: ${(props) => (props.active ? "var(--nav-color)" : "var(--nav-text)")};
-  border-bottom: 1px solid var(--text-color-alt);
+  padding: 0 0.5rem;
+
+  &::after {
+    content: ""; /* This is necessary for the pseudo element to work. */
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 95%; /* Change this to whatever width you want. */
+    padding-top: 20px; /* This creates some space between the element and the border. */
+    border-bottom: 1px solid black; /* This creates the border. Replace black with whatever color you want. */
+  }
 
   .top-banner {
     position: absolute;
@@ -262,7 +260,7 @@ const TopStrip = styled.div`
   font-size: 0.65rem;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 
   .toggle-and-languages {
     display: flex;
@@ -471,5 +469,14 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
     color: ${(props) => (props.active ? "black" : "yellow")};
     border-radius: 30px;
     box-shadow: 0px 0px 0px 3px #4d4d4d;
+  }
+`;
+
+const SocialsWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
+
+  @media screen and (max-width: 901px) {
+    display: none;
   }
 `;

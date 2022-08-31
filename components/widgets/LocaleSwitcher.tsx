@@ -24,11 +24,6 @@ export default function LocaleSwitcher() {
 
   return (
     <>
-      <Wrapper key={"locale-" + locale}>
-        <Link href={{}}>
-          <a>{languages["ru"].title}</a>
-        </Link>
-      </Wrapper>
       {locales
         ?.filter((l) => l !== locale) // Filter out the current locale
         .map((locale) => {
@@ -43,6 +38,11 @@ export default function LocaleSwitcher() {
       <Wrapper key={"locale-" + locale}>
         <Link href={{}}>
           <a>{languages["ps"].title}</a>
+        </Link>
+      </Wrapper>
+      <Wrapper key={"locale-" + locale}>
+        <Link href={{}}>
+          <a>{languages["ru"].title}</a>
         </Link>
       </Wrapper>
     </>
