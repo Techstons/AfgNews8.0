@@ -275,7 +275,8 @@ const TopContent = styled.div<DropdownProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
 
   .nav-toggle {
     // Mobile navbar
@@ -392,17 +393,18 @@ const MenuItem = styled.a<ToggleProps>`
   color: transparent;
   background-color: ${(props) => (props.active ? "white" : "black")};
   font-size: 1.05rem;
-  font-family: "Mate", serif;
+  font-family: "Vollkorn SC", serif;
 
   &:hover {
     background-image: ${(props) =>
       props.active
         ? `linear-gradient(
       180deg,
-      white 0%,
+      #12a012 0%,
+      #12a012 50%,
       white 50%,
-      #007a37bf 50%,
-      #007a37bf 100%
+      white 100%
+
     )`
         : `linear-gradient(
       125deg,
