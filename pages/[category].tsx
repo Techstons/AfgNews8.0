@@ -1,4 +1,4 @@
-import { Section } from "@components/main";
+import { CategorySection, Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
 import {
   getAllCategoriesSlugs,
@@ -67,12 +67,13 @@ const Category = ({
   return (
     <>
       <SEOHeader title={`${category} | AfgNews`} canonical={slug} />
-      <Section
+      {/* <Section
         variant="primary"
         cards={articlesPerCategory}
         title={category}
         slug={category}
-      />
+      /> */}
+      <CategorySection title={category} />
     </>
   );
 };
