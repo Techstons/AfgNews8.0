@@ -178,7 +178,11 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                       onClick={() => setActive(false)}
                       title={menu.title}
                       active={isDark}
-                      className={`${router.asPath === menu.slug && "active"}`}
+                      className={`${
+                        router.asPath === menu.slug &&
+                        router.asPath !== "/" &&
+                        "active"
+                      }`}
                     >
                       {menu.title}
                     </MenuItem>
