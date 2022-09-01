@@ -340,10 +340,7 @@ const BottomContent = styled.div<BottomType>`
         margin-bottom: 0.2rem;
         transition: color 0.2s ease-in-out;
         background-color: transparent;
-        &:hover {
-          background-color: white;
-          color: var(--primary-color);
-        }
+        color: var(--primary-color);
       }
     }
 
@@ -407,8 +404,8 @@ const MenuItem = styled.a<ToggleProps>`
       125deg,
       black 0%,
       black 30%,
-      #d32011 30%,
-      #d32011 55%,
+      var(--primary-color) 30%,
+      var(--primary-color) 55%,
       #007a36 55%,
       #007a36 100%
     )`};

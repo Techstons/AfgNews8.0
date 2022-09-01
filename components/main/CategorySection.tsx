@@ -44,7 +44,7 @@ export default CategorySection;
 const Wrapper = styled.section`
   .header-title {
     text-align: center;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2rem;
     text-transform: uppercase;
     font-size: 2.25rem;
     font-weight: 400;
@@ -56,7 +56,7 @@ const Header = styled.header``;
 
 const HeaderArticlesWrapper = styled.div`
   display: grid;
-  gap: 2.5rem;
+  gap: 3.5rem;
   grid-template-columns: 1.35fr 0.65fr;
 `;
 
