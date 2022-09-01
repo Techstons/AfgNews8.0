@@ -311,6 +311,7 @@ const BottomContent = styled.div<BottomType>`
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  gap: 0.7rem;
 
   & .menu {
     display: flex;
