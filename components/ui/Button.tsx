@@ -13,7 +13,7 @@ export default Button;
 
 const Wrapper = styled.button`
   background-color: var(--primary-color);
-  color: var(--nav-text);
+  color: white;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: var(--base-radius);
