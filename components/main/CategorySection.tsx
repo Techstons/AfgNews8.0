@@ -57,7 +57,7 @@ const Header = styled.header``;
 const HeaderArticlesWrapper = styled.div`
   display: grid;
   gap: 2.5rem;
-  grid-template-columns: 1.5fr 0.5fr;
+  grid-template-columns: 1.35fr 0.65fr;
 `;
 
 const MainChannel = styled.div`
