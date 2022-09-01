@@ -46,7 +46,7 @@ const Footer = ({ isDark }: IFooter) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper isDark={isDark}>
       <Container>
         <div className="content">
           <FooterContainer>
@@ -130,9 +130,10 @@ const Footer = ({ isDark }: IFooter) => {
 
 export default Footer;
 
-const Wrapper = styled.footer`
-  background-color: var(--nav-color);
-  color: var(--nav-text);
+const Wrapper = styled.footer<IFooter>`
+  background-color: ${(props) =>
+    props.isDark ? "var(--nav-text)" : "var(--nav-color)"};
+  color: ${(props) => (props.isDark ? "var(--nav-color)" : "var(--nav-text)")};
   padding: 1rem 1.5rem;
 
   & .content {
@@ -152,12 +153,8 @@ const Wrapper = styled.footer`
 `;
 
 const FooterContainer = styled.div`
-  background-color: var(--nav-color);
-  color: var(--nav-text);
   font-size: 1.2rem;
   font-weight: bold;
-  border-top: 1px solid var(--nav-color);
-  border-bottom: 1px solid var(--nav-color);
 
   & .logo {
     font-size: 5rem;
@@ -245,7 +242,6 @@ const FooterContainer = styled.div`
 
 const FooterLink = styled.a`
   cursor: pointer;
-  color: var(--nav-text);
   text-decoration: none;
   font-weight: medium;
   transition: color 0.2s ease-in-out;
