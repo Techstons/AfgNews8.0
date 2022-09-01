@@ -242,7 +242,7 @@ const Root = styled.nav<ToggleProps>`
 
   .top-banner {
     position: absolute;
-    height: 5px;
+    height: ${(props) => (props.active ? "5px" : "3px")};
     width: 100%;
     left: 0;
     top: 0;
