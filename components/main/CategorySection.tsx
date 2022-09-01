@@ -74,15 +74,28 @@ const Wrapper = styled.div`
 `;
 
 const MainChannel = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  border-right: 1px solid #d4bab8;
   padding-right: 2rem;
+
+  &::after {
+    content: "";
+    width: 0.1px;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: scaleY(-75%);
+
+    background-color: #d48985;
+  }
 `;
 
 const TopChannel = styled.div`
-  border-bottom: 1px solid #d4bab8;
+  border-bottom: 1px solid #d48985;
   padding-bottom: 2rem;
 `;
 
@@ -98,7 +111,7 @@ const BottomChannel = styled.div`
   gap: 2rem;
 
   * > div {
-    border-right: 1px solid #d4bab8;
+    border-right: 1px solid #d48985;
   }
 `;
 
