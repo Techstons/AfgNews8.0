@@ -108,10 +108,10 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
         <Image
           src={
             isDark
-              ? "f_auto,q_10/assets/nrf_flag_d6jiaa.webp"
-              : "f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa.webp"
+              ? "f_auto,q_10/assets/nrf_flag_wyi03q"
+              : "f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa"
           }
-          alt="Topbar flag colors"
+          alt={isDark ? "National Resistance Front Flag" : "Afghanistan Flag"}
           layout="fill"
         />
       </div>
@@ -242,7 +242,7 @@ const Root = styled.nav<ToggleProps>`
 
   .top-banner {
     position: absolute;
-    height: 7px;
+    height: 5px;
     width: 100%;
     left: 0;
     top: 0;
@@ -259,7 +259,7 @@ const TopStrip = styled.div`
   font-size: 0.65rem;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  padding-top: 0.5rem;
 
   .toggle-and-languages {
     display: flex;
