@@ -6,7 +6,7 @@ import useFormattedDate from "@hooks/useFormattedDate";
 
 type Variants = "primary" | "secondary" | "tertiary";
 interface ICategoryCard {
-  card: Article;
+  card?: Article;
   variant: Variants;
 }
 
@@ -24,7 +24,7 @@ const CategoryCard = ({ card, variant }: ICategoryCard) => {
     return (
       <ArticleWrapper variant={variant}>
         <div className="article-image">
-          <Link href={`/articles/${card.slug}`}>
+          <Link href={`/articles/${card?.slug}`}>
             <a aria-label={card?.title}>
               <CloudinaryImage
                 featuredImage={card?.featuredImage}
@@ -34,7 +34,7 @@ const CategoryCard = ({ card, variant }: ICategoryCard) => {
           </Link>
         </div>
         <Details>
-          <Link href={`/articles/${card.slug}`}>
+          <Link href={`/articles/${card?.slug}`}>
             <a>
               <ArticleTitle variant={variant}>{card?.title}</ArticleTitle>
             </a>
@@ -47,7 +47,7 @@ const CategoryCard = ({ card, variant }: ICategoryCard) => {
     return (
       <>
         <TertiaryArticleWrapper>
-          <Link href={`/articles/${card.slug}`}>
+          <Link href={`/articles/${card?.slug}`}>
             <a aria-label={card?.title}>
               <div className="article-image">
                 <CloudinaryImage
@@ -60,7 +60,7 @@ const CategoryCard = ({ card, variant }: ICategoryCard) => {
           </Link>
 
           <Details>
-            <Link href={`/articles/${card.slug}`}>
+            <Link href={`/articles/${card?.slug}`}>
               <a>
                 <ArticleTitle variant={variant}>{card?.title}</ArticleTitle>
               </a>
