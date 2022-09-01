@@ -18,7 +18,9 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
           </h1>
           <Wrapper>
             <MainChannel>
-              <CategoryCard variant="primary" card={articles?.[0]} />
+              <TopChannel>
+                <CategoryCard variant="primary" card={articles?.[0]} />
+              </TopChannel>
               <BottomChannel>
                 <CategoryCard variant="tertiary" card={articles?.[0]} />
                 <CategoryCard variant="tertiary" card={articles?.[0]} />
@@ -53,9 +55,9 @@ const Header = styled.header`
 
   .header-title {
     text-align: center;
-    margin: 0 auto;
-    line-height: 2.25rem;
-    margin-bottom: 2rem;
+    margin: 1.25rem auto;
+    line-height: 2.75rem;
+    margin-bottom: 3rem;
     text-transform: uppercase;
     font-size: 2.25rem;
     font-weight: 400;
@@ -67,7 +69,7 @@ const Header = styled.header`
 
 const Wrapper = styled.div`
   display: grid;
-  gap: 3.5rem;
+  gap: 2rem;
   grid-template-columns: 1.35fr 0.65fr;
 `;
 
@@ -75,6 +77,13 @@ const MainChannel = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  border-right: 1px solid #d4bab8;
+  padding-right: 2rem;
+`;
+
+const TopChannel = styled.div`
+  border-bottom: 1px solid #d4bab8;
+  padding-bottom: 2rem;
 `;
 
 const SideChannel = styled.div`
@@ -87,6 +96,10 @@ const BottomChannel = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+
+  * > div {
+    border-right: 1px solid #d4bab8;
+  }
 `;
 
 const Section = styled.section`
