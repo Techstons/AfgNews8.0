@@ -238,11 +238,12 @@ const Root = styled.nav<ToggleProps>`
   padding: 0 0.5rem;
 
   &::after {
-    content: ""; /* This is necessary for the pseudo element to work. */
-    display: block; /* This will put the pseudo element on its own line. */
-    margin: 0 auto; /* This will center the border. */
-    width: 100%; /* Change this to whatever width you want. */
-    border-bottom: 1px solid var(--primary-color); /* This creates the border. Replace black with whatever color you want. */
+    // Adds solid line at the bottom of the navbar
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    border-bottom: 2px solid var(--primary-color);
   }
 
   .top-banner {

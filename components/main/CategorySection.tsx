@@ -53,11 +53,15 @@ const Header = styled.header`
 
   .header-title {
     text-align: center;
+    margin: 0 auto;
+    line-height: 2.25rem;
     margin-bottom: 2rem;
     text-transform: uppercase;
     font-size: 2.25rem;
     font-weight: 400;
     font-family: "Vollkorn SC", serif;
+    border-bottom: 2px solid var(--primary-color);
+    width: max-content;
   }
 `;
 
