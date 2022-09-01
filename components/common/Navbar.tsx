@@ -210,7 +210,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                 rel="noreferrer"
                 aria-label="AfgNews Youtube Channel"
               >
-                <Youtube className="youtube-logo" height={20} width={24} />
+                <Youtube className="youtube-logo" height={21} width={21} />
               </a>
             </div>
           </div>
@@ -237,7 +237,7 @@ const Root = styled.nav<ToggleProps>`
     display: block; /* This will put the pseudo element on its own line. */
     margin: 0 auto; /* This will center the border. */
     width: 100%; /* Change this to whatever width you want. */
-    border-bottom: 1px solid black; /* This creates the border. Replace black with whatever color you want. */
+    border-bottom: 1px solid var(--primary-color); /* This creates the border. Replace black with whatever color you want. */
   }
 
   .top-banner {
@@ -337,10 +337,9 @@ const BottomContent = styled.div<BottomType>`
 
     .youtube {
       .youtube-logo {
-        border: 2px solid var(--primary-color);
-        border-radius: 0.5rem;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.2rem;
         transition: color 0.2s ease-in-out;
+        background-color: transparent;
         &:hover {
           background-color: white;
           color: var(--primary-color);
