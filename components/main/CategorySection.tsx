@@ -10,14 +10,13 @@ interface ICategorySection {
 
 const CategorySection = ({ title, articles }: ICategorySection) => {
   return (
-    <Wrapper>
+    <>
       <Container>
         <Header>
           <h1 className="header-title">
             {title?.toLowerCase() === "afg" ? "Afghanistan" : title}
           </h1>
-
-          <HeaderArticlesWrapper>
+          <Wrapper>
             <MainChannel>
               <CategoryCard variant="primary" card={articles?.[0]} />
               <BottomChannel>
@@ -27,21 +26,31 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
                 <CategoryCard variant="tertiary" card={articles?.[0]} />
               </BottomChannel>
             </MainChannel>
-
             <SideChannel className="">
               <CategoryCard variant="secondary" card={articles?.[0]} />
               <CategoryCard variant="secondary" card={articles?.[0]} />
             </SideChannel>
-          </HeaderArticlesWrapper>
+          </Wrapper>
         </Header>
+
+        <Section>
+          <Wrapper>
+            <SpecialFeature>
+              <CategoryCard variant="secondary" card={articles?.[0]} />
+              <CategoryCard variant="secondary" card={articles?.[0]} />
+            </SpecialFeature>
+          </Wrapper>
+        </Section>
       </Container>
-    </Wrapper>
+    </>
   );
 };
 
 export default CategorySection;
 
-const Wrapper = styled.section`
+const Header = styled.header`
+  margin: 60px 0;
+
   .header-title {
     text-align: center;
     margin-bottom: 2rem;
@@ -52,9 +61,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const Header = styled.header``;
-
-const HeaderArticlesWrapper = styled.div`
+const Wrapper = styled.div`
   display: grid;
   gap: 3.5rem;
   grid-template-columns: 1.35fr 0.65fr;
@@ -75,5 +82,14 @@ const SideChannel = styled.div`
 const BottomChannel = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+`;
+
+const Section = styled.section`
+  padding: 22px 0;
+`;
+
+const SpecialFeature = styled.section`
+  display: flex;
   gap: 2rem;
 `;
