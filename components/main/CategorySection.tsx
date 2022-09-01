@@ -49,7 +49,7 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
 export default CategorySection;
 
 const Header = styled.header`
-  margin: 60px 0;
+  margin-bottom: 60px;
 
   .header-title {
     text-align: center;
