@@ -1,12 +1,20 @@
 import { Article } from "@components/types";
 import Image from "next/image";
 
-type CloudinaryImageProps = Pick<Partial<Article>, "featuredImage" | "title">;
+interface IImage {
+  width?: string;
+  height?: string;
+}
+
+type CloudinaryImageProps = Pick<Partial<Article>, "featuredImage" | "title"> &
+  IImage;
 
 const CloudinaryImage = ({
   featuredImage,
   title,
   priority,
+  width = "1980",
+  height = "1080",
 }: CloudinaryImageProps & { priority?: boolean }) => {
   return (
     <Image
@@ -14,8 +22,8 @@ const CloudinaryImage = ({
       className="image"
       alt={title}
       layout="responsive"
-      width={1980}
-      height={1020}
+      width={width}
+      height={height}
       quality={20}
       placeholder="blur"
       blurDataURL={`w_8,q_1/${featuredImage?.id}`}
