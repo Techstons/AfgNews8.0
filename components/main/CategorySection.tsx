@@ -60,7 +60,7 @@ const Header = styled.header`
     font-size: 2.25rem;
     font-weight: 400;
     font-family: "Vollkorn SC", serif;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 4px solid var(--primary-color);
     width: max-content;
   }
 `;
