@@ -82,13 +82,13 @@ const MainChannel = styled.div`
 
   &::after {
     content: "";
-    width: 0.1px;
+    width: 0.75px;
 
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
-    transform: scaleY(-75%);
+    transform: scaleY(-85%);
 
     background-color: #d48985;
   }

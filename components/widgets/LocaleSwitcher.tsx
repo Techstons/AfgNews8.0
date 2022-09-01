@@ -35,12 +35,12 @@ export default function LocaleSwitcher() {
             </Wrapper>
           );
         })}
-      <Wrapper key={"locale-" + locale}>
+      <Wrapper key={"locale-" + "ps"}>
         <Link href={{}}>
           <a>{languages["ps"].title}</a>
         </Link>
       </Wrapper>
-      <Wrapper key={"locale-" + locale}>
+      <Wrapper key={"locale-" + "ru"}>
         <Link href={{}}>
           <a>{languages["ru"].title}</a>
         </Link>
