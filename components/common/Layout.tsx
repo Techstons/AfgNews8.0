@@ -49,7 +49,7 @@ const Layout = ({ articles, children }: ILayout) => {
       >
         <ArrowUp size={24} />
       </AccessibilityScroller>
-      <Footer />
+      <Footer isDark={isDark} />
     </>
   );
 };

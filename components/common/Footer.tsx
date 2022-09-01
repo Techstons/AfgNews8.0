@@ -9,33 +9,16 @@ import { useTranslation } from "next-i18next";
 import SocialLinks from "./SocialLinks";
 import { SocialCircle } from "@components/ui";
 
-const Footer = () => {
+interface IFooter {
+  isDark: boolean;
+}
+
+const Footer = ({ isDark }: IFooter) => {
   const [email, setEmail] = useState("");
   const { t } = useTranslation();
 
   const subscribeToNewsLetter = async (e: FormEvent) => {
     e.preventDefault();
-
-    // // Mailchimp request
-    // const res = await fetch("/api/subscribe-to-newsletter", {
-    //   body: JSON.stringify({
-    //     email: email,
-    //   }),
-
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-
-    //   method: "POST",
-    // });
-
-    // const data = await res.json();
-
-    // if (res.status !== 201) {
-    //   return alert(
-    //     `ERROR ${res.status}: ${data.error.title}, ${data.error.detail}`
-    //   );
-    // }
 
     const FORMSPREE_API = process.env.FORMSPREE_API;
     const res = await fetch(FORMSPREE_API ?? "", {
