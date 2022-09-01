@@ -110,7 +110,8 @@ const BottomChannel = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 
-  * > div {
+  & > div:nth-of-type(1),
+  & > div:nth-of-type(3) {
     border-right: 1px solid #d48985;
   }
 `;
