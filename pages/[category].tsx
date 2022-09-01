@@ -73,7 +73,7 @@ const Category = ({
         title={category}
         slug={category}
       /> */}
-      <CategorySection title={category} />
+      <CategorySection title={category} articles={articlesPerCategory} />
     </>
   );
 };
