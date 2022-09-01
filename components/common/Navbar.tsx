@@ -436,12 +436,8 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
   border-radius: 30px;
   height: 16px;
   transition: 0.2s;
-  width: 16px;
+  width: 38px;
   cursor: pointer;
-
-  @media only screen and (min-width: 901px) {
-    width: 38px;
-  }
 
   & input {
     opacity: 0;
