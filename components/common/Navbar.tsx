@@ -178,6 +178,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                       onClick={() => setActive(false)}
                       title={menu.title}
                       active={isDark}
+                      className={`${router.asPath === menu.slug && "active"}`}
                     >
                       {menu.title}
                     </MenuItem>
@@ -390,6 +391,28 @@ const MenuItem = styled.a<ToggleProps>`
   font-size: 1.1rem;
 
   &:hover {
+    background-image: ${(props) =>
+      props.active
+        ? `linear-gradient(
+      180deg,
+      #12a012 0%,
+      #12a012 44%,
+      white 44%,
+      white 100%
+
+    )`
+        : `linear-gradient(
+      125deg,
+      black 0%,
+      black 30%,
+      var(--primary-color) 30%,
+      var(--primary-color) 55%,
+      #007a36 55%,
+      #007a36 100%
+    )`};
+  }
+
+  &.active {
     background-image: ${(props) =>
       props.active
         ? `linear-gradient(
