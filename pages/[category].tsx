@@ -56,6 +56,7 @@ export const getStaticProps = async ({
       ...(await serverSideTranslations(locale || "en", ["common"])),
     },
     revalidate: 60,
+    notFound: articlesPerCategory.length === 0,
   };
 };
 
