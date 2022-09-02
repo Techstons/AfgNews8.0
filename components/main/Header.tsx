@@ -15,7 +15,7 @@ const Header = ({
 }) => {
   const router = useRouter();
 
-  const [activeChoice, setActiveChoice] = useState("top"); // Used in the top news header toggle
+  const [activeChoice, setActiveChoice] = useState("latest"); // Used in the top news header toggle
 
   return (
     <Wrapper>
@@ -30,7 +30,7 @@ const Header = ({
         <MainGrid>
           <TopNewsCard card={articles?.[0]} layout="fill" priority={true} />
           <SubGrid>
-            <div>
+            <div className="middle-column-article">
               {articles?.slice(1, 3).map((item) => (
                 <TopNewsCard key={item.title} card={item} />
               ))}
@@ -38,16 +38,16 @@ const Header = ({
             <TopNewsAside>
               <div className="header">
                 <button
-                  className={`${activeChoice === "top" ? "active" : ""}`}
-                  onClick={() => setActiveChoice("top")}
+                  className={`${activeChoice === "latest" ? "active" : ""}`}
+                  onClick={() => setActiveChoice("latest")}
                 >
-                  Popular News
+                  Latest News
                 </button>
                 <button
-                  className={`${activeChoice === "recent" ? "active" : ""}`}
-                  onClick={() => setActiveChoice("recent")}
+                  className={`${activeChoice === "popular" ? "active" : ""}`}
+                  onClick={() => setActiveChoice("popular")}
                 >
-                  Recent News
+                  Popular News
                 </button>
               </div>
               <div className="articles">
@@ -93,8 +93,8 @@ const Top = styled.div`
 
 const MainGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 2rem;
   margin-bottom: 1.5rem;
 
   @media only screen and (max-width: 1264px) {
@@ -104,7 +104,13 @@ const MainGrid = styled.div`
 
 const SubGrid = styled.div`
   display: grid;
-  gap: 0 1rem;
+  gap: 0 2rem;
+
+  .middle-column-article {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
   @media only screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
@@ -125,14 +131,14 @@ const TopNewsAside = styled.aside`
 
     & > button {
       text-align: center;
-      background-color: var(--primary-color);
+      background-color: #222;
       color: white;
       padding: 1rem 0.5rem;
       width: 50%;
     }
 
     button.active {
-      background-color: #222;
+      background-color: var(--primary-color);
     }
   }
 `;

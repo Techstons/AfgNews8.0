@@ -66,7 +66,7 @@ const Category = styled.p`
   background-color: var(--primary-color);
   padding: 0.2rem 0.5rem;
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   top: 1rem;
   left: 1rem;
   position: absolute;
@@ -75,7 +75,7 @@ const Category = styled.p`
 
 const ImageWrapper = styled.div<ImageProps>`
   position: relative;
-  height: ${(props) => (props.layout === "fill" ? "500px" : "auto")};
+  height: ${(props) => (props.layout === "fill" ? "555px" : "auto")};
 
   @media screen and (max-width: 768px) {
     height: ${(props) => (props.layout === "fill" ? "373px" : "auto")};
