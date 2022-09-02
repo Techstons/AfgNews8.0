@@ -54,6 +54,8 @@ export default ArticleCard;
 const PrimaryWrapper = styled.article`
   position: relative;
   padding-bottom: 0.5rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
 
   &:hover {
     border-color: var(--primary-color);
@@ -67,6 +69,8 @@ const PrimaryWrapper = styled.article`
 const SecondaryWrapper = styled.article`
   position: relative;
   padding-bottom: 1rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
 `;
 
 const PrimaryAnchor = styled.a`
