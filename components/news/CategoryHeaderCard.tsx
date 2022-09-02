@@ -40,38 +40,36 @@ const CategoryHeaderCard = ({ card, variant }: ICategoryCard) => {
               <ArticleTitle variant={variant}>{card?.title}</ArticleTitle>
             </a>
           </Link>
-          <p>{articleDate} ago</p>
+          <DateWrapper>{articleDate} ago</DateWrapper>
         </div>
       </ArticleWrapper>
     );
   else
     return (
-      <>
-        <TertiaryArticleWrapper>
+      <TertiaryArticleWrapper>
+        <Link href={`/articles/${card?.slug}`}>
+          <a aria-label={card?.title}>
+            <div className="article-image">
+              <CloudinaryImage
+                featuredImage={card?.featuredImage}
+                title={card?.title}
+                layout="fixed"
+                width="88"
+                height="88"
+              />
+            </div>
+          </a>
+        </Link>
+
+        <div>
           <Link href={`/articles/${card?.slug}`}>
-            <a aria-label={card?.title}>
-              <div className="article-image">
-                <CloudinaryImage
-                  featuredImage={card?.featuredImage}
-                  title={card?.title}
-                  layout="fixed"
-                  width="88"
-                  height="88"
-                />
-              </div>
+            <a>
+              <ArticleTitle variant={variant}>{card?.title}</ArticleTitle>
             </a>
           </Link>
-
-          <div>
-            <Link href={`/articles/${card?.slug}`}>
-              <a>
-                <ArticleTitle variant={variant}>{card?.title}</ArticleTitle>
-              </a>
-            </Link>
-            <p>{articleDate} ago</p>
-          </div>
-        </TertiaryArticleWrapper>
-      </>
+          <DateWrapper>{articleDate} ago</DateWrapper>
+        </div>
+      </TertiaryArticleWrapper>
     );
 };
 
@@ -120,4 +118,9 @@ const TertiaryArticleWrapper = styled.article`
     border-bottom: 1px solid #d48985;
     padding-bottom: 1.5rem;
   }
+`;
+
+const DateWrapper = styled.p`
+  margin-top: 0.5rem;
+  font-size: 12px;
 `;

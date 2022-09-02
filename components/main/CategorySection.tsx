@@ -143,13 +143,18 @@ const BottomChannel = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
+  & > article:nth-of-type(1),
+  & > article:nth-of-type(3) {
+    border-right: 1px solid #d48985;
   }
 
-  & > div:nth-of-type(1),
-  & > div:nth-of-type(3) {
-    border-right: 1px solid #d48985;
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+
+    & > article:nth-of-type(1),
+    & > article:nth-of-type(3) {
+      border-right: none;
+    }
   }
 `;
 
