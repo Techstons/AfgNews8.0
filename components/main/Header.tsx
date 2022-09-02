@@ -51,7 +51,7 @@ const Header = ({
                 </button>
               </div>
               <div className="articles">
-                {articles?.slice(1, 4).map((item) => (
+                {articles?.slice(0, 5)?.map((item) => (
                   <ArticleCard variant="slim" card={item} key={item.title} />
                 ))}
               </div>
