@@ -50,6 +50,7 @@ export default NewsCard;
 const Wrapper = styled.article`
   position: relative;
   overflow: hidden;
+  border-radius: 0.25rem;
 
   .image-wrapper {
     transition: scale 1s ease;
