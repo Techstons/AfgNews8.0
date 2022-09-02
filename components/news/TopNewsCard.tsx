@@ -51,9 +51,12 @@ const Wrapper = styled.article`
   position: relative;
   overflow: hidden;
 
+  .image-wrapper {
+    transition: scale 1s ease;
+  }
+
   &:hover .image-wrapper {
     scale: 1.05;
-    transition: scale 1s ease;
   }
 `;
 
