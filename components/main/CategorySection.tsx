@@ -43,6 +43,23 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
             </SpecialFeature>
           </Wrapper>
         </Section>
+
+        <Section>
+          <Wrapper>
+            <div>
+              <h2 className="section-header">
+                More from <span>{title}</span>
+              </h2>
+              <MoreNews>
+                <CategoryCard variant="quaternary" card={articles?.[0]} />
+                <CategoryCard variant="quaternary" card={articles?.[0]} />
+                <CategoryCard variant="quaternary" card={articles?.[0]} />
+                <CategoryCard variant="quaternary" card={articles?.[0]} />
+                <CategoryCard variant="quaternary" card={articles?.[0]} />
+              </MoreNews>
+            </div>
+          </Wrapper>
+        </Section>
       </Container>
     </>
   );
@@ -118,9 +135,25 @@ const BottomChannel = styled.div`
 
 const Section = styled.section`
   padding: 22px 0;
+
+  .section-header {
+    border-bottom: 1px solid var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .section-header span {
+    color: var(--primary-color);
+  }
 `;
 
-const SpecialFeature = styled.section`
+const SpecialFeature = styled.div`
   display: flex;
   gap: 2rem;
+`;
+
+const MoreNews = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 `;

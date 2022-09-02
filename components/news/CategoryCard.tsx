@@ -4,7 +4,7 @@ import { Article } from "@components/types";
 import CloudinaryImage from "./CloudinaryImage";
 import useFormattedDate from "@hooks/useFormattedDate";
 
-type Variants = "primary" | "secondary" | "tertiary";
+type Variants = "primary" | "secondary" | "tertiary" | "quaternary";
 interface ICategoryCard {
   card?: Article;
   variant: Variants;
@@ -43,7 +43,7 @@ const CategoryCard = ({ card, variant }: ICategoryCard) => {
         </Details>
       </ArticleWrapper>
     );
-  else
+  else if (variant === "tertiary")
     return (
       <>
         <TertiaryArticleWrapper>
@@ -70,6 +70,30 @@ const CategoryCard = ({ card, variant }: ICategoryCard) => {
         </TertiaryArticleWrapper>
       </>
     );
+  else
+    return (
+      <QuaternaryArticleWrapper>
+        <div className="details">
+          <p className="date">{articleDate} ago</p>
+          <h3>
+            <Link href={`/articles/${card?.slug}`}>
+              <a>{card?.title}</a>
+            </Link>
+          </h3>
+          <p className="excerpt">{card?.excerpt}</p>
+        </div>
+        <div className="article-image">
+          <Link href={`/articles/${card?.slug}`}>
+            <a aria-label={card?.title}>
+              <CloudinaryImage
+                featuredImage={card?.featuredImage}
+                title={card?.title}
+              />
+            </a>
+          </Link>
+        </div>
+      </QuaternaryArticleWrapper>
+    );
 };
 
 export default CategoryCard;
@@ -83,7 +107,7 @@ const ArticleWrapper = styled.article<ArticleProps>`
   }
 `;
 
-const TertiaryArticleWrapper = styled.div`
+const TertiaryArticleWrapper = styled.article`
   display: flex;
   gap: 1.25rem;
 
@@ -94,7 +118,27 @@ const TertiaryArticleWrapper = styled.div`
   }
 `;
 
-const ArticleTitle = styled.h2<ArticleProps>`
+const QuaternaryArticleWrapper = styled.article`
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 1rem;
+
+  .details {
+    & > * {
+      margin-bottom: 0.75rem;
+    }
+
+    .date {
+      font-size: 10px;
+    }
+
+    .excerpt {
+      line-height: 1.75rem;
+    }
+  }
+`;
+
+const ArticleTitle = styled.h3<ArticleProps>`
   margin: ${(props) =>
     props.variant === "primary" || props.variant === "secondary"
       ? "0.5rem 0"
