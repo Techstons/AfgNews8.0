@@ -37,15 +37,6 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
 
         <Section>
           <Wrapper>
-            <SpecialFeature>
-              <CategoryCard variant="primary" card={articles?.[0]} />
-              <CategoryCard variant="primary" card={articles?.[0]} />
-            </SpecialFeature>
-          </Wrapper>
-        </Section>
-
-        <Section>
-          <Wrapper>
             <div>
               <h2 className="section-header">
                 More from <span>{title}</span>
@@ -168,15 +159,6 @@ const Section = styled.section`
 
   .section-header span {
     color: var(--primary-color);
-  }
-`;
-
-const SpecialFeature = styled.div`
-  display: grid;
-  gap: 2rem;
-
-  @media screen and (min-width: 680px) {
-    grid-template-columns: 1fr 1fr;
   }
 `;
 
