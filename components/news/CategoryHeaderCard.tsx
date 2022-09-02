@@ -90,6 +90,7 @@ const ArticleWrapper = styled.article<ArticleProps>`
   }
 
   @media screen and (max-width: 480px) {
+    // Adds border bottom just on secondary and padding
     border-bottom: ${(props) =>
       props.variant === "secondary" ? "1px solid #d48985" : "none"};
     padding-bottom: ${(props) =>
