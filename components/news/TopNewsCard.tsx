@@ -8,10 +8,14 @@ import useFormattedDate from "@hooks/useFormattedDate";
 interface INewsCard {
   card?: Article;
   priority?: boolean;
-  imageHeight?: string;
+  layout?: "fixed" | "fill" | "raw" | "intrinsic" | "responsive" | undefined;
 }
 
-const NewsCard: FC<INewsCard> = ({ card, priority, imageHeight }) => {
+type ImageProps = {
+  layout?: string;
+};
+
+const NewsCard: FC<INewsCard> = ({ card, priority, layout }) => {
   const articleDate = useFormattedDate(
     card?.createdAt ? new Date(card.createdAt) : new Date(),
     "distance"
@@ -21,12 +25,14 @@ const NewsCard: FC<INewsCard> = ({ card, priority, imageHeight }) => {
     <Wrapper>
       <Link href={`/articles/${card?.slug}`} passHref={true}>
         <Card>
-          <CloudinaryImage
-            featuredImage={card?.featuredImage}
-            title={card?.title}
-            priority={priority}
-            height={imageHeight}
-          />
+          <ImageWrapper className="image-wrapper" layout={layout}>
+            <CloudinaryImage
+              featuredImage={card?.featuredImage}
+              title={card?.title}
+              priority={priority}
+              layout={layout}
+            />
+          </ImageWrapper>
           <Details>
             <h3>{card?.title}</h3>
             <p className="date">{articleDate} ago</p>
@@ -43,6 +49,12 @@ export default NewsCard;
 
 const Wrapper = styled.article`
   position: relative;
+  overflow: hidden;
+
+  &:hover .image-wrapper {
+    scale: 1.05;
+    transition: scale 1s ease;
+  }
 `;
 
 const Card = styled.a``;
@@ -56,6 +68,19 @@ const Category = styled.p`
   left: 1rem;
   position: absolute;
   display: inline-block;
+`;
+
+const ImageWrapper = styled.div<ImageProps>`
+  position: relative;
+  height: ${(props) => (props.layout === "fill" ? "500px" : "auto")};
+
+  @media screen and (max-width: 768px) {
+    height: ${(props) => (props.layout === "fill" ? "373px" : "auto")};
+  }
+
+  @media screen and (max-width: 400px) {
+    height: ${(props) => (props.layout === "fill" ? "187px" : "auto")};
+  }
 `;
 
 const Details = styled.div`

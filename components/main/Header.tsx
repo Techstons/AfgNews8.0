@@ -4,6 +4,7 @@ import { Container } from "@components/ui";
 import styled from "@emotion/styled";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Header = ({
   title,
@@ -13,6 +14,8 @@ const Header = ({
   title: string;
 }) => {
   const router = useRouter();
+
+  const [activeChoice, setActiveChoice] = useState("top"); // Used in the top news header toggle
 
   return (
     <Wrapper>
@@ -25,11 +28,34 @@ const Header = ({
         </Top>
 
         <MainGrid>
-          <TopNewsCard card={articles?.[0]} priority={true} />
+          <TopNewsCard card={articles?.[0]} layout="fill" priority={true} />
           <SubGrid>
-            {articles?.slice(1, 5).map((item) => (
-              <TopNewsCard key={item.title} card={item} />
-            ))}
+            <div>
+              {articles?.slice(1, 3).map((item) => (
+                <TopNewsCard key={item.title} card={item} />
+              ))}
+            </div>
+            <TopNewsAside>
+              <div className="header">
+                <button
+                  className={`${activeChoice === "top" ? "active" : ""}`}
+                  onClick={() => setActiveChoice("top")}
+                >
+                  Popular News
+                </button>
+                <button
+                  className={`${activeChoice === "recent" ? "active" : ""}`}
+                  onClick={() => setActiveChoice("recent")}
+                >
+                  Recent News
+                </button>
+              </div>
+              <div className="articles">
+                {articles?.slice(1, 4).map((item) => (
+                  <ArticleCard variant="slim" card={item} key={item.title} />
+                ))}
+              </div>
+            </TopNewsAside>
           </SubGrid>
         </MainGrid>
         <ArticleContainer>
@@ -78,11 +104,36 @@ const MainGrid = styled.div`
 
 const SubGrid = styled.div`
   display: grid;
-  gap: 1rem;
+  gap: 0 1rem;
 
   @media only screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 1rem;
+  }
+`;
+
+const TopNewsAside = styled.aside`
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .header {
+    display: flex;
+    width: 100%;
+
+    & > button {
+      text-align: center;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1rem 0.5rem;
+      width: 50%;
+    }
+
+    button.active {
+      background-color: #222;
+    }
   }
 `;
 
