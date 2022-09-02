@@ -9,10 +9,6 @@ interface ILayout {
   articles: ReturnValue;
 }
 
-type MainProps = {
-  isDark?: boolean;
-};
-
 type Scroller = {
   isVisible: boolean;
 };
@@ -41,7 +37,7 @@ const Layout = ({ articles, children }: ILayout) => {
   return (
     <>
       <Navbar articles={articles} isDark={isDark} setIsDark={setIsDark} />
-      <Main isDark={isDark}>{children}</Main>
+      <Main className={isDark ? "dark-theme" : "light-theme"}>{children}</Main>
       <AccessibilityScroller
         isVisible={isVisible}
         onClick={scrollToTop}
@@ -56,13 +52,11 @@ const Layout = ({ articles, children }: ILayout) => {
 
 export default Layout;
 
-const Main = styled.main<MainProps>`
+const Main = styled.main`
   min-height: 100vh;
   padding: 2.5rem 0;
-  background-color: ${(props) =>
-    props.isDark ? "var(--text-color)" : "var(--container-color)"};
-  color: ${(props) =>
-    props.isDark ? "var(--container-color)" : "var(--text-color)"};
+  background-color: var(--container-color);
+  color: var(--text-color);
 `;
 
 const AccessibilityScroller = styled.button<Scroller>`

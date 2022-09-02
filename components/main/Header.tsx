@@ -82,7 +82,7 @@ const SubGrid = styled.div`
 
   @media only screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
-    gap: 0.5rem 1rem;
+    gap: 1.5rem 1rem;
   }
 `;
 
