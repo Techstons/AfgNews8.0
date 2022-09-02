@@ -42,11 +42,11 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
                 More from <span>{title}</span>
               </h2>
               <MoreNews>
-                <CategoryCard variant="secondary" card={articles?.[0]} />
-                <CategoryCard variant="secondary" card={articles?.[0]} />
-                <CategoryCard variant="secondary" card={articles?.[0]} />
-                <CategoryCard variant="secondary" card={articles?.[0]} />
-                <CategoryCard variant="secondary" card={articles?.[0]} />
+                <CategoryCard card={articles?.[0]} />
+                <CategoryCard card={articles?.[0]} />
+                <CategoryCard card={articles?.[0]} />
+                <CategoryCard card={articles?.[0]} />
+                <CategoryCard card={articles?.[0]} />
               </MoreNews>
             </div>
           </Wrapper>
@@ -128,8 +128,13 @@ const SideChannel = styled.div`
   flex-direction: column;
   gap: 3rem;
 
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+  }
+
   @media screen and (max-width: 480px) {
     gap: 2rem;
+    flex-direction: column;
   }
 `;
 

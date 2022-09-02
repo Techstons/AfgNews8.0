@@ -4,85 +4,44 @@ import { Article } from "@components/types";
 import CloudinaryImage from "./CloudinaryImage";
 import useFormattedDate from "@hooks/useFormattedDate";
 
-type Variants = "primary" | "secondary" | "tertiary" | "quaternary";
 interface ICategoryCard {
   card?: Article;
-  variant: Variants;
 }
 
-type ArticleProps = {
-  variant: Variants;
-};
-
-const CategoryCard = ({ card, variant }: ICategoryCard) => {
+const CategoryCard = ({ card }: ICategoryCard) => {
   const articleDate = useFormattedDate(
     card?.createdAt ? new Date(card.createdAt) : new Date(),
     "distance"
   );
 
-  if (variant === "primary")
-    return (
-      <>
-        <PrimaryArticleWrapper>
+  return (
+    <ArticleWrapper>
+      <div className="article-image">
+        <Link href={`/articles/${card?.slug}`}>
+          <a aria-label={card?.title}>
+            <CloudinaryImage
+              featuredImage={card?.featuredImage}
+              title={card?.title}
+            />
+          </a>
+        </Link>
+      </div>
+      <div className="details">
+        <p className="date">{articleDate} ago</p>
+        <h3>
           <Link href={`/articles/${card?.slug}`}>
-            <a aria-label={card?.title}>
-              <div className="article-image">
-                <CloudinaryImage
-                  featuredImage={card?.featuredImage}
-                  title={card?.title}
-                />
-              </div>
-            </a>
+            <a>{card?.title}</a>
           </Link>
-
-          <Details>
-            <Link href={`/articles/${card?.slug}`}>
-              <a>
-                <h3>{card?.title}</h3>
-              </a>
-            </Link>
-            <p>{articleDate} ago</p>
-          </Details>
-        </PrimaryArticleWrapper>
-      </>
-    );
-  else
-    return (
-      <SecondaryArticleWrapper>
-        <div className="article-image">
-          <Link href={`/articles/${card?.slug}`}>
-            <a aria-label={card?.title}>
-              <CloudinaryImage
-                featuredImage={card?.featuredImage}
-                title={card?.title}
-              />
-            </a>
-          </Link>
-        </div>
-        <div className="details">
-          <p className="date">{articleDate} ago</p>
-          <h3>
-            <Link href={`/articles/${card?.slug}`}>
-              <a>{card?.title}</a>
-            </Link>
-          </h3>
-          <p className="excerpt">{card?.excerpt}</p>
-        </div>
-      </SecondaryArticleWrapper>
-    );
+        </h3>
+        <p className="excerpt">{card?.excerpt}</p>
+      </div>
+    </ArticleWrapper>
+  );
 };
 
 export default CategoryCard;
 
-const PrimaryArticleWrapper = styled.article`
-  text-align: left;
-
-  .article-image {
-    margin-bottom: 0.5rem;
-  }
-`;
-
-const SecondaryArticleWrapper = styled.article`
+const ArticleWrapper = styled.article`
   display: grid;
   gap: 1rem;
 
@@ -113,5 +72,3 @@ const SecondaryArticleWrapper = styled.article`
     }
   }
 `;
-
-const Details = styled.div``;
