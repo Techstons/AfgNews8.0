@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Article } from "@components/types";
-import { CategoryCard } from "@components/news";
+import { CategoryCard, CategoryHeaderCard } from "@components/news";
 import { Container } from "@components/ui";
 
 interface ICategorySection {
@@ -19,18 +19,18 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
           <Wrapper>
             <MainChannel>
               <TopChannel>
-                <CategoryCard variant="primary" card={articles?.[0]} />
+                <CategoryHeaderCard variant="primary" card={articles?.[0]} />
               </TopChannel>
               <BottomChannel>
-                <CategoryCard variant="tertiary" card={articles?.[0]} />
-                <CategoryCard variant="tertiary" card={articles?.[0]} />
-                <CategoryCard variant="tertiary" card={articles?.[0]} />
-                <CategoryCard variant="tertiary" card={articles?.[0]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[0]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[0]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[0]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[0]} />
               </BottomChannel>
             </MainChannel>
             <SideChannel className="">
-              <CategoryCard variant="secondary" card={articles?.[0]} />
-              <CategoryCard variant="secondary" card={articles?.[0]} />
+              <CategoryHeaderCard variant="secondary" card={articles?.[0]} />
+              <CategoryHeaderCard variant="secondary" card={articles?.[0]} />
             </SideChannel>
           </Wrapper>
         </Header>
@@ -38,8 +38,8 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
         <Section>
           <Wrapper>
             <SpecialFeature>
-              <CategoryCard variant="secondary" card={articles?.[0]} />
-              <CategoryCard variant="secondary" card={articles?.[0]} />
+              <CategoryCard variant="primary" card={articles?.[0]} />
+              <CategoryCard variant="primary" card={articles?.[0]} />
             </SpecialFeature>
           </Wrapper>
         </Section>
@@ -51,11 +51,11 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
                 More from <span>{title}</span>
               </h2>
               <MoreNews>
-                <CategoryCard variant="quaternary" card={articles?.[0]} />
-                <CategoryCard variant="quaternary" card={articles?.[0]} />
-                <CategoryCard variant="quaternary" card={articles?.[0]} />
-                <CategoryCard variant="quaternary" card={articles?.[0]} />
-                <CategoryCard variant="quaternary" card={articles?.[0]} />
+                <CategoryCard variant="secondary" card={articles?.[0]} />
+                <CategoryCard variant="secondary" card={articles?.[0]} />
+                <CategoryCard variant="secondary" card={articles?.[0]} />
+                <CategoryCard variant="secondary" card={articles?.[0]} />
+                <CategoryCard variant="secondary" card={articles?.[0]} />
               </MoreNews>
             </div>
           </Wrapper>
@@ -88,6 +88,10 @@ const Wrapper = styled.div`
   display: grid;
   gap: 2rem;
   grid-template-columns: 1.35fr 0.65fr;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const MainChannel = styled.div`
@@ -109,6 +113,18 @@ const MainChannel = styled.div`
 
     background-color: #d48985;
   }
+
+  @media screen and (max-width: 768px) {
+    padding-right: 0;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    gap: 2rem;
+  }
 `;
 
 const TopChannel = styled.div`
@@ -120,12 +136,20 @@ const SideChannel = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+
+  @media screen and (max-width: 480px) {
+    gap: 2rem;
+  }
 `;
 
 const BottomChannel = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 
   & > div:nth-of-type(1),
   & > div:nth-of-type(3) {
@@ -148,12 +172,20 @@ const Section = styled.section`
 `;
 
 const SpecialFeature = styled.div`
-  display: flex;
+  display: grid;
   gap: 2rem;
+
+  @media screen and (min-width: 680px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const MoreNews = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5rem;
+
+  @media screen and (max-width: 768px) {
+    gap: 3.5rem;
+  }
 `;
