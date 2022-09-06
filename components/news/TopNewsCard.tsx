@@ -26,7 +26,7 @@ const NewsCard: FC<INewsCard> = ({ card, priority, layout, height, width }) => {
   return (
     <Wrapper>
       <Link href={`/articles/${card?.slug}`} passHref={true}>
-        <Card>
+        <a>
           <CloudinaryImage
             featuredImage={card?.featuredImage}
             title={card?.title}
@@ -42,7 +42,7 @@ const NewsCard: FC<INewsCard> = ({ card, priority, layout, height, width }) => {
             <p className="excerpt">{card?.excerpt}</p>
           </Details>
           <Category>{card?.category}</Category>
-        </Card>
+        </a>
       </Link>
     </Wrapper>
   );
@@ -63,8 +63,6 @@ const Wrapper = styled.article`
     scale: 1.05;
   }
 `;
-
-const Card = styled.a``;
 
 const Category = styled.p`
   background-color: var(--primary-color);
