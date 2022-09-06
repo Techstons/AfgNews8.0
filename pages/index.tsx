@@ -31,6 +31,11 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
     <Container>
       <SEOHeader />
       <MainHeader articles={articles.Home.items} title={t("common:afg")} />
+      <WorldSection
+        slug="/world"
+        title={t("common:world")}
+        articles={articles.World.items}
+      />
       <TwoColumns>
         <div>
           <BusinessSection
@@ -41,11 +46,6 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </div>
         <div></div>
       </TwoColumns>
-      <WorldSection
-        slug="/world"
-        title={t("common:world")}
-        articles={articles.World.items}
-      />
     </Container>
   );
 };

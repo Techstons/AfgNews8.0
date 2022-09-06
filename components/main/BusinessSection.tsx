@@ -25,7 +25,9 @@ const BusinessSection = ({ articles, slug, title }: ISection) => {
 
 export default BusinessSection;
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+  margin-bottom: 2rem;
+`;
 
 const BusinessLayout = styled.div`
   display: flex;

@@ -23,7 +23,9 @@ const WorldSection = ({ slug, title, articles }: ISection) => {
 
 export default WorldSection;
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+  margin-bottom: 2rem;
+`;
 
 const WorldLayout = styled.div`
   display: flex;
