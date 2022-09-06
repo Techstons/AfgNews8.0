@@ -1,4 +1,9 @@
-import { MainHeader, BusinessSection, Section } from "@components/main";
+import {
+  MainHeader,
+  BusinessSection,
+  Section,
+  WorldSection,
+} from "@components/main";
 import { SEOHeader } from "@components/seo";
 import { Container } from "@components/ui";
 import styled from "@emotion/styled";
@@ -26,29 +31,28 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
     <Container>
       <SEOHeader />
       <MainHeader articles={articles.Home.items} title={t("common:afg")} />
-      <SectionLayout>
+      <TwoColumns>
         <div>
           <BusinessSection
             articles={articles.Business.items}
             title={t("common:business")}
             slug="/business"
           />
-          <Section
-            cards={articles.World.items}
-            variant="tertiary"
-            title={t("common:world")}
-            slug="/world"
-          />
         </div>
         <div></div>
-      </SectionLayout>
+      </TwoColumns>
+      <WorldSection
+        slug="/world"
+        title={t("common:world")}
+        articles={articles.World.items}
+      />
     </Container>
   );
 };
 
 export default Home;
 
-const SectionLayout = styled.div`
+const TwoColumns = styled.div`
   display: grid;
   grid-template-columns: 1.35fr 0.65fr;
 `;

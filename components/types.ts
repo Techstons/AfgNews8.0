@@ -15,3 +15,9 @@ export interface Article {
   slug: string;
   author: string;
 }
+
+export interface ISection {
+  title: string;
+  articles?: Article[];
+  slug: string;
+}
