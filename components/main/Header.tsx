@@ -97,8 +97,8 @@ const Top = styled.div`
 
 const MainGrid = styled.div`
   display: grid;
-  grid-template-columns: 1.4fr 0.6fr;
-  gap: 2rem;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 5rem;
   margin-bottom: 1.5rem;
 `;
 
@@ -120,7 +120,6 @@ const SubGrid = styled.div`
 `;
 
 const TopNewsAside = styled.aside`
-  width: 100%;
   border-radius: 4px 4px 0 0;
   overflow: hidden;
   display: flex;
