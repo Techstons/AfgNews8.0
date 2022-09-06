@@ -1,4 +1,4 @@
-import { CategorySection, Section } from "@components/main";
+import { CategorySection } from "@components/category";
 import { SEOHeader } from "@components/seo";
 import {
   getAllCategoriesSlugs,
