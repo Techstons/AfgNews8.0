@@ -1,10 +1,12 @@
 import { Article } from "@components/types";
+import styled from "@emotion/styled";
 import Image from "next/image";
 
 interface IImage {
   width?: string;
   height?: string;
   layout?: "fixed" | "fill" | "raw" | "intrinsic" | "responsive" | undefined;
+  className?: string;
 }
 
 type CloudinaryImageProps = Pick<Partial<Article>, "featuredImage" | "title"> &
@@ -17,14 +19,10 @@ const CloudinaryImage = ({
   width = "1980",
   height = "1080",
   layout = "responsive",
+  className,
 }: CloudinaryImageProps & { priority?: boolean }) => {
   return (
-    <div
-      style={{
-        borderRadius: "0.25rem",
-        overflow: "hidden",
-      }}
-    >
+    <Wrapper width={width} height={height} className={className}>
       <Image
         src={`q_auto/f_auto/${featuredImage?.id}` ?? "cld-sample"}
         className="image"
@@ -38,8 +36,16 @@ const CloudinaryImage = ({
         objectFit="cover"
         priority={priority}
       />
-    </div>
+    </Wrapper>
   );
 };
 
 export default CloudinaryImage;
+
+const Wrapper = styled.div<IImage>`
+  position: relative;
+  border-radius: 0.35rem;
+  overflow: hidden;
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
+`;

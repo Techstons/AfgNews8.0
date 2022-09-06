@@ -9,13 +9,15 @@ interface INewsCard {
   card?: Article;
   priority?: boolean;
   layout?: "fixed" | "fill" | "raw" | "intrinsic" | "responsive" | undefined;
+  height?: string;
+  width?: string;
 }
 
 type ImageProps = {
   layout?: string;
 };
 
-const NewsCard: FC<INewsCard> = ({ card, priority, layout }) => {
+const NewsCard: FC<INewsCard> = ({ card, priority, layout, height, width }) => {
   const articleDate = useFormattedDate(
     card?.createdAt ? new Date(card.createdAt) : new Date(),
     "distance"
@@ -25,14 +27,15 @@ const NewsCard: FC<INewsCard> = ({ card, priority, layout }) => {
     <Wrapper>
       <Link href={`/articles/${card?.slug}`} passHref={true}>
         <Card>
-          <ImageWrapper className="image-wrapper" layout={layout}>
-            <CloudinaryImage
-              featuredImage={card?.featuredImage}
-              title={card?.title}
-              priority={priority}
-              layout={layout}
-            />
-          </ImageWrapper>
+          <CloudinaryImage
+            featuredImage={card?.featuredImage}
+            title={card?.title}
+            priority={priority}
+            layout={layout}
+            height={height}
+            width={width}
+            className="image-wrapper"
+          />
           <Details>
             <h3>{card?.title}</h3>
             <p className="date">{articleDate} ago</p>
@@ -72,19 +75,6 @@ const Category = styled.p`
   left: 1rem;
   position: absolute;
   display: inline-block;
-`;
-
-const ImageWrapper = styled.div<ImageProps>`
-  position: relative;
-  height: ${(props) => (props.layout === "fill" ? "555px" : "auto")};
-
-  @media screen and (max-width: 768px) {
-    height: ${(props) => (props.layout === "fill" ? "373px" : "auto")};
-  }
-
-  @media screen and (max-width: 400px) {
-    height: ${(props) => (props.layout === "fill" ? "187px" : "auto")};
-  }
 `;
 
 const Details = styled.div`

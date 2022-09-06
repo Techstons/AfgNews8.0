@@ -28,41 +28,45 @@ const Header = ({
         </Top>
 
         <MainGrid>
-          <TopNewsCard card={articles?.[0]} layout="fill" priority={true} />
-          <SubGrid>
-            <div className="middle-column-article">
+          <FeaturedArticles>
+            <div className="featured-article">
+              <TopNewsCard
+                card={articles?.[0]}
+                priority={true}
+                layout="fill"
+                width="100%"
+                height="320px"
+              />
+            </div>
+
+            <SubGrid>
               {articles?.slice(1, 3).map((item) => (
                 <TopNewsCard key={item.title} card={item} />
               ))}
+            </SubGrid>
+          </FeaturedArticles>
+          <TopNewsAside>
+            <div className="header">
+              <button
+                className={`${activeChoice === "latest" ? "active" : ""}`}
+                onClick={() => setActiveChoice("latest")}
+              >
+                Latest News
+              </button>
+              <button
+                className={`${activeChoice === "popular" ? "active" : ""}`}
+                onClick={() => setActiveChoice("popular")}
+              >
+                Popular News
+              </button>
             </div>
-            <TopNewsAside>
-              <div className="header">
-                <button
-                  className={`${activeChoice === "latest" ? "active" : ""}`}
-                  onClick={() => setActiveChoice("latest")}
-                >
-                  Latest News
-                </button>
-                <button
-                  className={`${activeChoice === "popular" ? "active" : ""}`}
-                  onClick={() => setActiveChoice("popular")}
-                >
-                  Popular News
-                </button>
-              </div>
-              <div className="articles">
-                {articles?.slice(0, 5)?.map((item) => (
-                  <ArticleCard variant="slim" card={item} key={item.title} />
-                ))}
-              </div>
-            </TopNewsAside>
-          </SubGrid>
+            <div className="articles">
+              {articles?.slice(0, 5)?.map((item) => (
+                <ArticleCard variant="slim" card={item} key={item.title} />
+              ))}
+            </div>
+          </TopNewsAside>
         </MainGrid>
-        <ArticleContainer>
-          {articles?.slice(5, 12).map((item) => (
-            <ArticleCard variant="slim" card={item} key={item.title} />
-          ))}
-        </ArticleContainer>
       </Container>
     </Wrapper>
   );
@@ -93,14 +97,12 @@ const Top = styled.div`
 
 const MainGrid = styled.div`
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 1.4fr 0.6fr;
   gap: 2rem;
   margin-bottom: 1.5rem;
-
-  @media only screen and (max-width: 1264px) {
-    grid-template-columns: 1fr;
-  }
 `;
+
+const FeaturedArticles = styled.div``;
 
 const SubGrid = styled.div`
   display: grid;
@@ -140,18 +142,5 @@ const TopNewsAside = styled.aside`
     button.active {
       background-color: var(--primary-color);
     }
-  }
-`;
-
-const ArticleContainer = styled.div`
-  display: grid;
-  gap: 1.5rem;
-
-  @media only screen and (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media only screen and (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
   }
 `;
