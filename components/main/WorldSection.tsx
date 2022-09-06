@@ -2,10 +2,11 @@ import { ArticleCard } from "@components/news";
 import { ISection } from "@components/types";
 import styled from "@emotion/styled";
 import SectionHeader from "./SectionHeader";
+import SectionWrapper from "./SectionWrapper";
 
 const WorldSection = ({ slug, title, articles }: ISection) => {
   return (
-    <Wrapper>
+    <SectionWrapper>
       <SectionHeader slug={slug} title={title} />
       <WorldLayout>
         <FeaturedArticle>
@@ -17,7 +18,7 @@ const WorldSection = ({ slug, title, articles }: ISection) => {
           })}
         </SubArticles>
       </WorldLayout>
-    </Wrapper>
+    </SectionWrapper>
   );
 };
 
