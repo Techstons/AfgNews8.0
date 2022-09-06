@@ -1,6 +1,5 @@
 import { ArticleCard, TopNewsCard } from "@components/news";
 import { Article } from "@components/types";
-import { Container } from "@components/ui";
 import styled from "@emotion/styled";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { useRouter } from "next/router";
@@ -19,55 +18,53 @@ const Header = ({
 
   return (
     <Wrapper>
-      <Container>
-        <Top>
-          <HeaderTitle>{title === "Afghanistan" ? "AFG" : title}</HeaderTitle>
-          <div className="date">
-            {useFormattedDate(new Date(), "nav", router.locale)}
+      <Top>
+        <HeaderTitle>{title === "Afghanistan" ? "AFG" : title}</HeaderTitle>
+        <div className="date">
+          {useFormattedDate(new Date(), "nav", router.locale)}
+        </div>
+      </Top>
+
+      <MainGrid>
+        <FeaturedArticles>
+          <div className="featured-article">
+            <TopNewsCard
+              card={articles?.[0]}
+              priority={true}
+              layout="fill"
+              width="100%"
+              height="320px"
+            />
           </div>
-        </Top>
 
-        <MainGrid>
-          <FeaturedArticles>
-            <div className="featured-article">
-              <TopNewsCard
-                card={articles?.[0]}
-                priority={true}
-                layout="fill"
-                width="100%"
-                height="320px"
-              />
-            </div>
-
-            <SubGrid>
-              {articles?.slice(1, 3).map((item) => (
-                <TopNewsCard key={item.title} card={item} />
-              ))}
-            </SubGrid>
-          </FeaturedArticles>
-          <TopNewsAside>
-            <div className="header">
-              <button
-                className={`${activeChoice === "latest" ? "active" : ""}`}
-                onClick={() => setActiveChoice("latest")}
-              >
-                Latest News
-              </button>
-              <button
-                className={`${activeChoice === "popular" ? "active" : ""}`}
-                onClick={() => setActiveChoice("popular")}
-              >
-                Popular News
-              </button>
-            </div>
-            <div className="articles">
-              {articles?.slice(0, 5)?.map((item) => (
-                <ArticleCard variant="slim" card={item} key={item.title} />
-              ))}
-            </div>
-          </TopNewsAside>
-        </MainGrid>
-      </Container>
+          <SubGrid>
+            {articles?.slice(1, 3).map((item) => (
+              <TopNewsCard key={item.title} card={item} />
+            ))}
+          </SubGrid>
+        </FeaturedArticles>
+        <TopNewsAside>
+          <div className="header">
+            <button
+              className={`${activeChoice === "latest" ? "active" : ""}`}
+              onClick={() => setActiveChoice("latest")}
+            >
+              Latest News
+            </button>
+            <button
+              className={`${activeChoice === "popular" ? "active" : ""}`}
+              onClick={() => setActiveChoice("popular")}
+            >
+              Popular News
+            </button>
+          </div>
+          <div className="articles">
+            {articles?.slice(0, 5)?.map((item) => (
+              <ArticleCard variant="slim" card={item} key={item.title} />
+            ))}
+          </div>
+        </TopNewsAside>
+      </MainGrid>
     </Wrapper>
   );
 };

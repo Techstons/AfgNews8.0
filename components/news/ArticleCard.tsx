@@ -1,13 +1,12 @@
-import styled from "@emotion/styled";
 import { Article } from "@components/types";
-import { FC } from "react";
-import Image from "next/image";
+import styled from "@emotion/styled";
 import Link from "next/link";
+import { FC } from "react";
 import CloudinaryImage from "./CloudinaryImage";
 
 interface IArticle {
   card: Article;
-  variant: "primary" | "slim";
+  variant?: "primary" | "slim";
 }
 
 const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
@@ -15,10 +14,11 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <PrimaryAnchor>
-          <div className="image-container">
+          <div>
             <CloudinaryImage
               featuredImage={card.featuredImage}
               title={card.title}
+              className="image-container"
             />
           </div>
           <div className="content">
@@ -56,6 +56,10 @@ const PrimaryWrapper = styled.article`
   padding-bottom: 0.5rem;
   overflow: hidden;
   border-radius: 0.25rem;
+
+  .image-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
 
   &:hover {
     border-color: var(--primary-color);

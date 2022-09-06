@@ -17,12 +17,16 @@ const CloudinaryImage = ({
   title,
   priority,
   width = "1980",
-  height = "1080",
+  height = "1020",
   layout = "responsive",
   className,
 }: CloudinaryImageProps & { priority?: boolean }) => {
   return (
-    <Wrapper width={width} height={height} className={className}>
+    <Wrapper
+      width={width === "1980" ? "auto" : width}
+      height={height === "1020" ? "auto" : height}
+      className={className}
+    >
       <Image
         src={`q_auto/f_auto/${featuredImage?.id}` ?? "cld-sample"}
         className="image"

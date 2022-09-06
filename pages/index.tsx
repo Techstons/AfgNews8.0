@@ -1,5 +1,7 @@
-import { MainHeader, Section } from "@components/main";
+import { MainHeader, BusinessSection, Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
+import { Container } from "@components/ui";
+import styled from "@emotion/styled";
 import { getArticlesCtx } from "@hooks/article";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useTranslation } from "next-i18next";
@@ -21,42 +23,32 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <Container>
       <SEOHeader />
       <MainHeader articles={articles.Home.items} title={t("common:afg")} />
-      <Section
-        cards={articles.World.items}
-        variant="tertiary"
-        title={t("common:world")}
-        slug="/world"
-      />
-      <Section
-        cards={articles.Business.items}
-        variant="tertiary"
-        position="left"
-        title={t("common:business")}
-        slug="/business"
-      />
-      <Section
-        cards={articles.Tech.items}
-        variant="tertiary"
-        title={t("common:tech")}
-        slug="/tech-and-science"
-      ></Section>
-      <Section
-        cards={articles.Health.items}
-        variant="tertiary"
-        title={t("common:health")}
-        slug="/health"
-      ></Section>
-      <Section
-        cards={articles.Sports.items}
-        variant="tertiary"
-        title={t("common:sports")}
-        slug="/sports"
-      ></Section>
-    </>
+      <SectionLayout>
+        <div>
+          <BusinessSection
+            articles={articles.Business.items}
+            title={t("common:business")}
+            slug="/business"
+          />
+          <Section
+            cards={articles.World.items}
+            variant="tertiary"
+            title={t("common:world")}
+            slug="/world"
+          />
+        </div>
+        <div></div>
+      </SectionLayout>
+    </Container>
   );
 };
 
 export default Home;
+
+const SectionLayout = styled.div`
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+`;
