@@ -24,7 +24,7 @@ const WorldSection = ({ slug, title, articles }: ISection) => {
 export default WorldSection;
 
 const Wrapper = styled.section`
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 `;
 
 const WorldLayout = styled.div`

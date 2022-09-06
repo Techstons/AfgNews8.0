@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
 
 interface ISectionHeader {
   title: string;
@@ -8,14 +7,11 @@ interface ISectionHeader {
 }
 
 const SectionHeader = ({ title, slug }: ISectionHeader) => {
-  const { t } = useTranslation();
-
   return (
     <Header>
-      <h2>{title}</h2>
       <Link href={slug}>
         <a>
-          <HeaderLink>{t("home:view_more")}</HeaderLink>
+          <h2>{title}</h2>
         </a>
       </Link>
     </Header>
@@ -25,20 +21,16 @@ const SectionHeader = ({ title, slug }: ISectionHeader) => {
 export default SectionHeader;
 
 const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--primary-light);
+  border-bottom: 1px solid var(--primary-color);
   margin-bottom: 1rem;
   text-transform: uppercase;
 
-  h2 {
-    font-size: 1rem;
+  a {
+    display: block;
+    max-width: max-content;
   }
-`;
 
-const HeaderLink = styled.span`
-  font-size: 0.75rem;
-  color: var(--primary-light);
-  cursor: pointer;
+  h2 {
+    font-size: 1.15rem;
+  }
 `;
