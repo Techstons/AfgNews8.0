@@ -23,7 +23,7 @@ const useFormattedDate = (
             }).format(date)
       );
 
-    if (type === "widget") setFormattedDate(format(date, "MMM, do"));
+    if (type === "widget") setFormattedDate(format(date, "d MMM, yyyy"));
 
     if (type === "distance") setFormattedDate(formatDistanceToNow(date));
 

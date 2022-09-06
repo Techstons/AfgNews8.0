@@ -1,5 +1,6 @@
 import { Article } from "@components/types";
 import styled from "@emotion/styled";
+import useFormattedDate from "@hooks/useFormattedDate";
 import Link from "next/link";
 import { FC } from "react";
 import CloudinaryImage from "./CloudinaryImage";
@@ -19,6 +20,11 @@ const ArticleCard: FC<IArticle> = ({
   width,
   layout,
 }) => {
+  const articleDate = useFormattedDate(
+    card?.createdAt ? new Date(card.createdAt) : new Date(),
+    "widget"
+  );
+
   return variant === "primary" ? (
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
@@ -36,6 +42,7 @@ const ArticleCard: FC<IArticle> = ({
           <div className="content">
             <h3>{card.title}</h3>
             <p className="description">{card.excerpt}</p>
+            {/* <p className="date">{articleDate}</p> */}
             <p className="category">{card.category}</p>
           </div>
         </PrimaryAnchor>
@@ -110,6 +117,11 @@ const PrimaryAnchor = styled.a`
   & .content {
     width: 100%;
 
+    .date {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+    }
+
     .category {
       position: absolute;
       bottom: 0;
@@ -165,6 +177,7 @@ const SecondaryAnchor = styled.a`
   position: relative;
   cursor: pointer;
   display: flex;
+  align-items: center;
   gap: 1rem;
 
   & > * {
@@ -185,7 +198,12 @@ const SecondaryAnchor = styled.a`
   & .content {
     width: 100%;
 
+    .date {
+      font-size: 0.75rem;
+    }
+
     .category {
+      margin-top: 1rem;
       font-size: 0.75rem;
 
       &::before {
