@@ -7,9 +7,18 @@ import CloudinaryImage from "./CloudinaryImage";
 interface IArticle {
   card: Article;
   variant?: "primary" | "slim";
+  width?: string;
+  height?: string;
+  layout?: "fixed" | "fill" | "raw" | "intrinsic" | "responsive" | undefined;
 }
 
-const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
+const ArticleCard: FC<IArticle> = ({
+  card,
+  variant = "primary",
+  height,
+  width,
+  layout,
+}) => {
   return variant === "primary" ? (
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
@@ -19,6 +28,9 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
               featuredImage={card.featuredImage}
               title={card.title}
               className="image-container"
+              height={height}
+              width={width}
+              layout={layout}
             />
           </div>
           <div className="content">
@@ -33,12 +45,13 @@ const ArticleCard: FC<IArticle> = ({ card, variant = "primary" }) => {
     <SecondaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <SecondaryAnchor>
-          <div className="image-container">
-            <CloudinaryImage
-              featuredImage={card.featuredImage}
-              title={card.title}
-            />
-          </div>
+          <CloudinaryImage
+            featuredImage={card.featuredImage}
+            title={card.title}
+            height={height}
+            width={width}
+            layout={layout}
+          />
           <div className="content">
             <h3>{card.title}</h3>
             <p className="category">{card.category}</p>
@@ -151,9 +164,12 @@ const PrimaryAnchor = styled.a`
 const SecondaryAnchor = styled.a`
   position: relative;
   cursor: pointer;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   gap: 1rem;
+
+  & > * {
+    width: 50%;
+  }
 
   h3 {
     font-size: 1rem;

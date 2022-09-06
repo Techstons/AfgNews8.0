@@ -9,16 +9,16 @@ const BusinessSection = ({ articles, slug, title }: ISection) => {
     <SectionWrapper>
       <SectionHeader slug={slug} title={title} />
       <BusinessLayout>
-        <MainArticleContainer>
+        <FeaturedArticle>
           {articles?.slice(0, 2)?.map((item) => {
             return <ArticleCard card={item} key={item.slug} />;
           })}
-        </MainArticleContainer>
-        <SubArticleContainer>
+        </FeaturedArticle>
+        <SubArticles>
           {articles?.slice(1, 5)?.map((item) => {
             return <ArticleCard card={item} key={item.slug} />;
           })}
-        </SubArticleContainer>
+        </SubArticles>
       </BusinessLayout>
     </SectionWrapper>
   );
@@ -26,16 +26,12 @@ const BusinessSection = ({ articles, slug, title }: ISection) => {
 
 export default BusinessSection;
 
-const Wrapper = styled.section`
-  margin-bottom: 3rem;
-`;
-
 const BusinessLayout = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-const MainArticleContainer = styled.div`
+const FeaturedArticle = styled.div`
   width: calc(66% - 15px);
 
   & > * {
@@ -43,7 +39,7 @@ const MainArticleContainer = styled.div`
   }
 `;
 
-const SubArticleContainer = styled.div`
+const SubArticles = styled.div`
   width: calc(34% - 15px);
 
   & > * {
