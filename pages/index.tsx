@@ -1,4 +1,4 @@
-import { Header, Section } from "@components/main";
+import { MainHeader, Section } from "@components/main";
 import { SEOHeader } from "@components/seo";
 import { getArticlesCtx } from "@hooks/article";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -23,7 +23,7 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <SEOHeader />
-      <Header articles={articles.Home.items} title={t("common:afg")} />
+      <MainHeader articles={articles.Home.items} title={t("common:afg")} />
       <Section
         cards={articles.World.items}
         variant="tertiary"
