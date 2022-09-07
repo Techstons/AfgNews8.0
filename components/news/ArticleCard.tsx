@@ -153,11 +153,6 @@ const PrimaryAnchor = styled.a`
     .description {
       display: none;
       font-weight: 400;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      line-clamp: 2;
-      -webkit-box-orient: vertical;
       margin-bottom: 1.5rem;
     }
   }
