@@ -27,10 +27,18 @@ export default WorldSection;
 const WorldLayout = styled.div`
   display: flex;
   gap: 2rem;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const FeaturedArticle = styled.div`
   width: 55%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const SubArticles = styled.div`
@@ -38,4 +46,12 @@ const SubArticles = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
