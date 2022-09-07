@@ -1,8 +1,10 @@
 import { Article } from "@components/types";
 import styled from "@emotion/styled";
 import useFormattedDate from "@hooks/useFormattedDate";
+import { Clock } from "@styled-icons/bootstrap";
 import Link from "next/link";
 import { FC } from "react";
+import CategoryLabel from "./CategoryLabel";
 import CloudinaryImage from "./CloudinaryImage";
 
 interface IArticle {
@@ -22,14 +24,14 @@ const ArticleCard: FC<IArticle> = ({
 }) => {
   const articleDate = useFormattedDate(
     card?.createdAt ? new Date(card.createdAt) : new Date(),
-    "widget"
+    "distance"
   );
 
   return variant === "primary" ? (
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <PrimaryAnchor>
-          <div>
+          <ImageWrapper>
             <CloudinaryImage
               featuredImage={card.featuredImage}
               title={card.title}
@@ -38,12 +40,16 @@ const ArticleCard: FC<IArticle> = ({
               width={width}
               layout={layout}
             />
-          </div>
+            <p className="category">
+              <CategoryLabel label={card.category} />
+            </p>
+          </ImageWrapper>
           <div className="content">
             <h3>{card.title}</h3>
             <p className="description">{card.excerpt}</p>
-            {/* <p className="date">{articleDate}</p> */}
-            <p className="category">{card.category}</p>
+            <p className="date">
+              <Clock size={10} className="clock" /> {articleDate}
+            </p>
           </div>
         </PrimaryAnchor>
       </Link>
@@ -120,6 +126,10 @@ const PrimaryAnchor = styled.a`
     .date {
       margin-top: 0.5rem;
       font-size: 0.75rem;
+
+      .clock {
+        margin-right: 0.25rem;
+      }
     }
 
     .category {
@@ -146,9 +156,9 @@ const PrimaryAnchor = styled.a`
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      -webkit-line-clamp: 2; /* 2 number of lines to show */
       line-clamp: 2;
       -webkit-box-orient: vertical;
+      margin-bottom: 1.5rem;
     }
   }
 
@@ -223,4 +233,8 @@ const SecondaryAnchor = styled.a`
       color: var(--primary-color);
     }
   }
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
 `;
