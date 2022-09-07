@@ -1,5 +1,6 @@
 import { Article } from "@components/types";
 import styled from "@emotion/styled";
+import Link from "next/link";
 import CloudinaryImage from "./CloudinaryImage";
 
 interface ICryptoCard {
@@ -9,11 +10,15 @@ interface ICryptoCard {
 const CryptoCard = ({ card }: ICryptoCard) => {
   return (
     <Wrapper>
-      <CloudinaryImage featuredImage={card.featuredImage} width="800" />
-      <Details>
-        <p className="category">{card.category}</p>
-        <h3>{card.title}</h3>
-      </Details>
+      <Link href={card.slug}>
+        <a aria-label={card.title}>
+          <CloudinaryImage featuredImage={card.featuredImage} width="800" />
+          <Details>
+            <p className="category">{card.category}</p>
+            <h3>{card.title}</h3>
+          </Details>
+        </a>
+      </Link>
     </Wrapper>
   );
 };
