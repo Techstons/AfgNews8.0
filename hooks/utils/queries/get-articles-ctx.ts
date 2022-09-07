@@ -14,6 +14,9 @@ query getArticlesCtxQuery($locale: String) {
   Tech:articleCollection(order: sys_publishedAt_DESC, where: {category: {slug: "tech-and-science"}}, limit: 4, locale: $locale) {
       ${cardArticleFields}
   }
+  Crypto:articleCollection(order: sys_publishedAt_DESC, where: {category: {slug: "crypto"}}, limit: 4, locale: $locale)  {
+      ${cardArticleFields}
+  }
   Health:articleCollection(order: sys_publishedAt_DESC, where: {category: {slug: "health"}}, limit: 4, locale: $locale) {
       ${cardArticleFields}
   }
