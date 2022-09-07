@@ -4,6 +4,7 @@ import {
   WorldSection,
   TechAndScienceSection,
   CryptoSection,
+  HealthSection,
 } from "@components/main";
 import { SEOHeader } from "@components/seo";
 import { Container } from "@components/ui";
@@ -54,8 +55,13 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
       />
       <CryptoSection
         slug="/crypto"
-        title="Crypto"
+        title={t("common:crypto")}
         articles={articles.Crypto.items}
+      />
+      <HealthSection
+        slug="/health"
+        title={t("common:health")}
+        articles={articles.Health.items}
       />
     </Container>
   );
