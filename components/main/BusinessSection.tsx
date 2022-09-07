@@ -29,6 +29,10 @@ export default BusinessSection;
 const BusinessLayout = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const FeaturedArticle = styled.div`
@@ -37,6 +41,10 @@ const FeaturedArticle = styled.div`
   & > * {
     margin-bottom: 1.25rem;
   }
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 const SubArticles = styled.div`
@@ -44,5 +52,9 @@ const SubArticles = styled.div`
 
   & > * {
     margin-bottom: 0.75rem;
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
   }
 `;
