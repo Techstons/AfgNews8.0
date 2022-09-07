@@ -132,24 +132,6 @@ const PrimaryAnchor = styled.a`
       }
     }
 
-    .category {
-      position: absolute;
-      bottom: 0;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 0.1rem;
-
-      &::before {
-        content: " ";
-        display: inline-block;
-        margin-right: 0.5rem;
-        border-left: 2px solid var(--primary-color);
-        height: 0.75rem;
-        padding: 0;
-        width: 0;
-      }
-    }
-
     .description {
       display: none;
       font-weight: 400;
@@ -208,6 +190,8 @@ const SecondaryAnchor = styled.a`
     }
 
     .category {
+      display: flex;
+      align-items: center;
       margin-top: 1rem;
       font-size: 0.75rem;
 
@@ -216,7 +200,7 @@ const SecondaryAnchor = styled.a`
         display: inline-block;
         margin-right: 0.5rem;
         border-left: 2px solid var(--primary-color);
-        height: 0.75rem;
+        height: 0.65rem;
         padding: 0;
         width: 0;
       }
@@ -232,4 +216,10 @@ const SecondaryAnchor = styled.a`
 
 const ImageWrapper = styled.div`
   position: relative;
+
+  .category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
 `;

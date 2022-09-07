@@ -13,11 +13,13 @@ const CryptoCard = ({ card }: ICryptoCard) => {
     <Wrapper>
       <Link href={card.slug}>
         <a aria-label={card.title}>
-          <CloudinaryImage featuredImage={card.featuredImage} width="800" />
-          <Details>
+          <ImageWrapper>
+            <CloudinaryImage featuredImage={card.featuredImage} width="800" />
             <p className="category">
               <CategoryLabel label={card.category} />
             </p>
+          </ImageWrapper>
+          <Details>
             <h3>{card.title}</h3>
           </Details>
         </a>
@@ -32,14 +34,19 @@ const Wrapper = styled.article`
   position: relative;
 `;
 
+const ImageWrapper = styled.div`
+  position: relative;
+
+  .category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+`;
+
 const Details = styled.div`
   position: absolute;
   bottom: 0.5rem;
   color: white;
   padding: 1rem 2rem;
-
-  .category {
-    width: max-content;
-    margin-bottom: 1rem;
-  }
 `;

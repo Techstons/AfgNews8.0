@@ -1,4 +1,4 @@
-import { HealthCard } from "@components/news";
+import { ArticleCard, HealthCard } from "@components/news";
 import { ISection } from "@components/types";
 import styled from "@emotion/styled";
 import SectionHeader from "./SectionHeader";
@@ -22,10 +22,10 @@ const HealthSection = ({ slug, title, articles }: ISection) => {
           })} */}
           {!!articles?.[0] && (
             <>
-              <HealthCard card={articles[0]} variant="slim" />
-              <HealthCard card={articles[0]} variant="slim" />
-              <HealthCard card={articles[0]} variant="slim" />
-              <HealthCard card={articles[0]} variant="slim" />
+              <ArticleCard card={articles[0]} variant="slim" />
+              <ArticleCard card={articles[0]} variant="slim" />
+              <ArticleCard card={articles[0]} variant="slim" />
+              <ArticleCard card={articles[0]} variant="slim" />
             </>
           )}
         </SubArticles>
