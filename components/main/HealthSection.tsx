@@ -45,6 +45,10 @@ const FeaturedArticle = styled.div``;
 
 const SubArticles = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 0.8fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem 3rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
