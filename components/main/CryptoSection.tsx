@@ -29,7 +29,7 @@ export default CryptoSection;
 const CryptoLayout = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 2rem;
 
   @media screen and (max-width: 1100px) {
     grid-template-columns: repeat(2, 1fr);
