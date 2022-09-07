@@ -59,13 +59,14 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
         title={t("common:crypto")}
         articles={articles.Crypto.items}
       />
-      <HealthSection
-        slug="/health"
-        title={t("common:health")}
-        articles={articles.Health.items}
-      />
+
       <TwoColumns>
         <div>
+          <HealthSection
+            slug="/health"
+            title={t("common:health")}
+            articles={articles.Health.items}
+          />
           <SportsSection
             articles={articles.Sports.items}
             title={t("common:sports")}

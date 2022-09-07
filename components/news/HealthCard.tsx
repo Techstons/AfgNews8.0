@@ -15,12 +15,7 @@ const HealthCard = ({ card }: IHealthCard) => {
         <a aria-label={card.title}>
           <ArticleContainer>
             <ImageWrapper>
-              <CloudinaryImage
-                featuredImage={card.featuredImage}
-                layout="fill"
-                height="100%"
-                width="100%"
-              />
+              <CloudinaryImage featuredImage={card.featuredImage} />
               <p className="category">
                 <CategoryLabel label={card.category} />
               </p>
@@ -44,8 +39,6 @@ const Wrapper = styled.article`
 `;
 
 const ArticleContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   height: 100%;
 `;
 

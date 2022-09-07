@@ -9,18 +9,26 @@ const HealthSection = ({ slug, title, articles }: ISection) => {
     <SectionWrapper>
       <SectionHeader slug={slug} title={title} />
       <HealthLayout>
-        {/* {articles?.slice(0, 4).map((item) => {
-          return <HealthCard card={item} key={item.slug} />;
-        })} */}
-
-        {!!articles?.[0] && (
-          <>
-            <HealthCard card={articles[0]} />
-            <HealthCard card={articles[0]} />
-            <HealthCard card={articles[0]} />
-            <HealthCard card={articles[0]} />
-          </>
-        )}
+        <FeaturedArticle>
+          {!!articles?.[0] && (
+            <>
+              <HealthCard card={articles[0]} />
+            </>
+          )}
+        </FeaturedArticle>
+        <SubArticles>
+          {/* {articles?.slice(0, 4).map((item) => {
+            return <HealthCard card={item} key={item.slug} />;
+          })} */}
+          {!!articles?.[0] && (
+            <>
+              <HealthCard card={articles[0]} />
+              <HealthCard card={articles[0]} />
+              <HealthCard card={articles[0]} />
+              <HealthCard card={articles[0]} />
+            </>
+          )}
+        </SubArticles>
       </HealthLayout>
     </SectionWrapper>
   );
@@ -30,6 +38,13 @@ export default HealthSection;
 
 const HealthLayout = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+`;
+
+const FeaturedArticle = styled.div``;
+
+const SubArticles = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 0.8fr);
+  gap: 2rem 3rem;
 `;
