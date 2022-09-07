@@ -85,11 +85,13 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   ];
 
   const renderSocialIcons = () =>
-    SocialLinks.filter((social) => social.name !== "Youtube").map(
-      (item, index) => {
-        return <item.icon key={item.name} size={14} />;
-      }
-    );
+    SocialLinks.filter((social) => social.name !== "Youtube").map((item) => {
+      return (
+        <a key={item.name} href={item.url} target="_blank" rel="noreferrer">
+          <item.icon size={14} />
+        </a>
+      );
+    });
 
   // change direction of the page
   useEffect(() => {
