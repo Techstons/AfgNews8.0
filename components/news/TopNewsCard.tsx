@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FC } from "react";
 import CloudinaryImage from "./CloudinaryImage";
 import useFormattedDate from "@hooks/useFormattedDate";
+import { Clock } from "@styled-icons/bootstrap";
 
 interface INewsCard {
   card?: Article;
@@ -37,8 +38,10 @@ const NewsCard: FC<INewsCard> = ({ card, priority, layout, height, width }) => {
             className="image-wrapper"
           />
           <Details>
+            <p className="date">
+              <Clock size={10} /> {articleDate} ago
+            </p>
             <h3>{card?.title}</h3>
-            <p className="date">{articleDate} ago</p>
             <p className="excerpt">{card?.excerpt}</p>
           </Details>
           <Category>{card?.category}</Category>
@@ -82,13 +85,16 @@ const Details = styled.div`
   z-index: 100;
   background-color: var(--container-color);
   color: var(--text-color);
-  padding: 1rem;
+  padding: 2rem 1rem 1rem 1rem;
 
   h3 {
     font-size: 1.25rem;
   }
 
   .date {
+    position: absolute;
+    top: 0.2rem;
+    left: 0.2rem;
     font-size: 0.75rem;
   }
 
