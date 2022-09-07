@@ -1,6 +1,7 @@
 import { Article } from "@components/types";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import CategoryLabel from "./CategoryLabel";
 import CloudinaryImage from "./CloudinaryImage";
 
 interface ICryptoCard {
@@ -14,7 +15,9 @@ const CryptoCard = ({ card }: ICryptoCard) => {
         <a aria-label={card.title}>
           <CloudinaryImage featuredImage={card.featuredImage} width="800" />
           <Details>
-            <p className="category">{card.category}</p>
+            <p className="category">
+              <CategoryLabel label={card.category} />
+            </p>
             <h3>{card.title}</h3>
           </Details>
         </a>
@@ -36,10 +39,6 @@ const Details = styled.div`
   padding: 1rem 2rem;
 
   .category {
-    padding: 0.35rem;
-    font-size: 0.85rem;
-    border-radius: 0.25rem;
-    background-color: var(--primary-color);
     width: max-content;
     margin-bottom: 1rem;
   }

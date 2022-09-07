@@ -1,6 +1,7 @@
 import { Article } from "@components/types";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import CategoryLabel from "./CategoryLabel";
 import CloudinaryImage from "./CloudinaryImage";
 
 interface IHealthCard {
@@ -20,7 +21,9 @@ const HealthCard = ({ card }: IHealthCard) => {
                 height="100%"
                 width="100%"
               />
-              <p className="category">{card.category}</p>
+              <p className="category">
+                <CategoryLabel label={card.category} />
+              </p>
             </ImageWrapper>
             <Details>
               <h3>{card.title}</h3>
@@ -53,11 +56,6 @@ const ImageWrapper = styled.div`
     position: absolute;
     top: 1rem;
     left: 1rem;
-    font-size: 0.85rem;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.35rem;
-    border-radius: 0.25rem;
   }
 `;
 

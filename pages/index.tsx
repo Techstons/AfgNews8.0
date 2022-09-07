@@ -5,6 +5,7 @@ import {
   TechAndScienceSection,
   CryptoSection,
   HealthSection,
+  SportsSection,
 } from "@components/main";
 import { SEOHeader } from "@components/seo";
 import { Container } from "@components/ui";
@@ -63,6 +64,16 @@ const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
         title={t("common:health")}
         articles={articles.Health.items}
       />
+      <TwoColumns>
+        <div>
+          <SportsSection
+            articles={articles.Sports.items}
+            title={t("common:sports")}
+            slug="/sports"
+          />
+        </div>
+        <div></div>
+      </TwoColumns>
     </Container>
   );
 };
@@ -72,4 +83,8 @@ export default Home;
 const TwoColumns = styled.div`
   display: grid;
   grid-template-columns: 1.35fr 0.65fr;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;

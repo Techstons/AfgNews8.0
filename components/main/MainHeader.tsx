@@ -62,6 +62,13 @@ const Header = ({
             {articles?.slice(0, 5)?.map((item) => (
               <ArticleCard variant="slim" card={item} key={item.title} />
             ))}
+            {!!articles?.[0] && (
+              <>
+                <ArticleCard variant="slim" card={articles[0]} />
+                <ArticleCard variant="slim" card={articles[0]} />
+                <ArticleCard variant="slim" card={articles[0]} />
+              </>
+            )}
           </div>
         </TopNewsAside>
       </MainGrid>
