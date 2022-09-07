@@ -22,10 +22,10 @@ const HealthSection = ({ slug, title, articles }: ISection) => {
           })} */}
           {!!articles?.[0] && (
             <>
-              <HealthCard card={articles[0]} />
-              <HealthCard card={articles[0]} />
-              <HealthCard card={articles[0]} />
-              <HealthCard card={articles[0]} />
+              <HealthCard card={articles[0]} variant="slim" />
+              <HealthCard card={articles[0]} variant="slim" />
+              <HealthCard card={articles[0]} variant="slim" />
+              <HealthCard card={articles[0]} variant="slim" />
             </>
           )}
         </SubArticles>
@@ -46,7 +46,7 @@ const FeaturedArticle = styled.div``;
 const SubArticles = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem 3rem;
+  gap: 2rem;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
