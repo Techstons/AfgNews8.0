@@ -89,7 +89,9 @@ const ArticleCard: FC<IArticle> = ({
             {categoryVariant === "primary" ? (
               <>
                 <h3>{card.title}</h3>
-                <CategoryMinimal>{card.category}</CategoryMinimal>
+                <CategoryMinimal>
+                  {card.category} &nbsp; / &nbsp; <span>{articleDate} ago</span>
+                </CategoryMinimal>
               </>
             ) : (
               <>
@@ -178,7 +180,6 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
     }
 
     .category-and-time {
-      font-size: 0.65rem;
       margin-bottom: 0.5rem;
     }
   }
@@ -228,7 +229,6 @@ const SecondaryAnchor = styled.a`
     }
 
     .category-and-time {
-      font-size: 0.6rem;
       margin-top: 1.75rem;
     }
   }
@@ -258,7 +258,7 @@ const ImageWrapper = styled.div<CardVariantProps>`
 const CategoryMinimal = styled.p`
   display: inline-flex;
   align-items: center;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
 
   &::before {
     content: " ";
