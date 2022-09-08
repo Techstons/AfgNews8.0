@@ -5,6 +5,7 @@ import { Clock } from "@styled-icons/bootstrap";
 import Link from "next/link";
 import { FC } from "react";
 import CategoryLabel from "./CategoryLabel";
+import CategoryMinimal from "./CategoryMinimal";
 import CloudinaryImage from "./CloudinaryImage";
 
 type CardVariantProps = {
@@ -45,20 +46,13 @@ const ArticleCard: FC<IArticle> = ({
               width={width}
               layout={layout}
             />
-            {categoryVariant === "primary" && (
-              <>
-                <p className="category">
-                  <CategoryLabel label={card.category} />
-                </p>
-              </>
-            )}
           </ImageWrapper>
           <div className="content">
             {categoryVariant === "primary" ? (
               <>
-                <p className="primary-date date">
-                  <Clock size={10} className="clock" /> {articleDate} ago
-                </p>
+                <CategoryMinimal className="category-and-time">
+                  {card.category} &nbsp; / &nbsp; <span>{articleDate} ago</span>
+                </CategoryMinimal>
                 <h3 className="primary">{card.title}</h3>
               </>
             ) : (
@@ -242,31 +236,4 @@ const SecondaryAnchor = styled.a`
 
 const ImageWrapper = styled.div<CardVariantProps>`
   position: relative;
-
-  .category {
-    position: ${(props) =>
-      props.categoryVariant === "primary" ? "absolute" : "static"};
-    top: 1rem;
-    left: 1rem;
-    border-bottom: ${(props) =>
-      props.categoryVariant === "secondary" &&
-      "1px solid var(--primary-color)"};
-    width: max-content;
-  }
-`;
-
-const CategoryMinimal = styled.p`
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.6rem;
-
-  &::before {
-    content: " ";
-    display: inline-block;
-    margin-right: 0.5rem;
-    border-left: 2px solid var(--primary-color);
-    height: 0.65rem;
-    padding: 0;
-    width: 0;
-  }
 `;

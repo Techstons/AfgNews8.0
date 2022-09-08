@@ -1,3 +1,4 @@
+import { CategoryLabel } from "@components/news";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
@@ -11,7 +12,7 @@ const SectionHeader = ({ title, slug }: ISectionHeader) => {
     <Header>
       <Link href={slug}>
         <a>
-          <h2>{title}</h2>
+          <CategoryLabel label={title === "Afghanistan" ? "AFG" : title} />
         </a>
       </Link>
     </Header>
@@ -21,7 +22,8 @@ const SectionHeader = ({ title, slug }: ISectionHeader) => {
 export default SectionHeader;
 
 const Header = styled.div`
-  border-bottom: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--text-color-alt);
+  padding-bottom: 0.5rem;
   margin-bottom: 1rem;
   text-transform: uppercase;
 

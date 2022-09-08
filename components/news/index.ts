@@ -6,3 +6,4 @@ export { default as CategoryCard } from "./CategoryCard";
 export { default as CategoryHeaderCard } from "./CategoryHeaderCard";
 export { default as CryptoCard } from "./CryptoCard";
 export { default as HealthCard } from "./HealthCard";
+export { default as CategoryLabel } from "./CategoryLabel";

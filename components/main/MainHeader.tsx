@@ -1,4 +1,4 @@
-import { ArticleCard, TopNewsCard } from "@components/news";
+import { ArticleCard, CategoryLabel, TopNewsCard } from "@components/news";
 import { Article } from "@components/types";
 import styled from "@emotion/styled";
 import useFormattedDate from "@hooks/useFormattedDate";
@@ -19,7 +19,7 @@ const Header = ({
   return (
     <Wrapper>
       <Top>
-        <HeaderTitle>{title === "Afghanistan" ? "AFG" : title}</HeaderTitle>
+        <CategoryLabel label={title === "Afghanistan" ? "AFG" : title} />
         <div className="date">
           {useFormattedDate(new Date(), "nav", router.locale)}
         </div>

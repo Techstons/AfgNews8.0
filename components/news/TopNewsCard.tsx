@@ -1,10 +1,10 @@
 import { Article } from "@components/types";
 import styled from "@emotion/styled";
+import useFormattedDate from "@hooks/useFormattedDate";
 import Link from "next/link";
 import { FC } from "react";
+import CategoryMinimal from "./CategoryMinimal";
 import CloudinaryImage from "./CloudinaryImage";
-import useFormattedDate from "@hooks/useFormattedDate";
-import { Clock } from "@styled-icons/bootstrap";
 
 interface INewsCard {
   card?: Article;
@@ -13,10 +13,6 @@ interface INewsCard {
   height?: string;
   width?: string;
 }
-
-type ImageProps = {
-  layout?: string;
-};
 
 const NewsCard: FC<INewsCard> = ({ card, priority, layout, height, width }) => {
   const articleDate = useFormattedDate(
@@ -38,13 +34,12 @@ const NewsCard: FC<INewsCard> = ({ card, priority, layout, height, width }) => {
             className="image-wrapper"
           />
           <Details>
-            <p className="date">
-              <Clock size={10} /> {articleDate} ago
-            </p>
+            <CategoryMinimal className="category-and-date">
+              {card?.category} &nbsp; / &nbsp; {articleDate} ago
+            </CategoryMinimal>
             <h3>{card?.title}</h3>
             <p className="excerpt">{card?.excerpt}</p>
           </Details>
-          <Category>{card?.category}</Category>
         </a>
       </Link>
     </Wrapper>
@@ -67,17 +62,6 @@ const Wrapper = styled.article`
   }
 `;
 
-const Category = styled.p`
-  background-color: var(--primary-color);
-  padding: 0.2rem 0.5rem;
-  color: white;
-  font-size: 0.65rem;
-  top: 1rem;
-  left: 1rem;
-  position: absolute;
-  display: inline-block;
-`;
-
 const Details = styled.div`
   position: relative;
   margin-top: -40px;
@@ -85,16 +69,14 @@ const Details = styled.div`
   z-index: 100;
   background-color: var(--container-color);
   color: var(--text-color);
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 0.5rem 1rem 1rem 1rem;
 
   h3 {
     font-size: 1.25rem;
   }
 
-  .date {
-    position: absolute;
-    top: 0.5rem;
-    left: 1rem;
+  .category-and-date {
+    margin-bottom: 20px;
     font-size: 0.75rem;
     color: var(--text-color-alt);
   }

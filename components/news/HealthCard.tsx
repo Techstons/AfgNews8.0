@@ -28,9 +28,6 @@ const HealthCard = ({ card, variant = "primary" }: IHealthCard) => {
                 width="100%"
                 height="100%"
               />
-              <p className="category">
-                <CategoryLabel label={card.category} />
-              </p>
             </ImageWrapper>
             <Details>
               <h3>{card.title}</h3>
@@ -58,12 +55,6 @@ const ArticleContainer = styled.div<ArticleContainerProps>`
 
 const ImageWrapper = styled.div`
   position: relative;
-
-  .category {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-  }
 `;
 
 const Details = styled.div`
