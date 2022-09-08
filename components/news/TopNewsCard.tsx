@@ -93,9 +93,10 @@ const Details = styled.div`
 
   .date {
     position: absolute;
-    top: 0.2rem;
-    left: 0.2rem;
+    top: 0.35rem;
+    left: 0.5rem;
     font-size: 0.75rem;
+    color: var(--text-color-alt);
   }
 
   .excerpt {

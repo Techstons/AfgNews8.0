@@ -106,7 +106,15 @@ const MainGrid = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const FeaturedArticles = styled.div``;
+const FeaturedArticles = styled.div`
+  .featured-article {
+    margin-bottom: 1.5rem;
+
+    h3 {
+      font-size: 2rem;
+    }
+  }
+`;
 
 const SubGrid = styled.div`
   display: grid;
