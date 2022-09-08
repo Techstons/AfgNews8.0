@@ -24,6 +24,7 @@ const TechAndScienceSection = ({ articles, slug, title }: ISection) => {
                 layout="fill"
                 width="50%"
                 height="200px"
+                categoryVariant="secondary"
               />
             );
           })}
@@ -36,6 +37,7 @@ const TechAndScienceSection = ({ articles, slug, title }: ISection) => {
                 layout="fill"
                 width="50%"
                 height="200px"
+                categoryVariant="secondary"
               />
             );
           })}

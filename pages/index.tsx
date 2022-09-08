@@ -85,7 +85,7 @@ const TwoColumns = styled.div`
   display: grid;
   grid-template-columns: 1.35fr 0.65fr;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     grid-template-columns: 1fr;
   }
 `;

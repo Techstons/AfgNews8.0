@@ -86,8 +86,20 @@ const ArticleCard: FC<IArticle> = ({
             layout={layout}
           />
           <div className="content">
-            <h3>{card.title}</h3>
-            <CategoryMinimal>{card.category}</CategoryMinimal>
+            {categoryVariant === "primary" ? (
+              <>
+                <h3>{card.title}</h3>
+                <CategoryMinimal>{card.category}</CategoryMinimal>
+              </>
+            ) : (
+              <>
+                <h3 className="secondary">{card.title}</h3>
+                <p>{card.excerpt}</p>
+                <CategoryMinimal className="category-and-time">
+                  {card.category} &nbsp; / &nbsp; <span>{articleDate} ago</span>
+                </CategoryMinimal>
+              </>
+            )}
           </div>
         </SecondaryAnchor>
       </Link>
@@ -195,13 +207,17 @@ const SecondaryAnchor = styled.a`
 
   h3 {
     font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
     line-clamp: 2;
     -webkit-box-orient: vertical;
+
+    &.secondary {
+      margin-bottom: 0.5rem;
+    }
   }
 
   & .content {
@@ -209,6 +225,11 @@ const SecondaryAnchor = styled.a`
 
     .date {
       font-size: 0.75rem;
+    }
+
+    .category-and-time {
+      font-size: 0.6rem;
+      margin-top: 1.75rem;
     }
   }
 
