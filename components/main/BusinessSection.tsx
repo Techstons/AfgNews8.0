@@ -16,7 +16,13 @@ const BusinessSection = ({ articles, slug, title }: ISection) => {
         </FeaturedArticle>
         <SubArticles>
           {articles?.slice(1, 5)?.map((item) => {
-            return <ArticleCard card={item} key={item.slug} />;
+            return (
+              <ArticleCard
+                card={item}
+                key={item.slug}
+                categoryVariant="secondary"
+              />
+            );
           })}
         </SubArticles>
       </BusinessLayout>

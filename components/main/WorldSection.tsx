@@ -14,7 +14,13 @@ const WorldSection = ({ slug, title, articles }: ISection) => {
         </FeaturedArticle>
         <SubArticles>
           {articles?.slice(0, 5).map((item) => {
-            return <ArticleCard key={item.slug} card={item} />;
+            return (
+              <ArticleCard
+                key={item.slug}
+                card={item}
+                categoryVariant="secondary"
+              />
+            );
           })}
         </SubArticles>
       </WorldLayout>

@@ -7,7 +7,11 @@ import { FC } from "react";
 import CategoryLabel from "./CategoryLabel";
 import CloudinaryImage from "./CloudinaryImage";
 
-interface IArticle {
+type ImageWrapperProps = {
+  categoryVariant?: "primary" | "secondary";
+};
+
+interface IArticle extends ImageWrapperProps {
   card: Article;
   variant?: "primary" | "slim";
   width?: string;
@@ -18,6 +22,7 @@ interface IArticle {
 const ArticleCard: FC<IArticle> = ({
   card,
   variant = "primary",
+  categoryVariant = "primary",
   height,
   width,
   layout,
@@ -31,7 +36,7 @@ const ArticleCard: FC<IArticle> = ({
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <PrimaryAnchor>
-          <ImageWrapper>
+          <ImageWrapper categoryVariant={categoryVariant}>
             <CloudinaryImage
               featuredImage={card.featuredImage}
               title={card.title}
@@ -40,16 +45,20 @@ const ArticleCard: FC<IArticle> = ({
               width={width}
               layout={layout}
             />
-            <p className="category">
-              <CategoryLabel label={card.category} />
-            </p>
+            {categoryVariant === "primary" && (
+              <p className="category">
+                <CategoryLabel label={card.category} />
+              </p>
+            )}
           </ImageWrapper>
           <div className="content">
             <h3>{card.title}</h3>
-            <p className="description">{card.excerpt}</p>
             <p className="date">
               <Clock size={10} className="clock" /> {articleDate}
             </p>
+            {categoryVariant === "secondary" && (
+              <CategoryMinimal>{card.category}</CategoryMinimal>
+            )}
           </div>
         </PrimaryAnchor>
       </Link>
@@ -67,7 +76,7 @@ const ArticleCard: FC<IArticle> = ({
           />
           <div className="content">
             <h3>{card.title}</h3>
-            <p className="category">{card.category}</p>
+            <CategoryMinimal>{card.category}</CategoryMinimal>
           </div>
         </SecondaryAnchor>
       </Link>
@@ -188,23 +197,6 @@ const SecondaryAnchor = styled.a`
     .date {
       font-size: 0.75rem;
     }
-
-    .category {
-      display: flex;
-      align-items: center;
-      margin-top: 1rem;
-      font-size: 0.75rem;
-
-      &::before {
-        content: " ";
-        display: inline-block;
-        margin-right: 0.5rem;
-        border-left: 2px solid var(--primary-color);
-        height: 0.65rem;
-        padding: 0;
-        width: 0;
-      }
-    }
   }
 
   &:hover {
@@ -214,12 +206,34 @@ const SecondaryAnchor = styled.a`
   }
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.div<ImageWrapperProps>`
   position: relative;
 
   .category {
-    position: absolute;
+    position: ${(props) =>
+      props.categoryVariant === "primary" ? "absolute" : "static"};
     top: 1rem;
     left: 1rem;
+    border-bottom: ${(props) =>
+      props.categoryVariant === "secondary" &&
+      "1px solid var(--primary-color)"};
+    width: max-content;
+  }
+`;
+
+const CategoryMinimal = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+
+  &::before {
+    content: " ";
+    display: inline-block;
+    margin-right: 0.5rem;
+    border-left: 2px solid var(--primary-color);
+    height: 0.65rem;
+    padding: 0;
+    width: 0;
   }
 `;

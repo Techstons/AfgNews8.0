@@ -48,6 +48,11 @@ const SubArticles = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 
+  & > * {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 1rem;
+  }
+
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
   }
