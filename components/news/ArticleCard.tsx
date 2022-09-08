@@ -143,6 +143,7 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
 
     &.primary {
       font-size: 2rem;
+      margin-bottom: 0.75rem;
     }
 
     &.secondary {
@@ -164,12 +165,6 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
       }
     }
 
-    .description {
-      display: none;
-      font-weight: 400;
-      margin-bottom: 1.5rem;
-    }
-
     .category-and-time {
       font-size: 0.65rem;
       margin-bottom: 0.5rem;
@@ -182,18 +177,8 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
     }
   }
 
-  @media only screen and (max-width: 950px) {
-    padding-bottom: 1rem; // Adds padding-bottom on screens smaller than 450px so category doesn't touch the description
-  }
-
   @media only screen and (min-width: 1024px) {
     grid-template-columns: 1fr;
-
-    & .content {
-      .description {
-        display: block;
-      }
-    }
   }
 `;
 
