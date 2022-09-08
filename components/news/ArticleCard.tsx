@@ -7,11 +7,11 @@ import { FC } from "react";
 import CategoryLabel from "./CategoryLabel";
 import CloudinaryImage from "./CloudinaryImage";
 
-type ImageWrapperProps = {
+type CardVariantProps = {
   categoryVariant?: "primary" | "secondary";
 };
 
-interface IArticle extends ImageWrapperProps {
+interface IArticle extends CardVariantProps {
   card: Article;
   variant?: "primary" | "slim";
   width?: string;
@@ -35,7 +35,7 @@ const ArticleCard: FC<IArticle> = ({
   return variant === "primary" ? (
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
-        <PrimaryAnchor>
+        <PrimaryAnchor categoryVariant={categoryVariant}>
           <ImageWrapper categoryVariant={categoryVariant}>
             <CloudinaryImage
               featuredImage={card.featuredImage}
@@ -46,19 +46,30 @@ const ArticleCard: FC<IArticle> = ({
               layout={layout}
             />
             {categoryVariant === "primary" && (
-              <p className="category">
-                <CategoryLabel label={card.category} />
-              </p>
+              <>
+                <p className="category">
+                  <CategoryLabel label={card.category} />
+                </p>
+              </>
             )}
           </ImageWrapper>
           <div className="content">
-            <h3>{card.title}</h3>
-            <p className="date">
-              <Clock size={10} className="clock" /> {articleDate} ago
-            </p>
-            {categoryVariant === "secondary" && (
-              <CategoryMinimal>{card.category}</CategoryMinimal>
+            {categoryVariant === "primary" ? (
+              <>
+                <p className="primary-date date">
+                  <Clock size={10} className="clock" /> {articleDate} ago
+                </p>
+                <h3 className="primary">{card.title}</h3>
+              </>
+            ) : (
+              <>
+                <CategoryMinimal className="category-and-time">
+                  {card.category} &nbsp; / &nbsp; <span>{articleDate} ago</span>
+                </CategoryMinimal>
+                <h3 className="secondary">{card.title}</h3>
+              </>
             )}
+            <p>{card.excerpt}</p>
           </div>
         </PrimaryAnchor>
       </Link>
@@ -112,13 +123,15 @@ const SecondaryWrapper = styled.article`
   border-radius: 0.25rem;
 `;
 
-const PrimaryAnchor = styled.a`
+const PrimaryAnchor = styled.a<CardVariantProps>`
   cursor: pointer;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: ${(props) => (props.categoryVariant === "primary" ? "1rem" : "0.5rem")};
 
   h3 {
+    margin-top: 1rem;
+
     font-size: 1.15rem;
     margin-bottom: 0.5rem;
     overflow: hidden;
@@ -127,14 +140,24 @@ const PrimaryAnchor = styled.a`
     -webkit-line-clamp: 2; /* number of lines to show */
     line-clamp: 2;
     -webkit-box-orient: vertical;
+
+    &.primary {
+      font-size: 2rem;
+    }
+
+    &.secondary {
+      margin-top: 0.5rem;
+    }
   }
 
   & .content {
+    position: relative;
     width: 100%;
+    padding-bottom: 1rem;
 
     .date {
-      margin-top: 0.5rem;
       font-size: 0.75rem;
+      color: var(--text-color-alt);
 
       .clock {
         margin-right: 0.25rem;
@@ -145,6 +168,11 @@ const PrimaryAnchor = styled.a`
       display: none;
       font-weight: 400;
       margin-bottom: 1.5rem;
+    }
+
+    .category-and-time {
+      font-size: 0.65rem;
+      margin-bottom: 0.5rem;
     }
   }
 
@@ -206,7 +234,7 @@ const SecondaryAnchor = styled.a`
   }
 `;
 
-const ImageWrapper = styled.div<ImageWrapperProps>`
+const ImageWrapper = styled.div<CardVariantProps>`
   position: relative;
 
   .category {
@@ -221,10 +249,9 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   }
 `;
 
-const CategoryMinimal = styled.div`
-  display: flex;
+const CategoryMinimal = styled.p`
+  display: inline-flex;
   align-items: center;
-  margin-top: 1rem;
   font-size: 0.75rem;
 
   &::before {
