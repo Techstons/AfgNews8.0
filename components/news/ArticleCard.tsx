@@ -54,7 +54,7 @@ const ArticleCard: FC<IArticle> = ({
           <div className="content">
             <h3>{card.title}</h3>
             <p className="date">
-              <Clock size={10} className="clock" /> {articleDate}
+              <Clock size={10} className="clock" /> {articleDate} ago
             </p>
             {categoryVariant === "secondary" && (
               <CategoryMinimal>{card.category}</CategoryMinimal>

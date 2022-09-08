@@ -27,4 +27,7 @@ export const cardArticleFields = `
                     name
                 }
                 excerpt
+                sys {
+                    publishedAt
+                }
             }`;
