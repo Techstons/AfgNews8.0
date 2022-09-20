@@ -30,15 +30,14 @@ const ArticleCard: FC<IArticle> = ({
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <PrimaryAnchor categoryVariant={categoryVariant}>
           <ImageWrapper categoryVariant={categoryVariant}>
-            <div className="image-container">
-              <CloudinaryImage
-                featuredImage={card.featuredImage}
-                title={card.title}
-                height={height}
-                width={width}
-                layout={layout}
-              />
-            </div>
+            <CloudinaryImage
+              featuredImage={card.featuredImage}
+              title={card.title}
+              height={height}
+              width={width}
+              layout={layout}
+              className="image-container"
+            />
           </ImageWrapper>
           <div className="content">
             {categoryVariant === "primary" ? (
@@ -69,15 +68,14 @@ const ArticleCard: FC<IArticle> = ({
     <SecondaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <SecondaryAnchor>
-          <div className="image-container">
-            <CloudinaryImage
-              featuredImage={card.featuredImage}
-              title={card.title}
-              height={height}
-              width={width}
-              layout={layout}
-            />
-          </div>
+          <CloudinaryImage
+            featuredImage={card.featuredImage}
+            title={card.title}
+            height={height}
+            width={width}
+            layout={layout}
+            className="image-container"
+          />
           <div className="content">
             {categoryVariant === "primary" ? (
               <>
