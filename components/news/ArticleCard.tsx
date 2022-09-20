@@ -30,14 +30,15 @@ const ArticleCard: FC<IArticle> = ({
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <PrimaryAnchor categoryVariant={categoryVariant}>
           <ImageWrapper categoryVariant={categoryVariant}>
-            <CloudinaryImage
-              featuredImage={card.featuredImage}
-              title={card.title}
-              className="image-container"
-              height={height}
-              width={width}
-              layout={layout}
-            />
+            <div className="image-container">
+              <CloudinaryImage
+                featuredImage={card.featuredImage}
+                title={card.title}
+                height={height}
+                width={width}
+                layout={layout}
+              />
+            </div>
           </ImageWrapper>
           <div className="content">
             {categoryVariant === "primary" ? (
@@ -68,13 +69,15 @@ const ArticleCard: FC<IArticle> = ({
     <SecondaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <SecondaryAnchor>
-          <CloudinaryImage
-            featuredImage={card.featuredImage}
-            title={card.title}
-            height={height}
-            width={width}
-            layout={layout}
-          />
+          <div className="image-container">
+            <CloudinaryImage
+              featuredImage={card.featuredImage}
+              title={card.title}
+              height={height}
+              width={width}
+              layout={layout}
+            />
+          </div>
           <div className="content">
             {categoryVariant === "primary" ? (
               <>
@@ -106,12 +109,12 @@ export default ArticleCard;
 
 const PrimaryWrapper = styled.article`
   position: relative;
+  padding: 0.5rem;
   padding-bottom: 0.5rem;
-  overflow: hidden;
-  border-radius: 0.25rem;
 
   .image-container {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 0.25rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 
   &:hover {
@@ -125,9 +128,13 @@ const PrimaryWrapper = styled.article`
 
 const SecondaryWrapper = styled.article`
   position: relative;
+  padding: 0.5rem;
   padding-bottom: 1rem;
-  overflow: hidden;
-  border-radius: 0.25rem;
+
+  .image-container {
+    border-radius: 0.25rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
 `;
 
 const PrimaryAnchor = styled.a<CardVariantProps>`

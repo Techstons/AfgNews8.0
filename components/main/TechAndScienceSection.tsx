@@ -22,7 +22,7 @@ const TechAndScienceSection = ({ articles, slug, title }: ISection) => {
                 key={item.slug}
                 variant="slim"
                 layout="fill"
-                width="50%"
+                width="100%"
                 height="200px"
                 categoryVariant="secondary"
               />
@@ -35,7 +35,7 @@ const TechAndScienceSection = ({ articles, slug, title }: ISection) => {
                 key={item.slug}
                 variant="slim"
                 layout="fill"
-                width="50%"
+                width="100%"
                 height="200px"
                 categoryVariant="secondary"
               />
