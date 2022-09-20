@@ -58,7 +58,7 @@ const TechAndScienceLayout = styled.div`
     flex-wrap: wrap;
 
     & > * {
-      width: 100%;
+      width: 100% !important;
     }
   }
 `;
