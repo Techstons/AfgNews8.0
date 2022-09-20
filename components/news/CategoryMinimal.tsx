@@ -1,14 +1,25 @@
+import { Article } from "@components/types";
 import styled from "@emotion/styled";
-import { ReactNode } from "react";
+import useFormattedDate from "@hooks/useFormattedDate";
+
+interface ICategoryMinimal extends Pick<Article, "category" | "createdAt"> {
+  className?: string;
+}
 
 const CategoryMinimal = ({
-  children,
   className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => {
-  return <Wrapper className={className}>{children}</Wrapper>;
+  createdAt,
+  category,
+}: ICategoryMinimal) => {
+  const articleDate = useFormattedDate(
+    !!createdAt ? new Date(createdAt) : new Date(),
+    "distance"
+  );
+  return (
+    <Wrapper className={className}>
+      {category} &nbsp; / &nbsp; {articleDate} ago
+    </Wrapper>
+  );
 };
 
 export default CategoryMinimal;

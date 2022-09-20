@@ -1,10 +1,7 @@
 import { Article } from "@components/types";
 import styled from "@emotion/styled";
-import useFormattedDate from "@hooks/useFormattedDate";
-import { Clock } from "@styled-icons/bootstrap";
 import Link from "next/link";
 import { FC } from "react";
-import CategoryLabel from "./CategoryLabel";
 import CategoryMinimal from "./CategoryMinimal";
 import CloudinaryImage from "./CloudinaryImage";
 
@@ -28,11 +25,6 @@ const ArticleCard: FC<IArticle> = ({
   width,
   layout,
 }) => {
-  const articleDate = useFormattedDate(
-    card?.createdAt ? new Date(card.createdAt) : new Date(),
-    "distance"
-  );
-
   return variant === "primary" ? (
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
@@ -50,16 +42,20 @@ const ArticleCard: FC<IArticle> = ({
           <div className="content">
             {categoryVariant === "primary" ? (
               <>
-                <CategoryMinimal className="category-and-time">
-                  {card.category} &nbsp; / &nbsp; <span>{articleDate} ago</span>
-                </CategoryMinimal>
+                <CategoryMinimal
+                  className="category-and-time"
+                  createdAt={card?.createdAt ?? Date.now()}
+                  category={card?.category ?? "N/A"}
+                />
                 <h3 className="primary">{card.title}</h3>
               </>
             ) : (
               <>
-                <CategoryMinimal className="category-and-time">
-                  {card.category} &nbsp; / &nbsp; <span>{articleDate} ago</span>
-                </CategoryMinimal>
+                <CategoryMinimal
+                  className="category-and-time"
+                  createdAt={card?.createdAt ?? Date.now()}
+                  category={card?.category ?? "N/A"}
+                />
                 <h3 className="secondary">{card.title}</h3>
               </>
             )}
@@ -83,17 +79,20 @@ const ArticleCard: FC<IArticle> = ({
             {categoryVariant === "primary" ? (
               <>
                 <h3>{card.title}</h3>
-                <CategoryMinimal>
-                  {card.category} &nbsp; / &nbsp; <span>{articleDate} ago</span>
-                </CategoryMinimal>
+                <CategoryMinimal
+                  createdAt={card?.createdAt ?? Date.now()}
+                  category={card?.category ?? "N/A"}
+                />
               </>
             ) : (
               <>
                 <h3 className="secondary">{card.title}</h3>
                 <p>{card.excerpt}</p>
-                <CategoryMinimal className="category-and-time">
-                  {card.category} &nbsp; / &nbsp; <span>{articleDate} ago</span>
-                </CategoryMinimal>
+                <CategoryMinimal
+                  className="category-and-time"
+                  createdAt={card?.createdAt ?? Date.now()}
+                  category={card?.category ?? "N/A"}
+                />
               </>
             )}
           </div>

@@ -1,6 +1,5 @@
 import { Article } from "@components/types";
 import styled from "@emotion/styled";
-import useFormattedDate from "@hooks/useFormattedDate";
 import Link from "next/link";
 import { FC } from "react";
 import CategoryMinimal from "./CategoryMinimal";
@@ -15,11 +14,6 @@ interface INewsCard {
 }
 
 const NewsCard: FC<INewsCard> = ({ card, priority, layout, height, width }) => {
-  const articleDate = useFormattedDate(
-    card?.createdAt ? new Date(card.createdAt) : new Date(),
-    "distance"
-  );
-
   return (
     <Wrapper>
       <Link href={`/articles/${card?.slug}`} passHref={true}>
@@ -34,9 +28,10 @@ const NewsCard: FC<INewsCard> = ({ card, priority, layout, height, width }) => {
             className="image-wrapper"
           />
           <Details>
-            <CategoryMinimal className="category-and-date">
-              {card?.category} &nbsp; / &nbsp; {articleDate} ago
-            </CategoryMinimal>
+            <CategoryMinimal
+              createdAt={card?.createdAt ?? new Date()}
+              category={card?.category ?? "N/A"}
+            />
             <h3>{card?.title}</h3>
             <p className="excerpt">{card?.excerpt}</p>
           </Details>

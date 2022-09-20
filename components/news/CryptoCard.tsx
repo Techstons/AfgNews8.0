@@ -1,7 +1,7 @@
 import { Article } from "@components/types";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import CategoryLabel from "./CategoryLabel";
+import CategoryMinimal from "./CategoryMinimal";
 import CloudinaryImage from "./CloudinaryImage";
 
 interface ICryptoCard {
@@ -11,16 +11,19 @@ interface ICryptoCard {
 const CryptoCard = ({ card }: ICryptoCard) => {
   return (
     <Wrapper>
-      <Link href={card.slug}>
+      <Link href={`/articles/${card.slug}`}>
         <a aria-label={card.title}>
           <ImageWrapper>
             <CloudinaryImage featuredImage={card.featuredImage} width="800" />
-            <p className="category">
-              <CategoryLabel label={card.category} />
-            </p>
           </ImageWrapper>
           <Details>
             <h3>{card.title}</h3>
+            <p>{card.excerpt}</p>
+            <CategoryMinimal
+              className="category"
+              createdAt={card?.createdAt ?? Date.now()}
+              category={card?.category ?? "N/A"}
+            />
           </Details>
         </a>
       </Link>
@@ -32,6 +35,8 @@ export default CryptoCard;
 
 const Wrapper = styled.article`
   position: relative;
+  border-radius: 0.25rem;
+  overflow: hidden;
 `;
 
 const ImageWrapper = styled.div`
@@ -46,7 +51,17 @@ const ImageWrapper = styled.div`
 
 const Details = styled.div`
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 0;
   color: white;
-  padding: 1rem 2rem;
+  z-index: 10;
+  padding: 60% 0.75rem 2rem 0.75rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  .category {
+    margin-top: 1rem;
+  }
 `;
