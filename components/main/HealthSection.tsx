@@ -11,9 +11,11 @@ const HealthSection = ({ slug, title, articles }: ISection) => {
       <HealthLayout>
         <FeaturedArticle>
           {!!articles?.[0] && (
-            <>
-              <HealthCard card={articles[0]} />
-            </>
+            <ArticleCard
+              card={articles[0]}
+              variant="slim"
+              categoryVariant="secondary"
+            />
           )}
         </FeaturedArticle>
         <SubArticles>
