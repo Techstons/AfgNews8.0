@@ -53,6 +53,14 @@ const TechAndScienceLayout = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+
+    & > * {
+      width: 100%;
+    }
+  }
 `;
 
 const FeaturedArticle = styled.div`
