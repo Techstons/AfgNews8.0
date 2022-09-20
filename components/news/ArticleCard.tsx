@@ -140,7 +140,8 @@ const SecondaryWrapper = styled.article`
 const PrimaryAnchor = styled.a<CardVariantProps>`
   cursor: pointer;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: ${(props) =>
+    props.categoryVariant === "primary" ? "1fr" : "repeat(2, 1fr)"};
   gap: ${(props) => (props.categoryVariant === "primary" ? "1rem" : "0.5rem")};
 
   h3 {
@@ -188,10 +189,6 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
     .content {
       color: var(--primary-color);
     }
-  }
-
-  @media only screen and (min-width: 1024px) {
-    grid-template-columns: 1fr;
   }
 `;
 
