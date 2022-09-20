@@ -49,8 +49,8 @@ const Wrapper = styled.article`
 
   .image-wrapper {
     transition: scale 1s ease;
-    -webkit-box-shadow: 5px -5px 25px -5px rgba(0, 0, 0, 0.54);
-    box-shadow: 5px -5px 25px -5px rgba(0, 0, 0, 0.54);
+    -webkit-box-shadow: 5px -5px 15px -8px #000000;
+    box-shadow: 5px -5px 15px -8px #000000;
   }
 
   &:hover {
