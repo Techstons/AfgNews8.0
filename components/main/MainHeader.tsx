@@ -82,11 +82,6 @@ const Wrapper = styled.header`
   min-height: calc(100vh - 124px);
 `;
 
-const HeaderTitle = styled.h2`
-  text-transform: uppercase;
-  font-size: 1rem;
-`;
-
 const Top = styled.div`
   display: flex;
   justify-content: space-between;
@@ -104,6 +99,10 @@ const MainGrid = styled.div`
   grid-template-columns: 1.4fr 0.6fr;
   gap: 2.5rem;
   margin-bottom: 1.5rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const FeaturedArticles = styled.div`
