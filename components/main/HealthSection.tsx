@@ -13,8 +13,11 @@ const HealthSection = ({ slug, title, articles }: ISection) => {
           {!!articles?.[0] && (
             <ArticleCard
               card={articles[0]}
-              variant="primary"
+              variant="slim"
               categoryVariant="secondary"
+              layout="fill"
+              height="180px"
+              width="100%"
             />
           )}
         </FeaturedArticle>
