@@ -14,9 +14,7 @@ const HealthSection = ({ slug, title, articles }: ISection) => {
             <ArticleCard
               card={articles[0]}
               variant="primary"
-              layout="fill"
-              height="180px"
-              width="100%"
+              categoryVariant="tertiary"
             />
           )}
         </FeaturedArticle>

@@ -6,7 +6,7 @@ import CategoryMinimal from "./CategoryMinimal";
 import CloudinaryImage from "./CloudinaryImage";
 
 type CardVariantProps = {
-  categoryVariant?: "primary" | "secondary";
+  categoryVariant?: "primary" | "secondary" | "tertiary";
 };
 
 interface IArticle extends CardVariantProps {
@@ -138,7 +138,8 @@ const SecondaryWrapper = styled.article`
 const PrimaryAnchor = styled.a<CardVariantProps>`
   cursor: pointer;
   display: grid;
-
+  grid-template-columns: ${(props) =>
+    props.categoryVariant === "tertiary" ? "repeat(2, 1fr)" : "1fr"};
   gap: ${(props) => (props.categoryVariant === "primary" ? "1rem" : "0.5rem")};
 
   h3 {
@@ -190,7 +191,10 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
 
   @media screen and (max-width: 768px) {
     grid-template-columns: ${(props) =>
-      props.categoryVariant === "primary" ? "1fr" : "repeat(2, 1fr)"};
+      props.categoryVariant === "primary" ||
+      props.categoryVariant === "tertiary"
+        ? "1fr"
+        : "repeat(2, 1fr)"};
   }
 `;
 
