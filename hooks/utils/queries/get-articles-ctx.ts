@@ -2,7 +2,7 @@ import { cardArticleFields } from "./common";
 
 const getArticlesCtxQuery = `
 query getArticlesCtxQuery($locale: String) {
-  Home:articleCollection(order: sys_publishedAt_DESC, where: {category: {slug: "afg"}}, limit: 11, locale: $locale)  {
+  Home:articleCollection(order: sys_publishedAt_DESC, where: {category: {slug: "afg"}}, limit: 3, locale: $locale)  {
       ${cardArticleFields}
   }
   World:articleCollection(order: sys_publishedAt_DESC, where: {category: {slug: "world"}}, limit: 4, locale: $locale)  {
