@@ -45,4 +45,5 @@ export type Currency = {
   currentPrice: string;
   symbolPair: string;
   changeInPrice: string;
+  isCrypto: boolean;
 };
