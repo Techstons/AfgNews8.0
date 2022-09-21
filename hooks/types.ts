@@ -42,20 +42,7 @@ export type Category = {
 };
 
 export type Currency = {
-  motd: {
-    msg: string;
-    url: string;
-  };
-  success: boolean;
-  query: {
-    from: string;
-    to: string;
-    amount: number;
-  };
-  info: {
-    rate: number;
-  };
-  historical: boolean;
-  date: string;
-  result: number;
+  currentPrice: string;
+  symbolPair: string;
+  changeInPrice: string;
 };

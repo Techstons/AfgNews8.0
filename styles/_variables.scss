@@ -16,8 +16,6 @@
   --container-color: #f9f9f9;
   --success-color: #4F8A10;
   --failure-color: #DA0A16;
-  --success-color-alt: #ABEC65;
-  --failure-color-alt: #FF9E9E;
   
   /* TYPOGRAPHY */
   --font-extrabold: 900;
@@ -44,4 +42,6 @@
 main.dark-theme {
   --text-color:  #f9f9f9;
   --container-color: #000000;
+  --success-color: #ABEC65;
+  --failure-color: #FF9E9E;
 }

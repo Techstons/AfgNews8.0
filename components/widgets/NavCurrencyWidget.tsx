@@ -8,30 +8,21 @@ interface INavCurrencyWidget {
   isDark: boolean;
 }
 
+interface ICurrencyItem {
+  isNegative: boolean;
+}
+
 const NavCurrencyWidget = ({ isDark }: INavCurrencyWidget) => {
   const [currencies, setCurrencies] = useState<Currency[]>();
 
   const renderStockCards = () => {
     return currencies?.map((curr, idx) => {
+      const isNegative = curr.changeInPrice.startsWith("-");
       return (
-        <CurrencyItem key={idx}>
-          {curr.query.to === "AFN" ? (
-            <>
-              <span>
-                {curr.query.from} / {curr.query.to}
-              </span>
-              <span className="value">
-                {Math.round(curr.info.rate * 100) / 100}
-              </span>
-            </>
-          ) : (
-            <>
-              <span>{curr.query.from}</span>
-              <span className="value">
-                {"$ " + Math.round(curr.info.rate * 100) / 100}
-              </span>
-            </>
-          )}
+        <CurrencyItem key={idx} isNegative={isNegative}>
+          <span>{curr.symbolPair}</span>
+          <span>{parseFloat(curr.currentPrice).toFixed(2)} </span>
+          <span className="cp">{curr.changeInPrice}</span>
         </CurrencyItem>
       );
     });
@@ -58,7 +49,7 @@ const NavCurrencyWidget = ({ isDark }: INavCurrencyWidget) => {
 
 export default NavCurrencyWidget;
 
-const CurrencyItem = styled.div`
+const CurrencyItem = styled.div<ICurrencyItem>`
   margin-left: 1rem;
 
   & > * {
@@ -67,5 +58,10 @@ const CurrencyItem = styled.div`
 
   @media only screen and (min-width: 640px) {
     margin-left: 7rem;
+  }
+
+  .cp {
+    color: ${(props) =>
+      props.isNegative ? "var(--failure-color)" : "--success-color"};
   }
 `;

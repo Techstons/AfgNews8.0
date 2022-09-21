@@ -1,29 +1,18 @@
 import { Currency } from "@hooks/types";
 
-// const api = (FROM: string, TO: string) =>
-//   `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${FROM}&to_currency=${TO}&apikey=${currency_access_tokens}`;
-
-const getApi = (from: string, to: string) => {
-  return `https://api.exchangerate.host/convert?from=${from}&to=${to}`;
+const getApiUri = () => {
+  return `https://fcsapi.com/api-v3/forex/latest?symbol=EUR/AFN,USD/AFN&access_key=ktN0i6vA3xu0X0ZOq9MQ6`;
 };
 
-const FOREX = ["USD", "EUR", "GBP", "CAD"];
-const CRYPTO = ["BTC", "ADA"];
-
 export const getCurrencies = async () => {
-  const currencies = await Promise.all(
-    FOREX.map((from) => {
-      return fetch(getApi(from, "AFN"));
-    })
-  );
+  const res = await fetch(getApiUri());
+  const currencies = await res.json();
 
-  const cryptos = await Promise.all(
-    CRYPTO.map((from) => {
-      return fetch(getApi(from, "USD"));
-    })
-  );
-
-  return (await Promise.all(currencies.map((res) => res.json()))).concat(
-    await Promise.all(cryptos.map((res) => res.json()))
-  ) as Currency[];
+  return currencies.response.map((item: { [x: string]: any }) => {
+    return {
+      currentPrice: item.c,
+      symbolPair: item.s,
+      changeInPrice: item.cp,
+    }; // gets current price
+  }) as Currency[];
 };
