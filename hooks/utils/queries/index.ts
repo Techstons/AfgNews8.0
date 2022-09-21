@@ -4,3 +4,4 @@ export { default as getArticleByCategoryQuery } from "./get-article-by-category"
 export { default as getAllCategoryQuery } from "./get-all-category";
 export { default as getArticlesCtxQuery } from "./get-articles-ctx";
 export { default as getRecommendedQuery } from "./get-recommended";
+export { default as getAllLatestQuery } from "./get-all-latest";

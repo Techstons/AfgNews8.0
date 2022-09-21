@@ -8,9 +8,11 @@ import { useState } from "react";
 const Header = ({
   title,
   articles,
+  latest,
 }: {
   articles?: Article[];
   title: string;
+  latest?: Article[];
 }) => {
   const router = useRouter();
 
@@ -59,16 +61,9 @@ const Header = ({
             </button>
           </div>
           <div className="articles">
-            {articles?.slice(3)?.map((item) => (
+            {latest?.slice(0, 8)?.map((item) => (
               <ArticleCard variant="slim" card={item} key={item.title} />
             ))}
-            {!!articles?.[0] && (
-              <>
-                <ArticleCard variant="slim" card={articles[0]} />
-                <ArticleCard variant="slim" card={articles[0]} />
-                <ArticleCard variant="slim" card={articles[0]} />
-              </>
-            )}
           </div>
         </TopNewsAside>
       </MainGrid>

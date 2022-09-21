@@ -10,30 +10,39 @@ import {
 import { SEOHeader } from "@components/seo";
 import { Container } from "@components/ui";
 import styled from "@emotion/styled";
-import { getArticlesCtx } from "@hooks/article";
+import { getAllLatest, getArticlesCtx } from "@hooks/article";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const articles = await getArticlesCtx({ locale });
+  const latest = await getAllLatest({ locale });
 
   return {
     props: {
       articles,
+      latest,
       ...(await serverSideTranslations(locale || "en", ["common", "home"])),
     },
     revalidate: 60,
   };
 };
 
-const Home = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = ({
+  articles,
+  latest,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
 
   return (
     <Container>
       <SEOHeader />
-      <MainHeader articles={articles.Home.items} title={t("common:afg")} />
+      <MainHeader
+        articles={articles.Home.items}
+        title={t("common:afg")}
+        latest={latest}
+      />
       <WorldSection
         slug="/world"
         title={t("common:world")}
