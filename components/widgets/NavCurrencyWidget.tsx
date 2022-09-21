@@ -62,6 +62,6 @@ const CurrencyItem = styled.div<ICurrencyItem>`
 
   .cp {
     color: ${(props) =>
-      props.isNegative ? "var(--failure-color)" : "--success-color"};
+      props.isNegative ? "var(--failure-color)" : "var(--success-color)"};
   }
 `;
