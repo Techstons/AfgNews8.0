@@ -48,8 +48,9 @@ const ArticleCard: FC<IArticle> = ({
                   category={card?.category ?? "N/A"}
                 />
                 <h3 className="primary">{card.title}</h3>
+                <p>{card.excerpt}</p>
               </>
-            ) : (
+            ) : categoryVariant === "secondary" ? (
               <>
                 <CategoryMinimal
                   className="category-and-time"
@@ -57,9 +58,19 @@ const ArticleCard: FC<IArticle> = ({
                   category={card?.category ?? "N/A"}
                 />
                 <h3 className="secondary">{card.title}</h3>
+                <p>{card.excerpt}</p>
+              </>
+            ) : (
+              <>
+                <h3 className="tertiary">{card.title}</h3>
+                <p>{card.excerpt}</p>
+                <CategoryMinimal
+                  className="category-and-time-3"
+                  createdAt={card?.createdAt ?? Date.now()}
+                  category={card?.category ?? "N/A"}
+                />
               </>
             )}
-            <p>{card.excerpt}</p>
           </div>
         </PrimaryAnchor>
       </Link>
@@ -162,11 +173,17 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
     &.secondary {
       margin-top: 0.5rem;
     }
+
+    &.tertiary {
+      margin-bottom: 1rem;
+    }
   }
 
   & .content {
     position: relative;
     width: 100%;
+    padding: ${(props) =>
+      props.categoryVariant === "tertiary" ? "1rem" : "0"};
     padding-bottom: 1rem;
 
     .date {
@@ -180,6 +197,10 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
 
     .category-and-time {
       margin-bottom: 0.5rem;
+    }
+
+    .category-and-time-3 {
+      margin-top: 2rem;
     }
   }
 
