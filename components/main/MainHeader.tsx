@@ -59,7 +59,7 @@ const Header = ({
             </button>
           </div>
           <div className="articles">
-            {articles?.slice(0, 5)?.map((item) => (
+            {articles?.slice(3)?.map((item) => (
               <ArticleCard variant="slim" card={item} key={item.title} />
             ))}
             {!!articles?.[0] && (
