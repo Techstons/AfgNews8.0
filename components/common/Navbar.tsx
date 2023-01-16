@@ -106,8 +106,6 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
 
   return (
     <Root active={isDark}>
-      <div className="top-banner">
-      </div>
       <TopStrip>
         <SocialsWrapper>{renderSocialIcons()}</SocialsWrapper>
         <NavCurrencyWidget isDark={isDark} />
@@ -149,13 +147,20 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               aria-label="AFGNews Logo which links to home when clicked"
               className="logo"
             >
-              <Image
+              {/* <Image
                 src="c_limit,h_60,q_auto:low,w_130/assets/logo_wjawfm.png"
                 alt="AFGNews Logo"
                 layout="fixed"
                 height={60}
-                width={130}
+                width={190}
+                objectFit="cover"
                 className="logo"
+              /> */}
+              <img src="https://res.cloudinary.com/dssf8vpym/image/upload/v1673521118/assets/logo_wjawfm.png" 
+              alt="AFGNews Logo" 
+              height={60}
+              width={190}
+              style={{objectFit: "cover", marginRight: "1.5rem"}}
               />
             </a>
           </Link>
