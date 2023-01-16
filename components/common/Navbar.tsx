@@ -107,15 +107,6 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   return (
     <Root active={isDark}>
       <div className="top-banner">
-        <Image
-          src={
-            isDark
-              ? "f_auto,q_10/assets/nrf_flag_wyi03q"
-              : "f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa"
-          }
-          alt={isDark ? "National Resistance Front Flag" : "Afghanistan Flag"}
-          layout="fill"
-        />
       </div>
       <TopStrip>
         <SocialsWrapper>{renderSocialIcons()}</SocialsWrapper>
