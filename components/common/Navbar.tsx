@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import { ReturnValue } from "@hooks/article/get-articles-ctx";
 import { MoonFill, SunFill, Youtube } from "@styled-icons/bootstrap";
 import { useTranslation } from "next-i18next";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";

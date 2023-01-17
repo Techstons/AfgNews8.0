@@ -22,15 +22,15 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
                 <CategoryHeaderCard variant="primary" card={articles?.[0]} />
               </TopChannel>
               <BottomChannel>
-                <CategoryHeaderCard variant="tertiary" card={articles?.[0]} />
-                <CategoryHeaderCard variant="tertiary" card={articles?.[0]} />
-                <CategoryHeaderCard variant="tertiary" card={articles?.[0]} />
-                <CategoryHeaderCard variant="tertiary" card={articles?.[0]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[1]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[2]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[3]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[4]} />
               </BottomChannel>
             </MainChannel>
             <SideChannel className="">
-              <CategoryHeaderCard variant="secondary" card={articles?.[0]} />
-              <CategoryHeaderCard variant="secondary" card={articles?.[0]} />
+              <CategoryHeaderCard variant="secondary" card={articles?.[1]} />
+              <CategoryHeaderCard variant="secondary" card={articles?.[2]} />
             </SideChannel>
           </Wrapper>
         </Header>
@@ -42,11 +42,11 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
                 More from <span>{title}</span>
               </h2>
               <MoreNews>
-                <CategoryCard card={articles?.[0]} />
-                <CategoryCard card={articles?.[0]} />
-                <CategoryCard card={articles?.[0]} />
-                <CategoryCard card={articles?.[0]} />
-                <CategoryCard card={articles?.[0]} />
+                <CategoryCard card={articles?.[1]} />
+                <CategoryCard card={articles?.[2]} />
+                <CategoryCard card={articles?.[3]} />
+                <CategoryCard card={articles?.[4]} />
+                <CategoryCard card={articles?.[5]} />
               </MoreNews>
             </div>
           </Wrapper>
