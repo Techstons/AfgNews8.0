@@ -13,7 +13,7 @@ const WorldSection = ({ slug, title, articles }: ISection) => {
           {!!articles?.[0] && <ArticleCard card={articles[0]} />}
         </FeaturedArticle>
         <SubArticles>
-          {articles?.slice(0, 5).map((item) => {
+          {articles?.slice(1, 5).map((item) => {
             return (
               <ArticleCard
                 key={item.slug}

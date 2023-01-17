@@ -14,9 +14,8 @@ const BusinessSection = ({ articles, slug, title }: ISection) => {
             return <ArticleCard card={item} key={item.slug} />;
           })}
         </FeaturedArticle>
-        {/* ===== */}
         <SubArticles>
-          {articles?.slice(1, 5)?.map((item) => {
+          {articles?.slice(2, 5)?.map((item) => {
             return (
               <ArticleCard
                 card={item}
@@ -26,7 +25,6 @@ const BusinessSection = ({ articles, slug, title }: ISection) => {
             );
           })}
         </SubArticles>
-        {/* ===== */}
       </BusinessLayout>
     </SectionWrapper>
   );
