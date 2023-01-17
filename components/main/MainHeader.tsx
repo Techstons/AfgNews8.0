@@ -4,6 +4,8 @@ import styled from "@emotion/styled";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useTranslation } from 'next-i18next';
+import { withTranslation } from 'next-i18next'
 
 const Header = ({
   title,
@@ -15,6 +17,7 @@ const Header = ({
   latest?: Article[];
 }) => {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const [activeChoice, setActiveChoice] = useState("latest"); // Used in the top news header toggle
 
@@ -51,13 +54,13 @@ const Header = ({
               className={`${activeChoice === "latest" ? "active" : ""}`}
               onClick={() => setActiveChoice("latest")}
             >
-              Latest News
+              {t('common:latest')}
             </button>
             <button
               className={`${activeChoice === "popular" ? "active" : ""}`}
               onClick={() => setActiveChoice("popular")}
             >
-              Popular News
+              {t('common:popular')}
             </button>
           </div>
           <div className="articles">
@@ -71,7 +74,7 @@ const Header = ({
   );
 };
 
-export default Header;
+export default withTranslation()(Header);
 
 const Wrapper = styled.header`
   min-height: calc(100vh - 124px);
