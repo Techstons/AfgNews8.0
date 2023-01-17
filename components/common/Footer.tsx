@@ -59,7 +59,7 @@ const Footer = ({ isDark }: IFooter) => {
                 className="input-box"
                 aria-label="Subscribe your email to newsletter"
               >
-                <Input
+                {/* <Input
                   className="input"
                   placeholder={t("common:news_letter_placeholder")}
                   value={email}
@@ -67,6 +67,14 @@ const Footer = ({ isDark }: IFooter) => {
                   required
                   autoCapitalize="off"
                   autoCorrect="off"
+                  style={{backgroundColor: 'white',}}
+                /> */}
+                <input
+                 placeholder={t("common:news_letter_placeholder")}
+                 value={email}
+                 onChange={(e) => setEmail(e.target.value)}
+                 required
+                 style={{backgroundColor: 'white', border: "black solid 1px",}}
                 />
                 <Button className="btn" type="submit">
                   OK
