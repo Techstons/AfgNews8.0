@@ -41,6 +41,7 @@ const NavCurrencyWidget = ({ isDark }: INavCurrencyWidget) => {
       gradientColor={isDark ? [0, 0, 0] : [255, 255, 255]}
       gradientWidth={120}
       speed={40}
+      style={{marginRight: "5px"}}
     >
       {renderStockCards()}
     </Marquee>

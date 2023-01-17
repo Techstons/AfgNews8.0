@@ -488,6 +488,12 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
     border-radius: 30px;
     box-shadow: 0px 0px 0px 3px #4d4d4d;
   }
+
+  @media only screen and (max-width: 600px) {
+    width: 34px;
+    height: 12px;
+    margin-top: 2px;
+  }
 `;
 
 const SocialsWrapper = styled.div`
