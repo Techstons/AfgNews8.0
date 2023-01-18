@@ -15,8 +15,8 @@ const CryptoSection = ({ slug, title, articles }: ISection) => {
         {!!articles?.[0] && (
           <>
             <CryptoCard card={articles[0]} />
-            <CryptoCard card={articles[0]} />
-            <CryptoCard card={articles[0]} />
+            <CryptoCard card={articles[1]} />
+            <CryptoCard card={articles[2]} />
           </>
         )}
       </CryptoLayout>
