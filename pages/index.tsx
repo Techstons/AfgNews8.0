@@ -16,7 +16,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const articles = await getArticlesCtx({ locale });
+  const articles = await getArticlesCtx({ locale }); //translating the news
   const latest = await getAllLatest({ locale });
 
   return {

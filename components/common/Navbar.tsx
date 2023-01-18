@@ -493,7 +493,8 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
     width: 34px;
     height: 12px;
     margin-top: 2px;
-    margin-left: 1rem
+    margin-left: 1rem;
+    margin-right: .5rem;
   }
 `;
 
