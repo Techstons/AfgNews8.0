@@ -494,7 +494,7 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
     height: 12px;
     margin-top: 2px;
     margin-left: 1rem;
-    margin-right: .5rem;
+    margin-right: 5px;
   }
 `;
 

@@ -51,4 +51,9 @@ export default function LocaleSwitcher() {
 
 const Wrapper = styled.span`
   text-transform: uppercase;
+  
+
+  @media only screen and (max-width: 600px) {
+    margin: 0 3px 0 2px
+  }
 `;

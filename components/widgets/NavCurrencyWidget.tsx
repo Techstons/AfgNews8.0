@@ -34,6 +34,8 @@ const NavCurrencyWidget = ({ isDark }: INavCurrencyWidget) => {
     };
 
     fetchCurrencies();
+    const interval = setInterval(fetchCurrencies, 3600000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
