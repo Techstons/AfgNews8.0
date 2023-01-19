@@ -4,6 +4,8 @@ import { ArrowUp } from "@styled-icons/bootstrap";
 import { ReactNode, useEffect, useState } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import { DataProvider } from "@hooks/DataContext";
+
 interface ILayout {
   children: ReactNode;
   articles: ReturnValue;
@@ -45,7 +47,9 @@ const Layout = ({ articles, children }: ILayout) => {
       >
         <ArrowUp size={24} />
       </AccessibilityScroller>
+      <DataProvider>
       <Footer isDark={isDark} />
+      </DataProvider>
     </>
   );
 };

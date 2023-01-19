@@ -2,16 +2,28 @@ import { Currency } from "@hooks/types";
 
 const timestamp = Date.now();
 
+// const getForexApiUri = () => {
+//   return `https://fcsapi.com/api-v3/forex/latest?symbol=EUR/AFN,USD/AFN,USD/EUR&access_key=ktN0i6vA3xu0X0ZOq9MQ6&timestamp=${timestamp}`;
+// };
+
+// const getCryptoApiUri = () => {
+//   return `https://fcsapi.com/api-v3/crypto/latest?id=78,79,2160&access_key=ktN0i6vA3xu0X0ZOq9MQ6&timestamp=${timestamp}`;
+// };
+
+// const getStocksApiUri = () => {
+//   return `https://fcsapi.com/api-v3/stock/latest?id=15,56,112,38&access_key=ktN0i6vA3xu0X0ZOq9MQ6&timestamp=${timestamp}`;
+// };
+
 const getForexApiUri = () => {
-  return `https://fcsapi.com/api-v3/forex/latest?symbol=EUR/AFN,USD/AFN,USD/EUR&access_key=ktN0i6vA3xu0X0ZOq9MQ6&timestamp=${timestamp}`;
+  return `https://fcsapi.com/api-v3/forex/latest?symbol=EUR/AFN,USD/AFN,USD/EUR&access_key=ktN0i6vA3xu0X0ZOq9MQ6`;
 };
 
 const getCryptoApiUri = () => {
-  return `https://fcsapi.com/api-v3/crypto/latest?id=78,79,2160&access_key=ktN0i6vA3xu0X0ZOq9MQ6&timestamp=${timestamp}`;
+  return `https://fcsapi.com/api-v3/crypto/latest?id=78,79,2160&access_key=ktN0i6vA3xu0X0ZOq9MQ6`;
 };
 
 const getStocksApiUri = () => {
-  return `https://fcsapi.com/api-v3/stock/latest?id=15,56,112,38&access_key=ktN0i6vA3xu0X0ZOq9MQ6&timestamp=${timestamp}`;
+  return `https://fcsapi.com/api-v3/stock/latest?id=15,56,112,38&access_key=ktN0i6vA3xu0X0ZOq9MQ6`;
 };
 
 const currencyNormalize = (currencies: any, isCrypto: boolean) => {
@@ -34,9 +46,9 @@ export const getCurrencies = async () => {
   const currencies2 = await res2.json();
   const currencies3 = await res3.json();
 
-  console.log(currencies);
-  console.log(currencies2);
-  console.log(currencies3);
+  // console.log(currencies);
+  // console.log(currencies2);
+  // console.log(currencies3);
 
 
   const forex = currencyNormalize(currencies, false);

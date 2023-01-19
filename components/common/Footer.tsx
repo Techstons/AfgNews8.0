@@ -1,3 +1,4 @@
+import React from "react";
 import { SearchIcon } from "@components/icons";
 import { Button, Container, Input } from "@components/ui";
 import styled from "@emotion/styled";
@@ -8,10 +9,17 @@ import { FormEvent, ReactNode, useState } from "react";
 import { useTranslation } from "next-i18next";
 import SocialLinks from "./SocialLinks";
 import { SocialCircle } from "@components/ui";
+import { ChangeEvent } from 'react'
+import { useRouter } from 'next/router';
+import {useContext} from "react"
+import { DataProvider, DataContext } from '@hooks/DataContext';
+
 
 interface IFooter {
   isDark: boolean;
 }
+
+
 
 const Footer = ({ isDark }: IFooter) => {
   const [email, setEmail] = useState("");
@@ -45,6 +53,42 @@ const Footer = ({ isDark }: IFooter) => {
     setEmail("");
   };
 
+  type NavLinks = {
+    title: string;
+    slug: string;
+  };
+
+  const navLinks: NavLinks[] = [
+    {
+      title: t("common:Search"),
+      slug: "/search",
+    },
+  ]
+
+  const [search, setSearch] = useState("")
+  const { newdata, setData } = useContext(DataContext);
+ 
+  
+  const router = useRouter();
+
+  function handleSearch(event: ChangeEvent<HTMLInputElement>) {
+    setSearch(event.target.value)
+  }
+ 
+  function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      console.log("you searched, " + search)
+      // router.asPath = "/search"
+      if(search) {
+        router.replace('/search');
+        event.preventDefault();
+        setData({...newdata, input: search });
+    }
+    }
+  }
+
+  // console.log(newdata)
+
   return (
     <Wrapper isDark={isDark}>
       <Container>
@@ -59,16 +103,6 @@ const Footer = ({ isDark }: IFooter) => {
                 className="input-box"
                 aria-label="Subscribe your email to newsletter"
               >
-                {/* <Input
-                  className="input"
-                  placeholder={t("common:news_letter_placeholder")}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  autoCapitalize="off"
-                  autoCorrect="off"
-                  style={{backgroundColor: 'white',}}
-                /> */}
                 <input
                  placeholder={t("common:news_letter_placeholder")}
                  value={email}
@@ -114,6 +148,8 @@ const Footer = ({ isDark }: IFooter) => {
               <input
                 placeholder={t("common:search_placeholder")}
                 aria-label="search bar"
+                onChange={handleSearch}
+                onKeyDown={handleKeyPress}
               />
             </div>
             {/* <Link href="/donate">

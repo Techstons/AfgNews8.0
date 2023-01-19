@@ -88,7 +88,16 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
     SocialLinks.filter((social) => social.name !== "Youtube").map((item) => {
       return (
         <a key={item.name} href={item.url} target="_blank" rel="noreferrer">
-          <item.icon size={14} />
+          <item.icon size={14}/>
+        </a>
+      );
+    });
+
+    const renderSocialIconsMobile = () =>
+    SocialLinks.filter((social) => social.name !== "Youtube").map((item) => {
+      return (
+        <a key={item.name} href={item.url} target="_blank" rel="noreferrer">
+          <item.icon size={14} style={{marginLeft: "10px"}}/>
         </a>
       );
     });
@@ -171,6 +180,8 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
             {navLinks.map((menu, i) => {
               return (
                 <div className="menu-item" key={i}>
+
+                  {/* ============= */}
                   <Link href={menu.slug} passHref={true}>
                     <MenuItem
                       onClick={() => setActive(false)}
@@ -185,6 +196,8 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                       {menu.title}
                     </MenuItem>
                   </Link>
+
+                  {/* ============= */}
                   {/* {!!articles &&
                     articles[menu.default]?.items?.length > 0 &&
                     router.asPath !== menu.slug &&
@@ -218,7 +231,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
             </div>
           </div>
           <div className="right">
-            <div className="socials">{renderSocialIcons()}</div>
+            <div className="socials">{renderSocialIconsMobile()}</div>
           </div>
         </BottomContent>
       </Container>
