@@ -6,7 +6,7 @@ import { initReactI18next } from 'react-i18next'
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { createContext, useState } from 'react';
-// import {withDataProvider} from '@hooks/HOC';
+import {withDataProvider} from '@hooks/HOC';
 
 i18n
   .use(initReactI18next)
@@ -40,4 +40,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default withDataProvider(Search)

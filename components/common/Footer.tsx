@@ -87,8 +87,6 @@ const Footer = ({ isDark }: IFooter) => {
     }
   }
 
-  // console.log(newdata)
-
   return (
     <Wrapper isDark={isDark}>
       <Container>

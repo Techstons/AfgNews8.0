@@ -22,10 +22,10 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
                 <CategoryHeaderCard variant="primary" card={articles?.[0]} />
               </TopChannel>
               <BottomChannel>
-                <CategoryHeaderCard variant="tertiary" card={articles?.[1]} />
-                <CategoryHeaderCard variant="tertiary" card={articles?.[2]} />
                 <CategoryHeaderCard variant="tertiary" card={articles?.[3]} />
                 <CategoryHeaderCard variant="tertiary" card={articles?.[4]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[5]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[6]} />
               </BottomChannel>
             </MainChannel>
             <SideChannel className="">
@@ -42,11 +42,11 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
                 More from <span>{title}</span>
               </h2>
               <MoreNews>
-                <CategoryCard card={articles?.[1]} />
-                <CategoryCard card={articles?.[2]} />
-                <CategoryCard card={articles?.[3]} />
-                <CategoryCard card={articles?.[4]} />
-                <CategoryCard card={articles?.[5]} />
+                <CategoryCard card={articles?.[7]} />
+                <CategoryCard card={articles?.[8]} />
+                <CategoryCard card={articles?.[9]} />
+                <CategoryCard card={articles?.[10]} />
+                <CategoryCard card={articles?.[11]} />
               </MoreNews>
             </div>
           </Wrapper>
