@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Article } from "@components/types";
 import { CategoryCard, CategoryHeaderCard } from "@components/news";
 import { Container } from "@components/ui";
+import React, {useState, useEffect} from 'react'
 
 interface ICategorySection {
   title: string;
@@ -9,6 +10,26 @@ interface ICategorySection {
 }
 
 const CategorySection = ({ title, articles }: ICategorySection) => {
+
+  const [loadMorePages, setLoadMorePages] = useState([0,1,2,3,4,5,6,7,8,9,10])
+  const [click, setClick] = useState(0)
+
+  function addArticles() {
+    setLoadMorePages([loadMorePages[0] + 11, loadMorePages[1] + 11, loadMorePages[2] + 11, loadMorePages[3] + 11, loadMorePages[4] + 11
+      , loadMorePages[5] + 11, loadMorePages[6] + 11, loadMorePages[7] + 11, loadMorePages[8] + 11, loadMorePages[9] + 11, loadMorePages[10] + 11
+    ])
+  }
+
+  function checkIfClicked() {
+    setClick(click + 1)
+    addArticles()
+  }
+
+  useEffect(() => {
+    console.log(loadMorePages)
+  }, [click])
+
+
   return (
     <>
       <Container>
@@ -19,18 +40,18 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
           <Wrapper>
             <MainChannel>
               <TopChannel>
-                <CategoryHeaderCard variant="primary" card={articles?.[0]} />
+                <CategoryHeaderCard variant="primary" card={articles?.[loadMorePages[0]]} />
               </TopChannel>
               <BottomChannel>
-                <CategoryHeaderCard variant="tertiary" card={articles?.[3]} />
-                <CategoryHeaderCard variant="tertiary" card={articles?.[4]} />
-                <CategoryHeaderCard variant="tertiary" card={articles?.[5]} />
-                <CategoryHeaderCard variant="tertiary" card={articles?.[6]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[loadMorePages[3]]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[loadMorePages[4]]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[loadMorePages[5]]} />
+                <CategoryHeaderCard variant="tertiary" card={articles?.[loadMorePages[6]]} />
               </BottomChannel>
             </MainChannel>
             <SideChannel className="">
-              <CategoryHeaderCard variant="secondary" card={articles?.[1]} />
-              <CategoryHeaderCard variant="secondary" card={articles?.[2]} />
+              <CategoryHeaderCard variant="secondary" card={articles?.[loadMorePages[1]]} />
+              <CategoryHeaderCard variant="secondary" card={articles?.[loadMorePages[2]]} />
             </SideChannel>
           </Wrapper>
         </Header>
@@ -42,15 +63,18 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
                 More from <span>{title}</span>
               </h2>
               <MoreNews>
-                <CategoryCard card={articles?.[7]} />
-                <CategoryCard card={articles?.[8]} />
-                <CategoryCard card={articles?.[9]} />
-                <CategoryCard card={articles?.[10]} />
-                <CategoryCard card={articles?.[11]} />
+                <CategoryCard card={articles?.[loadMorePages[7]]} />
+                <CategoryCard card={articles?.[loadMorePages[8]]} />
+                <CategoryCard card={articles?.[loadMorePages[9]]} />
+                <CategoryCard card={articles?.[loadMorePages[10]]} />
+                <CategoryCard card={articles?.[loadMorePages[11]]} />
               </MoreNews>
             </div>
           </Wrapper>
         </Section>
+        <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+          <LoadMoreButton onClick={checkIfClicked}>Load more</LoadMoreButton>
+        </div>
       </Container>
     </>
   );
@@ -60,7 +84,6 @@ export default CategorySection;
 
 const Header = styled.header`
   margin-bottom: 60px;
-
   .header-title {
     text-align: center;
     margin: 1.25rem auto;
@@ -74,6 +97,17 @@ const Header = styled.header`
     width: max-content;
   }
 `;
+const LoadMoreButton = styled.button`
+
+&:hover {
+  background-color: #032a63
+}
+background-color: gray;
+color: #e4ebf2;
+height: 2rem;
+width: 8rem;
+border-radius: 3px
+`
 
 const Wrapper = styled.div`
   display: grid;
