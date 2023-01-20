@@ -92,7 +92,7 @@ const Footer = ({ isDark }: IFooter) => {
       <Container>
         <div className="content">
           <FooterContainer>
-            <h2 className="logo">AfgNews</h2>
+            <h2 className="logo">AFGNEWS</h2>
 
             <div className="newsletter">
               <p className="description">{t("common:news_letter_title")}</p>
