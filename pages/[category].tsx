@@ -38,7 +38,7 @@ export const getStaticProps = async ({
   params,
   locale,
 }: GetStaticPropsContext<{ category: string }>) => {
-  const limit = 10;
+  const limit = 20;
   const articlesPerCategory = await getArticleByCategory({
     category: params!.category,
     limit,
