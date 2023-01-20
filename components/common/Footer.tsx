@@ -142,7 +142,7 @@ const Footer = ({ isDark }: IFooter) => {
               })}
             </div>
             <div className="search">
-              <SearchIcon width="20px" />
+              <SearchIcon width="20px" color="#ffff" />
               <input
                 placeholder={t("common:search_placeholder")}
                 aria-label="search bar"
