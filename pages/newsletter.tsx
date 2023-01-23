@@ -15,36 +15,36 @@ i18n.use(initReactI18next).init({
 });
 
 const newsletter = () => {
-  const [email, setEmail] = useState("");
+  //   const [email, setEmail] = useState("");
   const { t } = useTranslation();
 
-  const subscribeToNewsLetter = async (e: FormEvent) => {
-    e.preventDefault();
+  //   const subscribeToNewsLetter = async (e: FormEvent) => {
+  //     e.preventDefault();
 
-    const FORMSPREE_API = process.env.FORMSPREE_API;
-    const res = await fetch(FORMSPREE_API ?? "", {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-      }),
-      headers: {
-        Accept: "application/json",
-      },
-    });
+  //     const FORMSPREE_API = process.env.FORMSPREE_API;
+  //     const res = await fetch(FORMSPREE_API ?? "", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         email: email,
+  //       }),
+  //       headers: {
+  //         Accept: "application/json",
+  //       },
+  //     });
 
-    const data = await res.json();
+  //     const data = await res.json();
 
-    if (!res.ok) {
-      return alert(
-        `${data.error}: ${
-          Array.isArray(data.errors) ? data.errors[0].message : data.error
-        }`
-      );
-    }
+  //     if (!res.ok) {
+  //       return alert(
+  //         `${data.error}: ${
+  //           Array.isArray(data.errors) ? data.errors[0].message : data.error
+  //         }`
+  //       );
+  //     }
 
-    alert("Success! You have been subscribed ssto our newsletter.");
-    setEmail("");
-  };
+  //     alert("Success! You have been subscribed ssto our newsletter.");
+  //     setEmail("");
+  //   };
   return (
     <>
       <UpperContents>
@@ -68,14 +68,14 @@ const newsletter = () => {
         </div>
         <div style={{ marginTop: "2rem" }}>
           <form
-            onSubmit={subscribeToNewsLetter}
+            // onSubmit={subscribeToNewsLetter}
             className="input-box"
             aria-label="Subscribe your email to newsletter"
           >
             <input
               placeholder={"Enter your Email"}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              //   value={email}
+              //   onChange={(e) => setEmail(e.target.value)}
               required
               style={{
                 backgroundColor: "white",
