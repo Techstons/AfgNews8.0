@@ -9,17 +9,14 @@ import { FormEvent, ReactNode, useState } from "react";
 import { useTranslation } from "next-i18next";
 import SocialLinks from "./SocialLinks";
 import { SocialCircle } from "@components/ui";
-import { ChangeEvent } from 'react'
-import { useRouter } from 'next/router';
-import {useContext} from "react"
-import { DataProvider, DataContext } from '@hooks/DataContext';
-
+import { ChangeEvent } from "react";
+import { useRouter } from "next/router";
+import { useContext } from "react";
+import { DataProvider, DataContext } from "@hooks/DataContext";
 
 interface IFooter {
   isDark: boolean;
 }
-
-
 
 const Footer = ({ isDark }: IFooter) => {
   const [email, setEmail] = useState("");
@@ -63,27 +60,26 @@ const Footer = ({ isDark }: IFooter) => {
       title: t("common:Search"),
       slug: "/search",
     },
-  ]
+  ];
 
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
   const { newdata, setData } = useContext(DataContext);
- 
-  
+
   const router = useRouter();
 
   function handleSearch(event: ChangeEvent<HTMLInputElement>) {
-    setSearch(event.target.value)
+    setSearch(event.target.value);
   }
- 
+
   function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter') {
-      console.log("you searched, " + search)
+    if (event.key === "Enter") {
+      console.log("you searched, " + search);
       // router.asPath = "/search"
-      if(search) {
-        router.replace('/search');
+      if (search) {
+        router.replace("/search");
         event.preventDefault();
-        setData({...newdata, input: search });
-    }
+        setData({ ...newdata, input: search });
+      }
     }
   }
 
@@ -102,11 +98,14 @@ const Footer = ({ isDark }: IFooter) => {
                 aria-label="Subscribe your email to newsletter"
               >
                 <input
-                 placeholder={t("common:news_letter_placeholder")}
-                 value={email}
-                 onChange={(e) => setEmail(e.target.value)}
-                 required
-                 style={{backgroundColor: 'white', border: "black solid 1px",}}
+                  placeholder={t("common:news_letter_placeholder")}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  style={{
+                    backgroundColor: "white",
+                    border: "black solid 1px",
+                  }}
                 />
                 <Button className="btn" type="submit">
                   OK
@@ -133,13 +132,25 @@ const Footer = ({ isDark }: IFooter) => {
           </FooterContainer>
           <FooterContainer>
             <div className="footer-links">
-              {data.menuitems.map((item, index) => {
-                return (
-                  <Link href={item.url} key={index} passHref={true}>
-                    <FooterLink>{item.title}</FooterLink>
-                  </Link>
-                );
-              })}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <FooterLink>About Us</FooterLink>
+                <FooterLink>Contact Us</FooterLink>
+                <FooterLink>Mobile App</FooterLink>
+                <FooterLink>Submit a Story</FooterLink>
+                <FooterLink>Advertise With Us</FooterLink>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <FooterLink>Work For Us</FooterLink>
+                <FooterLink>Feedback</FooterLink>
+                <FooterLink>News Letter</FooterLink>
+                <FooterLink>Privacy Policy</FooterLink>
+                <FooterLink>Terms Of Conditions</FooterLink>
+              </div>
             </div>
             <div className="search">
               <SearchIcon width="20px" color="#ffff" />
@@ -160,10 +171,6 @@ const Footer = ({ isDark }: IFooter) => {
             {useFormattedDate(new Date(), "footer")} AfgNews -{" "}
             {t("common:rights")}
           </p>
-          <div className="bottom_links">
-            {t("common:about")} - {t("common:privacy")} - {t("common:terms")}-
-            {t("common:advertise")}
-          </div>
         </BottomFooter>
       </Container>
     </Wrapper>
@@ -254,6 +261,9 @@ const FooterContainer = styled.div`
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    margin-bottom: 2rem;
+    width: 28rem;
+    justify-content: space-between;
   }
 
   & .search {
@@ -287,7 +297,8 @@ const FooterLink = styled.a`
   text-decoration: none;
   font-weight: medium;
   transition: color 0.2s ease-in-out;
-  margin: 1.5rem auto;
+  margin: 15px auto;
+  width: 100%;
   &:hover {
     color: var(--primary-color);
   }
