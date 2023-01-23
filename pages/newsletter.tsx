@@ -16,7 +16,7 @@ i18n.use(initReactI18next).init({
 
 const newsletter = () => {
   //   const [email, setEmail] = useState("");
-  const { t } = useTranslation();
+  //   const { t } = useTranslation();
 
   //   const subscribeToNewsLetter = async (e: FormEvent) => {
   //     e.preventDefault();
