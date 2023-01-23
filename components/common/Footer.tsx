@@ -296,7 +296,7 @@ const FooterContainer = styled.div`
     background-color: #202224;
     border-radius: 0.25rem;
     max-width: 380px;
-
+    margin-bottom: 2px;
     & input {
       color: white;
       outline: none;
