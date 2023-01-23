@@ -111,6 +111,7 @@ const Footer = ({ isDark }: IFooter) => {
                     style={{
                       backgroundColor: "white",
                       border: "black solid 1px",
+                      padding: "0 0 0 1rem",
                     }}
                   />
                   <Button className="btn" type="submit">
@@ -160,7 +161,9 @@ const Footer = ({ isDark }: IFooter) => {
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <FooterLink>Work For Us</FooterLink>
                 <FooterLink>Feedback</FooterLink>
-                <FooterLink>News Letter</FooterLink>
+                <Link href="/newsletter">
+                  <FooterLink>News Letter</FooterLink>
+                </Link>
                 <FooterLink>Privacy Policy</FooterLink>
                 <FooterLink>Terms & Conditions</FooterLink>
               </div>
