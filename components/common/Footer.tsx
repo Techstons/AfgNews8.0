@@ -89,7 +89,7 @@ const Footer = ({ isDark }: IFooter) => {
         <div className="content">
           <FooterContainer>
             <h2 className="logo">AFGNEWS</h2>
-            <div className="newsletter" style={{ margin: "1.7rem 0 2.8rem 0" }}>
+            <div className="newsletter" style={{ margin: "1.7rem 0 3rem 0" }}>
               <p className="description">{t("common:news_letter_title")}</p>
               <form
                 onSubmit={subscribeToNewsLetter}
@@ -225,7 +225,7 @@ const FooterContainer = styled.div`
       gap: 0.5rem;
 
       .btn {
-        width: 4.1rem;
+        width: 4.4rem;
       }
     }
 
