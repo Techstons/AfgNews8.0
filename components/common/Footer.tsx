@@ -148,7 +148,7 @@ const Footer = ({ isDark }: IFooter) => {
                 <FooterLink>Feedback</FooterLink>
                 <FooterLink>News Letter</FooterLink>
                 <FooterLink>Privacy Policy</FooterLink>
-                <FooterLink>Terms Of Conditions</FooterLink>
+                <FooterLink>Terms & Conditions</FooterLink>
               </div>
             </div>
             <div className="search">
@@ -261,7 +261,7 @@ const FooterContainer = styled.div`
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    margin: 0 0 2rem 0;
+    margin: 0 0 30px 0;
     width: 23.5rem;
     justify-content: space-between;
   }
