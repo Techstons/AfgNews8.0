@@ -256,14 +256,25 @@ const FooterContainer = styled.div`
       font-size: 0.8rem;
     }
   }
-
-  & .footer-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin: 0 0 1.6rem 0;
-    width: 23.5rem;
-    justify-content: space-between;
+  @media (max-width: 1366px) and (max-height: 768px) {
+    & .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 0 0 1.9rem 0;
+      width: 23.5rem;
+      justify-content: space-between;
+    }
+  }
+  @media (min-width: 1367px) and (min-height: 769px) {
+    & .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 0 0 1.3rem 0;
+      width: 23.5rem;
+      justify-content: space-between;
+    }
   }
 
   & .search {
