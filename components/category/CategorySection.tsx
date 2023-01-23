@@ -28,9 +28,9 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
     setclickCheck(clickCheck + 1);
   };
 
-  useEffect(() => {
-    console.log(clickCheck);
-  }, [clickCheck]);
+  // useEffect(() => {
+  //   console.log(clickCheck);
+  // }, [clickCheck]);
 
   console.log(articles);
 
@@ -59,7 +59,6 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
             </SideChannel>
           </Wrapper>
         </Header>
-
         <Section>
           <Wrapper>
             <div>
