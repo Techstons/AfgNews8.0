@@ -225,7 +225,7 @@ const FooterContainer = styled.div`
       gap: 0.5rem;
 
       .btn {
-        width: 4.4rem;
+        width: 4.8rem;
       }
     }
 
