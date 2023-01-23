@@ -261,7 +261,7 @@ const FooterContainer = styled.div`
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      margin: 0 0 1.9rem 0;
+      margin: 0 0 1.8rem 0;
       width: 23.5rem;
       justify-content: space-between;
     }
@@ -271,7 +271,7 @@ const FooterContainer = styled.div`
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      margin: 0 0 1.3rem 0;
+      margin: 0 0 1rem 0;
       width: 23.5rem;
       justify-content: space-between;
     }
