@@ -206,7 +206,7 @@ const FooterContainer = styled.div`
   font-weight: bold;
 
   & .logo {
-    font-size: 3.7rem;
+    font-size: 3.8rem;
     font-weight: var(--font-extrabold);
     padding-bottom: 1.5rem;
 
@@ -225,7 +225,7 @@ const FooterContainer = styled.div`
       gap: 0.5rem;
 
       .btn {
-        max-width: min-content;
+        width: 4.1rem;
       }
     }
 
