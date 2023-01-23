@@ -87,29 +87,37 @@ const Footer = ({ isDark }: IFooter) => {
     <Wrapper isDark={isDark}>
       <Container>
         <div className="content">
-          <FooterContainer>
-            <h2 className="logo">AFGNEWS</h2>
-            <div className="newsletter" style={{ margin: "1.7rem 0 3rem 0" }}>
-              <p className="description">{t("common:news_letter_title")}</p>
-              <form
-                onSubmit={subscribeToNewsLetter}
-                className="input-box"
-                aria-label="Subscribe your email to newsletter"
-              >
-                <input
-                  placeholder={t("common:news_letter_placeholder")}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  style={{
-                    backgroundColor: "white",
-                    border: "black solid 1px",
-                  }}
-                />
-                <Button className="btn" type="submit">
-                  OK
-                </Button>
-              </form>
+          <FooterContainer
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <h2 className="logo">AFGNEWS</h2>
+              <div className="newsletter" style={{ margin: "1.7rem 0 3rem 0" }}>
+                <p className="description">{t("common:news_letter_title")}</p>
+                <form
+                  onSubmit={subscribeToNewsLetter}
+                  className="input-box"
+                  aria-label="Subscribe your email to newsletter"
+                >
+                  <input
+                    placeholder={t("common:news_letter_placeholder")}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    style={{
+                      backgroundColor: "white",
+                      border: "black solid 1px",
+                    }}
+                  />
+                  <Button className="btn" type="submit">
+                    OK
+                  </Button>
+                </form>
+              </div>
             </div>
             <div className="socials">
               <p>{t("common:follow_us")}: </p>
@@ -129,7 +137,13 @@ const Footer = ({ isDark }: IFooter) => {
               })}
             </div>
           </FooterContainer>
-          <FooterContainer>
+          <FooterContainer
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
             <div className="footer-links">
               <div
                 style={{
@@ -204,7 +218,7 @@ const Wrapper = styled.footer<IFooter>`
 const FooterContainer = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
-
+  margin-bottom: 2rem;
   & .logo {
     font-size: 3.8rem;
     font-weight: var(--font-extrabold);
@@ -245,7 +259,6 @@ const FooterContainer = styled.div`
   }
 
   & .socials {
-    padding: 1rem 0;
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -282,9 +295,7 @@ const FooterContainer = styled.div`
     padding: 0.3rem;
     background-color: #202224;
     border-radius: 0.25rem;
-    align-self: self-end;
     max-width: 380px;
-    margin-bottom: 2rem;
 
     & input {
       color: white;
