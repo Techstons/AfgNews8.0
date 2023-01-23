@@ -89,8 +89,7 @@ const Footer = ({ isDark }: IFooter) => {
         <div className="content">
           <FooterContainer>
             <h2 className="logo">AFGNEWS</h2>
-
-            <div className="newsletter">
+            <div className="newsletter" style={{ margin: "1.7rem 0 2.8rem 0" }}>
               <p className="description">{t("common:news_letter_title")}</p>
               <form
                 onSubmit={subscribeToNewsLetter}
@@ -166,6 +165,7 @@ const Footer = ({ isDark }: IFooter) => {
             </Link> */}
           </FooterContainer>
         </div>
+        <Divider />
         <BottomFooter>
           <p>
             {useFormattedDate(new Date(), "footer")} AfgNews -{" "}
@@ -206,7 +206,7 @@ const FooterContainer = styled.div`
   font-weight: bold;
 
   & .logo {
-    font-size: 5rem;
+    font-size: 3.7rem;
     font-weight: var(--font-extrabold);
     padding-bottom: 1.5rem;
 
@@ -261,8 +261,8 @@ const FooterContainer = styled.div`
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
-    width: 28rem;
+    margin: 0 0 2rem 0;
+    width: 23.5rem;
     justify-content: space-between;
   }
 
@@ -272,7 +272,7 @@ const FooterContainer = styled.div`
     background-color: #202224;
     border-radius: 0.25rem;
     align-self: self-end;
-    max-width: 350px;
+    max-width: 380px;
     margin-bottom: 2rem;
 
     & input {
@@ -299,6 +299,7 @@ const FooterLink = styled.a`
   transition: color 0.2s ease-in-out;
   margin: 15px auto;
   width: 100%;
+  font-size: 1rem;
   &:hover {
     color: var(--primary-color);
   }
@@ -309,8 +310,12 @@ const BottomFooter = styled.div`
 
   @media only screen and (min-width: 1024px) {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 1rem 0;
   }
+`;
+
+const Divider = styled.div`
+  border-top: 1px solid gray;
 `;
