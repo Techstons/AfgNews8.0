@@ -13,6 +13,10 @@ import { ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { DataProvider, DataContext } from "@hooks/DataContext";
+import { store } from "./store";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "../../pages/store";
+import { updateValue } from "slices/searchSlices";
 
 interface IFooter {
   isDark: boolean;
@@ -21,6 +25,8 @@ interface IFooter {
 const Footer = ({ isDark }: IFooter) => {
   const [email, setEmail] = useState("");
   const { t } = useTranslation();
+  const newSearch = useSelector((state: RootState) => state.search.value);
+  const dispatch = useDispatch();
 
   const subscribeToNewsLetter = async (e: FormEvent) => {
     e.preventDefault();
@@ -75,6 +81,8 @@ const Footer = ({ isDark }: IFooter) => {
     if (event.key === "Enter") {
       console.log("you searched, " + search);
       // router.asPath = "/search"
+      dispatch(updateValue(search));
+      console.log(newSearch);
       if (search) {
         router.replace("/search");
         event.preventDefault();
