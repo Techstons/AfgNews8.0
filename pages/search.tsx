@@ -6,8 +6,10 @@ import { SearchIcon } from "@components/icons";
 import { Article } from "@components/types";
 import { getContentfulData } from "@hooks/article";
 import moment from "moment";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../hooks/store";
+import { ChangeEvent } from "react";
+import { updateValue } from "slices/searchSlices";
 
 i18n.use(initReactI18next).init({
   lng: "en",
@@ -24,8 +26,31 @@ interface ICategorySection {
 
 const Search = () => {
   const newSearch = useSelector((state: RootState) => state.search.value);
+  const dispatch = useDispatch();
 
   const [data, setData] = useState<Array<any>>([]);
+  const [newSearchData, setNewSearchData] = useState("");
+
+  let listOfNews = data.map((entry) => {
+    return entry;
+  });
+
+  let filteredArray = listOfNews.filter(
+    (object) =>
+      object.fields &&
+      object.fields.title &&
+      object.fields.title.toLowerCase().includes(newSearch)
+  );
+
+  function handleSearch(event: ChangeEvent<HTMLInputElement>) {
+    setNewSearchData(event.target.value);
+  }
+
+  function pushNewSearch(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter") {
+      dispatch(updateValue(newSearchData));
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,54 +64,30 @@ const Search = () => {
     fetchData();
   }, []);
 
-  // console.log(data);
-  let listOfNews = data.map((entry) => {
-    return entry;
-  });
-
-  // console.log(listOfNews);
-
-  let searchWord = "tesla";
-
-  // let filteredSentences = listOfNews.filter(
-  //   (sentence) =>
-  //     typeof sentence === "string" &&
-  //     sentence.toLowerCase().includes(searchWord)
-  // );
-  // let filteredSentences = listOfNews.filter(
-  //   (sentence) => sentence.fields.title === searchWord
-  // );
-
-  // console.log(filteredSentences);
-  let filteredArray = listOfNews.filter(
-    (object) =>
-      object.fields &&
-      object.fields.title &&
-      object.fields.title.toLowerCase().includes(newSearch)
-  );
-
-  // console.log(filteredArray);
+  // useEffect(() => {
+  //   console.log(newSearchData);
+  // }, [newSearchData]);
 
   return (
     <>
       <SearchPageContainer>
-        <h1>Search Results {newSearch}</h1>
+        {newSearch ? (
+          <h1>Search Results for {newSearch}</h1>
+        ) : (
+          <h1>All articles</h1>
+        )}
         <SearchBar>
           <SearchIcon width="20px" style={{ marginLeft: "1rem" }} />
           <input
             aria-label="search bar"
             style={{ width: "100%", marginLeft: "1rem" }}
+            placeholder="search for news articles"
+            onChange={handleSearch}
+            onKeyDown={pushNewSearch}
           />
         </SearchBar>
 
         <div>
-          {/* {data.map((entry) => (
-            <div key={entry.sys.id}>
-              <h2>{entry.fields.title}</h2>
-              <p>{entry.fields.content}</p>
-              <img src={entry.fields.featuredImage[0].original_url} />
-            </div>
-          ))} */}
           {filteredArray.map((entry) => (
             <ArticleWrapper key={entry.sys.id}>
               <PerArticle>

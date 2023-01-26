@@ -10,8 +10,6 @@ import SocialLinks from "./SocialLinks";
 import { SocialCircle } from "@components/ui";
 import { ChangeEvent } from "react";
 import { useRouter } from "next/router";
-import { useContext } from "react";
-import { DataContext } from "@hooks/DataContext";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../hooks/store";
 import { updateValue } from "slices/searchSlices";
@@ -21,10 +19,25 @@ interface IFooter {
 }
 
 const Footer = ({ isDark }: IFooter) => {
-  const [email, setEmail] = useState("");
   const { t } = useTranslation();
-  const newSearch = useSelector((state: RootState) => state.search.value);
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [search, setSearch] = useState("");
+  const newSearch = useSelector((state: RootState) => state.search.value);
+
+  type NavLinks = {
+    title: string;
+    slug: string;
+  };
+
+  const navLinks: NavLinks[] = [
+    {
+      title: t("common:Search"),
+      slug: "/search",
+    },
+  ];
 
   const subscribeToNewsLetter = async (e: FormEvent) => {
     e.preventDefault();
@@ -54,23 +67,6 @@ const Footer = ({ isDark }: IFooter) => {
     setEmail("");
   };
 
-  type NavLinks = {
-    title: string;
-    slug: string;
-  };
-
-  const navLinks: NavLinks[] = [
-    {
-      title: t("common:Search"),
-      slug: "/search",
-    },
-  ];
-
-  const [search, setSearch] = useState("");
-  const { newdata, setData } = useContext(DataContext);
-
-  const router = useRouter();
-
   function handleSearch(event: ChangeEvent<HTMLInputElement>) {
     setSearch(event.target.value);
   }
@@ -83,7 +79,6 @@ const Footer = ({ isDark }: IFooter) => {
       if (search) {
         router.replace("/search");
         event.preventDefault();
-        setData({ ...newdata, input: search });
       }
     }
   }
@@ -156,6 +151,7 @@ const Footer = ({ isDark }: IFooter) => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
+                  height: "80%",
                 }}
               >
                 <FooterLink>About Us</FooterLink>
@@ -280,7 +276,7 @@ const FooterContainer = styled.div`
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-
+    // margin: 0 0 1.8rem 0;
     width: 23.5rem;
     justify-content: space-between;
   }
@@ -325,7 +321,7 @@ const FooterLink = styled.a`
   text-decoration: none;
   font-weight: medium;
   transition: color 0.2s ease-in-out;
-  margin: 15px auto;
+  margin: 14px auto;
   width: 100%;
   font-size: 1rem;
   &:hover {

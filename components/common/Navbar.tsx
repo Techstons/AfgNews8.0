@@ -88,16 +88,16 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
     SocialLinks.filter((social) => social.name !== "Youtube").map((item) => {
       return (
         <a key={item.name} href={item.url} target="_blank" rel="noreferrer">
-          <item.icon size={14}/>
+          <item.icon size={14} />
         </a>
       );
     });
 
-    const renderSocialIconsMobile = () =>
+  const renderSocialIconsMobile = () =>
     SocialLinks.filter((social) => social.name !== "Youtube").map((item) => {
       return (
         <a key={item.name} href={item.url} target="_blank" rel="noreferrer">
-          <item.icon size={14} style={{marginLeft: "10px"}}/>
+          <item.icon size={14} style={{ marginLeft: "10px" }} />
         </a>
       );
     });
@@ -156,31 +156,21 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               aria-label="AFGNews Logo which links to home when clicked"
               className="logo"
             >
-              {/* <Image
-                src="c_limit,h_60,q_auto:low,w_130/assets/logo_wjawfm.png"
+              <img
+                src="https://res.cloudinary.com/dssf8vpym/image/upload/v1673521118/assets/logo_wjawfm.png"
                 alt="AFGNews Logo"
-                layout="fixed"
                 height={60}
                 width={190}
-                objectFit="cover"
-                className="logo"
-              /> */}
-              <img src="https://res.cloudinary.com/dssf8vpym/image/upload/v1673521118/assets/logo_wjawfm.png" 
-              alt="AFGNews Logo" 
-              height={60}
-              width={190}
-              style={{objectFit: "cover", marginRight: "1.5rem"}}
+                style={{ objectFit: "cover", marginRight: "1.5rem" }}
               />
             </a>
           </Link>
-          {/* <div className="socials">{renderSocialIcons()}</div> */}
         </TopContent>
         <BottomContent active={active}>
           <div className="menu">
             {navLinks.map((menu, i) => {
               return (
                 <div className="menu-item" key={i}>
-
                   {/* ============= */}
                   <Link href={menu.slug} passHref={true}>
                     <MenuItem
@@ -196,26 +186,6 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                       {menu.title}
                     </MenuItem>
                   </Link>
-
-                  {/* ============= */}
-                  {/* {!!articles &&
-                    articles[menu.default]?.items?.length > 0 &&
-                    router.asPath !== menu.slug &&
-                    menu.title !== "Videos" && (
-                      <MenuDropDown className="menu-dropdown">
-                        {articles[menu.default]?.items
-                          .slice(0, 4)
-                          .map((item: Article) => {
-                            return (
-                              <ArticleCard
-                                key={item.title}
-                                card={item}
-                                variant="primary"
-                              />
-                            );
-                          })}
-                      </MenuDropDown>
-                    )} */}
                 </div>
               );
             })}

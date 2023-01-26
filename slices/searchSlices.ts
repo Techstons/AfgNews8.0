@@ -5,7 +5,7 @@ export interface CounterState {
 }
 
 const initialState: CounterState = {
-  value: "sss",
+  value: "",
 };
 
 export const searchSlice = createSlice({
