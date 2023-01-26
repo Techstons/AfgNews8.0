@@ -11,12 +11,12 @@ export default function LocaleSwitcher() {
     en: {
       title: "EN",
     },
-    ru: {
-      title: "РУС",
-    },
-    ps: {
-      title: "پشتو",
-    },
+    // ru: {
+    //   title: "РУС",
+    // },
+    // ps: {
+    //   title: "پشتو",
+    // },
     fa: {
       title: "فارسی",
     },
@@ -35,7 +35,7 @@ export default function LocaleSwitcher() {
             </Wrapper>
           );
         })}
-      <Wrapper key={"locale-" + "ps"}>
+      {/* <Wrapper key={"locale-" + "ps"}>
         <Link href={{}}>
           <a>{languages["ps"].title}</a>
         </Link>
@@ -44,16 +44,15 @@ export default function LocaleSwitcher() {
         <Link href={{}}>
           <a>{languages["ru"].title}</a>
         </Link>
-      </Wrapper>
+      </Wrapper> */}
     </>
   );
 }
 
 const Wrapper = styled.span`
   text-transform: uppercase;
-  
 
   @media only screen and (max-width: 600px) {
-    margin: 0 3px 0 2px
+    margin: 0 3px 0 2px;
   }
 `;
