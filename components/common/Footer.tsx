@@ -120,6 +120,7 @@ const Footer = ({ isDark }: IFooter) => {
                       backgroundColor: "white",
                       border: "black solid 1px",
                       padding: "0 0 0 1rem",
+                      width: "14rem",
                     }}
                   />
                   <Button className="btn" type="submit">
@@ -250,7 +251,7 @@ const FooterContainer = styled.div`
       gap: 0.5rem;
 
       .btn {
-        width: 4.8rem;
+        width: 4rem;
       }
     }
 

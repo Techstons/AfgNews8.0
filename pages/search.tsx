@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import { useTranslation } from "next-i18next";
 import styled from "@emotion/styled";
 import { SearchIcon } from "@components/icons";
 import { Article } from "@components/types";
@@ -27,6 +26,7 @@ const Search = () => {
   const newSearch = useSelector((state: RootState) => state.search.value);
 
   const [data, setData] = useState<Array<any>>([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getContentfulData();
