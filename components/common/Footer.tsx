@@ -15,7 +15,7 @@ import { useContext } from "react";
 import { DataProvider, DataContext } from "@hooks/DataContext";
 import { store } from "./store";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState } from "../../pages/store";
+import type { RootState } from "../../hooks/store";
 import { updateValue } from "slices/searchSlices";
 
 interface IFooter {

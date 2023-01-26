@@ -7,7 +7,7 @@ import { Article } from "@components/types";
 import { getContentfulData } from "@hooks/article";
 import moment from "moment";
 import { useSelector } from "react-redux";
-import type { RootState } from "../pages/store";
+import type { RootState } from "../hooks/store";
 
 i18n.use(initReactI18next).init({
   lng: "en",
