@@ -64,9 +64,8 @@ const Search = () => {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(newSearchData);
-  // }, [newSearchData]);
+  console.log(filteredArray);
+  console.log(filteredArray.length);
 
   return (
     <>
@@ -86,35 +85,36 @@ const Search = () => {
             onKeyDown={pushNewSearch}
           />
         </SearchBar>
-
-        <div>
-          {filteredArray.map((entry) => (
-            <ArticleWrapper key={entry.sys.id}>
-              <PerArticle>
-                {entry.fields.featuredImage &&
-                  entry.fields.featuredImage.length > 0 && (
-                    <ArticleImage
-                      src={entry.fields.featuredImage[0].original_url}
-                    />
-                  )}
-                <InfoWrapper>
-                  <ArticleTitle>{entry.fields.title}</ArticleTitle>
-                  <div style={{ display: "flex", color: "black !important" }}>
-                    {entry.fields.category && entry.fields.category.fields && (
-                      <p
-                        style={{
-                          borderRight: "2px solid #d32011",
-                          marginRight: "1rem",
-                          padding: "0 5px 0 0",
-                        }}
-                      >
-                        {entry.fields.category.fields.name}
-                      </p>
+        {filteredArray.length > 0 ? (
+          <div>
+            {filteredArray.map((entry) => (
+              <ArticleWrapper key={entry.sys.id}>
+                <PerArticle>
+                  {entry.fields.featuredImage &&
+                    entry.fields.featuredImage.length > 0 && (
+                      <ArticleImage
+                        src={entry.fields.featuredImage[0].original_url}
+                      />
                     )}
-                    <p>{moment(entry.sys.createdAt).fromNow()}</p>
-                  </div>
-                </InfoWrapper>
-                {/* <p>
+                  <InfoWrapper>
+                    <ArticleTitle>{entry.fields.title}</ArticleTitle>
+                    <div style={{ display: "flex", color: "black !important" }}>
+                      {entry.fields.category &&
+                        entry.fields.category.fields && (
+                          <p
+                            style={{
+                              borderRight: "2px solid #d32011",
+                              marginRight: "1rem",
+                              padding: "0 5px 0 0",
+                            }}
+                          >
+                            {entry.fields.category.fields.name}
+                          </p>
+                        )}
+                      <p>{moment(entry.sys.createdAt).fromNow()}</p>
+                    </div>
+                  </InfoWrapper>
+                  {/* <p>
                   {entry.fields.body &&
                     entry.fields.body.content &&
                     entry.fields.body.content[0] &&
@@ -124,11 +124,14 @@ const Search = () => {
                       ? entry.fields.body.content[0].content[0].value
                       : 'No content available'}
                 </p> */}
-                {/* accessing contents */}
-              </PerArticle>
-            </ArticleWrapper>
-          ))}
-        </div>
+                  {/* accessing contents */}
+                </PerArticle>
+              </ArticleWrapper>
+            ))}
+          </div>
+        ) : (
+          <NoSearchResults>No search results</NoSearchResults>
+        )}
       </SearchPageContainer>
     </>
   );
@@ -181,6 +184,14 @@ const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
+
+const NoSearchResults = styled.h1`
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  align-items: center;
+  font-size: 3rem;
 `;
 
 export default Search;
