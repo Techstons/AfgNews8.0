@@ -1,10 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&family=PT+Sans+Narrow&family=Varela+Round&display=swap");
+
 :root {
   /* HEADER VARIABLES */
   --nav-color: white;
   --nav-text: black;
 
   /* FOOTER VALUES */
-
 
   /* COLORS */
   --hue: 0;
@@ -14,9 +15,9 @@
   --text-color: #000000;
   --text-color-alt: hsl(0, 0%, 50%);
   --container-color: #f9f9f9;
-  --success-color: #4F8A10;
-  --failure-color: #DA0A16;
-  
+  --success-color: #4f8a10;
+  --failure-color: #da0a16;
+
   /* TYPOGRAPHY */
   --font-extrabold: 900;
   --font-bold: 700;
@@ -29,19 +30,21 @@
   --font-xl: 36px;
   --font-2xl: 42px;
 
+  --formal-font: "EB Garamond", serif;
+
   /* SCREENS */
-  --sm : 640px;
-  --md : 768px;
-  --lg : 1024px;
-  --max-screen : 1280px;
+  --sm: 640px;
+  --md: 768px;
+  --lg: 1024px;
+  --max-screen: 1280px;
 
   /* B RADIUS */
-  --base-radius: .25rem;
+  --base-radius: 0.25rem;
 }
 
 main.dark-theme {
-  --text-color:  #f9f9f9;
+  --text-color: #f9f9f9;
   --container-color: #000000;
-  --success-color: #ABEC65;
-  --failure-color: #FF9E9E;
+  --success-color: #abec65;
+  --failure-color: #ff9e9e;
 }
