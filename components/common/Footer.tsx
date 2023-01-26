@@ -1,19 +1,17 @@
 import React from "react";
 import { SearchIcon } from "@components/icons";
-import { Button, Container, Input } from "@components/ui";
+import { Button, Container } from "@components/ui";
 import styled from "@emotion/styled";
 import useFormattedDate from "@hooks/useFormattedDate";
-import data from "@test-data";
 import Link from "next/link";
-import { FormEvent, ReactNode, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useTranslation } from "next-i18next";
 import SocialLinks from "./SocialLinks";
 import { SocialCircle } from "@components/ui";
 import { ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import { DataProvider, DataContext } from "@hooks/DataContext";
-import { store } from "./store";
+import { DataContext } from "@hooks/DataContext";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../hooks/store";
 import { updateValue } from "slices/searchSlices";
@@ -80,7 +78,6 @@ const Footer = ({ isDark }: IFooter) => {
   function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
       console.log("you searched, " + search);
-      // router.asPath = "/search"
       dispatch(updateValue(search));
       console.log(newSearch);
       if (search) {
@@ -128,23 +125,23 @@ const Footer = ({ isDark }: IFooter) => {
                   </Button>
                 </form>
               </div>
-            </div>
-            <div className="socials">
-              <p>{t("common:follow_us")}: </p>
-              {SocialLinks.map((item, index) => {
-                return (
-                  <SocialCircle
-                    size="33px"
-                    href={item.url}
-                    aria-label={item.name}
-                    key={index}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <item.icon size={18} />
-                  </SocialCircle>
-                );
-              })}
+              <div className="socials">
+                <p>{t("common:follow_us")}: </p>
+                {SocialLinks.map((item, index) => {
+                  return (
+                    <SocialCircle
+                      size="33px"
+                      href={item.url}
+                      aria-label={item.name}
+                      key={index}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <item.icon size={18} />
+                    </SocialCircle>
+                  );
+                })}
+              </div>
             </div>
           </FooterContainer>
           <FooterContainer
@@ -186,9 +183,6 @@ const Footer = ({ isDark }: IFooter) => {
                 onKeyDown={handleKeyPress}
               />
             </div>
-            {/* <Link href="/donate">
-              <a className="donate">Donate</a>
-            </Link> */}
           </FooterContainer>
         </div>
         <Divider />
@@ -286,7 +280,7 @@ const FooterContainer = styled.div`
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    margin: 0 0 1.8rem 0;
+
     width: 23.5rem;
     justify-content: space-between;
   }
