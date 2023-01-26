@@ -45,9 +45,9 @@ const aboutus = () => {
               CoinDesk Indices are the bellwether for the market. They are the
               industry standard for institutional-grade cryptocurrency pricing
               with billions of dollars in monthly trading volume quoted against
-              them. The flagship CoinDesk Bitcoin Price Index (XBX) is a spot
-              reference rate for BTC that benchmarks the world's first publicly
-              traded bitcoin fund and the world's first bitcoin ETF.
+              them. The flagship CoinDesk Bitcoin Price Index is a spot
+              reference rate for BTC that benchmarks the worlds first publicly
+              traded bitcoin fund and the worlds first bitcoin ETF.
             </p>
             <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/P7KYLA746VDC7FRZEUVIPZYSMA.png" />
           </div>

@@ -154,7 +154,9 @@ const Footer = ({ isDark }: IFooter) => {
                   height: "80%",
                 }}
               >
-                <FooterLink>About Us</FooterLink>
+                <Link href="/aboutus">
+                  <FooterLink>About Us</FooterLink>
+                </Link>
                 <FooterLink>Contact Us</FooterLink>
                 <FooterLink>Mobile App</FooterLink>
                 <FooterLink>Submit a Story</FooterLink>
