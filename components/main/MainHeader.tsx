@@ -4,8 +4,8 @@ import styled from "@emotion/styled";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useTranslation } from 'next-i18next';
-import { withTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next";
+import { withTranslation } from "next-i18next";
 
 const Header = ({
   title,
@@ -54,13 +54,13 @@ const Header = ({
               className={`${activeChoice === "latest" ? "active" : ""}`}
               onClick={() => setActiveChoice("latest")}
             >
-              {t('common:latest')}
+              {t("common:latest")}
             </button>
             <button
               className={`${activeChoice === "popular" ? "active" : ""}`}
               onClick={() => setActiveChoice("popular")}
             >
-              {t('common:popular')}
+              {t("common:popular")}
             </button>
           </div>
           <div className="articles">
@@ -78,6 +78,7 @@ export default withTranslation()(Header);
 
 const Wrapper = styled.header`
   min-height: calc(100vh - 124px);
+  margin-top: 2.5rem;
 `;
 
 const Top = styled.div`

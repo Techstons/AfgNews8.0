@@ -48,7 +48,7 @@ const Layout = ({ articles, children }: ILayout) => {
         <ArrowUp size={24} />
       </AccessibilityScroller>
       <DataProvider>
-      <Footer isDark={isDark} />
+        <Footer isDark={isDark} />
       </DataProvider>
     </>
   );
@@ -58,7 +58,7 @@ export default Layout;
 
 const Main = styled.main`
   min-height: calc(100vh - 142px);
-  padding: 2.5rem 0;
+  // padding: 2.5rem 0;
   background-color: var(--container-color);
   color: var(--text-color);
 `;
