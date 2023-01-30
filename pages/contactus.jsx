@@ -43,7 +43,7 @@ const ContactUs = () => {
         <Form>
           <div className="container">
             <div className="label-container">
-              <label for="select">To</label>
+              <label htmlFor="select">To</label>
               <Aster>*</Aster>
             </div>
             <button
@@ -70,28 +70,28 @@ const ContactUs = () => {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
-              <label for="name">Name</label>
+              <label htmlFor="name">Name</label>
               <Aster>*</Aster>
             </div>
             <Input id="name" required />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
               <Aster>*</Aster>
             </div>
             <Input id="email" required />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
-              <label for="subject">Subject</label>
+              <label htmlFor="subject">Subject</label>
               <Aster>*</Aster>
             </div>
             <Input id="subject" required />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
-              <label for="message">Message</label>
+              <label htmlFor="message">Message</label>
               <Aster>*</Aster>
             </div>
             <Message id="message" required />
