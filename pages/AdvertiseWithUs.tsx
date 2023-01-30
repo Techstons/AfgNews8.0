@@ -55,7 +55,7 @@ const AdvertiseWithUs = () => {
           {InfoList.map((info) => (
             <InfoAboutUs>
               <div></div>
-              <p>{info}</p>
+              <p key={info}>{info}</p>
             </InfoAboutUs>
           ))}
           <PerInfoContainer>
