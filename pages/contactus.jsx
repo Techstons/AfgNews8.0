@@ -11,7 +11,7 @@ i18n.use(initReactI18next).init({
   },
 });
 
-const contactus = () => {
+const ContactUs = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [placeHolder, setPlaceHolder] = useState("Genaral Inquiries");
   const [clicks, setClicks] = useState(0);
@@ -258,4 +258,4 @@ const Image = styled.img`
   position: absolute;
 `;
 
-export default contactus;
+export default ContactUs;

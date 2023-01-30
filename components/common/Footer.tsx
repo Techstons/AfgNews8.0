@@ -157,7 +157,7 @@ const Footer = ({ isDark }: IFooter) => {
                 <Link href="/aboutus">
                   <FooterLink>About Us</FooterLink>
                 </Link>
-                <Link href="/contactus">
+                <Link href="/ContactUs">
                   <FooterLink>Contact Us</FooterLink>
                 </Link>
                 <FooterLink>Mobile App</FooterLink>
