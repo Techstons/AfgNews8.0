@@ -53,7 +53,7 @@ const AdvertiseWithUs = () => {
         </Advertise>
         <div style={{ padding: "3rem 2rem 0 2rem" }}>
           {InfoList.map((info) => (
-            <InfoAboutUs>
+            <InfoAboutUs key={info}>
               <div></div>
               <p key={info}>{info}</p>
             </InfoAboutUs>
