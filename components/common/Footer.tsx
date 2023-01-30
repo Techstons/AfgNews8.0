@@ -162,7 +162,9 @@ const Footer = ({ isDark }: IFooter) => {
                 </Link>
                 <FooterLink>Mobile App</FooterLink>
                 <FooterLink>Submit a Story</FooterLink>
-                <FooterLink>Advertise With Us</FooterLink>
+                <Link href="/AdvertiseWithUs">
+                  <FooterLink>Advertise With Us</FooterLink>
+                </Link>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <FooterLink>Work For Us</FooterLink>
