@@ -24,31 +24,28 @@ const AdvertiseWithUs = () => {
   return (
     <MainContainer>
       <HeaderContainer>
-        <HeaderTextContainer>
+        {/* <HeaderTextContainer>
           <p>Get in touch</p>
           <h1>
             Our dedicated client partners are always on hand, ready to help you
             harness the power of The Washington Post.
           </h1>
-        </HeaderTextContainer>
+        </HeaderTextContainer> */}
         <GetInTouchDesign>GET IN TOUCH</GetInTouchDesign>
       </HeaderContainer>
       <FormContainer>
         <Advertise>
-          <h1>Advertise</h1>
+          <h1>Advertise With Us</h1>
           <h2>
-            The CoinDesk media platform is the leading trusted source for crypto
-            and blockchain content, attracting <br></br>
+            The AfgNews media platform is the leading trusted source for content
+            from Afghanistan and around the world, attracting <br></br>
             <a>millions of users.</a>
             <br></br>
-            Absolutely no one brings the news and events shaping the digital
-            finance landscape like CoinDesk. With news and insights, podcasts,
-            live streaming TV shows, research reports, live events, and a
-            toolkit of indices, data and analytics, that’s why millions of users
-            trust <a>
-              CoinDesk as the source for an emerging crypto economy
-            </a>{" "}
-            and why it matters to investors, companies and governments.
+            Keeping you updated with the latest news and events. With insights,
+            podcasts, youtube, live streaming, research reports, live events,
+            data & analytics and much more, that’s why millions of users trust{" "}
+            <a> AfgNews as the source for the latest news </a> and why it
+            matters to investors, companies and governments.
           </h2>
         </Advertise>
         <div style={{ padding: "3rem 2rem 0 2rem" }}>
@@ -192,6 +189,8 @@ const Advertise = styled.div`
   & h1 {
     font-size: 3rem;
     margin: 0 0 2rem 0;
+    color: var(--primary-color);
+    letter-spacing: 2px;
   }
 
   & h2 {
@@ -222,7 +221,7 @@ const FormContainer = styled.div`
   height: 250vh;
   width: 95%;
   position: absolute;
-  top: 34rem;
+  top: 13rem;
 `;
 
 const GetInTouchDesign = styled.h2`
@@ -250,7 +249,7 @@ const HeaderTextContainer = styled.div`
 
 const HeaderContainer = styled.div`
   background-color: #cfebec;
-  height: 100vh;
+  height: 50vh;
   color: var(--primary-color);
   display: flex;
   justify-content: center;
