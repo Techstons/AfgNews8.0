@@ -98,9 +98,7 @@ const newsletter = () => {
 
 export default newsletter;
 
-const NewsletterMainContainer = styled.div`
-  margin: 2.5rem 0 0 0;
-`;
+const NewsletterMainContainer = styled.div``;
 
 const UpperContents = styled.div`
   background-color: var(--primary-color);

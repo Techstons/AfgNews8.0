@@ -58,7 +58,7 @@ export default Layout;
 
 const Main = styled.main`
   min-height: calc(100vh - 142px);
-  // padding: 2.5rem 0;
+  padding: 2.5rem 0;
   background-color: var(--container-color);
   color: var(--text-color);
 `;

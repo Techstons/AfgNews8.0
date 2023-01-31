@@ -112,7 +112,6 @@ const GetOurApp = styled.div`
 
 const MobileAppMainContainer = styled.div`
   height: 120vh;
-  margin: 2.5rem 0 10rem 0;
 
   & h2 {
     width: 10rem;
