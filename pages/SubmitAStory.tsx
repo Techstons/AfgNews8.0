@@ -175,8 +175,8 @@ const SubmitAStory = () => {
             }}
           >
             {largeCardList.map((list) => (
-              <ul style={{ width: "80%", fontSize: "14px" }}>
-                <li>{list}</li>
+              <ul key={list} style={{ width: "80%", fontSize: "14px" }}>
+                <li key={list}>{list}</li>
               </ul>
             ))}
           </div>
@@ -195,7 +195,7 @@ const SubmitAStory = () => {
             </p>
           </div>
           {thingsToConsider.map((list) => (
-            <p>{list}</p>
+            <p key={list}>{list}</p>
           ))}
           <div>
             <p>More information on password security here. </p>
