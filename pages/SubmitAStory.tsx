@@ -213,7 +213,7 @@ const SubmitAStory = () => {
           </p>
           <p>
             We encourage you to assess the potential risks and choose the option
-            that you believe is best for you and the information you're sharing.{" "}
+            that you believe is best for you and the information youre sharing.{" "}
           </p>
           <p>
             We ask that you do not send pitches, press releases or feedback
