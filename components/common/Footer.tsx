@@ -160,7 +160,9 @@ const Footer = ({ isDark }: IFooter) => {
                 <Link href="/ContactUs">
                   <FooterLink>Contact Us</FooterLink>
                 </Link>
-                <FooterLink>Mobile App</FooterLink>
+                <Link href="/MobileApp">
+                  <FooterLink>Mobile App</FooterLink>
+                </Link>
                 <Link href="/SubmitAStory">
                   <FooterLink>Submit a Story</FooterLink>
                 </Link>
@@ -170,7 +172,9 @@ const Footer = ({ isDark }: IFooter) => {
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <FooterLink>Work For Us</FooterLink>
-                <FooterLink>Feedback</FooterLink>
+                <Link href="/Feedback">
+                  <FooterLink>Feedback</FooterLink>
+                </Link>
                 <Link href="/newsletter">
                   <FooterLink>News Letter</FooterLink>
                 </Link>
