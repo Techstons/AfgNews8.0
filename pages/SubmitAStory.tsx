@@ -73,7 +73,7 @@ const SubmitAStory = () => {
             <div>
               <p>
                 Send us your tip here. In the dropdown menu, be sure to choose
-                "General - Editorial"
+                General - Editorial
               </p>
             </div>
             <div>
