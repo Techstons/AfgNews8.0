@@ -145,7 +145,8 @@ const ArticlePage = ({
             </ArticleMdx>
           </ArticleBody>
           <Comments
-            websiteId={7660}
+            websiteId={8397}
+            //7660 -- previous
             title={article.title}
             url={fullPath}
             loadMode="load"
