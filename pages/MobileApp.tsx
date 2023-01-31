@@ -87,7 +87,7 @@ const Button = styled.button`
   border-radius: 5px;
 
   &:hover {
-    border-color: yellow;
+    border-color: var(--primary-color);
   }
 
   &:hover .label-button {
