@@ -293,6 +293,7 @@ const TimeCapsuleMainContainer = styled.div`
 
 const AboutUsMainContainer = styled.div`
   color: rgb(38, 38, 38);
+  margin: 2.5rem 0 0 0;
 `;
 
 const AboutUsSectionContainer = styled.div`

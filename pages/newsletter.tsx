@@ -46,7 +46,7 @@ const newsletter = () => {
   //     setEmail("");
   //   };
   return (
-    <>
+    <NewsletterMainContainer>
       <UpperContents>
         <h1>Newsletter</h1>
       </UpperContents>
@@ -92,11 +92,15 @@ const newsletter = () => {
           </form>
         </div>
       </MainContents>
-    </>
+    </NewsletterMainContainer>
   );
 };
 
 export default newsletter;
+
+const NewsletterMainContainer = styled.div`
+  margin: 2.5rem 0 0 0;
+`;
 
 const UpperContents = styled.div`
   background-color: var(--primary-color);
