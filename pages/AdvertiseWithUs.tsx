@@ -258,7 +258,7 @@ const HeaderContainer = styled.div`
 `;
 
 const MainContainer = styled.div`
-  margin: 0 0 130rem 0;
+  height: 350vh;
   display: flex;
   flex-direction: column;
   align-items: center;
