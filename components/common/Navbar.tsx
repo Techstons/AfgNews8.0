@@ -88,7 +88,8 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
     SocialLinks.filter((social) => social.name !== "Youtube").map((item) => {
       return (
         <a key={item.name} href={item.url} target="_blank" rel="noreferrer">
-          <item.icon size={14} />
+          <item.icon size={16} />
+          {/* 14 is the orifinal size */}
         </a>
       );
     });
