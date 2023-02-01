@@ -24,30 +24,36 @@ const aboutus = () => {
             Our mission at AfgNews is to inform and empower our audience by
             delivering accurate, impartial and diverse news and perspectives,
             while upholding the highest ethical standards and journalistic
-            integrity. We strive to be a trusted source of news for our
-            community, presenting diverse viewpoints and inspiring informed and
-            engaged discussion. A modern news agency that aims to provide the
-            latest and simplified news from Afghanistan and around the world on
-            a daily basis. Our special focus is on reaching the youth of
-            Afghanistan, both domestically and abroad, by presenting information
-            in a simple and easy-to-understand language.Through our commitment
-            to journalistic excellence and ethical practices, we aim to serve as
-            a watchdog of power and contribute to a better-informed society.
+            integrity.
           </p>
         </MissionHeaderContainer>
         <Divider />
         <MissionInformation>
           <div className="per-info">
             <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/Z3IDS7JHKJFTRI3IZ5PE7H3S6M.png" />
-            <p></p>
+            <p>
+              We strive to be a trusted source of news for our community,
+              presenting diverse viewpoints and inspiring informed and engaged
+              discussion.{" "}
+            </p>
           </div>
           <div className="per-info">
-            <p></p>
+            <p>
+              A modern news agency that aims to provide the latest and
+              simplified news from Afghanistan and around the world on a daily
+              basis. Our special focus is on reaching the youth of Afghanistan,
+              both domestically and abroad, by presenting information in a
+              simple and easy-to-understand language.
+            </p>
             <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/P7KYLA746VDC7FRZEUVIPZYSMA.png" />
           </div>
           <div className="per-info">
             <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/N4PSKXDSIVASLJXMCIVKLV3CNE.png" />
-            <p></p>
+            <p>
+              Through our commitment to journalistic excellence and ethical
+              practices, we aim to serve as a watchdog of power and contribute
+              to a better-informed society.
+            </p>
           </div>
         </MissionInformation>
         <Divider />
@@ -61,7 +67,13 @@ const aboutus = () => {
                 <h2>2</h2>
                 <p></p>
               </Numbers>
-              <Platform>Followers @AFGNEWS_ Twitter</Platform>
+              <Platform>
+                Followers{" "}
+                <a href="https://twitter.com/AFGNEWS_" target="_blank">
+                  @AFGNEWS_
+                </a>{" "}
+                Twitter
+              </Platform>
             </FollowersCard>
             <FollowersCard>
               <Numbers>
@@ -84,7 +96,15 @@ const aboutus = () => {
                 <h2>2</h2>
                 <p></p>
               </Numbers>
-              <Platform>Youtube page followers</Platform>
+              <Platform>
+                <a
+                  href="https://www.youtube.com/channel/UC1JjrqGsFWlcVpcImM98Xjw"
+                  target="_blank"
+                >
+                  Youtube
+                </a>{" "}
+                page followers
+              </Platform>
             </FollowersCard>
           </div>
         </div>
@@ -361,6 +381,12 @@ const Numbers = styled.div`
 const Platform = styled.div`
   font-weight: 700;
   width: 80%;
+
+  & a {
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
 `;
 
 export default aboutus;
