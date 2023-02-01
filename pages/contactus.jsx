@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import styled from "@emotion/styled";
+import nextI18NextConfig from "../next-i18next.config";
 
-i18n.use(initReactI18next).init({
-  lng: "en",
-  fallbackLng: "en",
-  interpolation: {
-    escapeValue: false,
-  },
-});
+i18n.use(initReactI18next).init(nextI18NextConfig.i18n);
 
 const ContactUs = () => {
   const [isOpen, setIsOpen] = useState(false);

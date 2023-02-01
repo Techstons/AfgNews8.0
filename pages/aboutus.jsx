@@ -2,6 +2,7 @@ import React from "react";
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import styled from "@emotion/styled";
+import { useTranslation } from "next-i18next";
 
 i18n.use(initReactI18next).init({
   lng: "en",
@@ -69,7 +70,11 @@ const aboutus = () => {
               </Numbers>
               <Platform>
                 Followers{" "}
-                <a href="https://twitter.com/AFGNEWS_" target="_blank">
+                <a
+                  href="https://twitter.com/AFGNEWS_"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   @AFGNEWS_
                 </a>{" "}
                 Twitter
@@ -100,6 +105,7 @@ const aboutus = () => {
                 <a
                   href="https://www.youtube.com/channel/UC1JjrqGsFWlcVpcImM98Xjw"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Youtube
                 </a>{" "}
@@ -123,11 +129,11 @@ const aboutus = () => {
         </div>
         <YearInformationContainer>
           <YearInformation>
-            <h2>May</h2>
-            <h1>CoinDesk was born</h1>
+            <h2>April</h2>
+            <h1>AfgNews Was Born</h1>
             <p>
-              As a global financial media website in the nascent years of
-              cryptocurrency and blockchain, just a few short years after
+              As a modern global Afghan news media website. in the nascent years
+              of cryptocurrency and blockchain, just a few short years after
               bitcoin’s 2009 arrival in the world
             </p>
           </YearInformation>
