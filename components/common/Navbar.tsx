@@ -252,6 +252,7 @@ const TopStrip = styled.div`
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    margin: 0 1rem 0 0;
   }
 `;
 
@@ -444,6 +445,7 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
   transition: 0.2s;
   width: 38px;
   cursor: pointer;
+  margin: 0 0.5rem 0 0;
 
   & input {
     opacity: 0;
