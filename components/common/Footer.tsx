@@ -155,31 +155,31 @@ const Footer = ({ isDark }: IFooter) => {
                 }}
               >
                 <Link href="/aboutus">
-                  <FooterLink>About Us</FooterLink>
+                  <FooterLink>{t("common:about")}</FooterLink>
                 </Link>
                 <Link href="/ContactUs">
-                  <FooterLink>Contact Us</FooterLink>
+                  <FooterLink>{t("common:contact")}</FooterLink>
                 </Link>
                 <Link href="/MobileApp">
-                  <FooterLink>Mobile App</FooterLink>
+                  <FooterLink>{t("common:mobile_app")}</FooterLink>
                 </Link>
                 <Link href="/SubmitAStory">
-                  <FooterLink>Submit a Story</FooterLink>
+                  <FooterLink>{t("common:submit_a_story")}</FooterLink>
                 </Link>
                 <Link href="/AdvertiseWithUs">
-                  <FooterLink>Advertise With Us</FooterLink>
+                  <FooterLink>{t("common:ad_with_us")}</FooterLink>
                 </Link>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <FooterLink>Work For Us</FooterLink>
+                <FooterLink>{t("common:work_for_us")}</FooterLink>
                 <Link href="/Feedback">
-                  <FooterLink>Feedback</FooterLink>
+                  <FooterLink>{t("common:feedback")}</FooterLink>
                 </Link>
                 <Link href="/newsletter">
-                  <FooterLink>News Letter</FooterLink>
+                  <FooterLink>{t("common:newsletter")}</FooterLink>
                 </Link>
-                <FooterLink>Privacy Policy</FooterLink>
-                <FooterLink>Terms & Conditions</FooterLink>
+                <FooterLink>{t("common:privacy_policy")}</FooterLink>
+                <FooterLink>{t("common:terms_&_conditions")}</FooterLink>
               </div>
             </div>
             <div className="search">
