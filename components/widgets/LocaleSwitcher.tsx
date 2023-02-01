@@ -51,7 +51,7 @@ export default function LocaleSwitcher() {
 
 const Wrapper = styled.span`
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: 1rem;
 
   &:hover {
     color: var(--primary-color);
