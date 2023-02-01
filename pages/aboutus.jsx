@@ -21,44 +21,33 @@ const aboutus = () => {
         <MissionHeaderContainer>
           <h2>Mission</h2>
           <p>
-            We are building the most influential, trusted information platform
-            for a global community engaged in the transformation of the
-            financial system and the emerging crypto economy. CoinDesk is an
-            integrated platform for media, events, data & indices for the next
-            generation of investing and the future of money.
+            Our mission at AfgNews is to inform and empower our audience by
+            delivering accurate, impartial and diverse news and perspectives,
+            while upholding the highest ethical standards and journalistic
+            integrity. We strive to be a trusted source of news for our
+            community, presenting diverse viewpoints and inspiring informed and
+            engaged discussion. A modern news agency that aims to provide the
+            latest and simplified news from Afghanistan and around the world on
+            a daily basis. Our special focus is on reaching the youth of
+            Afghanistan, both domestically and abroad, by presenting information
+            in a simple and easy-to-understand language.Through our commitment
+            to journalistic excellence and ethical practices, we aim to serve as
+            a watchdog of power and contribute to a better-informed society.
           </p>
         </MissionHeaderContainer>
         <Divider />
         <MissionInformation>
           <div className="per-info">
             <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/Z3IDS7JHKJFTRI3IZ5PE7H3S6M.png" />
-            <p>
-              Our leading journalists and cryptocurrency prices are regularly
-              featured in top-tier media including Axios, Bloomberg, Business
-              Insider, CBS News, CNBC, The Economist, Financial Times, Forbes,
-              Fortune, MarketWatch, Nasdaq, The Wall Street Journal, and USA
-              Today, Yahoo Finance!
-            </p>
+            <p></p>
           </div>
           <div className="per-info">
-            <p>
-              CoinDesk Indices are the bellwether for the market. They are the
-              industry standard for institutional-grade cryptocurrency pricing
-              with billions of dollars in monthly trading volume quoted against
-              them. The flagship CoinDesk Bitcoin Price Index is a spot
-              reference rate for BTC that benchmarks the worlds first publicly
-              traded bitcoin fund and the worlds first bitcoin ETF.
-            </p>
+            <p></p>
             <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/P7KYLA746VDC7FRZEUVIPZYSMA.png" />
           </div>
           <div className="per-info">
             <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/N4PSKXDSIVASLJXMCIVKLV3CNE.png" />
-            <p>
-              CoinDesk hosts myriad industry events and webinars each year,
-              including the annual Consensus summit event each May, the largest
-              and most important forward-thinking gathering of stakeholders in
-              the global crypto and blockchain ecosystem
-            </p>
+            <p></p>
           </div>
         </MissionInformation>
         <Divider />
@@ -69,15 +58,15 @@ const aboutus = () => {
           <div>
             <FollowersCard>
               <Numbers>
-                <h2>1.3</h2>
-                <p>M</p>
+                <h2>2</h2>
+                <p></p>
               </Numbers>
-              <Platform>Followers @CoinDesk Twitter</Platform>
+              <Platform>Followers @AFGNEWS_ Twitter</Platform>
             </FollowersCard>
             <FollowersCard>
               <Numbers>
-                <h2>20</h2>
-                <p>K+</p>
+                <h2>0</h2>
+                <p></p>
               </Numbers>
               <Platform>Consensus Event Attendees</Platform>
             </FollowersCard>
@@ -85,19 +74,17 @@ const aboutus = () => {
           <div>
             <FollowersCard>
               <Numbers>
-                <h2>13</h2>
-                <p>M</p>
+                <h2>500</h2>
+                <p></p>
               </Numbers>
-              <Platform>CoinDesk Average Monthly Viewers</Platform>
+              <Platform>AFGNEWS Average Monthly Viewers</Platform>
             </FollowersCard>
             <FollowersCard>
               <Numbers>
-                <h2>50</h2>
-                <p>+</p>
+                <h2>2</h2>
+                <p></p>
               </Numbers>
-              <Platform>
-                Largest Group of Crypto Journalists In The World
-              </Platform>
+              <Platform>Youtube page followers</Platform>
             </FollowersCard>
           </div>
         </div>
