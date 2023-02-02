@@ -41,7 +41,7 @@ const ContactUs = () => {
         <title>Contact Us</title>
       </Head>
       <Image src="https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg" />
-      <FormContainer>
+      <FormContainer className="contact-us-form">
         <div className="small-divider"></div>
         <h1>Contact Us</h1>
         <p>For Enquiries, please fill out the form below:</p>
@@ -224,8 +224,6 @@ const Form = styled.form`
 
 const FormContainer = styled.div`
   background-color: white;
-  width: 60%;
-  margin: 0 0 0 4rem;
   height: 60%;
   position: absolute;
   top: 35rem;
