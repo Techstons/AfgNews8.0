@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import styled from "@emotion/styled";
 import { useTranslation } from "next-i18next";
+import Head from "next/head";
 
 i18n.use(initReactI18next).init({
   lng: "en",
@@ -12,9 +13,12 @@ i18n.use(initReactI18next).init({
   },
 });
 
-const aboutus = () => {
+const AboutUs = () => {
   return (
     <AboutUsMainContainer>
+      <Head>
+        <title>About Us</title>
+      </Head>
       <AboutUsSectionContainer>
         <h1>About us</h1>
       </AboutUsSectionContainer>
@@ -395,4 +399,4 @@ const Platform = styled.div`
   }
 `;
 
-export default aboutus;
+export default AboutUs;

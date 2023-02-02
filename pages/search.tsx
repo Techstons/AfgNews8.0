@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../hooks/store";
 import { ChangeEvent } from "react";
 import { updateValue } from "slices/searchSlices";
+import Head from "next/head";
 
 i18n.use(initReactI18next).init({
   lng: "en",
@@ -69,6 +70,9 @@ const Search = () => {
 
   return (
     <>
+      <Head>
+        <title>Search</title>
+      </Head>
       <SearchPageContainer>
         {newSearch ? (
           <h1>Search Results for {newSearch}</h1>

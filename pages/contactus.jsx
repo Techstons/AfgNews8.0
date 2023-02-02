@@ -2,9 +2,23 @@ import React, { useState } from "react";
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import styled from "@emotion/styled";
-import nextI18NextConfig from "../next-i18next.config";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-i18n.use(initReactI18next).init(nextI18NextConfig.i18n);
+i18n.use(initReactI18next).init({
+  lng: "en",
+  fallbackLng: "en",
+  interpolation: {
+    escapeValue: false,
+  },
+});
+
+// export async function getStaticProps({ locale }) {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale || "en", ["common"])),
+//     },
+//   };
+// }
 
 const ContactUs = () => {
   const [isOpen, setIsOpen] = useState(false);

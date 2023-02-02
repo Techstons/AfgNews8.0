@@ -154,7 +154,7 @@ const Footer = ({ isDark }: IFooter) => {
                   height: "80%",
                 }}
               >
-                <Link href="/aboutus">
+                <Link href="/AboutUs">
                   <FooterLink>{t("common:about")}</FooterLink>
                 </Link>
                 <Link href="/ContactUs">
@@ -175,7 +175,7 @@ const Footer = ({ isDark }: IFooter) => {
                 <Link href="/Feedback">
                   <FooterLink>{t("common:feedback")}</FooterLink>
                 </Link>
-                <Link href="/newsletter">
+                <Link href="/NewsLetter">
                   <FooterLink>{t("common:newsletter")}</FooterLink>
                 </Link>
                 <FooterLink>{t("common:privacy_policy")}</FooterLink>
