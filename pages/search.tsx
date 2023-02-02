@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
 import styled from "@emotion/styled";
 import { SearchIcon } from "@components/icons";
 import { Article } from "@components/types";
@@ -11,14 +9,15 @@ import type { RootState } from "../hooks/store";
 import { ChangeEvent } from "react";
 import { updateValue } from "slices/searchSlices";
 import Head from "next/head";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-i18n.use(initReactI18next).init({
-  lng: "en",
-  fallbackLng: "en",
-  interpolation: {
-    escapeValue: false,
-  },
-}); //temporary function for language change
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || "en", ["common"])),
+    },
+  };
+}
 
 interface ICategorySection {
   title: string;

@@ -1,18 +1,16 @@
 import React from "react";
-import { initReactI18next } from "react-i18next";
-import i18n from "i18next";
 import styled from "@emotion/styled";
-import { useTranslation } from "next-i18next";
 import Head from "next/head";
 import Grid from "@mui/material/Grid";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-i18n.use(initReactI18next).init({
-  lng: "en",
-  fallbackLng: "en",
-  interpolation: {
-    escapeValue: false,
-  },
-});
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || "en", ["common"])),
+    },
+  };
+}
 
 const AboutUs = () => {
   return (
@@ -43,32 +41,33 @@ const AboutUs = () => {
         </Grid>
         <Divider />
         <MissionInformation>
-              <div className="per-info">
-                <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/Z3IDS7JHKJFTRI3IZ5PE7H3S6M.png" />
-                <p>
-                  We strive to be a trusted source of news for our community,
-                  presenting diverse viewpoints and inspiring informed and
-                  engaged discussion.{" "}
-                </p>
-              </div>
-              <div className="per-info">
-                <p>
-                  A modern news agency that aims to provide the latest and
-                  simplified news from Afghanistan and around the world on a
-                  daily basis. Our special focus is on reaching the youth of
-                  Afghanistan, both domestically and abroad, by presenting
-                  information in a simple and easy-to-understand language.
-                </p>
-                <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/P7KYLA746VDC7FRZEUVIPZYSMA.png" />
-              </div>
-              <div className="per-info">
-                <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/N4PSKXDSIVASLJXMCIVKLV3CNE.png" />
-                <p>
-                  Through our commitment to journalistic excellence and ethical
-                  practices, we aim to serve as a watchdog of power and
-                  contribute to a better-informed society.
-                </p>
-              </div>
+          <div className="per-info">
+            <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/Z3IDS7JHKJFTRI3IZ5PE7H3S6M.png" />
+
+            <p>
+              We strive to be a trusted source of news for our community,
+              presenting diverse viewpoints and inspiring informed and engaged
+              discussion.{" "}
+            </p>
+          </div>
+          <div className="per-info">
+            <p>
+              A modern news agency that aims to provide the latest and
+              simplified news from Afghanistan and around the world on a daily
+              basis. Our special focus is on reaching the youth of Afghanistan,
+              both domestically and abroad, by presenting information in a
+              simple and easy-to-understand language.
+            </p>
+            <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/P7KYLA746VDC7FRZEUVIPZYSMA.png" />
+          </div>
+          <div className="per-info">
+            <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/N4PSKXDSIVASLJXMCIVKLV3CNE.png" />
+            <p>
+              Through our commitment to journalistic excellence and ethical
+              practices, we aim to serve as a watchdog of power and contribute
+              to a better-informed society.
+            </p>
+          </div>
         </MissionInformation>
         <Divider />
       </MissionContainer>

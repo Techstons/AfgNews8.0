@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import { initReactI18next } from "react-i18next";
-import i18n from "i18next";
 import styled from "@emotion/styled";
-import { useTranslation } from "next-i18next";
 import { FormEvent } from "react";
 import { Button } from "@components/ui";
 import Head from "next/head";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-i18n.use(initReactI18next).init({
-  lng: "en",
-  fallbackLng: "en",
-  interpolation: {
-    escapeValue: false,
-  },
-});
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || "en", ["common"])),
+    },
+  };
+}
 
 const NewsLetter = () => {
   const [email, setEmail] = useState("");
