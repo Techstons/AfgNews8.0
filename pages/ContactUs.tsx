@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
       ...(await serverSideTranslations(locale || "en", ["common"])),
@@ -30,7 +30,7 @@ const ContactUs = () => {
     "Advertising",
   ];
 
-  function returnInquire(inquire) {
+  function returnInquire(inquire: string) {
     setPlaceHolder(inquire);
     setIsOpen(!isOpen);
   }
