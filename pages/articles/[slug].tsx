@@ -76,9 +76,9 @@ const ArticlePage = ({
     "distance"
   );
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
+  // if (router.isFallback) {
+  //   return <div>Loading...</div>;
+  // }
 
   const fullPath = `https://www.afgnews.com/articles/${article.slug}`;
 
