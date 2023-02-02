@@ -29,10 +29,12 @@ const Feedback = () => {
           justifyContent: "center",
         }}
       >
-        <BoxContainer>
-          <Input placeholder="input your email here" />
-
-          <Text placeholder="write a subject" />
+        <BoxContainer className="feedback-box-container">
+          <Input
+            placeholder="input your email here"
+            className="feedback-input"
+          />
+          <Text placeholder="write a subject" className="feedback-text-aria" />
         </BoxContainer>
         <Divider />
       </div>
@@ -42,7 +44,6 @@ const Feedback = () => {
 };
 
 const Text = styled.textarea`
-  width: 40rem;
   height: 25rem;
   padding: 1rem 0 0 1rem;
   border: solid black 1px;
@@ -52,7 +53,7 @@ const Text = styled.textarea`
 const Input = styled.input`
   height: 3rem;
   padding: 0 0 0 1rem;
-  width: 15rem;
+
   border: solid black 1px;
   border-radius: 5px;
 
@@ -65,7 +66,6 @@ const Input = styled.input`
 const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 70%;
   height: 33rem;
   justify-content: space-around;
 `;
