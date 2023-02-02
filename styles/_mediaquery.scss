@@ -37,6 +37,11 @@
     width: 90%;
     margin: 0 2rem 0 2rem;
   }
+
+  //mobile app
+  .mobile-app-buttons-container {
+    width: 100%;
+  }
 }
 //sm
 @media only screen and (min-width: 600px) {
@@ -52,6 +57,9 @@
   }
   .about-us-header {
     font-size: 5rem;
+  }
+  .mobile-app-buttons-container {
+    width: 50%;
   }
 }
 //md

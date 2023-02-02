@@ -26,7 +26,7 @@ const MobileApp = () => {
           justifyContent: "center",
         }}
       >
-        <ButtonsContainer>
+        <ButtonsContainer className="mobile-app-buttons-container">
           {/* <div className="per-button-container"> */}
           <Button>
             <Image src="https://helios-i.mashable.com/imagery/articles/04EZglaVzAW19V6FIiDD3TA/hero-image.fill.size_1200x1200.v1623363034.jpg" />
@@ -57,7 +57,6 @@ const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 50%;
 
   & .label-flex {
     display: flex;
