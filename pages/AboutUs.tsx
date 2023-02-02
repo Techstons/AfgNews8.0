@@ -38,94 +38,149 @@ const AboutUs = () => {
               </p>
             </MissionHeaderContainer>
           </Grid>
+          <Grid item xs={12}>
+            <Divider />
+          </Grid>
         </Grid>
-        <Divider />
         <MissionInformation>
           <div className="per-info">
-            <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/Z3IDS7JHKJFTRI3IZ5PE7H3S6M.png" />
-
-            <p>
-              We strive to be a trusted source of news for our community,
-              presenting diverse viewpoints and inspiring informed and engaged
-              discussion.{" "}
-            </p>
+            <Grid container>
+              <Grid item xs={12} md={6}>
+                <img
+                  className="about-us-image"
+                  src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/Z3IDS7JHKJFTRI3IZ5PE7H3S6M.png"
+                />
+              </Grid>
+              <Grid item xs={12} md={6} className="align-grid">
+                <p>
+                  We strive to be a trusted source of news for our community,
+                  presenting diverse viewpoints and inspiring informed and
+                  engaged discussion.{" "}
+                </p>
+              </Grid>
+            </Grid>
           </div>
           <div className="per-info">
-            <p>
-              A modern news agency that aims to provide the latest and
-              simplified news from Afghanistan and around the world on a daily
-              basis. Our special focus is on reaching the youth of Afghanistan,
-              both domestically and abroad, by presenting information in a
-              simple and easy-to-understand language.
-            </p>
-            <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/P7KYLA746VDC7FRZEUVIPZYSMA.png" />
+            <Grid
+              container
+              style={{ display: "flex", flexDirection: "row-reverse" }}
+            >
+              <Grid
+                item
+                xs={12}
+                md={5}
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <img
+                  className="about-us-image"
+                  src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/P7KYLA746VDC7FRZEUVIPZYSMA.png"
+                />
+              </Grid>
+              <Grid item xs={12} md={7} className="align-grid">
+                <p>
+                  A modern news agency that aims to provide the latest and
+                  simplified news from Afghanistan and around the world on a
+                  daily basis. Our special focus is on reaching the youth of
+                  Afghanistan, both domestically and abroad, by presenting
+                  information in a simple and easy-to-understand language.
+                </p>
+              </Grid>
+            </Grid>
           </div>
           <div className="per-info">
-            <img src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/N4PSKXDSIVASLJXMCIVKLV3CNE.png" />
-            <p>
-              Through our commitment to journalistic excellence and ethical
-              practices, we aim to serve as a watchdog of power and contribute
-              to a better-informed society.
-            </p>
+            <Grid container>
+              <Grid item xs={12} md={5}>
+                <img
+                  className="about-us-image"
+                  src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/N4PSKXDSIVASLJXMCIVKLV3CNE.png"
+                />
+              </Grid>
+              <Grid item xs={12} lg={7} className="align-grid">
+                <p>
+                  Through our commitment to journalistic excellence and ethical
+                  practices, we aim to serve as a watchdog of power and
+                  contribute to a better-informed society.
+                </p>
+              </Grid>
+            </Grid>
           </div>
         </MissionInformation>
         <Divider />
       </MissionContainer>
       <ByNumbersContainer>
-        <h1>By the numbers</h1>
-        <div className="social-followers">
-          <div>
-            <FollowersCard>
-              <Numbers>
-                <h2>2</h2>
-                <p></p>
-              </Numbers>
-              <Platform>
-                Followers{" "}
-                <a
-                  href="https://twitter.com/AFGNEWS_"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  @AFGNEWS_
-                </a>{" "}
-                Twitter
-              </Platform>
-            </FollowersCard>
-            <FollowersCard>
-              <Numbers>
-                <h2>0</h2>
-                <p></p>
-              </Numbers>
-              <Platform>Consensus Event Attendees</Platform>
-            </FollowersCard>
-          </div>
-          <div>
-            <FollowersCard>
-              <Numbers>
-                <h2>500</h2>
-                <p></p>
-              </Numbers>
-              <Platform>AFGNEWS Average Monthly Viewers</Platform>
-            </FollowersCard>
-            <FollowersCard>
-              <Numbers>
-                <h2>2</h2>
-                <p></p>
-              </Numbers>
-              <Platform>
-                <a
-                  href="https://www.youtube.com/channel/UC1JjrqGsFWlcVpcImM98Xjw"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Youtube
-                </a>{" "}
-                page followers
-              </Platform>
-            </FollowersCard>
-          </div>
-        </div>
+        <Grid container>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <h1 className="about-us-numbers">By the numbers</h1>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <div className="social-followers">
+              <div>
+                <FollowersCard>
+                  <Numbers>
+                    <h2>2</h2>
+                    <p></p>
+                  </Numbers>
+                  <Platform>
+                    Followers{" "}
+                    <a
+                      href="https://twitter.com/AFGNEWS_"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      @AFGNEWS_
+                    </a>{" "}
+                    Twitter
+                  </Platform>
+                </FollowersCard>
+                <FollowersCard>
+                  <Numbers>
+                    <h2>0</h2>
+                    <p></p>
+                  </Numbers>
+                  <Platform>Consensus Event Attendees</Platform>
+                </FollowersCard>
+              </div>
+              <div>
+                <FollowersCard>
+                  <Numbers>
+                    <h2>500</h2>
+                    <p></p>
+                  </Numbers>
+                  <Platform>AFGNEWS Average Monthly Viewers</Platform>
+                </FollowersCard>
+                <FollowersCard>
+                  <Numbers>
+                    <h2>2</h2>
+                    <p></p>
+                  </Numbers>
+                  <Platform>
+                    <a
+                      href="https://www.youtube.com/channel/UC1JjrqGsFWlcVpcImM98Xjw"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Youtube
+                    </a>{" "}
+                    page followers
+                  </Platform>
+                </FollowersCard>
+              </div>
+            </div>
+          </Grid>
+        </Grid>
       </ByNumbersContainer>
       <Divider />
       <TimeCapsuleMainContainer>
@@ -152,12 +207,15 @@ const AboutUs = () => {
           </YearInformation> */}
         </YearInformationContainer>
       </TimeCapsuleMainContainer>
-      <WeAreContainer>
+      <WeAreContainer className="we-are-container">
         <div className="upper-content-container">
           <h1>We are a global organization serving a global audience</h1>
           <button>work with us</button>
         </div>
-        <img src="earth-globe-icon-on-transparent-background-illustration-free-vector-removebg-preview.png" />
+        <img
+          className="about-us-globe"
+          src="earth-globe-icon-on-transparent-background-illustration-free-vector-removebg-preview.png"
+        />
       </WeAreContainer>
       <OurTeamContainer>
         <h1>Our team</h1>
@@ -177,22 +235,23 @@ const AboutUs = () => {
 
 const MissionInformation = styled.div`
   width: 100%;
-  height: 120vh;
+  height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
   align-content: center;
+
   & .per-info {
     display: flex;
     justify-content: space-between;
-    width: 65%;
     align-items: center;
   }
 
   & p {
-    width: 60%;
+    width: 100%;
     font-size: 18px;
+    margin: 1rem 0 0 0;
   }
 `;
 
@@ -206,10 +265,11 @@ const ImageContainer = styled.div``;
 const OurTeamContainer = styled.div`
   padding: 0 4rem 0 4rem;
   margin-top: 6rem;
-  height: 210vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   & h1 {
     font-size: 3rem;
     font-family: var(--formal-font);
@@ -217,15 +277,13 @@ const OurTeamContainer = styled.div`
   & p {
     font-size: 18px;
     line-height: 30px;
+    margin: 2rem 0 2rem 0;
   }
 `;
 
 const WeAreContainer = styled.div`
   background-color: rgb(38, 38, 38);
   height: 110vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 
   & h1 {
     color: white;
@@ -233,7 +291,7 @@ const WeAreContainer = styled.div`
     line-height: 5rem;
   }
   & img {
-    width: 40%;
+    // width: 40%;
     object-fit: cover;
   }
   & button {
@@ -314,6 +372,7 @@ const TimeCapsuleMainContainer = styled.div`
 
 const AboutUsMainContainer = styled.div`
   color: rgb(38, 38, 38);
+  margin: 0 0 8rem 0;
 `;
 
 const AboutUsSectionContainer = styled.div`
@@ -366,13 +425,12 @@ const ByNumbersContainer = styled.div`
   display: flex;
 
   & .social-followers {
-    width: 50%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   & h1 {
-    width: 50%;
     margin-left: 2rem;
     font-family: var(--formal-font);
     font-size: 3rem;
