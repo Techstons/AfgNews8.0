@@ -12,10 +12,10 @@ interface ICategorySection {
 const CategorySection = ({ title, articles }: ICategorySection) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [clickCheck, setclickCheck] = useState(0);
-  const [error, setError] = useState(null);
   const itemsPerPage = 5;
 
   if (!articles) {
+    console.log(articles);
     return <p>Loading Articles...</p>;
   }
 
