@@ -143,17 +143,13 @@ const AboutUs = () => {
           <YearInformation>
             <h2>April</h2>
             <h1>AfgNews Was Born</h1>
-            <p>
-              As a modern global Afghan news media website. in the nascent years
-              of cryptocurrency and blockchain, just a few short years after
-              bitcoin’s 2009 arrival in the world
-            </p>
+            <p>As a modern global Afghan news media website.</p>
           </YearInformation>
-          <YearInformation>
+          {/* <YearInformation>
             <h2>July</h2>
             <h1>CoinDesk launches original price reference rate for ฿</h1>
             <p>Sourced and quoted by major media world-wide</p>
-          </YearInformation>
+          </YearInformation> */}
         </YearInformationContainer>
       </TimeCapsuleMainContainer>
       <WeAreContainer>
