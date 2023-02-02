@@ -16,7 +16,7 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
 
   if (!articles) {
     console.log(articles);
-    return <p>Loading...</p>;
+    return;
   }
 
   const loadMorePages = Array.from(
