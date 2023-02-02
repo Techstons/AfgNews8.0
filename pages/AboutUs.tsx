@@ -21,7 +21,7 @@ const AboutUs = () => {
       <Grid container>
         <Grid item xs={12}>
           <AboutUsSectionContainer>
-            <h1>About us</h1>
+            <h1 className="about-us-header">About us</h1>
           </AboutUsSectionContainer>
         </Grid>
       </Grid>
@@ -209,7 +209,9 @@ const AboutUs = () => {
       </TimeCapsuleMainContainer>
       <WeAreContainer className="we-are-container">
         <div className="upper-content-container">
-          <h1>We are a global organization serving a global audience</h1>
+          <h1 className="about-us-we-are">
+            We are a global organization serving a global audience
+          </h1>
           <button>work with us</button>
         </div>
         <img
@@ -287,8 +289,6 @@ const WeAreContainer = styled.div`
 
   & h1 {
     color: white;
-    font-size: 4rem;
-    line-height: 5rem;
   }
   & img {
     // width: 40%;
@@ -301,8 +301,8 @@ const WeAreContainer = styled.div`
     border-radius: 5px;
   }
   & .upper-content-container {
-    margin: 0 0 0 2rem;
-    height: 60%;
+    padding: 0 2rem 0 2rem;
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -383,7 +383,6 @@ const AboutUsSectionContainer = styled.div`
   align-items: center;
 
   & h1 {
-    font-size: 5rem;
     color: white;
     letter-spacing: 4px;
   }

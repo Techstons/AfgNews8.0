@@ -23,11 +23,29 @@
   .about-us-globe {
     display: none;
   }
+  .about-us-we-are {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin: 0 0 2rem 0;
+  }
+  .about-us-header {
+    font-size: 4rem;
+  }
 }
 //sm
 @media only screen and (min-width: 600px) {
   .per-info {
     width: 100%;
+  }
+  .about-us-we-are {
+    font-size: 4rem;
+    line-height: 5rem;
+  }
+  .upper-content-container {
+    height: 60%;
+  }
+  .about-us-header {
+    font-size: 5rem;
   }
 }
 //md
