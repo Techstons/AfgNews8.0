@@ -12,10 +12,26 @@ interface ICategorySection {
 const CategorySection = ({ title, articles }: ICategorySection) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [clickCheck, setclickCheck] = useState(0);
+  const [error, setError] = useState("");
   const itemsPerPage = 5;
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (!articles) {
+        setError("Error: Unable to load articles.");
+      }
+    }, 5000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [articles]);
 
   if (!articles) {
     return <p>Loading...</p>;
+  }
+  if (error) {
+    return <p>error!</p>;
   }
 
   const loadMorePages = Array.from(
