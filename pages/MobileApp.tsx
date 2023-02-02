@@ -27,18 +27,18 @@ const MobileApp = () => {
         }}
       >
         <ButtonsContainer>
-          <div className="per-button-container">
-            <Button>
-              <Image src="https://helios-i.mashable.com/imagery/articles/04EZglaVzAW19V6FIiDD3TA/hero-image.fill.size_1200x1200.v1623363034.jpg" />
-            </Button>
-            <h2 className="label-button">Get it on Google Play</h2>
-          </div>
-          <div className="per-button-container">
-            <Button>
-              <Image src="https://developer.apple.com/news/images/og/app-store-og.png" />
-            </Button>
-            <h2 className="label-button">Get it on App Store</h2>
-          </div>
+          {/* <div className="per-button-container"> */}
+          <Button>
+            <Image src="https://helios-i.mashable.com/imagery/articles/04EZglaVzAW19V6FIiDD3TA/hero-image.fill.size_1200x1200.v1623363034.jpg" />
+          </Button>
+          {/* <h2 className="label-button">Get it on Google Play</h2> */}
+          {/* </div> */}
+          {/* <div className="per-button-container"> */}
+          <Button>
+            <Image src="https://developer.apple.com/news/images/og/app-store-og.png" />
+          </Button>
+          {/* <h2 className="label-button">Get it on App Store</h2> */}
+          {/* </div> */}
         </ButtonsContainer>
       </div>
       <Divider />
@@ -86,11 +86,11 @@ const Image = styled.img`
 const Button = styled.button`
   height: 10rem;
   width: 10rem;
-  border: solid 2px black;
+  // border: solid 2px black;
   border-radius: 5px;
 
   &:hover {
-    border-color: var(--primary-color);
+    border: solid 2px var(--primary-color);
   }
 
   &:hover .label-button {

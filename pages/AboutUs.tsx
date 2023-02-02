@@ -253,12 +253,12 @@ const WeAreContainer = styled.div`
 
 const YearInformationContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  padding: 0 2.5rem 0 2.5rem;
   margin-top: 4rem;
 `;
 const YearInformation = styled.div`
   width: 30rem;
-  height: 10rem;
+  height: 7rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
