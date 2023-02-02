@@ -43,9 +43,6 @@ const NewsLetter = () => {
     alert("Success! You have been subscribed ssto our newsletter.");
     setEmail("");
   };
-  useEffect(() => {
-    window.location.reload();
-  }, []);
   return (
     <NewsletterMainContainer>
       <Head>
