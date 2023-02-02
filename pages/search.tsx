@@ -31,6 +31,7 @@ const Search = () => {
 
   const [data, setData] = useState<Array<any>>([]);
   const [newSearchData, setNewSearchData] = useState("");
+  const [showNoResults, setShowNoResults] = useState(false);
 
   let listOfNews = data.map((entry) => {
     return entry;
@@ -65,8 +66,17 @@ const Search = () => {
     fetchData();
   }, []);
 
-  console.log(filteredArray);
-  console.log(filteredArray.length);
+  useEffect(() => {
+    if (filteredArray.length <= 0) {
+      const timeoutId = setTimeout(() => {
+        setShowNoResults(true);
+      }, 5000);
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
+    setShowNoResults(false);
+  }, [filteredArray.length]);
 
   return (
     <>
@@ -133,8 +143,10 @@ const Search = () => {
               </ArticleWrapper>
             ))}
           </div>
-        ) : (
+        ) : showNoResults ? (
           <NoSearchResults>No search results</NoSearchResults>
+        ) : (
+          <NoSearchResults>Loading...</NoSearchResults>
         )}
       </SearchPageContainer>
     </>
