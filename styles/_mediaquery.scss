@@ -48,6 +48,45 @@
     width: 100%;
     padding: 0 2.5rem 0 2rem;
   }
+
+  //submit a story
+  .submit-a-story-header {
+    font-size: 1.5rem;
+  }
+  .contents-container {
+    width: 80%;
+  }
+  .submit-a-story-header-p {
+    font-size: 14px;
+    line-height: 1rem;
+  }
+  .story-header {
+    height: 17rem;
+  }
+  .story-card-container {
+    width: 100%;
+    padding: 0 2rem 0 3rem;
+  }
+  .smallcard-story {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  .story-longcard-container {
+    width: 100%;
+  }
+  .story-largecard {
+    width: 100%;
+    height: 100%;
+  }
+  .things-toconsider-container {
+    height: 50%;
+  }
+  .story-main {
+    margin: 1rem 0 80rem 0;
+  }
+  .things-toconsider {
+    width: 100%;
+  }
 }
 //sm
 @media only screen and (min-width: 600px) {
@@ -82,6 +121,45 @@
   .feedback-text-aria {
     width: 76%;
   }
+
+  //submit a story
+
+  .submit-a-story-header {
+    font-size: 2.7rem;
+    line-height: 2.8rem;
+  }
+
+  .contents-container {
+    width: 50%;
+  }
+  .submit-a-story-header-p {
+    font-size: 16px;
+    line-height: 1.5rem;
+  }
+  .story-header {
+    height: 20rem;
+  }
+  .story-card-container {
+    width: 80%;
+    padding: 0;
+  }
+  .smallcard-story {
+    margin-bottom: 1rem;
+    width: 90%;
+  }
+  .story-longcard-container {
+    width: 60%;
+  }
+  .story-largecard {
+    width: 59%;
+    height: 30rem;
+  }
+  .story-main {
+    margin: 1rem 0 10rem 0;
+  }
+  .things-toconsider {
+    width: 61%;
+  }
 }
 //md
 @media only screen and (min-width: 900px) {
@@ -112,6 +190,16 @@
   .contact-us-form {
     width: 60%;
     margin: 0 0 0 4rem;
+  }
+
+  //submit a story
+
+  .story-card-container {
+    width: 60%;
+    padding: 0;
+  }
+  .things-toconsider-container {
+    height: 40%;
   }
 }
 //lg

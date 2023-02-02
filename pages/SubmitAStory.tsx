@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Grid from "@mui/material/Grid";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -33,16 +34,18 @@ const SubmitAStory = () => {
     "- Use strong passwords on your phone and computer to increase security. If you have sensitive information on your phone, it is best not to use biometric security like fingerprint recognition or FaceID. ",
   ];
   return (
-    <SubmitAStoryMainContainer>
+    <SubmitAStoryMainContainer className="story-main">
       <Head>
         <title>Submit A Story</title>
       </Head>
-      <Header>
+      <Header className="story-header">
         <div className="contents-container">
           <Logo>AFG NEWS</Logo>
           <div style={{ margin: "2rem 0 0 0" }}>
-            <h1>How to share a story or a tip with AFG NEWS</h1>
-            <p>
+            <h1 className="submit-a-story-header">
+              How to share a story or a tip with AFG NEWS
+            </h1>
+            <p className="submit-a-story-header-p">
               Is there a story that you think we should cover? Do you have a tip
               or documents that we should investigate? Here are the best ways to
               get in touch with our journalists.
@@ -57,37 +60,43 @@ const SubmitAStory = () => {
           margin: "2rem  0 0 0",
         }}
       >
-        <SmallCardContainer>
-          <SmallCard>
-            <h1>Postal address:</h1>
-            <div>
-              <h2>Al Jazeera Media Network</h2>
-              <p>Attn: Investigative Unit</p> <p>PO Box 23127</p>{" "}
-              <p>Doha - Qatar</p>
-            </div>
-            <div>
-              <h2>Al Jazeera International</h2>
-              <p>Attn: Investigative Unit</p> <p>Level 16, The Shard</p>{" "}
-              <p>32 London Bridge Street</p> <p>London, SE1 9SG, UK</p>
-            </div>
-          </SmallCard>
-          <SmallCard>
-            <h1>Email:</h1>
-            <div>
-              <p>
-                Send us your tip here. In the dropdown menu, be sure to choose
-                General - Editorial
-              </p>
-            </div>
-            <div>
-              <h2>Important:</h2>
-              <p>
-                Never use email to send us confidential tips or documents that
-                might pose a risk to your safety. Use one of our other options
-                if you have sensitive information you want to share.
-              </p>
-            </div>
-          </SmallCard>
+        <SmallCardContainer className="story-card-container">
+          <Grid container>
+            <Grid item xs={12} md={6}>
+              <SmallCard className="smallcard-story">
+                <h1>Postal addresss:</h1>
+                <div>
+                  <h2>Al Jazeera Media Network</h2>
+                  <p>Attn: Investigative Unit</p> <p>PO Box 23127</p>{" "}
+                  <p>Doha - Qatar</p>
+                </div>
+                <div>
+                  <h2>Al Jazeera International</h2>
+                  <p>Attn: Investigative Unit</p> <p>Level 16, The Shard</p>{" "}
+                  <p>32 London Bridge Street</p> <p>London, SE1 9SG, UK</p>
+                </div>
+              </SmallCard>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <SmallCard className="smallcard-story">
+                <h1>Email:</h1>
+                <div>
+                  <p>
+                    Send us your tip here. In the dropdown menu, be sure to
+                    choose General - Editorial
+                  </p>
+                </div>
+                <div>
+                  <h2>Important:</h2>
+                  <p>
+                    Never use email to send us confidential tips or documents
+                    that might pose a risk to your safety. Use one of our other
+                    options if you have sensitive information you want to share.
+                  </p>
+                </div>
+              </SmallCard>
+            </Grid>
+          </Grid>
         </SmallCardContainer>
       </div>
       <h1 className="in-between-text">
@@ -102,46 +111,54 @@ const SubmitAStory = () => {
         }}
       >
         <LongCardContainer>
-          <LongCard>
-            <h1>WhatsApp</h1>
-            <div>
-              <p>
-                WhatsApp is a free encrypted messaging app, which means only the
-                sender and receiver can read the messages. The app allows you to
-                send text messages, images, videos, audio and text documents. In
-                case messages are intercepted by third parties, they cannot be
-                read because of the encryption the app uses. However, because
-                some information about you as a user is stored on WhatsApp
-                servers (phone numbers, certain types of metadata, including
-                timestamps on messages), the app is not completely anonymous. If
-                you use WhatsApp to contact us, be aware that you also share
-                your phone number with us. Also make sure your conversations are
-                not backed up in the cloud (iCloud or Google Drive).
-              </p>
-            </div>
-            <div>
-              <h2>Al Jazeera’s WhatsApp Number: +974 5080 0207</h2>
-            </div>
-            <button>Download WhatsApp</button>
-          </LongCard>
-          <LongCard>
-            <h1>Signal</h1>
-            <div style={{ height: "22rem" }}>
-              <p>
-                Signal is a free messaging app similar to WhatsApp, but it
-                stores less information about its users. Signal only registers
-                your phone number and the last time you used the app. Other
-                metadata like timestamps on messages are not recorded. Signal
-                also offers the option to send messages that self-destruct after
-                a set time after the message is seen. You will disclose your
-                phone number with us when you send a message.
-              </p>
-            </div>
-            <div>
-              <h2>Al Jazeera’s Signal Number: +974 5080 0207</h2>
-              <button>Download WhatsApp</button>
-            </div>
-          </LongCard>
+          <Grid container>
+            <Grid item xs={12} md={6} className="center-grid">
+              <LongCard className="story-longcard-container">
+                <h1>WhatsApp</h1>
+                <div>
+                  <p>
+                    WhatsApp is a free encrypted messaging app, which means only
+                    the sender and receiver can read the messages. The app
+                    allows you to send text messages, images, videos, audio and
+                    text documents. In case messages are intercepted by third
+                    parties, they cannot be read because of the encryption the
+                    app uses. However, because some information about you as a
+                    user is stored on WhatsApp servers (phone numbers, certain
+                    types of metadata, including timestamps on messages), the
+                    app is not completely anonymous. If you use WhatsApp to
+                    contact us, be aware that you also share your phone number
+                    with us. Also make sure your conversations are not backed up
+                    in the cloud (iCloud or Google Drive).
+                  </p>
+                </div>
+                <div>
+                  <h2>Al Jazeera’s WhatsApp Number: +974 5080 0207</h2>
+                </div>
+                <button>Download WhatsApp</button>
+              </LongCard>
+            </Grid>
+            <Grid item xs={12} md={6} className="center-grid">
+              <LongCard className="story-longcard-container">
+                <h1>Signal</h1>
+                <div style={{ height: "22rem" }}>
+                  <p>
+                    Signal is a free messaging app similar to WhatsApp, but it
+                    stores less information about its users. Signal only
+                    registers your phone number and the last time you used the
+                    app. Other metadata like timestamps on messages are not
+                    recorded. Signal also offers the option to send messages
+                    that self-destruct after a set time after the message is
+                    seen. You will disclose your phone number with us when you
+                    send a message.
+                  </p>
+                </div>
+                <div>
+                  <h2>Al Jazeera’s Signal Number: +974 5080 0207</h2>
+                  <button>Download WhatsApp</button>
+                </div>
+              </LongCard>
+            </Grid>
+          </Grid>
         </LongCardContainer>
       </div>
       <div
@@ -151,14 +168,14 @@ const SubmitAStory = () => {
           margin: "2rem  0 2rem 0",
         }}
       >
-        <LargeCard>
+        <LargeCard className="story-largecard">
           <h1>SecureDrop –</h1>
           <a href="http://ajiunit.securedrop.tor.onion">
             http://ajiunit.securedrop.tor.onion
           </a>
           <h1>or </h1>
           <a href="http://jkta32w5gvk6pmqdfwj67psojot3l2iwoqbdvrvywi5bkudfeandq7id.onion">
-            http://jkta32w5gvk6pmqdfwj67psojot3l2iwoqbdvrvywi5bkudfeandq7id.onion
+            http://jkta32w5gvk6pmqdfwj67psojot3l2iwoqbdvr...
           </a>
           <div>
             <p>
@@ -185,8 +202,8 @@ const SubmitAStory = () => {
           </div>
         </LargeCard>
       </div>
-      <ThingsToConsiderContainer>
-        <ThingsToConsider>
+      <ThingsToConsiderContainer className="things-toconsider-container">
+        <ThingsToConsider className="things-toconsider">
           <h1>
             Things to consider before sending confidential tips and documents:
           </h1>
@@ -237,7 +254,6 @@ const SubmitAStory = () => {
 export default SubmitAStory;
 
 const ThingsToConsider = styled.div`
-  width: 61%;
   padding: 1.5rem 1rem 1.5rem 1rem;
   // display: flex;
   // flex-direction: column;
@@ -259,24 +275,16 @@ const ThingsToConsider = styled.div`
     font-size: 14px;
     color: #4d4d4d;
   }
-
-  & p {
-    font-size: 14px;
-    line-height: 2rem;
-  }
 `;
 
 const ThingsToConsiderContainer = styled.div`
   background-color: #e8e8e8;
-  height: 80rem;
   display: flex;
   justify-content: center;
 `;
 
 const LargeCard = styled.div`
   background-color: #ffffff;
-  width: 59%;
-  height: 30rem;
   padding: 1.5rem 1rem 1.5rem 1rem;
   // display: flex;
   // flex-direction: column;
@@ -305,9 +313,7 @@ const LargeCard = styled.div`
 `;
 
 const LongCardContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 60%;
+  padding: 0 1rem 0 1rem;
 `;
 
 const LongCard = styled.div`
@@ -318,6 +324,7 @@ const LongCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 0 0 2rem 0;
 
   & button {
     border: solid 1px black;
@@ -352,12 +359,10 @@ const LongCard = styled.div`
 const SmallCardContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 60%;
 `;
 
 const SmallCard = styled.div`
   background-color: #ffffff;
-  width: 24rem;
   height: 17rem;
   padding: 1.5rem 1rem 0 1rem;
 
@@ -387,29 +392,18 @@ const Logo = styled.div`
 
 const Header = styled.div`
   background-color: var(--primary-color);
-  height: 20rem;
   color: white;
   display: flex;
   justify-content: center;
 
   & h1 {
-    font-size: 2.7rem;
     margin: 0 0 1rem 0;
-  }
-
-  & p {
-    line-height: 1.5rem;
-  }
-
-  & .contents-container {
-    width: 50%;
   }
 `;
 
 const SubmitAStoryMainContainer = styled.div`
   background-color: #f2f2f2;
-  height: 400vh;
-  margin: 1rem 0 20rem 0;
+  height: 405vh;
 
   & .in-between-text {
     font-size: 18px;
