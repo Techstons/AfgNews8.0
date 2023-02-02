@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { FormEvent } from "react";
 import { Button } from "@components/ui";
@@ -43,6 +43,9 @@ const NewsLetter = () => {
     alert("Success! You have been subscribed ssto our newsletter.");
     setEmail("");
   };
+  useEffect(() => {
+    window.location.reload();
+  }, []);
   return (
     <NewsletterMainContainer>
       <Head>
