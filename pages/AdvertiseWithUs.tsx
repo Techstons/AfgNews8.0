@@ -2,6 +2,7 @@ import React from "react";
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import styled from "@emotion/styled";
+import Head from "next/head";
 
 i18n.use(initReactI18next).init({
   lng: "en",
@@ -23,6 +24,9 @@ const AdvertiseWithUs = () => {
 
   return (
     <MainContainer>
+      <Head>
+        <title>Advertise With Us</title>
+      </Head>
       <HeaderContainer>
         {/* <HeaderTextContainer>
           <p>Get in touch</p>

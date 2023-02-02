@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import styled from "@emotion/styled";
+import Head from "next/head";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 i18n.use(initReactI18next).init({
@@ -44,6 +45,9 @@ const ContactUs = () => {
 
   return (
     <ContactUsMainContainer>
+      <Head>
+        <title>Contact Us</title>
+      </Head>
       <Image src="https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg" />
       <FormContainer>
         <div className="small-divider"></div>

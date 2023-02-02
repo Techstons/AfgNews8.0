@@ -2,6 +2,7 @@ import React from "react";
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import styled from "@emotion/styled";
+import Head from "next/head";
 
 i18n.use(initReactI18next).init({
   lng: "en",
@@ -14,6 +15,9 @@ i18n.use(initReactI18next).init({
 const MobileApp = () => {
   return (
     <MobileAppMainContainer>
+      <Head>
+        <title>Mobile App</title>
+      </Head>
       <GetOurApp>
         <h1>Get our mobile App</h1>
       </GetOurApp>

@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import { useTranslation } from "next-i18next";
 import { FormEvent } from "react";
 import { Button } from "@components/ui";
+import Head from "next/head";
 
 i18n.use(initReactI18next).init({
   lng: "en",
@@ -46,6 +47,9 @@ const NewsLetter = () => {
   };
   return (
     <NewsletterMainContainer>
+      <Head>
+        <title>News Letter</title>
+      </Head>
       <UpperContents>
         <h1>Newsletter</h1>
       </UpperContents>

@@ -2,6 +2,7 @@ import React from "react";
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import styled from "@emotion/styled";
+import Head from "next/head";
 
 i18n.use(initReactI18next).init({
   lng: "en",
@@ -34,6 +35,9 @@ const SubmitAStory = () => {
   ];
   return (
     <SubmitAStoryMainContainer>
+      <Head>
+        <title>Submit A Story</title>
+      </Head>
       <Header>
         <div className="contents-container">
           <Logo>AFG NEWS</Logo>
