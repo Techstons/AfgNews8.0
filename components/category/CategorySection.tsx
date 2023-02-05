@@ -3,6 +3,8 @@ import { Article } from "@components/types";
 import { CategoryCard, CategoryHeaderCard } from "@components/news";
 import { Container } from "@components/ui";
 import React, { useState, useEffect } from "react";
+import NewsLetter from "../../pages/NewsLetter";
+import { useRouter } from "next/router";
 
 interface ICategorySection {
   title: string;
@@ -14,9 +16,12 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
   const [clickCheck, setclickCheck] = useState(0);
   const itemsPerPage = 5;
 
+  const router = useRouter();
+  const { pathname } = router;
+
   if (!articles) {
-    console.log(articles);
-    return;
+    // console.log(articles);
+    return <p>Loading...</p>;
   }
 
   const loadMorePages = Array.from(

@@ -4,6 +4,7 @@ import { FormEvent } from "react";
 import { Button } from "@components/ui";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -14,35 +15,41 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const NewsLetter = () => {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
+  // const router = useRouter();
+  // const { pathname } = router;
 
-  const subscribeToNewsLetter = async (e: FormEvent) => {
-    e.preventDefault();
+  // const subscribeToNewsLetter = async (e: FormEvent) => {
+  //   e.preventDefault();
 
-    const FORMSPREE_API = process.env.FORMSPREE_API;
-    const res = await fetch(FORMSPREE_API ?? "", {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-      }),
-      headers: {
-        Accept: "application/json",
-      },
-    });
+  //   const FORMSPREE_API = process.env.FORMSPREE_API;
+  //   const res = await fetch(FORMSPREE_API ?? "", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       email: email,
+  //     }),
+  //     headers: {
+  //       Accept: "application/json",
+  //     },
+  //   });
 
-    const data = await res.json();
+  //   const data = await res.json();
 
-    if (!res.ok) {
-      return alert(
-        `${data.error}: ${
-          Array.isArray(data.errors) ? data.errors[0].message : data.error
-        }`
-      );
-    }
+  //   if (!res.ok) {
+  //     return alert(
+  //       `${data.error}: ${
+  //         Array.isArray(data.errors) ? data.errors[0].message : data.error
+  //       }`
+  //     );
+  //   }
 
-    alert("Success! You have been subscribed ssto our newsletter.");
-    setEmail("");
-  };
+  //   alert("Success! You have been subscribed ssto our newsletter.");
+  //   setEmail("");
+  // };
+
+  // useEffect(() => {
+  //   console.log(pathname);
+  // }, [pathname]);
   return (
     <NewsletterMainContainer>
       <Head>
@@ -69,14 +76,14 @@ const NewsLetter = () => {
         </div>
         <div style={{ marginTop: "2rem" }}>
           <form
-            onSubmit={subscribeToNewsLetter}
+            // onSubmit={subscribeToNewsLetter}
             className="input-box"
             aria-label="Subscribe your email to newsletter"
           >
             <input
               placeholder={"Enter your Email"}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              // value={email}
+              // onChange={(e) => setEmail(e.target.value)}
               required
               style={{
                 backgroundColor: "white",
