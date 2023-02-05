@@ -25,7 +25,7 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
     return pathname === "/NewsLetter" ? (
       router.push("/newsletter")
     ) : (
-      <p>Loading</p>
+      <p>Loadingsss</p>
     );
   }
 
