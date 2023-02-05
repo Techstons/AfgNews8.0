@@ -21,12 +21,7 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
 
   if (!articles) {
     // console.log(articles);
-    console.log("newsletter");
-    return pathname === "/NewsLetter" ? (
-      router.push("/newsletter")
-    ) : (
-      <p>Loadingsss</p>
-    );
+    return <NewsLetter />;
   }
 
   const loadMorePages = Array.from(
