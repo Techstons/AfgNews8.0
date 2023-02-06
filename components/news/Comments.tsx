@@ -75,7 +75,8 @@ const Comments: FC<EmbedProps> = ({
   useUpdateEffect(() => {
     (window as any).hyvor_talk &&
       (window as any).hyvor_talk.setPalette(palette);
-  }, [palette]);
+  }, []);
+  // [palette, authorEmail, clickId, loadMode, onEvent, title, url]
 
   return <div id="hyvor-talk-view" />;
 };

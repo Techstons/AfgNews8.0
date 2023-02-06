@@ -40,7 +40,10 @@ const ContactUs = () => {
       <Head>
         <title>Contact Us</title>
       </Head>
-      <Image src="https://pbs.twimg.com/media/FnjTHuFagAExNZv?format=jpg&name=900x900" />
+      <Image
+        alt="afg background"
+        src="https://pbs.twimg.com/media/FnjTHuFagAExNZv?format=jpg&name=900x900"
+      />
       <FormContainer className="contact-us-form">
         <div className="small-divider"></div>
         <h1>Contact Us</h1>

@@ -47,6 +47,7 @@ const AboutUs = () => {
             <Grid container>
               <Grid item xs={12} md={6}>
                 <img
+                  alt="image"
                   className="about-us-image"
                   src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/Z3IDS7JHKJFTRI3IZ5PE7H3S6M.png"
                 />
@@ -72,6 +73,7 @@ const AboutUs = () => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <img
+                  alt="image"
                   className="about-us-image"
                   src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/P7KYLA746VDC7FRZEUVIPZYSMA.png"
                 />
@@ -91,6 +93,7 @@ const AboutUs = () => {
             <Grid container>
               <Grid item xs={12} md={5}>
                 <img
+                  alt="image"
                   className="about-us-image"
                   src="https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/N4PSKXDSIVASLJXMCIVKLV3CNE.png"
                 />
@@ -215,6 +218,7 @@ const AboutUs = () => {
           <button>work with us</button>
         </div>
         <img
+          alt="globe image"
           className="about-us-globe"
           src="earth-globe-icon-on-transparent-background-illustration-free-vector-removebg-preview.png"
         />
@@ -231,7 +235,10 @@ const AboutUs = () => {
           our community.
         </p>
         <ImageContainer>
-          <Images src="https://img.freepik.com/premium-photo/mosaic-closeup-photos-smiling-young-people-different-nationalities_116547-19927.jpg?w=2000" />
+          <Images
+            alt="our team image"
+            src="https://img.freepik.com/premium-photo/mosaic-closeup-photos-smiling-young-people-different-nationalities_116547-19927.jpg?w=2000"
+          />
         </ImageContainer>
       </OurTeamContainer>
     </AboutUsMainContainer>

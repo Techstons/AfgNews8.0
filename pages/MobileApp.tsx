@@ -29,13 +29,19 @@ const MobileApp = () => {
         <ButtonsContainer className="mobile-app-buttons-container">
           {/* <div className="per-button-container"> */}
           <Button>
-            <Image src="https://helios-i.mashable.com/imagery/articles/04EZglaVzAW19V6FIiDD3TA/hero-image.fill.size_1200x1200.v1623363034.jpg" />
+            <Image
+              alt="playstore image"
+              src="https://helios-i.mashable.com/imagery/articles/04EZglaVzAW19V6FIiDD3TA/hero-image.fill.size_1200x1200.v1623363034.jpg"
+            />
           </Button>
           {/* <h2 className="label-button">Get it on Google Play</h2> */}
           {/* </div> */}
           {/* <div className="per-button-container"> */}
           <Button>
-            <Image src="https://developer.apple.com/news/images/og/app-store-og.png" />
+            <Image
+              alt="appstore image"
+              src="https://developer.apple.com/news/images/og/app-store-og.png"
+            />
           </Button>
           {/* <h2 className="label-button">Get it on App Store</h2> */}
           {/* </div> */}
