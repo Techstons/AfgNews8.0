@@ -13,26 +13,6 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const SubmitAStory = () => {
-  const largeCardList = [
-    "Download and install software to access the Tor network: https://www.torproject.org (if this web page is blocked in your country, you can send an email (gettor@torproject.org) or a direct message on Twitter to @get_tor to get a direct download link)",
-    " Once you load the Tor browser, copy and paste the URL http://ajiunit.securedrop.tor.onion into the Tor address bar. You will then find additional instructions on how to submit files to Al Jazeera.",
-    " A randomly generated, unique code name will be assigned to you. If Al Jazeera wishes to contact you, we will do so in your SecureDrop. These messages can only be accessed using your code name.",
-    " Using the Tails operating system is recommended to increase security.",
-    " More information on the Tails operating system can be found here.",
-    " More information on SecureDrop can be found https://docs.securedrop.org/en/stable/source.html",
-  ];
-
-  const thingsToConsider = [
-    "- Read the tool or app’s terms and conditions, as well as the instructions before using.",
-    "- Be aware of the network you use. Do not use your home or work network if you do not want the information to be traced back to you. Using a public wifi network might be preferable to reduce the risk of being identified.",
-    "- Remember that your internet and search history can help identify you. A simple Google search with how to leak documents could be enough to identify you or put you at risk.",
-    "- Downloading the Tor browser could also potentially come with some risks in certain countries.",
-    "- Tor does not hide the fact you are using Tor.",
-    "- In countries where Tor is not extensively used, it can be easier for users to be identified. In these countries – which include several countries outside of Europe and North America – you should avoid using networks associated with your identity.",
-    "- If possible, do not use your personal or work phones or computers to contact us.",
-    "- Encrypt any sensitive information you have stored locally. Find out how and why here.",
-    "- Use strong passwords on your phone and computer to increase security. If you have sensitive information on your phone, it is best not to use biometric security like fingerprint recognition or FaceID. ",
-  ];
   return (
     <SubmitAStoryMainContainer className="story-main">
       <Head>
@@ -62,7 +42,7 @@ const SubmitAStory = () => {
       >
         <SmallCardContainer className="story-card-container">
           <Grid container>
-            <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12} md={6}>
               <SmallCard className="smallcard-story">
                 <h1>Postal addresss:</h1>
                 <div>
@@ -76,14 +56,14 @@ const SubmitAStory = () => {
                   <p>32 London Bridge Street</p> <p>London, SE1 9SG, UK</p>
                 </div>
               </SmallCard>
-            </Grid>
-            <Grid item xs={12} md={6}>
+            </Grid> */}
+            <Grid item xs={12}>
               <SmallCard className="smallcard-story">
                 <h1>Email:</h1>
                 <div>
                   <p>
-                    Send us your tip here. In the dropdown menu, be sure to
-                    choose General - Editorial
+                    Send us your tip <a href="/Feedback">here</a>. In the
+                    dropdown menu, be sure to choose General - Editorial
                   </p>
                 </div>
                 <div>
@@ -161,92 +141,6 @@ const SubmitAStory = () => {
           </Grid>
         </LongCardContainer>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          margin: "2rem  0 2rem 0",
-        }}
-      >
-        <LargeCard className="story-largecard">
-          <h1>SecureDrop –</h1>
-          <a href="http://ajiunit.securedrop.tor.onion">
-            http://ajiunit.securedrop.tor.onion
-          </a>
-          <h1>or </h1>
-          <a href="http://jkta32w5gvk6pmqdfwj67psojot3l2iwoqbdvrvywi5bkudfeandq7id.onion">
-            http://jkta32w5gvk6pmqdfwj67psojot3l2iwoqbdvr...
-          </a>
-          <div>
-            <p>
-              SecureDrop is an encrypted submission system that is highly
-              recommended if you value both confidentiality and anonymity.
-              Because it uses the Tor network, your identity, location and other
-              information will be protected. SecureDrop allows us to communicate
-              while keeping both parties completely anonymous from each other.
-            </p>
-          </div>
-          <div>
-            <p>To use SecureDrop, you must:</p>
-          </div>
-          <div
-            style={{
-              margin: "1rem 0 0 1rem",
-            }}
-          >
-            {largeCardList.map((list) => (
-              <ul key={list} style={{ width: "80%", fontSize: "14px" }}>
-                <li key={list}>{list}</li>
-              </ul>
-            ))}
-          </div>
-        </LargeCard>
-      </div>
-      <ThingsToConsiderContainer className="things-toconsider-container">
-        <ThingsToConsider className="things-toconsider">
-          <h1>
-            Things to consider before sending confidential tips and documents:
-          </h1>
-          <div>
-            <p>
-              It is important to remember that no app or tool is 100 percent
-              safe and secure, and all forms of communication come with risks.
-              To help with security, we recommend you:{" "}
-            </p>
-          </div>
-          {thingsToConsider.map((list) => (
-            <p key={list}>{list}</p>
-          ))}
-          <div>
-            <p>More information on password security here. </p>
-            <p>A note about using phone communication: </p>
-          </div>
-          <p>
-            - In general, mobile messaging is not recommended if you want to
-            stay completely anonymous. Phone locations, numbers and identities
-            can potentially be traced to identify you as the source.
-          </p>
-          <p>
-            - If someone gets access to your phone, they might be able to read
-            any messages if they can unlock your phone. More information on the
-            risks of using mobile phones can be found here.
-          </p>
-          <p>
-            We encourage you to assess the potential risks and choose the option
-            that you believe is best for you and the information youre sharing.{" "}
-          </p>
-          <p>
-            We ask that you do not send pitches, press releases or feedback
-            through these channels. While we will check messages regularly, we
-            will not always respond. If we do respond, it will be through the
-            same method by which you contacted us.
-          </p>{" "}
-          <p>
-            Are you a journalist who wants to pitch a story to Al Jazeera? Find
-            out the best way to pitch us your story idea here.
-          </p>
-        </ThingsToConsider>
-      </ThingsToConsiderContainer>
     </SubmitAStoryMainContainer>
   );
 };
@@ -313,7 +207,7 @@ const LargeCard = styled.div`
 `;
 
 const LongCardContainer = styled.div`
-  padding: 0 1rem 0 1rem;
+  width: 60%;
 `;
 
 const LongCard = styled.div`
@@ -382,6 +276,11 @@ const SmallCard = styled.div`
   & p {
     font-size: 14px;
   }
+
+  & a {
+    color: blue;
+    text-decoration: underline;
+  }
 `;
 
 const Logo = styled.div`
@@ -403,7 +302,7 @@ const Header = styled.div`
 
 const SubmitAStoryMainContainer = styled.div`
   background-color: #f2f2f2;
-  height: 405vh;
+  height: 100%;
 
   & .in-between-text {
     font-size: 18px;
