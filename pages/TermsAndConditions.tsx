@@ -18,18 +18,18 @@ const TermsAndContidions = () => {
         <title>Terms And Conditions</title>
       </Head>
       <Header>
-        <h1>
-          Terms and Conditions for <a> www.AfgNews.com </a>
-        </h1>
+        <h1>Terms and Conditions</h1>
       </Header>
       <ContentsContainer>
+        <p>Terms and Conditions for www.AfgNews.com</p>
         <Content>
           <p className="numbers">1. Introduction</p>
           <p className="contents">
-            This document outlines the terms and conditions (the "Terms") under
-            which you may use <a> www.AfgNews.com </a> website (the "Site"). By
-            using the Site, you agree to be bound by these Terms. If you do not
-            agree with these Terms, you may not use the Site.
+            This document outlines the terms and conditions (the
+            &quot;Terms&quot;) under which you may use <a> www.AfgNews.com </a>{" "}
+            website (the &quot;Site&quot;). By using the Site, you agree to be
+            bound by these Terms. If you do not agree with these Terms, you may
+            not use the Site.
           </p>
         </Content>
         <Content>
@@ -37,9 +37,9 @@ const TermsAndContidions = () => {
           <p className="contents">
             The content on the Site, including but not limited to text,
             graphics, logos, images, audio, video, and software (collectively,
-            "Content"), is protected by intellectual property laws and is the
-            property of <a> www.AfgNews.com </a> or its licensors. You may not
-            use the Content for commercial purposes or for any other
+            &quot;Content&quot;), is protected by intellectual property laws and
+            is the property of <a> www.AfgNews.com </a> or its licensors. You
+            may not use the Content for commercial purposes or for any other
             unauthorized purpose without the express written consent of{" "}
             <a> www.AfgNews.com </a>.
           </p>
@@ -48,17 +48,18 @@ const TermsAndContidions = () => {
           <p className="numbers">3. User Conduct </p>
           <p className="contents">
             You may not use the Site for any illegal or unauthorized purpose.
-            You agree not to, or attempt to, circumvent or manipulate the Site's
-            security or network, or take any action that imposes an unreasonable
-            burden or load on the Site's infrastructure. You agree not to use
-            the Site in a manner that could damage, disable, overburden, or
-            impair the Site or interfere with any other party's use of the Site.
+            You agree not to, or attempt to, circumvent or manipulate the
+            Site&apos;s security or network, or take any action that imposes an
+            unreasonable burden or load on the Site&apos;s infrastructure. You
+            agree not to use the Site in a manner that could damage, disable,
+            overburden, or impair the Site or interfere with any other
+            party&apos;s use of the Site.
           </p>
         </Content>
         <Content>
           <p className="numbers">4. Disclaimer of Warranties</p>
           <p className="contents">
-            The Site and its Content are provided on an "as is" basis.
+            The Site and its Content are provided on an &quot;as is&quot; basis.
             <a> www.AfgNews.com </a> makes no representations or warranties of
             any kind, express or implied, as to the operation of the Site or the
             information, Content, or materials included on the Site.
@@ -78,10 +79,10 @@ const TermsAndContidions = () => {
             You agree to indemnify and hold <a> www.AfgNews.com </a>, its
             affiliates, and their respective officers, directors, agents,
             partners, and employees, harmless from any claim or demand,
-            including reasonable attorneys' fees, made by any third party due to
-            or arising out of your use of the Site, violation of these Terms, or
-            infringement of any intellectual property or other right of any
-            person or entity.s
+            including reasonable attorneys&apos; fees, made by any third party
+            due to or arising out of your use of the Site, violation of these
+            Terms, or infringement of any intellectual property or other right
+            of any person or entity.s
           </p>
         </Content>
         <Content>
