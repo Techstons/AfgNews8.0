@@ -120,6 +120,13 @@
   .btn {
     margin: 1rem 0 0 0;
   }
+  .adWithUs-main-container {
+    margin: 0 0 60rem 0;
+  }
+  .adWithUs-buttons-container {
+    width: 50%;
+    margin-top: 3rem;
+  }
 }
 //sm
 @media only screen and (min-width: 600px) {
@@ -208,6 +215,9 @@
     width: 20rem;
   }
   .btn {
+    margin: 0;
+  }
+  .adWithUs-main-container {
     margin: 0;
   }
 }

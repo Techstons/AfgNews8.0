@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { count } from "console";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -13,16 +14,39 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const AdvertiseWithUs = () => {
   const InfoList = [
-    "5.7 million+ Unique Visitors*",
-    "1.6 million monthly downloads for the CoinDesk Podcast Network",
-    "CoinDesk TV - live daily and weekly streaming shows",
-    "334,000+ Newsletter subscribers",
-    "3 million+ Twitter followers",
-    "CoinDesk’s Consensus is the leading annual event in crypto",
+    "10000+ Unique Visitors*",
+    "500 Monthly App Downloads ",
+    "10000+ YouTube Subscribers",
+    "10000+ Newsletter Subscribers",
+    "100+ Twitter Followers",
+    "100+ Facebook Followers",
   ];
 
+  const [data, setData] = useState<any>(null);
+  const [countries, setCountries] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("https://restcountries.com/v3.1/all");
+      const json = await res.json();
+      setData(json);
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (data !== null) {
+      const perCountries = data.map((countries: any) => countries.name.common);
+      console.log(perCountries);
+      setCountries(perCountries);
+    }
+  }, [data]);
+
+  console.log(countries);
+
   return (
-    <MainContainer>
+    <MainContainer className="adWithUs-main-container">
       <Head>
         <title>Advertise With Us</title>
       </Head>
@@ -91,10 +115,11 @@ const AdvertiseWithUs = () => {
                 placeholder="Business industry"
                 className="adWithUs-input"
               />
-              <Input
-                placeholder="Location"
-                style={{ border: "1px solid black", height: "10rem" }}
-              />
+              <Location name="Location" className="adWithUs-input">
+                {countries.map((country: any) => (
+                  <option key={country}>{country}</option>
+                ))}
+              </Location>
             </Form>
           </PerInfoContainer>
           <PerInfoContainer className="perInfo-container">
@@ -114,10 +139,45 @@ const AdvertiseWithUs = () => {
             </Form>
           </PerInfoContainer>
         </div>
+        <ButtonsContainer className="adWithUs-buttons-main">
+          <div className="adWithUs-buttons-container">
+            <SendButton>Send Message</SendButton>
+            <CancelButton>Cancel</CancelButton>
+          </div>
+        </ButtonsContainer>
       </FormContainer>
     </MainContainer>
   );
 };
+
+const Location = styled.select`
+  border: 1px solid black;
+  height: 5rem;
+  margin: 3rem 0 0 0;
+
+  & option {
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  & div {
+    display: flex;
+    justify-content: space-around;
+  }
+`;
+
+const SendButton = styled.button`
+  background-color: #e9e9e9;
+  height: 3rem;
+  width: 8rem;
+`;
+
+const CancelButton = styled.button``;
 
 const Message = styled.textarea`
   height: 10rem;
@@ -273,7 +333,6 @@ const HeaderContainer = styled.div`
 const MainContainer = styled.div`
   height: 350vh;
   display: flex;
-  margin: 0 0 60rem 0;
   flex-direction: column;
   align-items: center;
   position: relative;
