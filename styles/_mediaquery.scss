@@ -87,6 +87,39 @@
   .things-toconsider {
     width: 100%;
   }
+
+  //ad with us
+  .get-in-touch {
+    font-size: 7rem;
+  }
+  .advertise {
+    height: 60%;
+  }
+  .perInfo-container {
+    display: block;
+  }
+  .per-info-ad {
+    width: 100%;
+  }
+  .adWithUs-perInfo-h1 {
+    font-size: 1.5rem;
+  }
+  .adWithUs-input {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+  .adWithUs-message {
+    width: 100%;
+  }
+  .newsLetter-h1 {
+    font-size: 3rem;
+  }
+  .newsLetter-input {
+    width: 90%;
+  }
+  .btn {
+    margin: 1rem 0 0 0;
+  }
 }
 //sm
 @media only screen and (min-width: 600px) {
@@ -160,6 +193,23 @@
   .things-toconsider {
     width: 61%;
   }
+  .get-in-touch {
+    font-size: 10rem;
+  }
+
+  //ad with us
+  .advertise {
+    height: 45%;
+  }
+  .newsLetter-h1 {
+    font-size: 5rem;
+  }
+  .newsLetter-input {
+    width: 20rem;
+  }
+  .btn {
+    margin: 0;
+  }
 }
 //md
 @media only screen and (min-width: 900px) {
@@ -201,6 +251,28 @@
   .things-toconsider-container {
     height: 40%;
   }
+
+  //ad with us
+  .advertise {
+    height: 60vh;
+  }
+  .perInfo-container {
+    display: block;
+    display: flex;
+  }
+  .per-info-ad {
+    width: 25%;
+  }
+  .adWithUs-perInfo-h1 {
+    font-size: 3rem;
+  }
+  .adWithUs-input {
+    font-size: 2.5rem;
+    width: 70%;
+  }
+  .adWithUs-message {
+    width: 75%;
+  }
 }
 //lg
 @media only screen and (min-width: 1200px) {
@@ -210,6 +282,9 @@
   .about-us-image {
     width: 80%;
     height: 100%;
+  }
+  .get-in-touch {
+    font-size: 11.6rem;
   }
 }
 

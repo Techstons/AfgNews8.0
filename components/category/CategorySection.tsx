@@ -2,8 +2,7 @@ import styled from "@emotion/styled";
 import { Article } from "@components/types";
 import { CategoryCard, CategoryHeaderCard } from "@components/news";
 import { Container } from "@components/ui";
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import React, { useState } from "react";
 
 interface ICategorySection {
   title: string;
@@ -14,9 +13,6 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [clickCheck, setclickCheck] = useState(0);
   const itemsPerPage = 5;
-
-  const router = useRouter();
-  const { pathname } = router;
 
   if (!articles) {
     // console.log(articles);
@@ -32,10 +28,6 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
     setCurrentPage(currentPage + 1);
     setclickCheck(clickCheck + 1);
   };
-
-  // useEffect(() => {
-  //   console.log(clickCheck);
-  // }, [clickCheck]);
 
   return (
     <>

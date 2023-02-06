@@ -58,7 +58,7 @@ const NewsLetter = () => {
         <title>News Letter</title>
       </Head>
       <UpperContents>
-        <h1>Newsletter</h1>
+        <h1 className="newsLetter-h1">Newsletter</h1>
       </UpperContents>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Subscribe>
@@ -84,6 +84,7 @@ const NewsLetter = () => {
           >
             <input
               placeholder={"Enter your Email"}
+              className="newsLetter-input"
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
               required
@@ -91,7 +92,6 @@ const NewsLetter = () => {
                 backgroundColor: "white",
                 border: "black solid 1px",
                 height: "3rem",
-                width: "20rem",
                 marginRight: "1rem",
                 padding: "0 0 0 1rem",
               }}
@@ -118,7 +118,6 @@ const UpperContents = styled.div`
   align-items: center;
   padding: 0 0 0 2rem;
   & h1 {
-    font-size: 5rem;
     color: white;
     letter-spacing: 4px;
   }

@@ -34,10 +34,12 @@ const AdvertiseWithUs = () => {
             harness the power of The Washington Post.
           </h1>
         </HeaderTextContainer> */}
-        <GetInTouchDesign>GET IN TOUCH</GetInTouchDesign>
+        <GetInTouchDesign className="get-in-touch">
+          GET IN TOUCH
+        </GetInTouchDesign>
       </HeaderContainer>
       <FormContainer>
-        <Advertise>
+        <Advertise className="advertise">
           <h1>Advertise With Us</h1>
           <h2>
             The AfgNews media platform is the leading trusted source for content
@@ -58,44 +60,57 @@ const AdvertiseWithUs = () => {
               <p key={info}>{info}</p>
             </InfoAboutUs>
           ))}
-          <PerInfoContainer>
-            <PerInfo>
-              <div>
+          <PerInfoContainer className="perInfo-container">
+            <PerInfo className="per-info-ad">
+              <div className="adWithUs-perInfo-div">
                 <p>01</p>
-                <h1>Tell us about yourself</h1>
+                <h1 className="adWithUs-perInfo-h1">Tell us about yourself</h1>
               </div>
             </PerInfo>
             <Form>
-              <Input placeholder="First name" />
-              <Input placeholder="Last name" />
-              <Input placeholder="Email address" />
+              <Input placeholder="First name" className="adWithUs-input" />
+              <Input placeholder="Last name" className="adWithUs-input" />
+              <Input placeholder="Email address" className="adWithUs-input" />
             </Form>
           </PerInfoContainer>
-          <PerInfoContainer>
-            <PerInfo>
-              <div>
+          <PerInfoContainer className="perInfo-container">
+            <PerInfo className="per-info-ad">
+              <div className="adWithUs-perInfo-div">
                 <p>02</p>
-                <h1>Tell us about your business</h1>
+                <h1 className="adWithUs-perInfo-h1">
+                  Tell us about your business
+                </h1>
               </div>
             </PerInfo>
             <Form>
-              <Input placeholder="Name of business" />
-              <Input placeholder="Business industry" />
+              <Input
+                placeholder="Name of business"
+                className="adWithUs-input"
+              />
+              <Input
+                placeholder="Business industry"
+                className="adWithUs-input"
+              />
               <Input
                 placeholder="Location"
                 style={{ border: "1px solid black", height: "10rem" }}
               />
             </Form>
           </PerInfoContainer>
-          <PerInfoContainer>
-            <PerInfo>
-              <div>
+          <PerInfoContainer className="perInfo-container">
+            <PerInfo className="per-info-ad">
+              <div className="adWithUs-perInfo-div">
                 <p>03</p>
-                <h1>Anything else we should know?</h1>
+                <h1 className="adWithUs-perInfo-h1">
+                  Anything else we should know?
+                </h1>
               </div>
             </PerInfo>
             <Form>
-              <Message placeholder="Optional message with more details" />
+              <Message
+                placeholder="Optional message with more details"
+                className="adWithUs-message"
+              />
             </Form>
           </PerInfoContainer>
         </div>
@@ -105,7 +120,6 @@ const AdvertiseWithUs = () => {
 };
 
 const Message = styled.textarea`
-  width: 75%;
   height: 10rem;
   font-size: 1rem;
   margin-top: 5rem;
@@ -126,10 +140,10 @@ const Message = styled.textarea`
 
 const Input = styled.input`
   border-bottom: 1px solid black;
-  width: 70%;
+
   margin: 3rem 0 0 0;
   height: 3rem;
-  font-size: 2.5rem;
+
   padding: 0 1rem 0 1rem;
 
   &:focus {
@@ -163,18 +177,15 @@ const Form = styled.div`
 `;
 
 const PerInfoContainer = styled.div`
-  height: 20rem;
-  display: flex;
+  height: 100%;
   justify-content: space-between;
   margin: 3rem 0 0 0;
 `;
 
 const PerInfo = styled.div`
   border-top: 1px solid var(--primary-color);
-  width: 25%;
 
   & h1 {
-    font-size: 3rem;
     margin: 1rem 0 0 0;
   }
 
@@ -186,7 +197,6 @@ const PerInfo = styled.div`
 const Advertise = styled.div`
   padding: 2rem 2rem 2rem 2rem;
   background-color: #262626;
-  height: 60vh;
   color: #ffffff;
 
   & h1 {
@@ -230,7 +240,7 @@ const FormContainer = styled.div`
 const GetInTouchDesign = styled.h2`
   -webkit-text-stroke: 2px gray;
   color: transparent;
-  font-size: 11.6rem;
+
   width: 100%;
   text-align: center;
   font-weight: bold;
@@ -263,6 +273,7 @@ const HeaderContainer = styled.div`
 const MainContainer = styled.div`
   height: 350vh;
   display: flex;
+  margin: 0 0 60rem 0;
   flex-direction: column;
   align-items: center;
   position: relative;
