@@ -66,7 +66,19 @@ const Comments: FC<EmbedProps> = ({
     }
 
     addScript("//talk.hyvor.com/web-api/embed.js", embedScriptId);
-  }, [websiteId, id, language, sso]);
+  }, [
+    websiteId,
+    id,
+    language,
+    sso,
+    authorEmail,
+    clickId,
+    loadMode,
+    onEvent,
+    palette,
+    title,
+    url,
+  ]);
 
   /**
    * When palette is updated, use hyvor_talk.setPalette instead of reloading the iframe
@@ -75,8 +87,7 @@ const Comments: FC<EmbedProps> = ({
   useUpdateEffect(() => {
     (window as any).hyvor_talk &&
       (window as any).hyvor_talk.setPalette(palette);
-  }, []);
-  // [palette, authorEmail, clickId, loadMode, onEvent, title, url]
+  }, [palette]);
 
   return <div id="hyvor-talk-view" />;
 };
