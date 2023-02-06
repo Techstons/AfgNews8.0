@@ -3,7 +3,6 @@ import { Article } from "@components/types";
 import { CategoryCard, CategoryHeaderCard } from "@components/news";
 import { Container } from "@components/ui";
 import React, { useState, useEffect } from "react";
-import NewsLetter from "../../pages/NewsLetter";
 import { useRouter } from "next/router";
 
 interface ICategorySection {
@@ -37,8 +36,6 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
   // useEffect(() => {
   //   console.log(clickCheck);
   // }, [clickCheck]);
-
-  console.log(articles);
 
   return (
     <>
