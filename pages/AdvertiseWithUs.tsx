@@ -116,7 +116,7 @@ const AdvertiseWithUs = () => {
                 className="adWithUs-input"
               />
               <Location name="Location" className="adWithUs-input">
-                {countries.map((country: any) => (
+                {countries?.map((country: any) => (
                   <option key={country}>{country}</option>
                 ))}
               </Location>
