@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Grid from "@mui/material/Grid";
+import Link from "next/link";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -62,8 +63,12 @@ const SubmitAStory = () => {
                 <h1>Email:</h1>
                 <div>
                   <p>
-                    Send us your tip <a href="/Feedback">here</a>. In the
-                    dropdown menu, be sure to choose General - Editorial
+                    Send us your tip{" "}
+                    <Link href="/ContactUs" className="submit-a-story">
+                      here
+                    </Link>
+                    . In the dropdown menu, be sure to choose General -
+                    Editorial
                   </p>
                 </div>
                 <div>
@@ -152,7 +157,7 @@ const ThingsToConsider = styled.div`
   // display: flex;
   // flex-direction: column;
 
-  & a {
+  & .submit-a-story {
     color: blue;
     text-decoration: underline;
   }
