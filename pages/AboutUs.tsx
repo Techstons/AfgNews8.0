@@ -222,10 +222,13 @@ const AboutUs = () => {
       <OurTeamContainer>
         <h1>Our team</h1>
         <p>
-          The team of subject matter experts at CoinDesk delivers reliable and
-          relevant content to both individuals and businesses, driven by the
-          mission to inform global communities about the ever-evolving concept
-          of money in the new digital era.
+          Welcome to our news website! Our team is dedicated to providing you
+          with the latest and most accurate news and information. With a passion
+          for journalism and a commitment to impartial reporting, we strive to
+          keep you informed on the events that matter most to you. Our team of
+          experienced reporters, editors, and photographers work around the
+          clock to bring you the stories that matter. Thanks for being a part of
+          our community.
         </p>
         <ImageContainer>
           <Images src="https://img.freepik.com/premium-photo/mosaic-closeup-photos-smiling-young-people-different-nationalities_116547-19927.jpg?w=2000" />
