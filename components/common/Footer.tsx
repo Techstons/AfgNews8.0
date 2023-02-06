@@ -178,7 +178,9 @@ const Footer = ({ isDark }: IFooter) => {
                 <Link href="/NewsLetter">
                   <FooterLink>{t("common:newsletter")}</FooterLink>
                 </Link>
-                <FooterLink>{t("common:privacy_policy")}</FooterLink>
+                <Link href="/PrivacyPolicy">
+                  <FooterLink>{t("common:privacy_policy")}</FooterLink>
+                </Link>
                 <FooterLink>{t("common:terms_&_conditions")}</FooterLink>
               </div>
             </div>

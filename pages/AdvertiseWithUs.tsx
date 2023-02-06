@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { count } from "console";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -42,8 +41,6 @@ const AdvertiseWithUs = () => {
       setCountries(perCountries);
     }
   }, [data]);
-
-  console.log(countries);
 
   return (
     <MainContainer className="adWithUs-main-container">
@@ -156,7 +153,7 @@ const Location = styled.select`
   margin: 3rem 0 0 0;
 
   & option {
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 10px;
   }
 `;
