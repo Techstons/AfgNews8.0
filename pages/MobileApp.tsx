@@ -27,24 +27,24 @@ const MobileApp = () => {
         }}
       >
         <ButtonsContainer className="mobile-app-buttons-container">
-          {/* <div className="per-button-container"> */}
-          <Button>
-            <Image
-              alt="playstore image"
-              src="https://helios-i.mashable.com/imagery/articles/04EZglaVzAW19V6FIiDD3TA/hero-image.fill.size_1200x1200.v1623363034.jpg"
-            />
-          </Button>
-          {/* <h2 className="label-button">Get it on Google Play</h2> */}
-          {/* </div> */}
-          {/* <div className="per-button-container"> */}
-          <Button>
-            <Image
-              alt="appstore image"
-              src="https://developer.apple.com/news/images/og/app-store-og.png"
-            />
-          </Button>
-          {/* <h2 className="label-button">Get it on App Store</h2> */}
-          {/* </div> */}
+          <div className="per-button-container">
+            <Button>
+              <Image
+                alt="playstore image"
+                src="https://helios-i.mashable.com/imagery/articles/04EZglaVzAW19V6FIiDD3TA/hero-image.fill.size_1200x1200.v1623363034.jpg"
+              />
+            </Button>
+            <h2 className="label-button">Google Play</h2>
+          </div>
+          <div className="per-button-container">
+            <Button>
+              <Image
+                alt="appstore image"
+                src="https://developer.apple.com/news/images/og/app-store-og.png"
+              />
+            </Button>
+            <h2 className="label-button">App Store</h2>
+          </div>
         </ButtonsContainer>
       </div>
       <Divider />
@@ -71,7 +71,7 @@ const ButtonsContainer = styled.div`
   }
 
   & .per-button-container {
-    border: 2px solid black;
+    // border: 2px solid black;
     width: 15rem;
     height: 15rem;
     display: flex;

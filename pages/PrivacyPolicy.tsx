@@ -44,8 +44,9 @@ const PrivacyPolicy = () => {
 
         <p>
           We may update this Privacy Policy in the future and will notify you of
-          any changes. Effective Date: 09 February 2023.
+          any changes.
         </p>
+        <p style={{ margin: "0" }}>Effective Date: 09 February 2023.</p>
       </ContentsContainer>
     </PrivacyPolicyMainContainer>
   );
@@ -78,10 +79,10 @@ const PrivacyPolicyMainContainer = styled.div`
   height: 100%;
   margin: 0 0 5rem 0;
   & p {
-    margin: 2rem 0 0 0;
-    font-size: 1rem;
+    margin: 1rem 0 0 0;
+    font-size: 1.1rem;
     line-height: 2rem;
-    width: 70%;
+    width: 66%;
   }
 `;
 

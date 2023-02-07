@@ -56,12 +56,12 @@ const AdvertiseWithUs = () => {
           </h1>
         </HeaderTextContainer> */}
         <GetInTouchDesign className="get-in-touch">
-          GET IN TOUCH
+          Advertise With Us
         </GetInTouchDesign>
       </HeaderContainer>
       <FormContainer>
         <Advertise className="advertise">
-          <h1>Advertise With Us</h1>
+          {/* <h1>Advertise With Us</h1> */}
           <h2>
             The AfgNews media platform is the leading trusted source for content
             from Afghanistan and around the world, attracting <br></br>
@@ -112,7 +112,7 @@ const AdvertiseWithUs = () => {
                 placeholder="Business industry"
                 className="adWithUs-input"
               />
-              <Location name="Location" className="adWithUs-input">
+              <Location name="Location" className="adWithUs-select">
                 {countries?.map((country: any) => (
                   <option key={country}>{country}</option>
                 ))}
@@ -151,6 +151,10 @@ const Location = styled.select`
   border: 1px solid black;
   height: 5rem;
   margin: 3rem 0 0 0;
+  color: gray;
+  padding: 0 0 0 1rem;
+  letter-spacing: 2px;
+  font-weight: 600;
 
   & option {
     font-size: 1rem;
@@ -197,7 +201,6 @@ const Message = styled.textarea`
 
 const Input = styled.input`
   border-bottom: 1px solid black;
-
   margin: 3rem 0 0 0;
   height: 3rem;
 
@@ -291,12 +294,13 @@ const FormContainer = styled.div`
   height: 250vh;
   width: 95%;
   position: absolute;
-  top: 13rem;
+  top: 17rem;
 `;
 
 const GetInTouchDesign = styled.h2`
-  -webkit-text-stroke: 2px gray;
-  color: transparent;
+  // -webkit-text-stroke: 2px gray;
+  // color: transparent;
+  color: white !important;
 
   width: 100%;
   text-align: center;
@@ -318,8 +322,10 @@ const HeaderTextContainer = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  background-color: #cfebec;
+  // background-color: #cfebec;
+  background-color: var(--primary-color);
   height: 50vh;
+  width: 100%;
   color: var(--primary-color);
   display: flex;
   justify-content: center;

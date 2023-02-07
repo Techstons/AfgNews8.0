@@ -19,10 +19,10 @@ export async function getStaticProps({ locale }: { locale: string }) {
   };
 }
 
-interface ICategorySection {
-  title: string;
-  articles?: Article[];
-}
+// interface ICategorySection {
+//   title: string;
+//   articles?: Article[];
+// }
 
 const Search = () => {
   const newSearch = useSelector((state: RootState) => state.search.value);
@@ -80,7 +80,7 @@ const Search = () => {
   return (
     <>
       <Head>
-        <title>Search</title>
+        <title>AFG | Search</title>
       </Head>
       <SearchPageContainer>
         {newSearch ? (

@@ -368,7 +368,6 @@ const BottomContent = styled.div<BottomType>`
     }
   }
 `;
-
 const MenuItem = styled.a<ToggleProps>`
   cursor: pointer;
   background-clip: text;
@@ -380,49 +379,64 @@ const MenuItem = styled.a<ToggleProps>`
   font-size: 1.1rem;
 
   &:hover {
-    background-image: ${(props) =>
-      props.active
-        ? `linear-gradient(
-      180deg,
-      #12a012 0%,
-      #12a012 44%,
-      white 44%,
-      white 100%
-
-    )`
-        : `linear-gradient(
-      125deg,
-      black 0%,
-      black 30%,
-      var(--primary-color) 30%,
-      var(--primary-color) 55%,
-      #007a36 55%,
-      #007a36 100%
-    )`};
-  }
-
-  &.active {
-    background-image: ${(props) =>
-      props.active
-        ? `linear-gradient(
-      180deg,
-      #12a012 0%,
-      #12a012 44%,
-      white 44%,
-      white 100%
-
-    )`
-        : `linear-gradient(
-      125deg,
-      black 0%,
-      black 30%,
-      var(--primary-color) 30%,
-      var(--primary-color) 55%,
-      #007a36 55%,
-      #007a36 100%
-    )`};
+    color: var(--primary-color);
   }
 `;
+
+// const MenuItem = styled.a<ToggleProps>`
+//   cursor: pointer;
+//   background-clip: text;
+//   -webkit-background-clip: text;
+//   color: transparent;
+//   background-color: ${(props) => (props.active ? "white" : "black")};
+//   font-family: "Vollkorn SC", serif;
+//   text-transform: uppercase;
+//   font-size: 1.1rem;
+
+//   &:hover {
+//     background-image: ${(props) =>
+//       props.active
+//         ? `linear-gradient(
+//       180deg,
+//       #12a012 0%,
+//       #12a012 44%,
+//       white 44%,
+//       white 100%
+
+//     )`
+//         : `linear-gradient(
+//       125deg,
+//       black 0%,
+//       black 30%,
+//       var(--primary-color) 30%,
+//       var(--primary-color) 55%,
+//       #007a36 55%,
+//       #007a36 100%
+//     )`};
+//   }
+
+//   &.active {
+//     background-image: ${(props) =>
+//       props.active
+//         ? `linear-gradient(
+//       180deg,
+//       #12a012 0%,
+//       #12a012 44%,
+//       white 44%,
+//       white 100%
+
+//     )`
+//         : `linear-gradient(
+//       125deg,
+//       black 0%,
+//       black 30%,
+//       var(--primary-color) 30%,
+//       var(--primary-color) 55%,
+//       #007a36 55%,
+//       #007a36 100%
+//     )`};
+//   }
+// `;
 
 const MenuDropDown = styled.div`
   z-index: 10;

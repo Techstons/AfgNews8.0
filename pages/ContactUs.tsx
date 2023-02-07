@@ -42,7 +42,9 @@ const ContactUs = () => {
       </Head>
       <Image
         alt="afg background"
-        src="https://pbs.twimg.com/media/FnjTHuFagAExNZv?format=jpg&name=900x900"
+        // src="https://pbs.twimg.com/media/FnjTHuFagAExNZv?format=jpg&name=900x900"
+        src="https://wallpapercave.com/wp/wp2279934.jpg"
+        // src="https://images.unsplash.com/photo-1637443966109-8f1d88ea113b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8a2FidWx8ZW58MHx8MHx8&w=1000&q=80"
       />
       <FormContainer className="contact-us-form">
         <div className="small-divider"></div>
@@ -229,7 +231,7 @@ const FormContainer = styled.div`
   background-color: white;
   height: 60%;
   position: absolute;
-  top: 35rem;
+  top: 30rem;
   padding: 3rem 4rem 0 4rem;
 
   & .small-divider {
@@ -258,7 +260,8 @@ const ContactUsMainContainer = styled.div`
 `;
 
 const Image = styled.img`
-  height: 50%;
+  // height: 50%;
+  height: 40%;
   width: 100%;
   object-fit: cover;
   position: absolute;
