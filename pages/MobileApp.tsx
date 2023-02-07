@@ -31,7 +31,7 @@ const MobileApp = () => {
             <Button>
               <Image
                 alt="playstore image"
-                src="https://helios-i.mashable.com/imagery/articles/04EZglaVzAW19V6FIiDD3TA/hero-image.fill.size_1200x1200.v1623363034.jpg"
+                src="hero-image.fill.size_1200x1200.v1623363034-removebg-preview.png"
               />
             </Button>
             <h2 className="label-button">Google Play</h2>
@@ -40,7 +40,7 @@ const MobileApp = () => {
             <Button>
               <Image
                 alt="appstore image"
-                src="https://developer.apple.com/news/images/og/app-store-og.png"
+                src="app-store-og-removebg-preview.png"
               />
             </Button>
             <h2 className="label-button">App Store</h2>

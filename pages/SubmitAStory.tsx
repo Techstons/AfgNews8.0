@@ -21,10 +21,9 @@ const SubmitAStory = () => {
       </Head>
       <Header className="story-header">
         <div className="contents-container">
-          <Logo>AFG NEWS</Logo>
           <div style={{ margin: "2rem 0 0 0" }}>
             <h1 className="submit-a-story-header">
-              How to share a story or a tip with AFG NEWS
+              How to share a story or a tip with us
             </h1>
             <p className="submit-a-story-header-p">
               Is there a story that you think we should cover? Do you have a tip
@@ -299,9 +298,10 @@ const Header = styled.div`
   color: white;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   & h1 {
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
   }
 `;
 

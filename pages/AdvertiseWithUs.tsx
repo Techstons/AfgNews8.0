@@ -64,24 +64,25 @@ const AdvertiseWithUs = () => {
           {/* <h1>Advertise With Us</h1> */}
           <h2>
             The AfgNews media platform is the leading trusted source for content
-            from Afghanistan and around the world, attracting <br></br>
-            <a>millions of users.</a>
-            <br></br>
+            from Afghanistan and around the world, attracting millions of users.
             Keeping you updated with the latest news and events. With insights,
             podcasts, youtube, live streaming, research reports, live events,
             data & analytics and much more, that’s why millions of users trust{" "}
-            <a> AfgNews as the source for the latest news </a> and why it
-            matters to investors, companies and governments.
+            AfgNews as the source for the latest news and why it matters to
+            investors, companies and governments.
           </h2>
         </Advertise>
-        <div style={{ padding: "3rem 2rem 0 2rem" }}>
+        <div style={{ padding: "0 2rem 0 2rem" }}>
           {InfoList.map((info) => (
             <InfoAboutUs key={info}>
               <div></div>
               <p key={info}>{info}</p>
             </InfoAboutUs>
           ))}
-          <PerInfoContainer className="perInfo-container">
+          <PerInfoContainer
+            className="perInfo-container"
+            style={{ margin: "8rem 0 0 0" }}
+          >
             <PerInfo className="per-info-ad">
               <div className="adWithUs-perInfo-div">
                 <p>01</p>
@@ -255,9 +256,7 @@ const PerInfo = styled.div`
 `;
 
 const Advertise = styled.div`
-  padding: 2rem 2rem 2rem 2rem;
-  background-color: #262626;
-  color: #ffffff;
+  padding: 2rem 2rem 0 2rem;
 
   & h1 {
     font-size: 3rem;
@@ -277,7 +276,7 @@ const Advertise = styled.div`
 `;
 
 const InfoAboutUs = styled.div`
-  margin: 3rem 0 3rem 0;
+  margin: 0 0 3rem 0;
   display: flex;
   align-items: center;
   & div {
@@ -293,8 +292,6 @@ const FormContainer = styled.div`
   background-color: white;
   height: 250vh;
   width: 95%;
-  position: absolute;
-  top: 17rem;
 `;
 
 const GetInTouchDesign = styled.h2`

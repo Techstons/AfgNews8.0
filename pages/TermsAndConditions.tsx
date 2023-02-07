@@ -21,7 +21,6 @@ const TermsAndContidions = () => {
         <h1>Terms and Conditions</h1>
       </Header>
       <ContentsContainer>
-        <p>Terms and Conditions for www.AfgNews.com</p>
         <Content>
           <p className="numbers">1. Introduction</p>
           <p className="contents">

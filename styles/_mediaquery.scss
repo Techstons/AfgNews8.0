@@ -93,7 +93,7 @@
     font-size: 5rem;
   }
   .advertise {
-    height: 60%;
+    height: 40%;
   }
   .perInfo-container {
     display: block;
@@ -168,7 +168,7 @@
   //submit a story
 
   .submit-a-story-header {
-    font-size: 2.7rem;
+    font-size: 2.5rem;
     line-height: 2.8rem;
   }
 
@@ -208,9 +208,7 @@
   }
 
   //ad with us
-  .advertise {
-    height: 45%;
-  }
+
   .newsLetter-h1 {
     font-size: 5rem;
   }
@@ -270,7 +268,7 @@
 
   //ad with us
   .advertise {
-    height: 55vh;
+    height: 50vh;
   }
   .perInfo-container {
     display: block;
@@ -291,6 +289,10 @@
   }
   .adWithUs-main-container {
     margin: 0;
+  }
+  .adWithUs-buttons-container {
+    width: 30%;
+    margin-top: 3rem;
   }
 }
 //lg
