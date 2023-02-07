@@ -211,13 +211,13 @@ const LargeCard = styled.div`
 `;
 
 const LongCardContainer = styled.div`
-  width: 60%;
+  width: 75%;
 `;
 
 const LongCard = styled.div`
   background-color: #ffffff;
   width: 24rem;
-  height: 28rem;
+  height: 31rem;
   padding: 1.5rem 1rem 1.5rem 1rem;
   display: flex;
   flex-direction: column;
