@@ -15,8 +15,6 @@ interface NewsArticleFields {
   publishedAt: any;
 }
 
-// interface NewsArticle extends Entry<NewsArticleFields> {};
-
 const client = createClient({
   space: "46qpezirv3k8",
   accessToken: "IS_9497XlMwHMjP64Riv3m01m5n5vSB4589fPL7f7gI",
@@ -62,20 +60,17 @@ export async function getPopularNews() {
   }
 }
 
-// export async function getPopularNews() {
-//   try {
-//     const entries = await client.getEntries<NewsArticleFields>({
-//       content_type: "article",
-//       select: "fields.clickCount",
-//     });
-//     return entries.items.sort((a, b) => {
-//       if (a.fields && a.fields.clickCount && b.fields && b.fields.clickCount) {
-//         return b.fields.clickCount - a.fields.clickCount;
-//       }
-//       return 0;
-//     });
-//   } catch (err) {
-//     console.error(err);
-//     return null;
-//   }
-// }
+export async function updateClickCount() {
+  client
+    .getEntry<NewsArticleFields>("28msMaEMj4FNPg5V3IxunH")
+    .then((entry) => {
+      entry.fields.clickCount += 1;
+      console.log(entry.fields.clickCount);
+      entry.update();
+    })
+    .catch((error) => console.error(error));
+}
+
+// entry.update().then((updatedEntry) => {
+//   console.log("Successfully updated the entry:", updatedEntry);
+// });

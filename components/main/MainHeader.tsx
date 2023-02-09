@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { withTranslation } from "next-i18next";
 import { getPopularNews } from "@hooks/article";
+import { HelloPo } from "@hooks/article/update-clickCount";
 
 const Header = ({
   title,
@@ -80,6 +81,7 @@ const Header = ({
             >
               {t("common:popular")}
             </button>
+            {/* <button onClick={HelloPo}>hi</button> */}
           </div>
 
           {activeChoice === "latest" ? (
