@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { SearchIcon } from "@components/icons";
-import { Article } from "@components/types";
 import { getContentfulData } from "@hooks/article";
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";

@@ -3,9 +3,10 @@ import { Article } from "@components/types";
 import styled from "@emotion/styled";
 import useFormattedDate from "@hooks/useFormattedDate";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { withTranslation } from "next-i18next";
+import { getPopularNews } from "@hooks/article";
 
 const Header = ({
   title,
@@ -21,6 +22,24 @@ const Header = ({
 
   const [activeChoice, setActiveChoice] = useState("latest"); // Used in the top news header toggle
 
+  function helloClick() {
+    console.log("hello");
+  }
+
+  const [data, setData] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getPopularNews();
+      if (data) {
+        setData(data);
+      } else {
+        setData([]);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <Wrapper>
       <Top>
@@ -32,7 +51,7 @@ const Header = ({
 
       <MainGrid>
         <FeaturedArticles>
-          <div className="featured-article">
+          <div className="featured-article" onClick={helloClick}>
             <TopNewsCard
               card={articles?.[0]}
               priority={true}
@@ -41,8 +60,7 @@ const Header = ({
               height="320px"
             />
           </div>
-
-          <SubGrid>
+          <SubGrid onClick={helloClick}>
             {articles?.slice(1, 3).map((item) => (
               <TopNewsCard key={item.title} card={item} />
             ))}
@@ -63,11 +81,20 @@ const Header = ({
               {t("common:popular")}
             </button>
           </div>
-          <div className="articles">
-            {latest?.slice(0, 8)?.map((item) => (
-              <ArticleCard variant="slim" card={item} key={item.title} />
-            ))}
-          </div>
+
+          {activeChoice === "latest" ? (
+            <div className="articles">
+              {latest?.slice(0, 8)?.map((item) => (
+                <ArticleCard variant="slim" card={item} key={item.title} />
+              ))}
+            </div>
+          ) : (
+            <div className="articles">
+              {data.map((entry) => (
+                <ArticleCard variant="slim" card={entry} key={entry.title} />
+              ))}
+            </div>
+          )}
         </TopNewsAside>
       </MainGrid>
     </Wrapper>
