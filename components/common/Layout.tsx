@@ -74,10 +74,10 @@ const Numbers = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
+  margin: 0 0 2rem 0;
   & div {
     display: flex;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     width: 55%;
     justify-content: space-around;
   }
@@ -90,6 +90,7 @@ const Numbers = styled.div`
   & h4 {
     letter-spacing: 1px;
     color: red;
+    word-spacing: 6px;
   }
 
   & p {
@@ -99,7 +100,7 @@ const Numbers = styled.div`
 
 const Main = styled.main`
   min-height: calc(100vh - 142px);
-  padding: 1rem 0;
+  // padding: 1rem 0;
   background-color: var(--container-color);
   color: var(--text-color);
 `;
