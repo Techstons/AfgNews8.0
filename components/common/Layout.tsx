@@ -40,9 +40,7 @@ const Layout = ({ articles, children }: ILayout) => {
     <>
       <Navbar articles={articles} isDark={isDark} setIsDark={setIsDark} />
       <Numbers>
-        <h4>
-          <span>Share your story,</span> Send your Videos and Photos to us
-        </h4>
+        <h4>Share your story, Send your Videos and Photos to us</h4>
         <div>
           <p>
             Whatsapp: <a>+14313183942</a>
@@ -91,14 +89,11 @@ const Numbers = styled.div`
 
   & h4 {
     letter-spacing: 1px;
+    color: red;
   }
 
   & p {
     font-size: 14px;
-  }
-
-  & span {
-    color: red;
   }
 `;
 
