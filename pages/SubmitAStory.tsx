@@ -116,7 +116,7 @@ const SubmitAStory = () => {
                   </p>
                 </div>
                 <div>
-                  {/* <h2>Al Jazeera’s WhatsApp Number: +974 5080 0207</h2> */}
+                  <h2>AFG News WhatsApp Number: +14313183942</h2>
                 </div>
                 <button>Download WhatsApp</button>
               </LongCard>
@@ -137,7 +137,7 @@ const SubmitAStory = () => {
                   </p>
                 </div>
                 <div>
-                  {/* <h2>Al Jazeera’s Signal Number: +974 5080 0207</h2> */}
+                  <h2>AFG News Signal Number: +15142903146</h2>
                   <button>Download Signal</button>
                 </div>
               </LongCard>

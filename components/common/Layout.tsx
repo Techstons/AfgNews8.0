@@ -39,6 +39,22 @@ const Layout = ({ articles, children }: ILayout) => {
   return (
     <>
       <Navbar articles={articles} isDark={isDark} setIsDark={setIsDark} />
+      <Numbers>
+        <h4>
+          <span>Share your story,</span> Send your Videos and Photos to us
+        </h4>
+        <div>
+          <p>
+            Whatsapp: <a>+14313183942</a>
+          </p>
+          <p>
+            Signal: <a>+15142903146</a>
+          </p>
+          <p>
+            Viber: <a>+18195067489</a>
+          </p>
+        </div>
+      </Numbers>
       <Main className={isDark ? "dark-theme" : "light-theme"}>{children}</Main>
       <AccessibilityScroller
         isVisible={isVisible}
@@ -56,9 +72,39 @@ const Layout = ({ articles, children }: ILayout) => {
 
 export default Layout;
 
+const Numbers = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  & div {
+    display: flex;
+    margin-top: 1rem;
+    width: 55%;
+    justify-content: space-around;
+  }
+
+  & a {
+    border-bottom: red 1px solid;
+    margin: 0 0 0 5px;
+  }
+
+  & h4 {
+    letter-spacing: 1px;
+  }
+
+  & p {
+    font-size: 14px;
+  }
+
+  & span {
+    color: red;
+  }
+`;
+
 const Main = styled.main`
   min-height: calc(100vh - 142px);
-  padding: 2.5rem 0;
+  padding: 1rem 0;
   background-color: var(--container-color);
   color: var(--text-color);
 `;

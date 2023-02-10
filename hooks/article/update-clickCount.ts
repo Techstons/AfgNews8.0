@@ -12,7 +12,7 @@ export async function HelloPo() {
         .getEntries({ "sys.id": "28msMaEMj4FNPg5V3IxunH" })
         .then((entries: any) => {
           entries.items.map((entry: any) => {
-            entry.fields.clickCount = { en: 15 };
+            entry.fields.clickCount = { en: 16 };
             entry.update().then(() => {
               console.log("updated successfully");
               environment

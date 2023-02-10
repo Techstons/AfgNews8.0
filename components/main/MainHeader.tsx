@@ -81,9 +81,8 @@ const Header = ({
             >
               {t("common:popular")}
             </button>
-            {/* <button onClick={HelloPo}>hi</button> */}
+            <button onClick={HelloPo}>hi</button>
           </div>
-
           {activeChoice === "latest" ? (
             <div className="articles">
               {latest?.slice(0, 8)?.map((item) => (
