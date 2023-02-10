@@ -78,7 +78,7 @@ const Numbers = styled.div`
   & div {
     display: flex;
     margin-top: 1.5rem;
-    width: 55%;
+    width: 80%;
     justify-content: space-around;
   }
 
