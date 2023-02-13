@@ -273,10 +273,11 @@ const Footer = ({ isDark }: IFooter) => {
         </div>
         <Divider />
         <BottomFooter>
-          <p>
+          {/* <p>
             {useFormattedDate(new Date(), "footer")} AfgNews -{" "}
             {t("common:rights")}
-          </p>
+          </p> */}
+          <p>2023 AfgNews - {t("common:rights")}</p>
         </BottomFooter>
       </Container>
     </Wrapper>
