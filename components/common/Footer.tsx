@@ -91,13 +91,13 @@ const Footer = ({ isDark }: IFooter) => {
     }
   }
 
-  const mailchimpUrl = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
+  // const mailchimpUrl = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
   // if (!mailchimpUrl) {
   //   console.log("mailchimp url not found");
   //   return <div>loading</div>;
   // }
   const SimpleForm = ({ onSubmitted }: FormProps) => (
-    <MailchimpSubscribe url={mailchimpUrl ? mailchimpUrl : ""} />
+    <MailchimpSubscribe url="https://gmail.us14.list-manage.com/subscribe/post?u=d3d889a533d32490f5ba170ae&amp;id=4e6f5f7c5e&amp;f_id=00ea9ee0f0" />
   );
 
   return (
@@ -118,7 +118,7 @@ const Footer = ({ isDark }: IFooter) => {
                 <p className="description">{t("common:news_letter_title")}</p>
 
                 <MailchimpSubscribe
-                  url={mailchimpUrl ? mailchimpUrl : ""}
+                  url="https://gmail.us14.list-manage.com/subscribe/post?u=d3d889a533d32490f5ba170ae&amp;id=4e6f5f7c5e&amp;f_id=00ea9ee0f0"
                   render={({ subscribe, status, message }) => (
                     // <div>
                     //   <SimpleForm
