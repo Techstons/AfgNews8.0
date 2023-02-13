@@ -92,12 +92,12 @@ const Footer = ({ isDark }: IFooter) => {
   }
 
   const mailchimpUrl = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
-  if (!mailchimpUrl) {
-    console.log("mailchimp url not found");
-    return <div>loading</div>;
-  }
+  // if (!mailchimpUrl) {
+  //   console.log("mailchimp url not found");
+  //   return <div>loading</div>;
+  // }
   const SimpleForm = ({ onSubmitted }: FormProps) => (
-    <MailchimpSubscribe url={mailchimpUrl} />
+    <MailchimpSubscribe url={mailchimpUrl ? mailchimpUrl : ""} />
   );
 
   return (
@@ -118,7 +118,7 @@ const Footer = ({ isDark }: IFooter) => {
                 <p className="description">{t("common:news_letter_title")}</p>
 
                 <MailchimpSubscribe
-                  url={mailchimpUrl}
+                  url={mailchimpUrl ? mailchimpUrl : ""}
                   render={({ subscribe, status, message }) => (
                     // <div>
                     //   <SimpleForm
