@@ -5,29 +5,29 @@ const client = contentful.createClient({
   accessToken: "CFPAT-pwYVRBVu2mUUsNjE263px2fsMfj2J010329GKWppTmY",
 });
 
-export async function HelloPo() {
+export async function updateClickCount(entryId: string) {
   await client.getSpace("46qpezirv3k8").then((space: any) => {
     space.getEnvironment("master").then((environment: any) => {
-      environment
-        .getEntries({ "sys.id": "28msMaEMj4FNPg5V3IxunH" })
-        .then((entries: any) => {
-          entries.items.map((entry: any) => {
-            entry.fields.clickCount = { en: 16 };
-            entry.update().then(() => {
-              console.log("updated successfully");
-              environment
-                .getEntries({ "sys.id": "28msMaEMj4FNPg5V3IxunH" })
-                .then((entries: any) => {
-                  entries.items.map((entry: any) => {
-                    console.log(entry.fields.clickCount);
-                    entry
-                      .publish()
-                      .then(() => console.log("publushed successfully"));
-                  });
-                });
-            });
+      environment.getEntries({ "sys.id": entryId }).then((entries: any) => {
+        entries.items.map((entry: any) => {
+          entry.fields.clickCount = { en: 20 };
+          entry.update().then(() => {
+            console.log("updated successfully");
+            //publishing the changes
+
+            // environment
+            //   .getEntries({ "sys.id": entryId })
+            //   .then((entries: any) => {
+            //     entries.items.map((entry: any) => {
+            //       console.log(entry.fields.clickCount);
+            //       entry
+            //         .publish()
+            //         .then(() => console.log("publushed successfully"));
+            //     });
+            //   });
           });
         });
+      });
     });
   });
 }

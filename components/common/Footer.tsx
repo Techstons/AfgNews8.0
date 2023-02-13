@@ -13,9 +13,17 @@ import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../hooks/store";
 import { updateValue } from "slices/searchSlices";
+import MailchimpSubscribe from "react-mailchimp-subscribe";
 
 interface IFooter {
   isDark: boolean;
+}
+
+interface FormValues {
+  EMAIL: string;
+}
+interface FormProps {
+  onSubmitted: (formData: any) => void;
 }
 
 const Footer = ({ isDark }: IFooter) => {
@@ -83,6 +91,15 @@ const Footer = ({ isDark }: IFooter) => {
     }
   }
 
+  const mailchimpUrl = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
+  if (!mailchimpUrl) {
+    console.log("mailchimp url not found");
+    return;
+  }
+  const SimpleForm = ({ onSubmitted }: FormProps) => (
+    <MailchimpSubscribe url={mailchimpUrl} />
+  );
+
   return (
     <Wrapper isDark={isDark}>
       <Container>
@@ -96,29 +113,86 @@ const Footer = ({ isDark }: IFooter) => {
           >
             <div>
               <h2 className="logo">AFGNEWS</h2>
+
               <div className="newsletter" style={{ margin: "1.7rem 0 3rem 0" }}>
                 <p className="description">{t("common:news_letter_title")}</p>
-                <form
-                  onSubmit={subscribeToNewsLetter}
-                  className="input-box"
-                  aria-label="Subscribe your email to newsletter"
-                >
-                  <input
-                    placeholder={t("common:news_letter_placeholder")}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    style={{
-                      backgroundColor: "white",
-                      border: "black solid 1px",
-                      padding: "0 0 0 1rem",
-                      width: "14rem",
-                    }}
-                  />
-                  <Button className="btn" type="submit">
-                    OK
-                  </Button>
-                </form>
+
+                <MailchimpSubscribe
+                  url={mailchimpUrl}
+                  render={({ subscribe, status, message }) => (
+                    // <div>
+                    //   <SimpleForm
+                    //     onSubmitted={(formData: any) => subscribe(formData)}
+                    //   />
+                    //   {status === "sending" && (
+                    //     <div style={{ color: "blue" }}>sending...</div>
+                    //   )}
+                    //   {status === "error" && (
+                    //     <div
+                    //       style={{ color: "red" }}
+                    //       dangerouslySetInnerHTML={{
+                    //         __html:
+                    //           message instanceof Error
+                    //             ? message.toString()
+                    //             : message,
+                    //       }}
+                    //     />
+                    //   )}
+                    //   {status === "success" && (
+                    //     <div style={{ color: "green" }}>Subscribed !</div>
+                    //   )}
+                    // </div>
+                    <div style={{ display: "block" }}>
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          subscribe({ EMAIL: email });
+                        }}
+                        className="input-box"
+                        aria-label="Subscribe your email to newsletter"
+                      >
+                        <input
+                          placeholder={t("common:news_letter_placeholder")}
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                          style={{
+                            backgroundColor: "white",
+                            border: "black solid 1px",
+                            padding: "0 0 0 1rem",
+                            width: "14rem",
+                          }}
+                        />
+                        <Button className="btn" type="submit">
+                          OK
+                        </Button>
+                      </form>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          margin: "1rem 5rem 0 0",
+                        }}
+                      >
+                        {status === "sending" && <p>sending...</p>}
+                        {status === "error" && (
+                          <div
+                            style={{ color: "red" }}
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                message instanceof Error
+                                  ? message.toString()
+                                  : message,
+                            }}
+                          />
+                        )}
+                        {status === "success" && (
+                          <p style={{ color: "green" }}>Subscribed!</p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                />
               </div>
               <div className="socials">
                 <p>{t("common:follow_us")}: </p>

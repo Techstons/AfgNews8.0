@@ -76,6 +76,8 @@ const Search = () => {
     setShowNoResults(false);
   }, [filteredArray.length]);
 
+  console.log(data);
+
   return (
     <>
       <Head>

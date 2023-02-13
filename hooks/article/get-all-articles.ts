@@ -1,7 +1,9 @@
 import { createClient } from "contentful";
 
+const spaceId = process.env.SPACE_ID;
+
 const client = createClient({
-  space: "46qpezirv3k8",
+  space: spaceId ? spaceId : "",
   accessToken: "IS_9497XlMwHMjP64Riv3m01m5n5vSB4589fPL7f7gI",
 });
 

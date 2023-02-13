@@ -19,6 +19,7 @@ const fetcherApi = async <T>(query: string, variables?: any): Promise<T> => {
   if (errors) {
     throw new Error(errors[0].message ?? errors.message);
   }
+  console.log(data);
   return data;
 };
 
