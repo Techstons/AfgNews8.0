@@ -81,11 +81,11 @@ const Header = ({
             >
               {t("common:popular")}
             </button>
-            <button
+            {/* <button
               onClick={(event) => updateClickCount("1Bwsq3k6e4WXYpIav1Y60i")}
             >
               hi
-            </button>
+            </button> */}
           </div>
           {activeChoice === "latest" ? (
             <div className="articles">
