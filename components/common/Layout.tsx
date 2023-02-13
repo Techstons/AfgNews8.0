@@ -39,7 +39,9 @@ const Layout = ({ articles, children }: ILayout) => {
   return (
     <>
       <Navbar articles={articles} isDark={isDark} setIsDark={setIsDark} />
-      <Numbers>
+      <Numbers
+        style={isDark ? { backgroundColor: "#000000", color: "white" } : {}}
+      >
         <h4>Share your story, Send your Videos and Photos to us</h4>
         <div>
           <p>
@@ -74,7 +76,9 @@ const Numbers = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 0 2rem 0;
+  height: 100%;
+  padding: 2rem 0 2.5rem 0;
+
   & div {
     display: flex;
     margin-top: 1.5rem;
@@ -100,7 +104,7 @@ const Numbers = styled.div`
 
 const Main = styled.main`
   min-height: calc(100vh - 142px);
-  // padding: 1rem 0;
+
   background-color: var(--container-color);
   color: var(--text-color);
 `;

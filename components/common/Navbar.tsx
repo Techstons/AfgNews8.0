@@ -218,7 +218,6 @@ const Root = styled.nav<ToggleProps>`
   font-weight: var(--font-medium);
   color: ${(props) => (props.active ? "var(--nav-color)" : "var(--nav-text)")};
   padding: 0 0.5rem;
-  margin-bottom: 2rem;
 
   &::after {
     // Adds solid line at the bottom of the navbar

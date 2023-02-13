@@ -110,7 +110,7 @@ export default withTranslation()(Header);
 
 const Wrapper = styled.header`
   min-height: calc(100vh - 124px);
-  margin-top: 2.5rem;
+  // margin-top: 2.5rem;
 `;
 
 const Top = styled.div`
