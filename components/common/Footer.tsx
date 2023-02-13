@@ -94,7 +94,7 @@ const Footer = ({ isDark }: IFooter) => {
   const mailchimpUrl = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
   if (!mailchimpUrl) {
     console.log("mailchimp url not found");
-    return;
+    return <div>loading</div>;
   }
   const SimpleForm = ({ onSubmitted }: FormProps) => (
     <MailchimpSubscribe url={mailchimpUrl} />
