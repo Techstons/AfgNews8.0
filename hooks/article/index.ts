@@ -7,3 +7,4 @@ export { getAllLatest } from "./get-all-latest";
 export { getContentfulData } from "./get-all-articles";
 export { getPopularNews } from "./get-popular-news";
 export { updateClickCount } from "./update-clickCount";
+export { getLatestNews } from "./new-latest";

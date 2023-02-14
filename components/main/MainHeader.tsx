@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { withTranslation } from "next-i18next";
 import { getPopularNews } from "@hooks/article";
-import { updateClickCount } from "@hooks/article";
+import { getLatestNews } from "@hooks/article";
 
 const Header = ({
   title,
@@ -27,15 +27,22 @@ const Header = ({
     console.log("hello");
   }
 
-  const [data, setData] = useState<Array<any>>([]);
+  const [popularData, setPopularData] = useState<Array<any>>([]);
+  const [latestData, setLatestData] = useState<Array<any>>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPopularNews();
-      if (data) {
-        setData(data);
+      const popularNews = await getPopularNews();
+      if (popularNews) {
+        setPopularData(popularNews);
       } else {
-        setData([]);
+        setPopularData([]);
+      }
+      const latestNews = await getLatestNews();
+      if (latestNews) {
+        setLatestData(latestNews);
+      } else {
+        setLatestData([]);
       }
     };
     fetchData();
@@ -89,13 +96,16 @@ const Header = ({
           </div>
           {activeChoice === "latest" ? (
             <div className="articles">
-              {latest?.slice(0, 8)?.map((item) => (
+              {/* {latest?.slice(0, 8)?.map((item) => (
                 <ArticleCard variant="slim" card={item} key={item.title} />
+              ))} */}
+              {latestData.map((entry) => (
+                <ArticleCard variant="slim" card={entry} key={entry.title} />
               ))}
             </div>
           ) : (
             <div className="articles">
-              {data.map((entry) => (
+              {popularData.map((entry) => (
                 <ArticleCard variant="slim" card={entry} key={entry.title} />
               ))}
             </div>
