@@ -77,7 +77,7 @@ const Divider = styled.div`
 
 const FeedBack = styled.div`
   background-color: var(--primary-color);
-  height: 15rem;
+  height: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +86,7 @@ const FeedBack = styled.div`
   text-align: center;
 
   & h1 {
-    font-size: 3rem;
+    font-size: 5rem;
     letter-spacing: 1px;
     margin: 2rem 0 2rem 0;
   }

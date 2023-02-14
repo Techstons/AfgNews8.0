@@ -155,7 +155,7 @@ const Header = styled.div`
   text-align: center;
 
   & h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     letter-spacing: 1px;
   }
 `;

@@ -105,7 +105,7 @@ const Button = styled.button`
 
 const GetOurApp = styled.div`
   background-color: var(--primary-color);
-  height: 15rem;
+  height: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,7 +113,7 @@ const GetOurApp = styled.div`
 
   & h1 {
     color: white;
-    font-size: 3rem;
+    font-size: 4rem;
     letter-spacing: 1px;
   }
 `;

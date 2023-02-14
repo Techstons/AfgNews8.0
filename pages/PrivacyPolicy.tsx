@@ -61,7 +61,7 @@ const ContentsContainer = styled.div`
 
 const PageHeader = styled.div`
   background-color: var(--primary-color);
-  height: 15rem;
+  height: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +70,7 @@ const PageHeader = styled.div`
   text-align: center;
 
   & h1 {
-    font-size: 3rem;
+    font-size: 5rem;
     letter-spacing: 1px;
   }
 `;
