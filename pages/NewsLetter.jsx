@@ -114,7 +114,7 @@ const UpperContents = styled.div`
   background-color: var(--primary-color);
   height: 20rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 0 0 2rem;
   & h1 {
