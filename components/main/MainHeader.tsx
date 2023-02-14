@@ -8,6 +8,7 @@ import { useTranslation } from "next-i18next";
 import { withTranslation } from "next-i18next";
 import { getPopularNews } from "@hooks/article";
 import { getLatestNews } from "@hooks/article";
+import { updateClickCount } from "@hooks/article";
 
 const Header = ({
   title,
@@ -22,10 +23,6 @@ const Header = ({
   const { t } = useTranslation();
 
   const [activeChoice, setActiveChoice] = useState("latest"); // Used in the top news header toggle
-
-  function helloClick() {
-    console.log("hello");
-  }
 
   const [popularData, setPopularData] = useState<Array<any>>([]);
   const [latestData, setLatestData] = useState<Array<any>>([]);
@@ -48,6 +45,9 @@ const Header = ({
     fetchData();
   }, []);
 
+  // console.log(articles);
+  // console.log(latestData);
+
   return (
     <Wrapper>
       <Top>
@@ -59,7 +59,7 @@ const Header = ({
 
       <MainGrid>
         <FeaturedArticles>
-          <div className="featured-article" onClick={helloClick}>
+          <div className="featured-article">
             <TopNewsCard
               card={articles?.[0]}
               priority={true}
@@ -68,7 +68,7 @@ const Header = ({
               height="320px"
             />
           </div>
-          <SubGrid onClick={helloClick}>
+          <SubGrid>
             {articles?.slice(1, 3).map((item) => (
               <TopNewsCard key={item.title} card={item} />
             ))}
@@ -88,11 +88,6 @@ const Header = ({
             >
               {t("common:popular")}
             </button>
-            {/* <button
-              onClick={(event) => updateClickCount("1Bwsq3k6e4WXYpIav1Y60i")}
-            >
-              hi
-            </button> */}
           </div>
           {activeChoice === "latest" ? (
             <div className="articles">
@@ -100,7 +95,9 @@ const Header = ({
                 <ArticleCard variant="slim" card={item} key={item.title} />
               ))} */}
               {latestData.map((entry) => (
-                <ArticleCard variant="slim" card={entry} key={entry.title} />
+                <div onClick={(event) => updateClickCount(entry.sys.id)}>
+                  <ArticleCard variant="slim" card={entry} key={entry.title} />
+                </div>
               ))}
             </div>
           ) : (

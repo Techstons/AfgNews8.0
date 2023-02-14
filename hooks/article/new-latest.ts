@@ -13,6 +13,7 @@ interface NewsArticleFields {
   excerpt: string;
   featuredImage: any;
   publishedAt: any;
+  id: any;
 }
 
 const spaceId = process.env.SPACE_ID;
@@ -46,6 +47,7 @@ export async function getLatestNews() {
       },
       sys: {
         publishedAt: entry.sys.updatedAt,
+        id: entry.sys.id,
       },
     }));
   } catch (err) {

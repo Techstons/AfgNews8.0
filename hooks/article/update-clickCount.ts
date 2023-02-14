@@ -1,7 +1,8 @@
 const contentful = require("contentful-management");
+const spaceId = process.env.SPACE_ID;
 
 const client = contentful.createClient({
-  space: "46qpezirv3k8",
+  space: spaceId ? spaceId : "",
   accessToken: "CFPAT-pwYVRBVu2mUUsNjE263px2fsMfj2J010329GKWppTmY",
 });
 
@@ -10,21 +11,21 @@ export async function updateClickCount(entryId: string) {
     space.getEnvironment("master").then((environment: any) => {
       environment.getEntries({ "sys.id": entryId }).then((entries: any) => {
         entries.items.map((entry: any) => {
-          entry.fields.clickCount = { en: 20 };
+          const currentCount = entry.fields.clickCount?.["en"] || 0;
+          entry.fields.clickCount = { en: currentCount + 1 };
           entry.update().then(() => {
             console.log("updated successfully");
             //publishing the changes
-
-            // environment
-            //   .getEntries({ "sys.id": entryId })
-            //   .then((entries: any) => {
-            //     entries.items.map((entry: any) => {
-            //       console.log(entry.fields.clickCount);
-            //       entry
-            //         .publish()
-            //         .then(() => console.log("publushed successfully"));
-            //     });
-            //   });
+            environment
+              .getEntries({ "sys.id": entryId })
+              .then((entries: any) => {
+                entries.items.map((entry: any) => {
+                  // console.log(entry.fields.clickCount);
+                  entry
+                    .publish()
+                    .then(() => console.log("publushed successfully"));
+                });
+              });
           });
         });
       });
