@@ -45,7 +45,7 @@ const Header = ({
     fetchData();
   }, []);
 
-  // console.log(articles);
+  console.log(articles);
   // console.log(latestData);
 
   return (
@@ -95,7 +95,10 @@ const Header = ({
                 <ArticleCard variant="slim" card={item} key={item.title} />
               ))} */}
               {latestData.map((entry) => (
-                <div onClick={(event) => updateClickCount(entry.sys.id)}>
+                <div
+                  onClick={(event) => updateClickCount(entry.sys.id)}
+                  key={entry.title}
+                >
                   <ArticleCard variant="slim" card={entry} key={entry.title} />
                 </div>
               ))}
