@@ -45,8 +45,7 @@ const Header = ({
     fetchData();
   }, []);
 
-  console.log(articles);
-  // console.log(latestData);
+  console.log(articles ? articles[0] : "");
 
   return (
     <Wrapper>
@@ -69,9 +68,16 @@ const Header = ({
             />
           </div>
           <SubGrid>
-            {articles?.slice(1, 3).map((item) => (
-              <TopNewsCard key={item.title} card={item} />
-            ))}
+            {articles
+              ?.sort(
+                (a, b) =>
+                  new Date(b.createdAt).getTime() -
+                  new Date(a.createdAt).getTime()
+              )
+              .slice(1, 3)
+              .map((item) => (
+                <TopNewsCard key={item.title} card={item} />
+              ))}
           </SubGrid>
         </FeaturedArticles>
         <TopNewsAside>

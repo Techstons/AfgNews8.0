@@ -24,6 +24,7 @@ export type Article = {
   slug: string;
   sys: {
     publishedAt: Date;
+    createdAt: Date;
   };
   author: {
     name: string;
