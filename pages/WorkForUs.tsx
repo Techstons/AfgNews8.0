@@ -87,7 +87,7 @@ const WorkForUs = () => {
         <Grid container style={{ padding: "0 0 0 4rem" }}>
           {JobsList.map((job) => {
             return (
-              <Grid item md={4} xs={12}>
+              <Grid item md={4} xs={12} key={job.title}>
                 <WorkBox key={job.title}>
                   <h2>{job.title}</h2>
                   <p>{job.description}</p>
