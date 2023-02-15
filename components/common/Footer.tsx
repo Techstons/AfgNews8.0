@@ -245,7 +245,9 @@ const Footer = ({ isDark }: IFooter) => {
                 </Link>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <FooterLink>{t("common:work_for_us")}</FooterLink>
+                <Link href="/WorkForUs">
+                  <FooterLink>{t("common:work_for_us")}</FooterLink>
+                </Link>
                 <Link href="/Feedback">
                   <FooterLink>{t("common:feedback")}</FooterLink>
                 </Link>
