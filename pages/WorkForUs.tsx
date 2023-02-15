@@ -191,6 +191,10 @@ const WorkForUsHeader = styled.div`
     letter-spacing: 1px;
     margin: 0 0 2rem 0;
   }
+
+  & p {
+    font-size: 1.2rem;
+  }
 `;
 
 const MainContainer = styled.div`

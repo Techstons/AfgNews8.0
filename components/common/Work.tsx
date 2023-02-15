@@ -76,11 +76,12 @@ const Work = ({ workTitle }: { workTitle: string }) => {
               }}
             >
               <Checkbox {...label} required />{" "}
-              <Link href="/PrivacyPolicy">
-                <DivWithHover>
-                  I have agreed to the privacy policy.
-                </DivWithHover>
-              </Link>
+              <div style={{ display: "flex" }}>
+                I have agreed to the{" "}
+                <Link href="/PrivacyPolicy">
+                  <PrivacyPolicy> Privacy Policy.</PrivacyPolicy>
+                </Link>
+              </div>
             </div>
           </Grid>
           <Grid>
@@ -94,12 +95,11 @@ const Work = ({ workTitle }: { workTitle: string }) => {
   );
 };
 
-const DivWithHover = styled.div`
-  border-bottom: 1px solid var(--primary-color);
-  transition: border-color 0.5s ease;
+const PrivacyPolicy = styled.div`
+  margin-left: 3px;
+  color: var(--primary-color);
 
   &:hover {
-    border-color: var(--secondary-color);
     cursor: pointer;
   }
 `;
