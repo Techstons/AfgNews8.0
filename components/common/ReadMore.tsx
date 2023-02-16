@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Button } from "@components/ui";
+import { Fade } from "react-awesome-reveal";
 
 const ReadMore = ({
   jobTitle,
@@ -10,12 +10,14 @@ const ReadMore = ({
   jobDesc: string;
 }) => {
   return (
-    <MainContainer>
-      <h1>{jobTitle}</h1>
-      <DescripContainer>
-        <p>{jobDesc}</p>
-      </DescripContainer>
-    </MainContainer>
+    <Fade duration={1000}>
+      <MainContainer>
+        <h1>{jobTitle}</h1>
+        <DescripContainer>
+          <p>{jobDesc}</p>
+        </DescripContainer>
+      </MainContainer>
+    </Fade>
   );
 };
 
@@ -37,16 +39,16 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-items: space-between;
-  animation: slide-in 0.8s ease-in-out;
+  // animation: slide-in 0.8s ease-in-out;
 
-  @keyframes slide-in {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+  // @keyframes slide-in {
+  //   0% {
+  //     opacity: 0;
+  //   }
+  //   100% {
+  //     opacity: 1;
+  //   }
+  // }
 
   & h1 {
     color: var(--primary-color);
