@@ -9,6 +9,7 @@ import { ChangeEvent } from "react";
 import { updateValue } from "slices/searchSlices";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Grid from "@mui/material/Grid";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -79,55 +80,67 @@ const Search = () => {
   console.log(data);
 
   return (
-    <>
+    <SearchPageContainer>
       <Head>
         <title>AFG | Search</title>
       </Head>
-      <SearchPageContainer>
-        {newSearch ? (
-          <h1>Search Results for {newSearch}</h1>
-        ) : (
-          <h1>All articles</h1>
-        )}
-        <SearchBar>
-          <SearchIcon width="20px" style={{ marginLeft: "1rem" }} />
-          <input
-            aria-label="search bar"
-            style={{ width: "100%", marginLeft: "1rem" }}
-            placeholder="search for news articles"
-            onChange={handleSearch}
-            onKeyDown={pushNewSearch}
-          />
-        </SearchBar>
-        {filteredArray.length > 0 ? (
-          <div>
-            {filteredArray.map((entry) => (
-              <ArticleWrapper key={entry.sys.id}>
-                <PerArticle>
-                  {entry.fields.featuredImage &&
-                    entry.fields.featuredImage.length > 0 && (
-                      <ArticleImage
-                        src={entry.fields.featuredImage[0].original_url}
-                      />
-                    )}
-                  <InfoWrapper>
-                    <ArticleTitle>{entry.fields.title}</ArticleTitle>
-                    <div style={{ display: "flex", color: "black !important" }}>
-                      {entry.fields.category &&
-                        entry.fields.category.fields && (
-                          <p
-                            style={{
-                              borderRight: "2px solid #d32011",
-                              marginRight: "1rem",
-                              padding: "0 5px 0 0",
-                            }}
-                          >
-                            {entry.fields.category.fields.name}
-                          </p>
-                        )}
-                      <p>{moment(entry.sys.createdAt).fromNow()}</p>
-                    </div>
-                  </InfoWrapper>
+      {newSearch ? (
+        <h1>Search Results for {newSearch}</h1>
+      ) : (
+        <h1>All articles</h1>
+      )}
+      <SearchBar className="search-input">
+        <SearchIcon width="20px" style={{ marginLeft: "1rem" }} />
+        <input
+          aria-label="search bar"
+          style={{ width: "100%", marginLeft: "1rem" }}
+          placeholder="search for news articles"
+          onChange={handleSearch}
+          onKeyDown={pushNewSearch}
+        />
+      </SearchBar>
+      {filteredArray.length > 0 ? (
+        <div>
+          {filteredArray.map((entry) => (
+            <ArticleWrapper key={entry.sys.id}>
+              <PerArticle>
+                <Grid container>
+                  <Grid item xs={12} md={6}>
+                    {entry.fields.featuredImage &&
+                      entry.fields.featuredImage.length > 0 && (
+                        <ArticleImage
+                          src={entry.fields.featuredImage[0].original_url}
+                        />
+                      )}
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <InfoWrapper className="info-wrapper">
+                      <ArticleTitle className="search-article-title">
+                        {entry.fields.title}
+                      </ArticleTitle>
+                      <div
+                        style={{
+                          display: "flex",
+                          color: "black !important",
+                          margin: "2rem 0 0 0",
+                        }}
+                      >
+                        {entry.fields.category &&
+                          entry.fields.category.fields && (
+                            <p
+                              style={{
+                                borderRight: "2px solid #d32011",
+                                marginRight: "1rem",
+                                padding: "0 5px 0 0",
+                              }}
+                            >
+                              {entry.fields.category.fields.name}
+                            </p>
+                          )}
+                        <p>{moment(entry.sys.createdAt).fromNow()}</p>
+                      </div>
+                    </InfoWrapper>
+                  </Grid>
                   {/* <p>
                   {entry.fields.body &&
                     entry.fields.body.content &&
@@ -139,17 +152,17 @@ const Search = () => {
                       : 'No content available'}
                 </p> */}
                   {/* accessing contents */}
-                </PerArticle>
-              </ArticleWrapper>
-            ))}
-          </div>
-        ) : showNoResults ? (
-          <NoSearchResults>No search results</NoSearchResults>
-        ) : (
-          <NoSearchResults>Loading...</NoSearchResults>
-        )}
-      </SearchPageContainer>
-    </>
+                </Grid>
+              </PerArticle>
+            </ArticleWrapper>
+          ))}
+        </div>
+      ) : showNoResults ? (
+        <NoSearchResults>No search results</NoSearchResults>
+      ) : (
+        <NoSearchResults>Loading...</NoSearchResults>
+      )}
+    </SearchPageContainer>
   );
 };
 
@@ -158,7 +171,6 @@ const SearchPageContainer = styled.div`
 `;
 const SearchBar = styled.div`
   border: solid black 1px;
-  width: 50rem;
   height: 2rem;
   display: flex;
   justify-contents: center;
@@ -166,7 +178,7 @@ const SearchBar = styled.div`
 `;
 
 const ArticleImage = styled.img`
-  width: 40rem;
+  width: 100%;
   height: 20rem;
   border-radius: 10px;
   object-fit: cover;
@@ -174,7 +186,7 @@ const ArticleImage = styled.img`
 
 const ArticleTitle = styled.h2`
   width: 30rem;
-  font-size: 2.5rem;
+  // font-size: 2.5rem;
 `;
 
 const ArticleWrapper = styled.div`
@@ -189,17 +201,18 @@ const ArticleWrapper = styled.div`
 `;
 
 const PerArticle = styled.div`
-  display: flex;
   justify-content: space-between;
   width: 90%;
   align-items: center;
+  margin-bottom: 10rem;
 `;
 
 const InfoWrapper = styled.div`
   height: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 2rem 0 0 0;
 `;
 
 const NoSearchResults = styled.h1`

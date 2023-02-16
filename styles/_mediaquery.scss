@@ -130,6 +130,19 @@
   .adWithUs-select {
     width: 100%;
   }
+
+  .search-input {
+    width: 80%;
+  }
+
+  //search
+  .info-wrapper {
+    margin: 2rem 0 0 0;
+  }
+  .search-article-title {
+    font-size: 1.5rem;
+    width: 100%;
+  }
 }
 //sm
 @media only screen and (min-width: 600px) {
@@ -224,6 +237,14 @@
   .adWithUs-select {
     width: 74.5%;
   }
+
+  //search
+  .info-wrapper {
+    margin: 0 0 0 2rem;
+  }
+  .search-article-title {
+    font-size: 2.5rem;
+  }
 }
 //md
 @media only screen and (min-width: 900px) {
@@ -293,6 +314,9 @@
   .adWithUs-buttons-container {
     width: 30%;
     margin-top: 3rem;
+  }
+  .search-input {
+    width: 60%;
   }
 }
 //lg

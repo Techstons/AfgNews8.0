@@ -44,15 +44,15 @@ const Layout = ({ articles, children }: ILayout) => {
       >
         <h4>Share your story, Send your Videos and Photos to us</h4>
         <div>
-          <p>
-            Whatsapp: <a>+14313183942</a>
-          </p>
-          <p>
-            Signal: <a>+15142903146</a>
-          </p>
-          <p>
-            Viber: <a>+18195067489</a>
-          </p>
+          <section>
+            <p>Whatsapp:</p> <a>+14313183942</a>
+          </section>
+          <section>
+            <p>Signal:</p> <a>+15142903146</a>
+          </section>
+          <section>
+            <p>Viber:</p> <a>+18195067489</a>
+          </section>
         </div>
       </Numbers>
       <Main className={isDark ? "dark-theme" : "light-theme"}>{children}</Main>
@@ -77,20 +77,20 @@ const Numbers = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
-  padding: 2rem 0 2.5rem 0;
+  padding: 2rem 1rem 2.5rem 1rem;
   & div {
     display: flex;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     width: 80%;
     justify-content: space-around;
     height: 3rem;
   }
 
   & a {
-    border-bottom: red 1px solid;
+    border: var(--primary-color) 1px solid;
     margin: 0 0 0 5px;
-    background-color: var(--primary-color);
-    color: white;
+    // background-color: var(--primary-color);
+    // color: white;
     padding: 0.5rem;
     border-radius: 5px;
   }
@@ -103,6 +103,25 @@ const Numbers = styled.div`
 
   & p {
     font-size: 14px;
+  }
+
+  & section {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 600px) {
+    p {
+      font-size: 12px;
+    }
+    a {
+      width: 6rem;
+      font-size: 12px;
+    }
+    & section {
+      display: flex;
+      flex-direction: column;
+    }
   }
 `;
 

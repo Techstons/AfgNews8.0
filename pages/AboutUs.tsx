@@ -224,10 +224,10 @@ const AboutUs = () => {
             }}
           >
             <Link href="/WorkForUs">
-              <button>work with us</button>
+              <button>Work With Us</button>
             </Link>
             <Link href="/AdvertiseWithUs">
-              <button>advertise with us</button>
+              <button>Advertise With Us</button>
             </Link>
           </div>
         </div>
@@ -320,7 +320,7 @@ const WeAreContainer = styled.div`
   }
   & button {
     background-color: rgb(248, 191, 30);
-    width: 8rem;
+    width: 9rem;
     height: 2rem;
     border-radius: 5px;
   }
