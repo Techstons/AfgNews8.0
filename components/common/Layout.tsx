@@ -78,17 +78,21 @@ const Numbers = styled.div`
   align-items: center;
   height: 100%;
   padding: 2rem 0 2.5rem 0;
-
   & div {
     display: flex;
     margin-top: 1.5rem;
     width: 80%;
     justify-content: space-around;
+    height: 3rem;
   }
 
   & a {
     border-bottom: red 1px solid;
     margin: 0 0 0 5px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
   }
 
   & h4 {
