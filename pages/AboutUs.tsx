@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Head from "next/head";
 import Grid from "@mui/material/Grid";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Link from "next/link";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -215,9 +216,19 @@ const AboutUs = () => {
           <h1 className="about-us-we-are">
             We are a global organization serving a global audience
           </h1>
-          <div style={{ display: "flex" }}>
-            <button>work with us</button>
-            <button style={{ margin: "0 0 0 4rem" }}>advertise with us</button>
+          <div
+            style={{
+              display: "flex",
+              width: "70%",
+              justifyContent: "space-between",
+            }}
+          >
+            <Link href="/WorkForUs">
+              <button>work with us</button>
+            </Link>
+            <Link href="/AdvertiseWithUs">
+              <button>advertise with us</button>
+            </Link>
           </div>
         </div>
         <img
