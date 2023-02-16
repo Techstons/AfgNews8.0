@@ -43,7 +43,7 @@ const NavCurrencyWidget = ({ isDark }: INavCurrencyWidget) => {
       gradientColor={isDark ? [0, 0, 0] : [255, 255, 255]}
       gradientWidth={120}
       speed={40}
-      style={{marginRight: "5px"}}
+      style={{ marginRight: "5px" }}
     >
       {renderStockCards()}
     </Marquee>
@@ -57,10 +57,6 @@ const CurrencyItem = styled.div<ICurrencyItem>`
 
   & > * {
     margin-left: 0.25rem;
-  }
-
-  @media only screen and (min-width: 640px) {
-    margin-left: 7rem;
   }
 
   .cp {
