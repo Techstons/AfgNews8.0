@@ -53,7 +53,7 @@ const NavCurrencyWidget = ({ isDark }: INavCurrencyWidget) => {
 export default NavCurrencyWidget;
 
 const CurrencyItem = styled.div<ICurrencyItem>`
-  margin-left: 1rem;
+  margin-left: 3rem;
 
   & > * {
     margin-left: 0.25rem;

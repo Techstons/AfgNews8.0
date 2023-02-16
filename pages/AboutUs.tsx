@@ -219,9 +219,9 @@ const AboutUs = () => {
           <div
             style={{
               display: "flex",
-              width: "70%",
               justifyContent: "space-between",
             }}
+            className="work-for-us-buttons-container"
           >
             <Link href="/WorkForUs">
               <button>Work With Us</button>

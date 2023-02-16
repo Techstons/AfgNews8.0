@@ -93,7 +93,7 @@
     font-size: 4rem;
   }
   .advertise {
-    height: 40%;
+    height: 55%;
   }
   .perInfo-container {
     display: block;
@@ -131,11 +131,12 @@
     width: 100%;
   }
 
+  //search
+
   .search-input {
-    width: 80%;
+    width: 65%;
   }
 
-  //search
   .info-wrapper {
     margin: 2rem 0 0 0;
   }
@@ -143,6 +144,15 @@
     font-size: 1.5rem;
     width: 100%;
   }
+
+  //work for us
+  .work-for-us-buttons-container {
+    width: 100%;
+  }
+
+  // .jobs-container {
+  //   padding: 0 0 0 0.7rem;
+  // }
 }
 //sm
 @media only screen and (min-width: 600px) {
@@ -204,7 +214,7 @@
     width: 90%;
   }
   .story-longcard-container {
-    width: 60%;
+    width: 90%;
   }
   .story-largecard {
     width: 59%;
@@ -245,6 +255,16 @@
   .search-article-title {
     font-size: 2.5rem;
   }
+
+  //work for us
+
+  .work-for-us-buttons-container {
+    width: 70%;
+  }
+
+  // .jobs-container {
+  //   padding: 0 0 0 4rem;
+  // }
 }
 //md
 @media only screen and (min-width: 900px) {

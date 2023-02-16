@@ -31,7 +31,7 @@ const MobileApp = () => {
             <Button>
               <Image
                 alt="playstore image"
-                src="hero-image.fill.size_1200x1200.v1623363034-removebg-preview.png"
+                src="https://res.cloudinary.com/dbpar1qf3/image/upload/v1676542273/hero-image.fill.size_1200x1200.v1623363034-removebg-preview_y0ao5k.png"
               />
             </Button>
             <h2 className="label-button">Google Play</h2>
@@ -40,7 +40,7 @@ const MobileApp = () => {
             <Button>
               <Image
                 alt="appstore image"
-                src="app-store-og-removebg-preview.png"
+                src="https://res.cloudinary.com/dbpar1qf3/image/upload/v1676542275/app-store-og-removebg-preview_sxrff1.png"
               />
             </Button>
             <h2 className="label-button">App Store</h2>

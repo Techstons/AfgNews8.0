@@ -29,13 +29,13 @@ const Header = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      const popularNews = await getPopularNews();
+      const popularNews = await getPopularNews(router.locale);
       if (popularNews) {
         setPopularData(popularNews);
       } else {
         setPopularData([]);
       }
-      const latestNews = await getLatestNews();
+      const latestNews = await getLatestNews(router.locale);
       if (latestNews) {
         setLatestData(latestNews);
       } else {

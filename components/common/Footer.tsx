@@ -205,6 +205,7 @@ const Footer = ({ isDark }: IFooter) => {
                       key={index}
                       target="_blank"
                       rel="noreferrer"
+                      style={{ marginLeft: "0.4rem" }}
                     >
                       <item.icon size={18} />
                     </SocialCircle>

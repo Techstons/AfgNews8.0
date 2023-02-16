@@ -22,11 +22,12 @@ const client = createClient({
   accessToken: "IS_9497XlMwHMjP64Riv3m01m5n5vSB4589fPL7f7gI",
 });
 
-export async function getPopularNews() {
+export async function getPopularNews(locale: any) {
   try {
     const entries = await client.getEntries<NewsArticleFields>({
       content_type: "article",
       limit: 8,
+      locale: locale,
     });
     return entries.items
       .sort((a, b) => {

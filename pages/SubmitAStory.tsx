@@ -96,10 +96,10 @@ const SubmitAStory = () => {
       >
         <LongCardContainer>
           <Grid container>
-            <Grid item xs={12} md={6} className="center-grid">
+            <Grid item xs={12} md={4} className="center-grid">
               <LongCard className="story-longcard-container">
                 <h1>WhatsApp</h1>
-                <div>
+                <div className="card-info-container">
                   <p>
                     WhatsApp is a free encrypted messaging app, which means only
                     the sender and receiver can read the messages. The app
@@ -121,10 +121,10 @@ const SubmitAStory = () => {
                 <button>Download WhatsApp</button>
               </LongCard>
             </Grid>
-            <Grid item xs={12} md={6} className="center-grid">
+            <Grid item xs={12} md={4} className="center-grid">
               <LongCard className="story-longcard-container">
                 <h1>Signal</h1>
-                <div style={{ height: "22rem" }}>
+                <div className="card-info-container">
                   <p>
                     Signal is a free messaging app similar to WhatsApp, but it
                     stores less information about its users. Signal only
@@ -138,8 +138,30 @@ const SubmitAStory = () => {
                 </div>
                 <div>
                   <h2>AFG News Signal Number: +15142903146</h2>
-                  <button>Download Signal</button>
                 </div>
+                <button>Download Signal</button>
+              </LongCard>
+            </Grid>
+            <Grid item xs={12} md={4} className="center-grid">
+              <LongCard className="story-longcard-container">
+                <h1>Viber</h1>
+                <div className="card-info-container">
+                  <p>
+                    Viber is a free messaging and calling app that allows users
+                    to send text messages, voice messages, photos, videos, and
+                    make voice and video calls to other Viber users over the
+                    internet. It also has a range of features including group
+                    chats, the ability to send stickers and emojis, and the
+                    option to create public accounts for businesses or
+                    individuals. Viber can be used on multiple devices,
+                    including smartphones, tablets, and computers, and supports
+                    both iOS and Android operating systems.
+                  </p>
+                </div>
+                <div>
+                  <h2>AFG News Viber Number: +18195067489</h2>
+                </div>
+                <button>Download Viber</button>
               </LongCard>
             </Grid>
           </Grid>
@@ -216,7 +238,6 @@ const LongCardContainer = styled.div`
 
 const LongCard = styled.div`
   background-color: #ffffff;
-  width: 24rem;
   height: 31rem;
   padding: 1.5rem 1rem 1.5rem 1rem;
   display: flex;
@@ -236,8 +257,12 @@ const LongCard = styled.div`
     }
   }
 
-  & div {
-    margin: 3rem 0 0 0;
+  // & div {
+  //   margin: 3rem 0 0 0;
+  //   background-color: lightblue;
+  // }
+  .card-info-container {
+    min-height: 15rem;
   }
 
   & h1 {
