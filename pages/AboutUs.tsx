@@ -215,7 +215,10 @@ const AboutUs = () => {
           <h1 className="about-us-we-are">
             We are a global organization serving a global audience
           </h1>
-          <button>work with us</button>
+          <div style={{ display: "flex" }}>
+            <button>work with us</button>
+            <button style={{ margin: "0 0 0 4rem" }}>advertise with us</button>
+          </div>
         </div>
         <img
           alt="globe image"
