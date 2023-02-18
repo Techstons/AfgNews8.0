@@ -20,6 +20,7 @@ const ContactUs = () => {
   const [placeHolder, setPlaceHolder] = useState("Genaral Inquiries");
   const [clicks, setClicks] = useState(0);
   const [sendButton, setSendButton] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
   const router = useRouter();
 
   const handleClick = () => {
@@ -36,6 +37,7 @@ const ContactUs = () => {
   function returnInquire(inquire: string) {
     setPlaceHolder(inquire);
     setIsOpen(!isOpen);
+    setSelectedOption(inquire);
   }
 
   const formRef = useRef<HTMLFormElement>(null);
@@ -86,27 +88,20 @@ const ContactUs = () => {
               <label htmlFor="select">To</label>
               <Aster>*</Aster>
             </div>
-            <button
-              type="button"
+            <select
               id="select"
-              onClick={() => {
-                if (!isOpen) setIsOpen(true);
-                else setIsOpen(false);
-              }}
+              onChange={(event) => returnInquire(event.target.value)}
+              name="user_to"
             >
-              {placeHolder}
-              <div className="down-arrow"></div>
-            </button>
-
-            {isOpen && (
-              <ul>
-                {inquiries.map((inquire) => (
-                  <li key={inquire} onClick={() => returnInquire(inquire)}>
-                    {inquire}
-                  </li>
-                ))}
-              </ul>
-            )}
+              <option value={placeHolder} disabled selected>
+                {placeHolder}
+              </option>
+              {inquiries.map((inquire) => (
+                <option key={inquire} value={inquire}>
+                  {inquire}
+                </option>
+              ))}
+            </select>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
@@ -205,7 +200,7 @@ const Form = styled.form`
     position: relative;
   }
 
-  & button {
+  & select {
     width: 100%;
     background-color: #e3e3e3;
     border: 1px solid #d1d1d1;
@@ -222,7 +217,7 @@ const Form = styled.form`
       cursor: pointer;
     }
   }
-  & ul {
+  & option {
     position: absolute;
     width: 100%;
     list-style: none;

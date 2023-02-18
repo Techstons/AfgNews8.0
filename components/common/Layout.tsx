@@ -39,22 +39,7 @@ const Layout = ({ articles, children }: ILayout) => {
   return (
     <>
       <Navbar articles={articles} isDark={isDark} setIsDark={setIsDark} />
-      <Numbers
-        style={isDark ? { backgroundColor: "#000000", color: "white" } : {}}
-      >
-        <h4>Share your story, Send your Videos and Photos to us</h4>
-        <div>
-          <section>
-            <p>Whatsapp:</p> <a>+14313183942</a>
-          </section>
-          <section>
-            <p>Signal:</p> <a>+15142903146</a>
-          </section>
-          <section>
-            <p>Viber:</p> <a>+18195067489</a>
-          </section>
-        </div>
-      </Numbers>
+
       <Main className={isDark ? "dark-theme" : "light-theme"}>{children}</Main>
       <AccessibilityScroller
         isVisible={isVisible}
@@ -71,59 +56,6 @@ const Layout = ({ articles, children }: ILayout) => {
 };
 
 export default Layout;
-
-const Numbers = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  padding: 2rem 1rem 2.5rem 1rem;
-  & div {
-    display: flex;
-    margin-top: 2rem;
-    width: 80%;
-    justify-content: space-around;
-    height: 3rem;
-  }
-
-  & a {
-    border: var(--primary-color) 1px solid;
-    margin: 0 0 0 5px;
-    // background-color: var(--primary-color);
-    // color: white;
-    padding: 0.5rem;
-    border-radius: 5px;
-  }
-
-  & h4 {
-    letter-spacing: 1px;
-    color: red;
-    word-spacing: 6px;
-  }
-
-  & p {
-    font-size: 14px;
-  }
-
-  & section {
-    display: flex;
-    align-items: center;
-  }
-
-  @media (max-width: 600px) {
-    p {
-      font-size: 12px;
-    }
-    a {
-      width: 6rem;
-      font-size: 12px;
-    }
-    & section {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-`;
 
 const Main = styled.main`
   min-height: calc(100vh - 142px);

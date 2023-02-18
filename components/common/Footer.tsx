@@ -214,6 +214,26 @@ const Footer = ({ isDark }: IFooter) => {
               </div>
             </div>
           </FooterContainer>
+          <FooterContainer>
+            <Numbers
+              style={
+                isDark ? { backgroundColor: "#000000", color: "white" } : {}
+              }
+            >
+              <h4>Share your story, Send your Videos and Photos to us</h4>
+              <div>
+                <section>
+                  <p>Whatsapp:</p> <a>+14313183942</a>
+                </section>
+                <section>
+                  <p>Signal:</p> <a>+15142903146</a>
+                </section>
+                <section>
+                  <p>Viber:</p> <a>+18195067489</a>
+                </section>
+              </div>
+            </Numbers>
+          </FooterContainer>
           <FooterContainer
             style={{
               display: "flex",
@@ -288,6 +308,58 @@ const Footer = ({ isDark }: IFooter) => {
 };
 
 export default Footer;
+
+const Numbers = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem 2.5rem 1rem;
+  // text-align: center;
+
+  & div {
+    display: flex;
+    margin-top: 2rem;
+    width: 80%;
+    justify-content: space-around;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  & a {
+    // border: var(--primary-color) 1px solid;
+    // margin: 0 0 0 5px;
+    // background-color: var(--primary-color);
+    // color: white;
+    padding: 0.5rem;
+    // border-radius: 5px;
+    font-size: 14px;
+  }
+
+  & h4 {
+    letter-spacing: 1px;
+    color: red;
+    word-spacing: 6px;
+  }
+
+  & p {
+    font-size: 15px;
+    // margin: 0 0 0.5rem 0;
+  }
+
+  & section {
+    display: flex;
+    // flex-direction: column;
+    margin: 1rem 0 0 0;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 600px) {
+    div {
+      flex-direction: column;
+    }
+  }
+`;
 
 const Wrapper = styled.footer<IFooter>`
   background-color: ${(props) =>
