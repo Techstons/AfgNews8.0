@@ -369,7 +369,7 @@ const FooterContainer = styled.div`
   & .footer-links {
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     // margin: 0 0 1.8rem 0;
     width: 23.5rem;
     justify-content: space-between;
@@ -393,6 +393,7 @@ const FooterContainer = styled.div`
     border-radius: 0.25rem;
     max-width: 380px;
     margin-bottom: 2px;
+    max-height: 2.2rem;
     & input {
       color: white;
       outline: none;
