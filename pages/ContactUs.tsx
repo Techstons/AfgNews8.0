@@ -24,7 +24,10 @@ const ContactUs = () => {
 
   const inquiries = [
     "General Inquiries",
-    "Media and PR",
+    "Share your story",
+    "Advertising",
+    "Media",
+    // "Media and PR",
     "Distribution",
     "Content Sales",
     "Advertising",

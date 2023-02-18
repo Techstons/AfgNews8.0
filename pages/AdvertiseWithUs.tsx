@@ -328,6 +328,7 @@ const HeaderContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0 0 4rem 0;
 `;
 
 const MainContainer = styled.div`
