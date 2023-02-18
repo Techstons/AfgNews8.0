@@ -66,8 +66,7 @@ const SubmitAStory = () => {
                     <Link href="/ContactUs" className="submit-a-story">
                       here
                     </Link>
-                    . In the dropdown menu, be sure to choose General -
-                    Editorial
+                    . In the dropdown menu, be sure to choose Share your story
                   </p>
                 </div>
                 <div>

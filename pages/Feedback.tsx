@@ -93,6 +93,7 @@ const FeedBack = styled.div`
 
   & p {
     letter-spacing: 1px;
+    font-size: 1.2rem;
   }
 `;
 

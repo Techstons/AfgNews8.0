@@ -85,15 +85,13 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   ];
 
   const renderSocialIcons = () =>
-    SocialLinks.filter((social) => social.name !== "Youtube").map((item) => {
+    SocialLinks.map((item) => {
       return (
         <a key={item.name} href={item.url} target="_blank" rel="noreferrer">
-          <item.icon size={16} />
-          {/* 14 is the orifinal size */}
+          {<item.icon size={16} />}
         </a>
       );
     });
-
   const renderSocialIconsMobile = () =>
     SocialLinks.filter((social) => social.name !== "Youtube").map((item) => {
       return (

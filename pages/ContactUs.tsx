@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import emailjs from "@emailjs/browser";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -27,16 +28,37 @@ const ContactUs = () => {
     "Share your story",
     "Advertising",
     "Media",
-    // "Media and PR",
-    "Distribution",
-    "Content Sales",
-    "Advertising",
   ];
 
   function returnInquire(inquire: string) {
     setPlaceHolder(inquire);
     setIsOpen(!isOpen);
   }
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const sendEmail = (e: any) => {
+    e.preventDefault();
+
+    if (formRef.current) {
+      emailjs
+        .sendForm(
+          "service_5nm1wq7",
+          "template_dat8zq1",
+          formRef.current,
+          "tzprFJGk0P78bm9Qo"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            window.alert("Sent");
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+    }
+  };
 
   return (
     <ContactUsMainContainer>
@@ -53,7 +75,7 @@ const ContactUs = () => {
         <div className="small-divider"></div>
         <h1>Contact Us</h1>
         <p>For Enquiries, please fill out the form below:</p>
-        <Form>
+        <Form ref={formRef} onSubmit={sendEmail}>
           <div className="container">
             <div className="label-container">
               <label htmlFor="select">To</label>
@@ -86,28 +108,28 @@ const ContactUs = () => {
               <label htmlFor="name">Name</label>
               <Aster>*</Aster>
             </div>
-            <Input id="name" required />
+            <Input id="name" required name="user_name" />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
               <label htmlFor="email">Email</label>
               <Aster>*</Aster>
             </div>
-            <Input id="email" required />
+            <Input id="email" required name="user_email" />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
               <label htmlFor="subject">Subject</label>
               <Aster>*</Aster>
             </div>
-            <Input id="subject" required />
+            <Input id="subject" required name="user_subject" />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
               <label htmlFor="message">Message</label>
               <Aster>*</Aster>
             </div>
-            <Message id="message" required />
+            <Message id="message" required name="message" />
           </div>
           <button
             style={{

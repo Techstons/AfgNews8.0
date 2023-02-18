@@ -81,7 +81,7 @@ const WorkForUs = () => {
       </Head>
       <WorkForUsHeader>
         <h1>Work For Us</h1>
-        <p>Join our team and help to shape the future</p>
+        <p>Join our team and help shape the future</p>
       </WorkForUsHeader>
       {!openWork ? (
         <Grid container className="jobs-container">
