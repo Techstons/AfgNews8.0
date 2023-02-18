@@ -18,6 +18,7 @@ const ContactUs = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [placeHolder, setPlaceHolder] = useState("Genaral Inquiries");
   const [clicks, setClicks] = useState(0);
+  const [sendButton, setSendButton] = useState(false);
 
   const handleClick = () => {
     setClicks(clicks + 1);
@@ -51,7 +52,8 @@ const ContactUs = () => {
         .then(
           (result) => {
             console.log(result.text);
-            window.alert("Sent");
+            console.log(sendButton);
+            setSendButton(true);
           },
           (error) => {
             console.log(error.text);
@@ -132,16 +134,29 @@ const ContactUs = () => {
             <Message id="message" required name="message" />
           </div>
           <button
-            style={{
-              backgroundColor: "#fba931",
-              color: "black",
-              height: "3rem",
-              width: "10rem",
-              margin: " 2rem 0 0 0",
-            }}
+            style={
+              !sendButton
+                ? {
+                    backgroundColor: "#fba931",
+                    color: "black",
+                    height: "3rem",
+                    width: "10rem",
+                    margin: " 2rem 0 0 0",
+                  }
+                : {
+                    backgroundColor: "#22bb33",
+                    color: "black",
+                    height: "3rem",
+                    width: "10rem",
+                    margin: " 2rem 0 0 0",
+                    display: "flex",
+                    justifyContent: "center",
+                    border: "1px solid #fba931 ",
+                  }
+            }
             type="submit"
           >
-            Send Message
+            {!sendButton ? " Send Message" : "Sent"}
           </button>
         </Form>
       </FormContainer>
@@ -156,6 +171,8 @@ const Message = styled.textarea`
   height: 10rem;
   border: 2px solid #d1d1d1;
   padding: 1rem 0 0 1rem;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
   &:hover {
     background-color: #d1d1d1;
     cursor: type;
