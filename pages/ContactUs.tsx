@@ -3,8 +3,9 @@ import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import styled from "@emotion/styled";
 import Head from "next/head";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import emailjs from "@emailjs/browser";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -19,6 +20,7 @@ const ContactUs = () => {
   const [placeHolder, setPlaceHolder] = useState("Genaral Inquiries");
   const [clicks, setClicks] = useState(0);
   const [sendButton, setSendButton] = useState(false);
+  const router = useRouter();
 
   const handleClick = () => {
     setClicks(clicks + 1);
@@ -54,6 +56,7 @@ const ContactUs = () => {
             console.log(result.text);
             console.log(sendButton);
             setSendButton(true);
+            router.push("/Success");
           },
           (error) => {
             console.log(error.text);
@@ -134,26 +137,13 @@ const ContactUs = () => {
             <Message id="message" required name="message" />
           </div>
           <button
-            style={
-              !sendButton
-                ? {
-                    backgroundColor: "#fba931",
-                    color: "black",
-                    height: "3rem",
-                    width: "10rem",
-                    margin: " 2rem 0 0 0",
-                  }
-                : {
-                    backgroundColor: "#22bb33",
-                    color: "black",
-                    height: "3rem",
-                    width: "10rem",
-                    margin: " 2rem 0 0 0",
-                    display: "flex",
-                    justifyContent: "center",
-                    border: "1px solid #fba931 ",
-                  }
-            }
+            style={{
+              backgroundColor: "#fba931",
+              color: "black",
+              height: "3rem",
+              width: "10rem",
+              margin: " 2rem 0 0 0",
+            }}
             type="submit"
           >
             {!sendButton ? " Send Message" : "Sent"}
