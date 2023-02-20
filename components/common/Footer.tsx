@@ -220,7 +220,9 @@ const Footer = ({ isDark }: IFooter) => {
                 isDark ? { backgroundColor: "#000000", color: "white" } : {}
               }
             >
-              <h4>Share your story, Send your Videos and Photos to us</h4>
+              <section className="header-container">
+                <h4>Share your story, Send your Videos and Photos to us</h4>
+              </section>
               <div>
                 <section>
                   <p>Whatsapp:</p> <a>+14313183942</a>
@@ -309,37 +311,50 @@ const Footer = ({ isDark }: IFooter) => {
 
 export default Footer;
 
+const NumbersContainer = styled.div`
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  // background-color: gray;
+  padding: 0;
+  margin: 0;
+`;
+
 const Numbers = styled.div`
   display: flex;
+  padding: 0.5rem 0 0 3rem;
+  margin: 0;
   flex-direction: column;
   align-items: center;
   height: 100%;
-  padding: 0 1rem 2.5rem 1rem;
-  // text-align: center;
+
+  & .header-container {
+    display: flex;
+    justify-content: center;
+    // background-color: gray;
+    padding: 0 !important;
+  }
 
   & div {
     display: flex;
     margin-top: 2rem;
-    width: 80%;
+    width: 70%;
     justify-content: space-around;
-    height: 100%;
+    height: 60%;
     flex-direction: column;
   }
 
   & a {
-    // border: var(--primary-color) 1px solid;
-    // margin: 0 0 0 5px;
-    // background-color: var(--primary-color);
-    // color: white;
     padding: 0.5rem;
-    // border-radius: 5px;
     font-size: 14px;
+    border-bottom: 1px solid red;
   }
 
   & h4 {
     letter-spacing: 1px;
     color: red;
     word-spacing: 6px;
+    width: 70%;
   }
 
   & p {
@@ -350,8 +365,10 @@ const Numbers = styled.div`
   & section {
     display: flex;
     // flex-direction: column;
-    margin: 1rem 0 0 0;
+    // margin: 1rem 0 0 0;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 6rem 0 0;
   }
 
   @media only screen and (max-width: 600px) {
@@ -428,7 +445,7 @@ const FooterContainer = styled.div`
 
   & .socials {
     display: flex;
-    gap: 1rem;
+    gap: 0.6rem;
     align-items: center;
     font-weight: var(--font-base);
     text-transform: uppercase;
