@@ -162,7 +162,7 @@ const Header = styled.div`
 
 const TermsAndConditionsMainContainer = styled.div`
   height: 100%;
-  margin: 0 0 5rem 0;
+  padding: 2.5rem 0 10rem 0;
 `;
 
 export default TermsAndContidions;

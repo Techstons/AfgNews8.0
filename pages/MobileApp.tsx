@@ -40,7 +40,7 @@ const MobileApp = () => {
             <Button>
               <Image
                 alt="appstore image"
-                src="https://res.cloudinary.com/dbpar1qf3/image/upload/v1676542275/app-store-og-removebg-preview_sxrff1.png"
+                src="app-store-complete-transparent.png"
               />
             </Button>
             <h2 className="label-button">App Store</h2>
@@ -119,7 +119,8 @@ const GetOurApp = styled.div`
 `;
 
 const MobileAppMainContainer = styled.div`
-  height: 120vh;
+  height: 100%;
+  padding: 2.5rem 0 0 0;
 
   & h2 {
     width: 10rem;

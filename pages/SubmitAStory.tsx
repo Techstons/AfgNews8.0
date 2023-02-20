@@ -4,6 +4,8 @@ import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Grid from "@mui/material/Grid";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import type { RootState } from "../hooks/store";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -14,6 +16,8 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const SubmitAStory = () => {
+  const isDarkMode = useSelector((state: RootState) => state.search.isDarkMode);
+
   return (
     <SubmitAStoryMainContainer className="story-main">
       <Head>
@@ -21,7 +25,7 @@ const SubmitAStory = () => {
       </Head>
       <Header className="story-header">
         <div className="contents-container">
-          <div style={{ margin: "2rem 0 0 0" }}>
+          <div>
             <h1 className="submit-a-story-header">
               How to share a story or a tip with us
             </h1>
@@ -58,8 +62,11 @@ const SubmitAStory = () => {
               </SmallCard>
             </Grid> */}
             <Grid item xs={12}>
-              <SmallCard className="smallcard-story">
-                <h1>Email:</h1>
+              <SmallCard
+                className="smallcard-story"
+                style={{ backgroundColor: isDarkMode ? "gray" : "#ffffff" }}
+              >
+                <h1 style={{ color: isDarkMode ? "black" : "" }}>Email:</h1>
                 <div>
                   <p>
                     Send us your tip{" "}
@@ -90,13 +97,18 @@ const SubmitAStory = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          margin: "2rem  0 2rem 0",
+          // margin: "2rem  0 2rem 0",
         }}
       >
         <LongCardContainer>
           <Grid container>
             <Grid item xs={12} md={4} className="center-grid">
-              <LongCard className="story-longcard-container">
+              <LongCard
+                className="story-longcard-container"
+                style={{
+                  backgroundColor: isDarkMode ? "gray" : "#ffffff",
+                }}
+              >
                 <h1>WhatsApp</h1>
                 <div className="card-info-container">
                   <p>
@@ -121,7 +133,12 @@ const SubmitAStory = () => {
               </LongCard>
             </Grid>
             <Grid item xs={12} md={4} className="center-grid">
-              <LongCard className="story-longcard-container">
+              <LongCard
+                className="story-longcard-container"
+                style={{
+                  backgroundColor: isDarkMode ? "gray" : "#ffffff",
+                }}
+              >
                 <h1>Signal</h1>
                 <div className="card-info-container">
                   <p>
@@ -141,8 +158,13 @@ const SubmitAStory = () => {
                 <button>Download Signal</button>
               </LongCard>
             </Grid>
-            <Grid item xs={12} md={4} className="center-grid">
-              <LongCard className="story-longcard-container">
+            <Grid item xs={11} md={4} className="center-grid">
+              <LongCard
+                className="story-longcard-container"
+                style={{
+                  backgroundColor: isDarkMode ? "gray" : "#ffffff",
+                }}
+              >
                 <h1>Viber</h1>
                 <div className="card-info-container">
                   <p>
@@ -197,7 +219,7 @@ const ThingsToConsider = styled.div`
 `;
 
 const ThingsToConsiderContainer = styled.div`
-  background-color: #e8e8e8;
+  // background-color: #e8e8e8;
   display: flex;
   justify-content: center;
 `;
@@ -236,13 +258,13 @@ const LongCardContainer = styled.div`
 `;
 
 const LongCard = styled.div`
-  background-color: #ffffff;
   height: 31rem;
   padding: 1.5rem 1rem 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 0 0 2rem 0;
+  width: 90%;
 
   & button {
     border: solid 1px black;
@@ -284,7 +306,6 @@ const SmallCardContainer = styled.div`
 `;
 
 const SmallCard = styled.div`
-  background-color: #ffffff;
   height: 17rem;
   padding: 1.5rem 1rem 0 1rem;
 
@@ -298,7 +319,6 @@ const SmallCard = styled.div`
 
   & h2 {
     font-size: 14px;
-    color: #98938b;
   }
 
   & p {
@@ -309,12 +329,6 @@ const SmallCard = styled.div`
     color: blue;
     text-decoration: underline;
   }
-`;
-
-const Logo = styled.div`
-  font-size: 2rem;
-  text-align: center;
-  margin: 2rem 0 0 0;
 `;
 
 const Header = styled.div`
@@ -330,9 +344,10 @@ const Header = styled.div`
 `;
 
 const SubmitAStoryMainContainer = styled.div`
-  background-color: #f2f2f2;
   height: 100%;
-
+  color: black;
+  padding: 2.5rem 0 8rem 0;
+  margin: 0;
   & .in-between-text {
     font-size: 18px;
     margin: 5rem 0 5rem 0;

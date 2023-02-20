@@ -4,7 +4,8 @@ import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Grid from "@mui/material/Grid";
 import CloseIcon from "@mui/icons-material/Close";
-
+import { useSelector } from "react-redux";
+import type { RootState } from "../hooks/store";
 import { ReadMore } from "@components/common";
 import { Work } from "@components/common";
 
@@ -56,6 +57,7 @@ const JobsList = [
 ];
 
 const WorkForUs = () => {
+  const isDarkMode = useSelector((state: RootState) => state.search.isDarkMode);
   const [openWork, setOpenWork] = useState(false);
   const [work, setWork] = useState("");
   const [workChoice, setWorkChoice] = useState("");
@@ -88,7 +90,14 @@ const WorkForUs = () => {
           {JobsList.map((job) => {
             return (
               <Grid item md={4} xs={12} key={job.title} className="center-grid">
-                <WorkBox key={job.title}>
+                <WorkBox
+                  key={job.title}
+                  style={{
+                    border: isDarkMode
+                      ? "1px solid var(--primary-color)"
+                      : "solid 1px black",
+                  }}
+                >
                   <h2>{job.title}</h2>
                   <p>{job.description}</p>
                   <div className="works-buttons-container">
@@ -149,7 +158,6 @@ const Button = styled.button`
 `;
 
 const WorkBox = styled.div`
-  border: solid 1px black;
   width: 22rem;
   height: 20rem;
   //   box-shadow: 0 0.5rem 1rem black;
@@ -198,7 +206,7 @@ const WorkForUsHeader = styled.div`
 `;
 
 const MainContainer = styled.div`
-  margin: 0 0 10rem 0;
+  padding: 0 0 10rem 0;
 
   & .close-icon {
     margin: 0 0 0 1rem;

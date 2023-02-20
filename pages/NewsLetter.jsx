@@ -108,7 +108,9 @@ const NewsLetter = () => {
 
 export default NewsLetter;
 
-const NewsletterMainContainer = styled.div``;
+const NewsletterMainContainer = styled.div`
+  padding: 2.5rem 0 0 0;
+`;
 
 const UpperContents = styled.div`
   background-color: var(--primary-color);

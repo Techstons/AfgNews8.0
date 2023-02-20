@@ -10,6 +10,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import SocialLinks from "./SocialLinks";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleDarkMode } from "slices/searchSlices";
+import type { RootState } from "../../hooks/store";
 
 type BottomType = {
   active: boolean;
@@ -112,6 +115,13 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
     changeDir();
   }, [router.locale]);
 
+  const isDarkMode = useSelector((state: RootState) => state.search.isDarkMode);
+
+  const dispatch = useDispatch();
+  function toggleDark() {
+    dispatch(toggleDarkMode());
+  }
+
   return (
     <Root active={isDark}>
       <TopStrip>
@@ -129,11 +139,14 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               name="toggle-dark"
               value="toggle-dark"
               aria-checked={isDark}
+              onClick={toggleDark}
             />
             <span className="slider">
               {!isDark ? <SunFill size={12} /> : <MoonFill size={12} />}
             </span>
+            <h1>{isDarkMode}</h1>
           </ToggleDarkWrapper>
+
           <LocaleSwitcher />
         </div>
       </TopStrip>
@@ -158,10 +171,10 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               <img
                 src="logo-no-wm-removebg.png"
                 alt="AFGNews Logo"
-                // height={80}
-                // width={220}
-                height={110}
-                width={330}
+                height={80}
+                width={220}
+                // height={110}
+                // width={330}
                 style={{ objectFit: "cover", marginRight: "1.5rem" }}
               />
             </a>

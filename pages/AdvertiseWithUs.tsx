@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useSelector } from "react-redux";
+import type { RootState } from "../hooks/store";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -12,6 +14,8 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const AdvertiseWithUs = () => {
+  const isDarkMode = useSelector((state: RootState) => state.search.isDarkMode);
+
   const InfoList = [
     "10000+ Unique Visitors*",
     "500 Monthly App Downloads ",
@@ -139,7 +143,11 @@ const AdvertiseWithUs = () => {
         </div>
         <ButtonsContainer className="adWithUs-buttons-main">
           <div className="adWithUs-buttons-container">
-            <SendButton>Send Message</SendButton>
+            <SendButton
+              style={{ backgroundColor: isDarkMode ? "gray" : "#e9e9e9" }}
+            >
+              Send Message
+            </SendButton>
             <CancelButton>Cancel</CancelButton>
           </div>
         </ButtonsContainer>
@@ -153,6 +161,7 @@ const Location = styled.select`
   height: 5rem;
   margin: 3rem 0 0 0;
   color: gray;
+
   padding: 0 0 0 1rem;
   letter-spacing: 2px;
   font-weight: 600;
@@ -174,7 +183,6 @@ const ButtonsContainer = styled.div`
 `;
 
 const SendButton = styled.button`
-  background-color: #e9e9e9;
   height: 3rem;
   width: 8rem;
 `;
@@ -185,6 +193,7 @@ const Message = styled.textarea`
   height: 10rem;
   font-size: 1rem;
   margin-top: 5rem;
+  padding: 1rem;
 
   &::-webkit-input-placeholder {
     font-size: 1rem;
@@ -266,7 +275,7 @@ const Advertise = styled.div`
   }
 
   & h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 2.5rem;
   }
 
@@ -289,7 +298,7 @@ const InfoAboutUs = styled.div`
 `;
 
 const FormContainer = styled.div`
-  background-color: white;
+  // background-color: white;
   height: 250vh;
   width: 95%;
 `;
@@ -332,11 +341,12 @@ const HeaderContainer = styled.div`
 `;
 
 const MainContainer = styled.div`
-  height: 350vh;
+  height: 370vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  padding: 2.5rem 0 0 0;
 `;
 
 export default AdvertiseWithUs;

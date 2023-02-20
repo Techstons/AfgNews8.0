@@ -77,7 +77,7 @@ const PageHeader = styled.div`
 
 const PrivacyPolicyMainContainer = styled.div`
   height: 100%;
-  margin: 0 0 5rem 0;
+  padding: 2.5rem 0 10rem 0;
   & p {
     margin: 1rem 0 0 0;
     font-size: 1.1rem;

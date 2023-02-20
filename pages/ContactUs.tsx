@@ -281,7 +281,6 @@ const FormContainer = styled.div`
 `;
 
 const ContactUsMainContainer = styled.div`
-  margin: 0 0 7rem 0;
   height: 220vh;
   position: relative;
 `;

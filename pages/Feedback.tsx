@@ -2,6 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useSelector } from "react-redux";
+import type { RootState } from "../hooks/store";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -12,6 +14,8 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const Feedback = () => {
+  const isDarkMode = useSelector((state: RootState) => state.search.isDarkMode);
+
   return (
     <FeedbackMainContainer>
       <Head>
@@ -30,11 +34,35 @@ const Feedback = () => {
         }}
       >
         <BoxContainer className="feedback-box-container">
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div>From </div>
+            <Aster>*</Aster>
+          </div>
           <Input
             placeholder="input your email here"
             className="feedback-input"
+            style={{
+              border: isDarkMode
+                ? "1px solid var(--primary-color)"
+                : "solid 1px black",
+            }}
           />
-          <Text placeholder="write a subject" className="feedback-text-aria" />
+          <div
+            style={{ display: "flex", alignItems: "center", marginTop: "2rem" }}
+          >
+            <div>Message </div>
+            <Aster>*</Aster>
+          </div>
+          <Text
+            placeholder="write a subject"
+            className="feedback-text-aria"
+            style={{
+              border: isDarkMode
+                ? "1px solid var(--primary-color)"
+                : "solid 1px black",
+              backgroundColor: isDarkMode ? "black" : "white",
+            }}
+          />
         </BoxContainer>
         <Divider />
       </div>
@@ -43,18 +71,24 @@ const Feedback = () => {
   );
 };
 
+const Aster = styled.div`
+  color: red;
+  font-size: 2rem;
+  margin: 0 0 0 10px;
+`;
+
 const Text = styled.textarea`
   height: 25rem;
   padding: 1rem 0 0 1rem;
-  border: solid black 1px;
+
   font-size: 1rem;
+  background-color: black;
 `;
 
 const Input = styled.input`
   height: 3rem;
   padding: 0 0 0 1rem;
 
-  border: solid black 1px;
   border-radius: 5px;
 
   &:focus {
@@ -72,7 +106,7 @@ const BoxContainer = styled.div`
 
 const Divider = styled.div`
   margin: 10rem 0 0 0;
-  border-top: 2px solid var(--primary-color);
+  border-top: 1px solid var(--primary-color);
 `;
 
 const FeedBack = styled.div`
@@ -98,8 +132,8 @@ const FeedBack = styled.div`
 `;
 
 const FeedbackMainContainer = styled.div`
-  height: 150vh;
-  margin: 2.5rem 0 10rem 0;
+  height: 100%;
+  padding: 2.5rem 0 10rem 0;
 `;
 
 export default Feedback;

@@ -4,6 +4,8 @@ import Head from "next/head";
 import Grid from "@mui/material/Grid";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import type { RootState } from "../hooks/store";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -14,6 +16,8 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const AboutUs = () => {
+  const isDarkMode = useSelector((state: RootState) => state.search.isDarkMode);
+
   return (
     <AboutUsMainContainer>
       <Head>
@@ -26,7 +30,7 @@ const AboutUs = () => {
           </AboutUsSectionContainer>
         </Grid>
       </Grid>
-      <MissionContainer>
+      <MissionContainer style={isDarkMode ? { color: "white" } : {}}>
         <Grid container>
           <Grid item xs={12} className="center-grid">
             <MissionHeaderContainer>
@@ -119,7 +123,12 @@ const AboutUs = () => {
             md={6}
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <h1 className="about-us-numbers">By the numbers</h1>
+            <h1
+              className="about-us-numbers"
+              style={isDarkMode ? { color: "white" } : {}}
+            >
+              By the numbers
+            </h1>
           </Grid>
           <Grid
             item
@@ -130,7 +139,10 @@ const AboutUs = () => {
               justifyContent: "center",
             }}
           >
-            <div className="social-followers">
+            <div
+              className="social-followers"
+              style={isDarkMode ? { color: "white" } : {}}
+            >
               <div>
                 <FollowersCard>
                   <Numbers>
@@ -187,7 +199,7 @@ const AboutUs = () => {
         </Grid>
       </ByNumbersContainer>
       <Divider />
-      <TimeCapsuleMainContainer>
+      <TimeCapsuleMainContainer style={isDarkMode ? { color: "white" } : {}}>
         <h1>Our story in a time capsule</h1>
         <div className="navigation-container">
           <CapsuleNavigation>
@@ -237,7 +249,7 @@ const AboutUs = () => {
           src="earth-globe-icon-on-transparent-background-illustration-free-vector-removebg-preview.png"
         />
       </WeAreContainer>
-      <OurTeamContainer>
+      <OurTeamContainer style={isDarkMode ? { color: "white" } : {}}>
         <h1>Our team</h1>
         <p>
           Welcome to our news website! Our team is dedicated to providing you
@@ -396,7 +408,7 @@ const TimeCapsuleMainContainer = styled.div`
 
 const AboutUsMainContainer = styled.div`
   color: rgb(38, 38, 38);
-  margin: 0 0 8rem 0;
+  padding: 2.5rem 0 8rem 0;
 `;
 
 const AboutUsSectionContainer = styled.div`
@@ -407,8 +419,8 @@ const AboutUsSectionContainer = styled.div`
   align-items: center;
 
   & h1 {
-    color: white;
     letter-spacing: 4px;
+    color: white;
   }
 `;
 
@@ -428,7 +440,7 @@ const MissionHeaderContainer = styled.div`
     line-height: 30px;
   }
   & h2 {
-    color: rgb(38, 38, 38);
+    // color: rgb(38, 38, 38);
     font-weight: 700;
     font-size: 36px;
     font-family: var(--formal-font);
