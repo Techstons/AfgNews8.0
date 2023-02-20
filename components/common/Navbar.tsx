@@ -156,7 +156,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               className="logo"
             >
               <img
-                src="https://res.cloudinary.com/dssf8vpym/image/upload/v1673521118/assets/logo_wjawfm.png"
+                src="logo-no-wm1.png"
                 alt="AFGNews Logo"
                 height={60}
                 width={190}
