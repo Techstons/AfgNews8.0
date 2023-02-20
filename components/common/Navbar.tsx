@@ -158,8 +158,10 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               <img
                 src="logo-no-wm-removebg.png"
                 alt="AFGNews Logo"
-                height={60}
-                width={190}
+                // height={80}
+                // width={220}
+                height={110}
+                width={330}
                 style={{ objectFit: "cover", marginRight: "1.5rem" }}
               />
             </a>
