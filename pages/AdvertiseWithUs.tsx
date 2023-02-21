@@ -158,7 +158,7 @@ const AdvertiseWithUs = () => {
 
 const Location = styled.select`
   border: 1px solid black;
-  height: 5rem;
+  height: 3rem;
   margin: 3rem 0 0 0;
   color: gray;
 
@@ -179,6 +179,7 @@ const ButtonsContainer = styled.div`
   & div {
     display: flex;
     justify-content: space-around;
+    margin: 3rem 5rem 0 0;
   }
 `;
 
@@ -190,7 +191,7 @@ const SendButton = styled.button`
 const CancelButton = styled.button``;
 
 const Message = styled.textarea`
-  height: 10rem;
+  height: 7rem;
   font-size: 1rem;
   margin-top: 5rem;
   padding: 1rem;
@@ -211,10 +212,9 @@ const Message = styled.textarea`
 
 const Input = styled.input`
   border-bottom: 1px solid black;
-  margin: 3rem 0 0 0;
   height: 3rem;
-
   padding: 0 1rem 0 1rem;
+  margin: 2rem 0 0 0;
 
   &:focus {
     border: 2px solid black;
@@ -244,10 +244,11 @@ const Form = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 0 0 0 1rem;
 `;
 
 const PerInfoContainer = styled.div`
-  height: 100%;
   justify-content: space-between;
   margin: 3rem 0 0 0;
 `;
@@ -266,6 +267,7 @@ const PerInfo = styled.div`
 
 const Advertise = styled.div`
   padding: 2rem 2rem 0 2rem;
+  margin: 0 0 10rem 0;
 
   & h1 {
     font-size: 3rem;
@@ -341,7 +343,7 @@ const HeaderContainer = styled.div`
 `;
 
 const MainContainer = styled.div`
-  height: 370vh;
+  height: 350vh;
   display: flex;
   flex-direction: column;
   align-items: center;

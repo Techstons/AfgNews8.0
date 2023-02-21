@@ -6,6 +6,7 @@ import Head from "next/head";
 import emailjs from "@emailjs/browser";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -22,6 +23,7 @@ const ContactUs = () => {
   const [sendButton, setSendButton] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handleClick = () => {
     setClicks(clicks + 1);
@@ -80,8 +82,8 @@ const ContactUs = () => {
       />
       <FormContainer className="contact-us-form">
         <div className="small-divider"></div>
-        <h1>Contact Us</h1>
-        <p>For Enquiries, please fill out the form below:</p>
+        <h1>{t("common:contact")}</h1>
+        <p>{t("common:enquiries")}:</p>
         <Form ref={formRef} onSubmit={sendEmail}>
           <div className="container">
             <div className="label-container">
@@ -283,6 +285,7 @@ const FormContainer = styled.div`
 const ContactUsMainContainer = styled.div`
   height: 220vh;
   position: relative;
+  color: black;
 `;
 
 const Image = styled.img`

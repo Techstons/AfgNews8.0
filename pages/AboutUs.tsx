@@ -6,6 +6,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import type { RootState } from "../hooks/store";
+import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -17,6 +18,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const AboutUs = () => {
   const isDarkMode = useSelector((state: RootState) => state.search.isDarkMode);
+  const { t } = useTranslation();
 
   return (
     <AboutUsMainContainer>
@@ -26,7 +28,7 @@ const AboutUs = () => {
       <Grid container>
         <Grid item xs={12}>
           <AboutUsSectionContainer>
-            <h1 className="about-us-header">About us</h1>
+            <h1 className="about-us-header">{t("common:about")}</h1>
           </AboutUsSectionContainer>
         </Grid>
       </Grid>

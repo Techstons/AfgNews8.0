@@ -35,7 +35,7 @@ const Feedback = () => {
       >
         <BoxContainer className="feedback-box-container">
           <div style={{ display: "flex", alignItems: "center" }}>
-            <div>From </div>
+            <div>Email </div>
             <Aster>*</Aster>
           </div>
           <Input

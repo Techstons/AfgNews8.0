@@ -112,7 +112,7 @@ const Footer = ({ isDark }: IFooter) => {
             }}
           >
             <div>
-              <h2 className="logo">AFGNEWS</h2>
+              <h2 className="logo">{t("common:afgnews")}</h2>
 
               <div className="newsletter" style={{ margin: "1.7rem 0 3rem 0" }}>
                 <p className="description">{t("common:news_letter_title")}</p>
@@ -221,17 +221,17 @@ const Footer = ({ isDark }: IFooter) => {
               }
             >
               <section className="header-container">
-                <h4>Share your story, Send your Videos and Photos to us</h4>
+                <h4>{t("common:share_your_story")}</h4>
               </section>
               <div>
                 <section>
-                  <p>Whatsapp:</p> <a>+14313183942</a>
+                  <p>{t("common:whatsapp")}: </p> <a>+14313183942</a>
                 </section>
                 <section>
-                  <p>Signal:</p> <a>+15142903146</a>
+                  <p>{t("common:signal")}: </p> <a>+15142903146</a>
                 </section>
                 <section>
-                  <p>Viber:</p> <a>+18195067489</a>
+                  <p>{t("common:viber")}: </p> <a>+18195067489</a>
                 </section>
               </div>
             </Numbers>
