@@ -34,6 +34,7 @@
   "signal": "Signal",
   "viber": "Viber",
   "enquiries": "For Enquiries, please fill out the form below",
+
   "mission": "Mission",
   "our_mission": "Our mission at AfgNews is to inform and empower our audience by delivering accurate, impartial and diverse news and perspectives, while upholding the highest ethical standards and journalistic integrity.",
   "we_strive": "We strive to be a trusted source of news for our community, presenting diverse viewpoints and inspiring informed and engaged discussion.",
@@ -51,5 +52,18 @@
   "a_modern": "As a modern global Afghan news media website.",
   "global_org": "We are a global organization serving a global audience",
   "our_team": "Our team",
-  "welcome": "Welcome to our news website! Our team is dedicated to providing you with the latest and most accurate news and information. With a passion for journalism and a commitment to impartial reporting, we strive to keep you informed on the events that matter most to you. Our team of experienced reporters, editors, and photographers work around the clock to bring you the stories that matter. Thanks for being a part of our community."
+  "welcome": "Welcome to our news website! Our team is dedicated to providing you with the latest and most accurate news and information. With a passion for journalism and a commitment to impartial reporting, we strive to keep you informed on the events that matter most to you. Our team of experienced reporters, editors, and photographers work around the clock to bring you the stories that matter. Thanks for being a part of our community.",
+
+  "to": "To",
+  "general_inquiries": "General inquiries ",
+  "share_story": "Share your story",
+  "ad": "Advertising",
+  "media": "Media",
+  "name": "Name",
+  "email": "Email",
+  "subj": "Subject",
+  "message": "Message",
+  "send_message": "Send Message",
+  "thanks": "Thank you",
+  "your_message": "your message has been sent"
 }

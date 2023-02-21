@@ -30,10 +30,10 @@ const ContactUs = () => {
   };
 
   const inquiries = [
-    "General Inquiries",
-    "Share your story",
-    "Advertising",
-    "Media",
+    t("common:general_inquires"),
+    t("common:share_story"),
+    t("common:ad"),
+    t("common:media"),
   ];
 
   function returnInquire(inquire: string) {
@@ -87,7 +87,7 @@ const ContactUs = () => {
         <Form ref={formRef} onSubmit={sendEmail}>
           <div className="container">
             <div className="label-container">
-              <label htmlFor="select">To</label>
+              <label htmlFor="select">{t("common:to")}</label>
               <Aster>*</Aster>
             </div>
             <select
@@ -107,28 +107,28 @@ const ContactUs = () => {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">{t("common:name")}</label>
               <Aster>*</Aster>
             </div>
             <Input id="name" required name="user_name" />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">{t("common:email")}</label>
               <Aster>*</Aster>
             </div>
             <Input id="email" required name="user_email" />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
-              <label htmlFor="subject">Subject</label>
+              <label htmlFor="subject">{t("common:subj")}</label>
               <Aster>*</Aster>
             </div>
             <Input id="subject" required name="user_subject" />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div className="label-container">
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message">{t("common:message")}</label>
               <Aster>*</Aster>
             </div>
             <Message id="message" required name="message" />
@@ -143,7 +143,7 @@ const ContactUs = () => {
             }}
             type="submit"
           >
-            {!sendButton ? " Send Message" : "Sent"}
+            {!sendButton ? t("common:send_message") : "Sent"}
           </button>
         </Form>
       </FormContainer>

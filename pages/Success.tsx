@@ -2,6 +2,7 @@ import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import styled from "@emotion/styled";
 import Head from "next/head";
+import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -12,14 +13,15 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const Success = () => {
+  const { t } = useTranslation();
   return (
     <MainContainer>
       <Head>
         <title>Success</title>
       </Head>
       <div>
-        <SuccessText>Thank you!</SuccessText>
-        <p>your message has been sent</p>
+        <SuccessText>{t("common:thanks")}</SuccessText>
+        <p>{t("common:your_message")}</p>
       </div>
     </MainContainer>
   );
