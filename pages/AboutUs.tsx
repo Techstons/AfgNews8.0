@@ -36,13 +36,8 @@ const AboutUs = () => {
         <Grid container>
           <Grid item xs={12} className="center-grid">
             <MissionHeaderContainer>
-              <h2>Mission</h2>
-              <p>
-                Our mission at AfgNews is to inform and empower our audience by
-                delivering accurate, impartial and diverse news and
-                perspectives, while upholding the highest ethical standards and
-                journalistic integrity.
-              </p>
+              <h2>{t("common:mission")}</h2>
+              <p>{t("common:our_mission")}</p>
             </MissionHeaderContainer>
           </Grid>
           <Grid item xs={12}>
@@ -60,11 +55,7 @@ const AboutUs = () => {
                 />
               </Grid>
               <Grid item xs={12} md={6} className="align-grid">
-                <p>
-                  We strive to be a trusted source of news for our community,
-                  presenting diverse viewpoints and inspiring informed and
-                  engaged discussion.{" "}
-                </p>
+                <p>{t("common:we_strive")}</p>
               </Grid>
             </Grid>
           </div>
@@ -86,13 +77,7 @@ const AboutUs = () => {
                 />
               </Grid>
               <Grid item xs={12} md={7} className="align-grid">
-                <p>
-                  A modern news agency that aims to provide the latest and
-                  simplified news from Afghanistan and around the world on a
-                  daily basis. Our special focus is on reaching the youth of
-                  Afghanistan, both domestically and abroad, by presenting
-                  information in a simple and easy-to-understand language.
-                </p>
+                <p>{t("common:modern_news")}</p>
               </Grid>
             </Grid>
           </div>
@@ -106,11 +91,7 @@ const AboutUs = () => {
                 />
               </Grid>
               <Grid item xs={12} lg={7} className="align-grid">
-                <p>
-                  Through our commitment to journalistic excellence and ethical
-                  practices, we aim to serve as a watchdog of power and
-                  contribute to a better-informed society.
-                </p>
+                <p>{t("common:our_commitment")}</p>
               </Grid>
             </Grid>
           </div>
@@ -129,7 +110,7 @@ const AboutUs = () => {
               className="about-us-numbers"
               style={isDarkMode ? { color: "white" } : {}}
             >
-              By the numbers
+              {t("common:the_numbers")}
             </h1>
           </Grid>
           <Grid
@@ -152,7 +133,7 @@ const AboutUs = () => {
                     <p></p>
                   </Numbers>
                   <Platform>
-                    Followers{" "}
+                    {t("common:followers")}
                     <a
                       href="https://twitter.com/AFGNEWS_"
                       target="_blank"
@@ -160,7 +141,7 @@ const AboutUs = () => {
                     >
                       @AFGNEWS_
                     </a>{" "}
-                    Twitter
+                    {t("common:twitter")}
                   </Platform>
                 </FollowersCard>
                 <FollowersCard>
@@ -168,7 +149,7 @@ const AboutUs = () => {
                     <h2>0</h2>
                     <p></p>
                   </Numbers>
-                  <Platform>Consensus Event Attendees</Platform>
+                  <Platform>{t("common:consensus")}</Platform>
                 </FollowersCard>
               </div>
               <div>
@@ -177,7 +158,7 @@ const AboutUs = () => {
                     <h2>500</h2>
                     <p></p>
                   </Numbers>
-                  <Platform>AFGNEWS Average Monthly Viewers</Platform>
+                  <Platform>{t("common:monthly_views")}</Platform>
                 </FollowersCard>
                 <FollowersCard>
                   <Numbers>
@@ -190,9 +171,9 @@ const AboutUs = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Youtube
+                      {t("common:yt")}
                     </a>{" "}
-                    page followers
+                    {t("common:page_followers")}
                   </Platform>
                 </FollowersCard>
               </div>
@@ -202,7 +183,7 @@ const AboutUs = () => {
       </ByNumbersContainer>
       <Divider />
       <TimeCapsuleMainContainer style={isDarkMode ? { color: "white" } : {}}>
-        <h1>Our story in a time capsule</h1>
+        <h1>{t("common:our_story")}</h1>
         <div className="navigation-container">
           <CapsuleNavigation>
             <div className="line"></div>
@@ -214,9 +195,9 @@ const AboutUs = () => {
         </div>
         <YearInformationContainer>
           <YearInformation>
-            <h2>April</h2>
-            <h1>AfgNews Was Born</h1>
-            <p>As a modern global Afghan news media website.</p>
+            <h2>{t("common:april")}</h2>
+            <h1>{t("common:was_born")}</h1>
+            <p>{t("common:a_modern")}</p>
           </YearInformation>
           {/* <YearInformation>
             <h2>July</h2>
@@ -227,9 +208,7 @@ const AboutUs = () => {
       </TimeCapsuleMainContainer>
       <WeAreContainer className="we-are-container">
         <div className="upper-content-container">
-          <h1 className="about-us-we-are">
-            We are a global organization serving a global audience
-          </h1>
+          <h1 className="about-us-we-are">{t("common:global_org")}</h1>
           <div
             style={{
               display: "flex",
@@ -238,10 +217,10 @@ const AboutUs = () => {
             className="work-for-us-buttons-container"
           >
             <Link href="/WorkForUs">
-              <button>Work With Us</button>
+              <button>{t("common:work_for_us")}</button>
             </Link>
             <Link href="/AdvertiseWithUs">
-              <button>Advertise With Us</button>
+              <button>{t("common:ad_with_us")}</button>
             </Link>
           </div>
         </div>
@@ -252,16 +231,8 @@ const AboutUs = () => {
         />
       </WeAreContainer>
       <OurTeamContainer style={isDarkMode ? { color: "white" } : {}}>
-        <h1>Our team</h1>
-        <p>
-          Welcome to our news website! Our team is dedicated to providing you
-          with the latest and most accurate news and information. With a passion
-          for journalism and a commitment to impartial reporting, we strive to
-          keep you informed on the events that matter most to you. Our team of
-          experienced reporters, editors, and photographers work around the
-          clock to bring you the stories that matter. Thanks for being a part of
-          our community.
-        </p>
+        <h1>{t("common:our_team")}</h1>
+        <p>{t("common:welcome")}</p>
         <ImageContainer>
           <Images
             alt="our team image"
