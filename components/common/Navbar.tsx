@@ -169,7 +169,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
               className="logo"
             >
               <img
-                src="logo-no-wm-removebg.png"
+                src="https://res.cloudinary.com/dbpar1qf3/image/upload/v1676970039/logo-no-wm-removebg_jbjo8e.png"
                 alt="AFGNews Logo"
                 height={80}
                 width={220}

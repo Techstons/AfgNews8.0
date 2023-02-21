@@ -95,7 +95,7 @@ const Header = styled.header`
   margin-bottom: 60px;
   .header-title {
     text-align: center;
-    margin: 1.25rem auto;
+    margin: 0 auto;
     line-height: 2.75rem;
     margin-bottom: 3rem;
     text-transform: uppercase;
@@ -104,6 +104,7 @@ const Header = styled.header`
     font-family: "Vollkorn SC", serif;
     border-bottom: 4px solid var(--primary-color);
     width: max-content;
+    padding: 2.5rem;
   }
 `;
 const LoadMoreButton = styled.button`

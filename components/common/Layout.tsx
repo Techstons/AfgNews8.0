@@ -59,7 +59,6 @@ export default Layout;
 
 const Main = styled.main`
   min-height: calc(100vh - 142px);
-
   background-color: var(--container-color);
   color: var(--text-color);
 `;
