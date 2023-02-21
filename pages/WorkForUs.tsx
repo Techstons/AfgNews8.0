@@ -206,7 +206,7 @@ const WorkForUsHeader = styled.div`
 `;
 
 const MainContainer = styled.div`
-  padding: 0 0 10rem 0;
+  padding: 2.5rem 0 10rem 0;
 
   & .close-icon {
     margin: 0 0 0 1rem;
