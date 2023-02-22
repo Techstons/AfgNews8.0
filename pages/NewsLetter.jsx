@@ -56,7 +56,8 @@ const NewsLetter = () => {
                 border: "black solid 1px",
                 height: "3rem",
                 marginRight: "1rem",
-                padding: "0 0 0 1rem",
+                marginLeft: "1rem",
+                padding: "0 1rem 0 1rem",
               }}
             />
             <Button className="btn" type="submit">

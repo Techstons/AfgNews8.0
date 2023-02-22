@@ -93,14 +93,29 @@ const AdvertiseWithUs = () => {
               <Input
                 placeholder={t("common:first_name")}
                 className="adWithUs-input"
+                style={
+                  isDarkMode
+                    ? { borderBottom: "1px solid var(--primary-color)" }
+                    : {}
+                }
               />
               <Input
                 placeholder={t("common:last_name")}
                 className="adWithUs-input"
+                style={
+                  isDarkMode
+                    ? { borderBottom: "1px solid var(--primary-color)" }
+                    : {}
+                }
               />
               <Input
                 placeholder={t("common:email_add")}
                 className="adWithUs-input"
+                style={
+                  isDarkMode
+                    ? { borderBottom: "1px solid var(--primary-color)" }
+                    : {}
+                }
               />
             </Form>
           </PerInfoContainer>
@@ -117,12 +132,33 @@ const AdvertiseWithUs = () => {
               <Input
                 placeholder={t("common:name_of_business")}
                 className="adWithUs-input"
+                style={
+                  isDarkMode
+                    ? { borderBottom: "1px solid var(--primary-color)" }
+                    : {}
+                }
               />
               <Input
                 placeholder={t("common:industry")}
                 className="adWithUs-input"
+                style={
+                  isDarkMode
+                    ? { borderBottom: "1px solid var(--primary-color)" }
+                    : {}
+                }
               />
-              <Location name="Location" className="adWithUs-select">
+              <Location
+                name="Location"
+                className="adWithUs-select"
+                style={
+                  isDarkMode
+                    ? {
+                        border: "1px solid var(--primary-color)",
+                        backgroundColor: "black",
+                      }
+                    : {}
+                }
+              >
                 {countries?.map((country: any) => (
                   <option key={country}>{country}</option>
                 ))}
@@ -142,6 +178,14 @@ const AdvertiseWithUs = () => {
               <Message
                 placeholder={t("common:opt_message")}
                 className="adWithUs-message"
+                style={
+                  isDarkMode
+                    ? {
+                        border: "1px solid var(--primary-color)",
+                        backgroundColor: "black",
+                      }
+                    : {}
+                }
               />
             </Form>
           </PerInfoContainer>
@@ -162,7 +206,6 @@ const AdvertiseWithUs = () => {
 };
 
 const Location = styled.select`
-  border: 1px solid black;
   height: 3rem;
   margin: 3rem 0 0 0;
   color: gray;

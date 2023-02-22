@@ -57,7 +57,7 @@ const Feedback = () => {
             <Aster>*</Aster>
           </div>
           <Text
-            placeholder="write a subject"
+            placeholder={t("common:write_subject")}
             className="feedback-text-aria"
             style={{
               border: isDarkMode
