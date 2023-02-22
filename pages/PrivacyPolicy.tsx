@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
         <p>{t("common:we_use_this")}</p>
         <p>{t("common:visitors_have")}</p>
 
-        <p>{t("common:wemay")}</p>
+        <p>{t("common:we_may")}</p>
         <p style={{ margin: "0" }}>{t("common:effective_date")}</p>
       </ContentsContainer>
     </PrivacyPolicyMainContainer>
