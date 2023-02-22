@@ -42,7 +42,7 @@ const MobileApp = () => {
             <Button>
               <Image
                 alt="appstore image"
-                src="app-store-complete-transparent.png"
+                src="https://res.cloudinary.com/dbpar1qf3/image/upload/v1677046763/app-store-og-PhotoRoom.png-PhotoRoom_jdmdyp.png"
               />
             </Button>
             <h2 className="label-button">{t("common:appstore")}</h2>

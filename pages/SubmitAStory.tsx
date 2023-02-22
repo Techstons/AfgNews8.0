@@ -54,10 +54,10 @@ const SubmitAStory = () => {
                 <h1>{t("common:email")}:</h1>
                 <div>
                   <p>
-                    {t("common:send_your_tip")}
+                    {t("common:send_your_tip")}{" "}
                     <Link href="/ContactUs" className="submit-a-story">
                       {t("common:here")}
-                    </Link>
+                    </Link>{" "}
                     {t("common:in_the_dropdown")}
                   </p>
                 </div>
