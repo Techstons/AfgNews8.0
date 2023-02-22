@@ -104,7 +104,9 @@ const WorkForUs = () => {
                   <h2>{job.title}</h2>
                   <p>{job.description}</p>
                   <div className="works-buttons-container">
-                    <Button onClick={() => applyWork(job)}>Apply</Button>
+                    <Button onClick={() => applyWork(job)}>
+                      {t("common:apply")}
+                    </Button>
                     <Button
                       onClick={() => readMore(job.description, job.title)}
                     >
