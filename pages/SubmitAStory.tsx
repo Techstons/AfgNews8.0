@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import type { RootState } from "../hooks/store";
+import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -17,6 +18,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const SubmitAStory = () => {
   const isDarkMode = useSelector((state: RootState) => state.search.isDarkMode);
+  const { t } = useTranslation();
 
   return (
     <SubmitAStoryMainContainer className="story-main">
@@ -27,12 +29,10 @@ const SubmitAStory = () => {
         <div className="contents-container">
           <div>
             <h1 className="submit-a-story-header">
-              How to share a story or a tip with us
+              {t("common:how_to_share")}
             </h1>
             <p className="submit-a-story-header-p">
-              Is there a story that you think we should cover? Do you have a tip
-              or documents that we should investigate? Here are the best ways to
-              get in touch with our journalists.
+              {t("common:is_there_a_story")}
             </p>
           </div>
         </div>
@@ -46,58 +46,35 @@ const SubmitAStory = () => {
       >
         <SmallCardContainer className="story-card-container">
           <Grid container>
-            {/* <Grid item xs={12} md={6}>
-              <SmallCard className="smallcard-story">
-                <h1>Postal addresss:</h1>
-                <div>
-                  <h2>Al Jazeera Media Network</h2>
-                  <p>Attn: Investigative Unit</p> <p>PO Box 23127</p>{" "}
-                  <p>Doha - Qatar</p>
-                </div>
-                <div>
-                  <h2>Al Jazeera International</h2>
-                  <p>Attn: Investigative Unit</p> <p>Level 16, The Shard</p>{" "}
-                  <p>32 London Bridge Street</p> <p>London, SE1 9SG, UK</p>
-                </div>
-              </SmallCard>
-            </Grid> */}
             <Grid item xs={12}>
               <SmallCard
                 className="smallcard-story"
                 style={{ backgroundColor: isDarkMode ? "gray" : "#ffffff" }}
               >
-                <h1 style={{ color: isDarkMode ? "black" : "" }}>Email:</h1>
+                <h1>{t("common:email")}:</h1>
                 <div>
                   <p>
-                    Send us your tip{" "}
+                    {t("common:send_your_tip")}
                     <Link href="/ContactUs" className="submit-a-story">
-                      here
+                      {t("common:here")}
                     </Link>
-                    . In the dropdown menu, be sure to choose Share your story
+                    {t("common:in_the_dropdown")}
                   </p>
                 </div>
                 <div>
-                  <h2>Important:</h2>
-                  <p>
-                    Never use email to send us confidential tips or documents
-                    that might pose a risk to your safety. Use one of our other
-                    options if you have sensitive information you want to share.
-                  </p>
+                  <h2>{t("common:imp")}:</h2>
+                  <p>{t("common:never_use")}</p>
                 </div>
               </SmallCard>
             </Grid>
           </Grid>
         </SmallCardContainer>
       </div>
-      <h1 className="in-between-text">
-        We offer the following secure options to get in touch with us if you
-        have confidential information:
-      </h1>
+      <h1 className="in-between-text">{t("common:we_offer")}:</h1>
       <div
         style={{
           display: "flex",
           justifyContent: "center",
-          // margin: "2rem  0 2rem 0",
         }}
       >
         <LongCardContainer>
@@ -109,27 +86,14 @@ const SubmitAStory = () => {
                   backgroundColor: isDarkMode ? "gray" : "#ffffff",
                 }}
               >
-                <h1>WhatsApp</h1>
+                <h1>{t("common:whatsapp")}:</h1>
                 <div className="card-info-container">
-                  <p>
-                    WhatsApp is a free encrypted messaging app, which means only
-                    the sender and receiver can read the messages. The app
-                    allows you to send text messages, images, videos, audio and
-                    text documents. In case messages are intercepted by third
-                    parties, they cannot be read because of the encryption the
-                    app uses. However, because some information about you as a
-                    user is stored on WhatsApp servers (phone numbers, certain
-                    types of metadata, including timestamps on messages), the
-                    app is not completely anonymous. If you use WhatsApp to
-                    contact us, be aware that you also share your phone number
-                    with us. Also make sure your conversations are not backed up
-                    in the cloud (iCloud or Google Drive).
-                  </p>
+                  <p>{t("common:whatsapp_desc")}</p>
                 </div>
                 <div>
-                  <h2>AFG News WhatsApp Number: +14313183942</h2>
+                  <h2>{t("common:whatsapp_num")}</h2>
                 </div>
-                <button>Download WhatsApp</button>
+                <button>{t("common:download_whatsapp")}</button>
               </LongCard>
             </Grid>
             <Grid item xs={12} md={4} className="center-grid">
@@ -139,23 +103,14 @@ const SubmitAStory = () => {
                   backgroundColor: isDarkMode ? "gray" : "#ffffff",
                 }}
               >
-                <h1>Signal</h1>
+                <h1>{t("common:signal")}</h1>
                 <div className="card-info-container">
-                  <p>
-                    Signal is a free messaging app similar to WhatsApp, but it
-                    stores less information about its users. Signal only
-                    registers your phone number and the last time you used the
-                    app. Other metadata like timestamps on messages are not
-                    recorded. Signal also offers the option to send messages
-                    that self-destruct after a set time after the message is
-                    seen. You will disclose your phone number with us when you
-                    send a message.
-                  </p>
+                  <p>{t("common:signal_desc")}</p>
                 </div>
                 <div>
-                  <h2>AFG News Signal Number: +15142903146</h2>
+                  <h2>{t("common:signal_num")}</h2>
                 </div>
-                <button>Download Signal</button>
+                <button>{t("common:download_signal")}</button>
               </LongCard>
             </Grid>
             <Grid item xs={11} md={4} className="center-grid">
@@ -165,24 +120,14 @@ const SubmitAStory = () => {
                   backgroundColor: isDarkMode ? "gray" : "#ffffff",
                 }}
               >
-                <h1>Viber</h1>
+                <h1>{t("common:viber")}</h1>
                 <div className="card-info-container">
-                  <p>
-                    Viber is a free messaging and calling app that allows users
-                    to send text messages, voice messages, photos, videos, and
-                    make voice and video calls to other Viber users over the
-                    internet. It also has a range of features including group
-                    chats, the ability to send stickers and emojis, and the
-                    option to create public accounts for businesses or
-                    individuals. Viber can be used on multiple devices,
-                    including smartphones, tablets, and computers, and supports
-                    both iOS and Android operating systems.
-                  </p>
+                  <p>{t("common:viber_desc")}</p>
                 </div>
                 <div>
-                  <h2>AFG News Viber Number: +18195067489</h2>
+                  <h2>{t("common:viber_num")}</h2>
                 </div>
-                <button>Download Viber</button>
+                <button>{t("common:download_viber")}</button>
               </LongCard>
             </Grid>
           </Grid>
@@ -214,7 +159,6 @@ const ThingsToConsider = styled.div`
 
   & h2 {
     font-size: 14px;
-    color: #4d4d4d;
   }
 `;
 
@@ -245,7 +189,6 @@ const LargeCard = styled.div`
 
   & h2 {
     font-size: 14px;
-    color: #4d4d4d;
   }
 
   & p {
@@ -292,7 +235,6 @@ const LongCard = styled.div`
 
   & h2 {
     font-size: 14px;
-    color: #4d4d4d;
   }
 
   & p {
@@ -345,7 +287,7 @@ const Header = styled.div`
 
 const SubmitAStoryMainContainer = styled.div`
   height: 100%;
-  color: black;
+
   padding: 2.5rem 0 8rem 0;
   margin: 0;
   & .in-between-text {

@@ -65,5 +65,28 @@
   "message": "Message",
   "send_message": "Send Message",
   "thanks": "Thank you",
-  "your_message": "your message has been sent"
+  "your_message": "your message has been sent",
+
+  "get_our_app": "Get our mobile Apps",
+  "gplay": "Google Play",
+  "appstore": "App Store",
+
+  "how_to_share": "How to share a story or a tip with us",
+  "is_there_a_story": "Is there a story that you think we should cover? Do you have a tip or documents that we should investigate? Here are the best ways to get in touch with our journalists.",
+  "send_your_tip": "Send us your tip",
+  "here": "here",
+  "in_the_dropdown": "In the dropdown menu, be sure to choose Share your story",
+  "imp": "Important",
+  "never_use": "Never use email to send us confidential tips or documents that might pose a risk to your safety. Use one of our other options if you have sensitive information you want to share.",
+  "we_offer": "We offer the following secure options to get in touch with us if you have confidential information",
+
+  "whatsapp_desc": "WhatsApp is a free encrypted messaging app, which means only the sender and receiver can read the messages. The app allows you to send text messages, images, videos, audio and text documents. In case messages are intercepted by third parties, they cannot be read because of the encryption the app uses. However, because some information about you as a user is stored on WhatsApp servers (phone numbers, certain types of metadata, including timestamps on messages), the app is not completely anonymous. If you use WhatsApp to contact us, be aware that you also share your phone number with us. Also make sure your conversations are not backed up in the cloud (iCloud or Google Drive).",
+  "whatsapp_num": "AFG News WhatsApp Number: +14313183942 ",
+  "download_whatsapp": "Download WhatsApp",
+  "signal_desc": "Signal is a free messaging app similar to WhatsApp, but it stores less information about its users. Signal only registers your phone number and the last time you used the app. Other metadata like timestamps on messages are not recorded. Signal also offers the option to send messages that self-destruct after a set time after the message is seen. You will disclose your phone number with us when you send a message.",
+  "signal_num": "AFG News Signal Number: +15142903146",
+  "download_signal": "Download Signal",
+  "viber_desc": "Viber is a free messaging and calling app that allows users to send text messages, voice messages, photos, videos, and make voice and video calls to other Viber users over the internet. It also has a range of features including group chats, the ability to send stickers and emojis, and the option to create public accounts for businesses or individuals. Viber can be used on multiple devices, including smartphones, tablets, and computers, and supports both iOS and Android operating systems.",
+  "viber_num": "AFG News Viber Number: +18195067489 ",
+  "download_viber": "Download Viber"
 }

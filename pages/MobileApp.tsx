@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -12,13 +13,14 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const MobileApp = () => {
+  const { t } = useTranslation();
   return (
     <MobileAppMainContainer>
       <Head>
         <title>Mobile App</title>
       </Head>
       <GetOurApp>
-        <h1>Get our mobile App</h1>
+        <h1>{t("common:get_our_app")}</h1>
       </GetOurApp>
       <div
         style={{
@@ -34,7 +36,7 @@ const MobileApp = () => {
                 src="https://res.cloudinary.com/dbpar1qf3/image/upload/v1676542273/hero-image.fill.size_1200x1200.v1623363034-removebg-preview_y0ao5k.png"
               />
             </Button>
-            <h2 className="label-button">Google Play</h2>
+            <h2 className="label-button">{t("common:gplay")}</h2>
           </div>
           <div className="per-button-container">
             <Button>
@@ -43,7 +45,7 @@ const MobileApp = () => {
                 src="app-store-complete-transparent.png"
               />
             </Button>
-            <h2 className="label-button">App Store</h2>
+            <h2 className="label-button">{t("common:appstore")}</h2>
           </div>
         </ButtonsContainer>
       </div>

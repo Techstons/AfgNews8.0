@@ -1,6 +1,4 @@
 import React, { useState, useRef } from "react";
-import { initReactI18next } from "react-i18next";
-import i18n from "i18next";
 import styled from "@emotion/styled";
 import Head from "next/head";
 import emailjs from "@emailjs/browser";
