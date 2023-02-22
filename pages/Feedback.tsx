@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useSelector } from "react-redux";
+import { useTranslation } from "next-i18next";
+
 import type { RootState } from "../hooks/store";
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -15,6 +17,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const Feedback = () => {
   const isDarkMode = useSelector((state: RootState) => state.search.isDarkMode);
+  const { t } = useTranslation();
 
   return (
     <FeedbackMainContainer>
@@ -23,8 +26,8 @@ const Feedback = () => {
       </Head>
       <FeedBack>
         <div>
-          <h1>Feedback</h1>
-          <p>Tell us how we can improve</p>
+          <h1>{t("common:feedback")}</h1>
+          <p>{t("common:how_we_can_improve")}</p>
         </div>
       </FeedBack>
       <div
@@ -35,11 +38,11 @@ const Feedback = () => {
       >
         <BoxContainer className="feedback-box-container">
           <div style={{ display: "flex", alignItems: "center" }}>
-            <div>Email </div>
+            <div>{t("common:email")} </div>
             <Aster>*</Aster>
           </div>
           <Input
-            placeholder="input your email here"
+            placeholder={t("common:input_email")}
             className="feedback-input"
             style={{
               border: isDarkMode
@@ -50,7 +53,7 @@ const Feedback = () => {
           <div
             style={{ display: "flex", alignItems: "center", marginTop: "2rem" }}
           >
-            <div>Message </div>
+            <div>{t("common:message")} </div>
             <Aster>*</Aster>
           </div>
           <Text

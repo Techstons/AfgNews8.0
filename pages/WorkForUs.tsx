@@ -5,9 +5,11 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Grid from "@mui/material/Grid";
 import CloseIcon from "@mui/icons-material/Close";
 import { useSelector } from "react-redux";
-import type { RootState } from "../hooks/store";
 import { ReadMore } from "@components/common";
+import { useTranslation } from "next-i18next";
+
 import { Work } from "@components/common";
+import type { RootState } from "../hooks/store";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -62,6 +64,7 @@ const WorkForUs = () => {
   const [work, setWork] = useState("");
   const [workChoice, setWorkChoice] = useState("");
   const [jobDesc, setJobDesc] = useState("");
+  const { t } = useTranslation();
 
   function applyWork(job: any) {
     setWork(job.title);
@@ -82,8 +85,8 @@ const WorkForUs = () => {
         <title>Work for us</title>
       </Head>
       <WorkForUsHeader>
-        <h1>Work For Us</h1>
-        <p>Join our team and help shape the future</p>
+        <h1>{t("common:work_for_us")}</h1>
+        <p>{t("common:join_our_team")}</p>
       </WorkForUsHeader>
       {!openWork ? (
         <Grid container className="jobs-container">
@@ -105,7 +108,7 @@ const WorkForUs = () => {
                     <Button
                       onClick={() => readMore(job.description, job.title)}
                     >
-                      Read more
+                      {t("common:read_more")}
                     </Button>
                   </div>
                 </WorkBox>
@@ -128,7 +131,7 @@ const WorkForUs = () => {
                   style={{ width: "10rem" }}
                   onClick={() => setWorkChoice("apply")}
                 >
-                  Apply
+                  {t("common:apply")}
                 </Button>
               </ButtonsContainer>
             </div>

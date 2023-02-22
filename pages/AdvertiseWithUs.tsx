@@ -4,6 +4,7 @@ import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useSelector } from "react-redux";
 import type { RootState } from "../hooks/store";
+import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -15,14 +16,15 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const AdvertiseWithUs = () => {
   const isDarkMode = useSelector((state: RootState) => state.search.isDarkMode);
+  const { t } = useTranslation();
 
   const InfoList = [
-    "10000+ Unique Visitors*",
-    "500 Monthly App Downloads ",
-    "10000+ YouTube Subscribers",
-    "10000+ Newsletter Subscribers",
-    "100+ Twitter Followers",
-    "100+ Facebook Followers",
+    t("common:unique_visits"),
+    t("common:app_downloads"),
+    t("common:yt_subs"),
+    t("common:newsletter_subs"),
+    t("common:twitter_follows"),
+    t("common:fb_follows"),
   ];
 
   const [data, setData] = useState<any>(null);
@@ -60,21 +62,13 @@ const AdvertiseWithUs = () => {
           </h1>
         </HeaderTextContainer> */}
         <GetInTouchDesign className="get-in-touch">
-          Advertise With Us
+          {t("common:ad_with_us")}
         </GetInTouchDesign>
       </HeaderContainer>
       <FormContainer>
         <Advertise className="advertise">
           {/* <h1>Advertise With Us</h1> */}
-          <h2>
-            The AfgNews media platform is the leading trusted source for content
-            from Afghanistan and around the world, attracting millions of users.
-            Keeping you updated with the latest news and events. With insights,
-            podcasts, youtube, live streaming, research reports, live events,
-            data & analytics and much more, that’s why millions of users trust{" "}
-            AfgNews as the source for the latest news and why it matters to
-            investors, companies and governments.
-          </h2>
+          <h2>{t("common:the_afg_media")}</h2>
         </Advertise>
         <div style={{ padding: "0 2rem 0 2rem" }}>
           {InfoList.map((info) => (
@@ -90,13 +84,24 @@ const AdvertiseWithUs = () => {
             <PerInfo className="per-info-ad">
               <div className="adWithUs-perInfo-div">
                 <p>01</p>
-                <h1 className="adWithUs-perInfo-h1">Tell us about yourself</h1>
+                <h1 className="adWithUs-perInfo-h1">
+                  {t("common:tell_about_yourself")}
+                </h1>
               </div>
             </PerInfo>
             <Form>
-              <Input placeholder="First name" className="adWithUs-input" />
-              <Input placeholder="Last name" className="adWithUs-input" />
-              <Input placeholder="Email address" className="adWithUs-input" />
+              <Input
+                placeholder={t("common:first_name")}
+                className="adWithUs-input"
+              />
+              <Input
+                placeholder={t("common:last_name")}
+                className="adWithUs-input"
+              />
+              <Input
+                placeholder={t("common:email_add")}
+                className="adWithUs-input"
+              />
             </Form>
           </PerInfoContainer>
           <PerInfoContainer className="perInfo-container">
@@ -104,17 +109,17 @@ const AdvertiseWithUs = () => {
               <div className="adWithUs-perInfo-div">
                 <p>02</p>
                 <h1 className="adWithUs-perInfo-h1">
-                  Tell us about your business
+                  {t("common:tell_about_business")}
                 </h1>
               </div>
             </PerInfo>
             <Form>
               <Input
-                placeholder="Name of business"
+                placeholder={t("common:name_of_business")}
                 className="adWithUs-input"
               />
               <Input
-                placeholder="Business industry"
+                placeholder={t("common:industry")}
                 className="adWithUs-input"
               />
               <Location name="Location" className="adWithUs-select">
@@ -129,13 +134,13 @@ const AdvertiseWithUs = () => {
               <div className="adWithUs-perInfo-div">
                 <p>03</p>
                 <h1 className="adWithUs-perInfo-h1">
-                  Anything else we should know?
+                  {t("common:we_should_know")}
                 </h1>
               </div>
             </PerInfo>
             <Form>
               <Message
-                placeholder="Optional message with more details"
+                placeholder={t("common:opt_message")}
                 className="adWithUs-message"
               />
             </Form>
@@ -146,9 +151,9 @@ const AdvertiseWithUs = () => {
             <SendButton
               style={{ backgroundColor: isDarkMode ? "gray" : "#e9e9e9" }}
             >
-              Send Message
+              {t("common:send_message")}
             </SendButton>
-            <CancelButton>Cancel</CancelButton>
+            <CancelButton>{t("common:cancel")}</CancelButton>
           </div>
         </ButtonsContainer>
       </FormContainer>

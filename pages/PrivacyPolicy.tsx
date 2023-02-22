@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
+import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -12,41 +13,24 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const PrivacyPolicy = () => {
+  const { t } = useTranslation();
+
   return (
     <PrivacyPolicyMainContainer>
       <Head>
         <title>Privacy Policy</title>
       </Head>
       <PageHeader>
-        <h1>Privacy Policy</h1>
+        <h1>{t("common:privacy_policy")}</h1>
       </PageHeader>
       <ContentsContainer>
-        <p>
-          This Privacy Policy outlines how we collect and use personal
-          information from visitors to our news website. Personal information
-          may include name, email address, IP address, and location data.
-        </p>
+        <p>{t("common:privacy_outline")}</p>
 
-        <p>
-          We use this information to provide a better experience on our website,
-          send newsletters, and promote our services and products. We may share
-          the information with third-party service providers, but they must keep
-          it confidential. We take appropriate measures to secure personal
-          information, but cannot guarantee absolute security. We will retain
-          the information for as long as necessary and delete it when no longer
-          needed.
-        </p>
-        <p>
-          Visitors have the right to access, rectify, erase, object to
-          processing, and request data portability. If you have questions,
-          please contact us at Here.
-        </p>
+        <p>{t("common:we_use_this")}</p>
+        <p>{t("common:visitors_have")}</p>
 
-        <p>
-          We may update this Privacy Policy in the future and will notify you of
-          any changes.
-        </p>
-        <p style={{ margin: "0" }}>Effective Date: 09 February 2023.</p>
+        <p>{t("common:wemay")}</p>
+        <p style={{ margin: "0" }}>{t("common:effective_date")}</p>
       </ContentsContainer>
     </PrivacyPolicyMainContainer>
   );

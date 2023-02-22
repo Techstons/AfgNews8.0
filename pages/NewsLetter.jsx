@@ -5,6 +5,7 @@ import { Button } from "@components/ui";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -15,56 +16,18 @@ export async function getStaticProps({ locale }) {
 }
 
 const NewsLetter = () => {
-  // const [email, setEmail] = useState("");
-  // const router = useRouter();
-  // const { pathname } = router;
+  const { t } = useTranslation();
 
-  // const subscribeToNewsLetter = async (e: FormEvent) => {
-  //   e.preventDefault();
-
-  //   const FORMSPREE_API = process.env.FORMSPREE_API;
-  //   const res = await fetch(FORMSPREE_API ?? "", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       email: email,
-  //     }),
-  //     headers: {
-  //       Accept: "application/json",
-  //     },
-  //   });
-
-  //   const data = await res.json();
-
-  //   if (!res.ok) {
-  //     return alert(
-  //       `${data.error}: ${
-  //         Array.isArray(data.errors) ? data.errors[0].message : data.error
-  //       }`
-  //     );
-  //   }
-
-  //   alert("Success! You have been subscribed ssto our newsletter.");
-  //   setEmail("");
-  // };
-
-  // useEffect(() => {
-  //   if (pathname === "/NewsLetter") {
-  //     console.log("newsletter");
-  //   }
-  // }, [pathname]);
   return (
     <NewsletterMainContainer>
       <Head>
         <title>News Letter</title>
       </Head>
       <UpperContents>
-        <h1 className="newsLetter-h1">Newsletter</h1>
+        <h1 className="newsLetter-h1">{t("common:newsletter")}</h1>
       </UpperContents>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Subscribe>
-          Subscribe to AFGNEWS Newsletter — The best way to stay informed about
-          the latest news from Afghanistan and around the world.
-        </Subscribe>
+        <Subscribe>{t("common:sub_to_newsletter")}</Subscribe>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div style={{ margin: "2.5rem 0 2.5rem 0", width: "90%" }}>
@@ -83,7 +46,7 @@ const NewsLetter = () => {
             aria-label="Subscribe your email to newsletter"
           >
             <input
-              placeholder={"Enter your Email"}
+              placeholder={t("common:enter_email")}
               className="newsLetter-input"
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
@@ -97,7 +60,7 @@ const NewsLetter = () => {
               }}
             />
             <Button className="btn" type="submit">
-              OK
+              {t("common:ok")}
             </Button>
           </form>
         </div>
