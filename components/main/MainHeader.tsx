@@ -45,8 +45,6 @@ const Header = ({
     fetchData();
   }, []);
 
-  console.log(articles ? articles[0] : "");
-
   return (
     <Wrapper>
       <Top>

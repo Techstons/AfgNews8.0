@@ -35,26 +35,15 @@ export default function LocaleSwitcher() {
             </Wrapper>
           );
         })}
-      {/* <Wrapper key={"locale-" + "ps"}>
-        <Link href={{}}>
-          <a>{languages["ps"].title}</a>
-        </Link>
-      </Wrapper>
-      <Wrapper key={"locale-" + "ru"}>
-        <Link href={{}}>
-          <a>{languages["ru"].title}</a>
-        </Link>
-      </Wrapper> */}
     </>
   );
 }
 
-const Wrapper = styled.span`
+const Wrapper = styled.div`
   text-transform: uppercase;
-  font-size: 1rem; // remove this to go back to the original size
 
-  &:hover {
-    color: var(--primary-color);
+  & a {
+    color: red;
   }
 
   @media only screen and (max-width: 600px) {

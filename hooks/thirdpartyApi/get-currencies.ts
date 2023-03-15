@@ -1,6 +1,6 @@
 import { Currency } from "@hooks/types";
 
-const timestamp = Date.now(); //the api does not giving response
+const timestamp = Date.now(); //the api does not give response
 
 // const getForexApiUri = () => {
 //   return `https://fcsapi.com/api-v3/forex/latest?symbol=EUR/AFN,USD/AFN,USD/EUR&access_key=ktN0i6vA3xu0X0ZOq9MQ6&timestamp=${timestamp}`;
@@ -47,10 +47,13 @@ export const getCurrencies = async () => {
   const currencies = await res.json();
   const currencies2 = await res2.json();
   const currencies3 = await res3.json();
-
-  // console.log(currencies);
-  // console.log(currencies2);
-  // console.log(currencies3);
+  try {
+    console.log(currencies);
+    console.log(currencies2);
+    console.log(currencies3);
+  } catch (err) {
+    window.alert(err);
+  }
 
   const forex = currencyNormalize(currencies, false);
 

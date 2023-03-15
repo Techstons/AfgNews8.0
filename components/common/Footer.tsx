@@ -163,9 +163,7 @@ const Footer = ({ isDark }: IFooter) => {
                             width: "14rem",
                           }}
                         />
-                        <Button className="btn" type="submit">
-                          OK
-                        </Button>
+                        <Button type="submit">OK</Button>
                       </form>
                       <div
                         style={{
