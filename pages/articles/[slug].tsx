@@ -29,21 +29,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }: GetStaticPropsContext<{ slug: string }>) => {
+export const getStaticProps = async ({
+  params,
+}: GetStaticPropsContext<{ slug: string }>) => {
   const article = await getArticleByProp("slug", params!.slug);
-
-  // Check if article exists and has items
-  if (!article || article.length === 0) {
-    return {
-      notFound: true,  // Return a 404 page if the article is not found
-    };
-  }
 
   return {
     props: {
-      article: article[0],  // Safely access the first article
+      article: article[0],
     },
-    revalidate: 60,  // ISR revalidation (optional)
   };
 };
 
