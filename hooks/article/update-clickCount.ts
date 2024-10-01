@@ -3,7 +3,7 @@ const spaceId = process.env.SPACE_ID;
 
 const client = contentful.createClient({
   space: spaceId ? spaceId : "",
-  accessToken: "CFPAT-pwYVRBVu2mUUsNjE263px2fsMfj2J010329GKWppTmY",
+  accessToken: "",
 });
 
 export async function updateClickCount(entryId: string) {
