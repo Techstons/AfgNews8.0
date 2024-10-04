@@ -1,31 +1,31 @@
-import { Article } from "@components/types";
-import styled from "@emotion/styled";
-import Link from "next/link";
-import { FC } from "react";
-import CategoryMinimal from "./CategoryMinimal";
-import CloudinaryImage from "./CloudinaryImage";
+import { Article } from '@components/types';
+import styled from '@emotion/styled';
+import Link from 'next/link';
+import { FC } from 'react';
+import CategoryMinimal from './CategoryMinimal';
+import CloudinaryImage from './CloudinaryImage';
 
 type CardVariantProps = {
-  categoryVariant?: "primary" | "secondary" | "tertiary";
+  categoryVariant?: 'primary' | 'secondary' | 'tertiary';
 };
 
 interface IArticle extends CardVariantProps {
   card: Article;
-  variant?: "primary" | "slim";
+  variant?: 'primary' | 'slim';
   width?: string;
   height?: string;
-  layout?: "fixed" | "fill" | "raw" | "intrinsic" | "responsive" | undefined;
+  layout?: 'fixed' | 'fill' | 'raw' | 'intrinsic' | 'responsive' | undefined;
 }
 
 const ArticleCard: FC<IArticle> = ({
   card,
-  variant = "primary",
-  categoryVariant = "primary",
+  variant = 'primary',
+  categoryVariant = 'primary',
   height,
   width,
   layout,
 }) => {
-  return variant === "primary" ? (
+  return variant === 'primary' ? (
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>
         <PrimaryAnchor categoryVariant={categoryVariant}>
@@ -40,22 +40,22 @@ const ArticleCard: FC<IArticle> = ({
             />
           </ImageWrapper>
           <div className="content">
-            {categoryVariant === "primary" ? (
+            {categoryVariant === 'primary' ? (
               <>
                 <CategoryMinimal
                   className="category-and-time"
                   createdAt={card?.createdAt ?? Date.now()}
-                  category={card?.category ?? "N/A"}
+                  category={card?.category ?? 'N/A'}
                 />
                 <h3 className="primary">{card.title}</h3>
                 <p>{card.excerpt}</p>
               </>
-            ) : categoryVariant === "secondary" ? (
+            ) : categoryVariant === 'secondary' ? (
               <>
                 <CategoryMinimal
                   className="category-and-time"
                   createdAt={card?.createdAt ?? Date.now()}
-                  category={card?.category ?? "N/A"}
+                  category={card?.category ?? 'N/A'}
                 />
                 <h3 className="secondary">{card.title}</h3>
                 <p>{card.excerpt}</p>
@@ -67,7 +67,7 @@ const ArticleCard: FC<IArticle> = ({
                 <CategoryMinimal
                   className="category-and-time-3"
                   createdAt={card?.createdAt ?? Date.now()}
-                  category={card?.category ?? "N/A"}
+                  category={card?.category ?? 'N/A'}
                 />
               </>
             )}
@@ -88,12 +88,12 @@ const ArticleCard: FC<IArticle> = ({
             className="image-container"
           />
           <div className="content">
-            {categoryVariant === "primary" ? (
+            {categoryVariant === 'primary' ? (
               <>
                 <h3>{card.title}</h3>
                 <CategoryMinimal
                   createdAt={card?.createdAt ?? Date.now()}
-                  category={card?.category ?? "N/A"}
+                  category={card?.category ?? 'N/A'}
                 />
               </>
             ) : (
@@ -103,7 +103,7 @@ const ArticleCard: FC<IArticle> = ({
                 <CategoryMinimal
                   className="category-and-time"
                   createdAt={card?.createdAt ?? Date.now()}
-                  category={card?.category ?? "N/A"}
+                  category={card?.category ?? 'N/A'}
                 />
               </>
             )}
@@ -150,8 +150,8 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
   cursor: pointer;
   display: grid;
   grid-template-columns: ${(props) =>
-    props.categoryVariant === "tertiary" ? "repeat(2, 1fr)" : "1fr"};
-  gap: ${(props) => (props.categoryVariant === "primary" ? "1rem" : "0.5rem")};
+    props.categoryVariant === 'tertiary' ? 'repeat(2, 1fr)' : '1fr'};
+  gap: ${(props) => (props.categoryVariant === 'primary' ? '1rem' : '0.5rem')};
 
   h3 {
     margin-top: 1rem;
@@ -183,7 +183,7 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
     position: relative;
     width: 100%;
     padding: ${(props) =>
-      props.categoryVariant === "tertiary" ? "1rem" : "0"};
+      props.categoryVariant === 'tertiary' ? '1rem' : '0'};
     padding-bottom: 1rem;
 
     .date {
@@ -212,10 +212,10 @@ const PrimaryAnchor = styled.a<CardVariantProps>`
 
   @media screen and (max-width: 768px) {
     grid-template-columns: ${(props) =>
-      props.categoryVariant === "primary" ||
-      props.categoryVariant === "tertiary"
-        ? "1fr"
-        : "repeat(2, 1fr)"};
+      props.categoryVariant === 'primary' ||
+      props.categoryVariant === 'tertiary'
+        ? '1fr'
+        : 'repeat(2, 1fr)'};
   }
 `;
 
