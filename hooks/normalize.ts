@@ -1,7 +1,6 @@
 import { Article } from '@hooks/types';
 
 export const normalizeArticle = (article?: Article[]) => {
-  console.log(article);
   return !!article && article?.length !== 0
     ? article.map((item) => {
         return {

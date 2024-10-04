@@ -1,18 +1,18 @@
-import { Article as ComponentArticle } from "@components/types";
-import { normalizeArticle } from "@hooks/normalize";
-import { Article } from "@hooks/types";
-import fetcherApi from "@hooks/utils/fetch-api";
-import { getArticlesCtxQuery } from "@hooks/utils/queries";
+import { Article as ComponentArticle } from '@components/types';
+import { normalizeArticle } from '@hooks/normalize';
+import { Article } from '@hooks/types';
+import fetcherApi from '@hooks/utils/fetch-api';
+import { getArticlesCtxQuery } from '@hooks/utils/queries';
 
 type CategoryKeys =
-  | "Home"
-  | "Afg"
-  | "World"
-  | "Business"
-  | "Tech"
-  | "Health"
-  | "Sports"
-  | "Crypto";
+  | 'Home'
+  | 'Afg'
+  | 'World'
+  | 'Business'
+  | 'Tech'
+  | 'Health'
+  | 'Sports'
+  | 'Crypto';
 
 type ArticleCtx = {
   [key in CategoryKeys]: {
@@ -28,7 +28,7 @@ export type ReturnValue = {
 
 export const getArticlesCtx = async (variables?: { locale?: string }) => {
   const res = await fetcherApi<ArticleCtx>(getArticlesCtxQuery, variables);
-
+  console.log(res.Home);
   let temp: ReturnValue = {
     Home: {
       items: [],
