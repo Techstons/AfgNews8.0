@@ -1,4 +1,4 @@
-import { cardArticleFields } from "./common";
+import { cardArticleFields } from './common';
 
 const getArticlesCtxQuery = `
 query getArticlesCtxQuery($locale: String) {

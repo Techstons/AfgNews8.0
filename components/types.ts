@@ -1,9 +1,9 @@
 export interface Article {
   featuredImage: {
-    url: string;
-    width: string;
-    height: string;
-    id: string;
+    url: string | null;
+    width: string | null;
+    height: string | null;
+    id: string | null;
   };
   category: string;
   createdAt: Date;
