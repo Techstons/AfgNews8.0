@@ -1,24 +1,24 @@
-import { ArticleCard, CloudinaryImage, Comments } from "@components/news";
-import { SEOHeader } from "@components/seo";
-import { Container } from "@components/ui";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import styled from "@emotion/styled";
+import { ArticleCard, CloudinaryImage, Comments } from '@components/news';
+import { SEOHeader } from '@components/seo';
+import { Container } from '@components/ui';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import styled from '@emotion/styled';
 import {
   getAllArticlePaths,
   getArticleBySlug,
   getArticlesCtx,
   getRecommended,
-} from "@hooks/article";
-import useFormattedDate from "@hooks/useFormattedDate";
-import { Clock, Share } from "@styled-icons/bootstrap";
+} from '@hooks/article';
+import useFormattedDate from '@hooks/useFormattedDate';
+import { Clock, Share } from '@styled-icons/bootstrap';
 import {
   GetStaticPaths,
   GetStaticPropsContext,
   InferGetStaticPropsType,
-} from "next";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useRouter } from "next/router";
+} from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from 'next/router';
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const res = await getAllArticlePaths();
@@ -58,7 +58,7 @@ export const getStaticProps = async ({
       article,
       recommended,
       articles,
-      ...(await serverSideTranslations(locale || "en", ["common", "slug"])),
+      ...(await serverSideTranslations(locale || 'en', ['common', 'slug'])),
     },
     notFound: !article,
     revalidate: 60,
@@ -71,9 +71,10 @@ const ArticlePage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
   const router = useRouter();
+  const { query } = router;
   const articleDate = useFormattedDate(
     article?.createdAt ? new Date(article.createdAt) : new Date(),
-    "distance"
+    'distance'
   );
 
   if (router.isFallback) {
@@ -93,6 +94,8 @@ const ArticlePage = ({
     });
   };
 
+  const disableComments = query.disableComment === 'true';
+
   return (
     <Container>
       <SEOHeader
@@ -110,21 +113,20 @@ const ArticlePage = ({
             <div>
               <p className="contributor">
                 <span>
-                  <strong>By {article?.author || "AfgNews"} Team</strong>
+                  <strong>By {article?.author || 'AfgNews'} Team</strong>
                 </span>
               </p>
               <div className="date">
                 <Clock size={12} className="clock" />
-                {"  "}
-                <span>{article?.createdAt ? articleDate : "N/A"} ago</span>
+                {'  '}
+                <span>{article?.createdAt ? articleDate : 'N/A'} ago</span>
               </div>
             </div>
 
             <button
               data-text="Link copied!"
               className="share"
-              onClick={invokeShare}
-            >
+              onClick={invokeShare}>
               <Share size={16} />
             </button>
           </ArticleHeader>
@@ -144,13 +146,15 @@ const ArticlePage = ({
               {documentToReactComponents(article?.body.json)}
             </ArticleMdx>
           </ArticleBody>
-          <Comments
-            websiteId={7660}
-            title={article.title}
-            url={fullPath}
-            loadMode="load"
-            id={article.slug + article.sys.publishedAt}
-          />
+          {!disableComments && (
+            <Comments
+              websiteId={7660}
+              title={article.title}
+              url={fullPath}
+              loadMode="load"
+              id={article.slug + article.sys.publishedAt}
+            />
+          )}
         </ArticleWrapper>
         <Aside>
           <div>
@@ -166,7 +170,7 @@ const ArticlePage = ({
               ))}
           </div>
           <div>
-            <h2>{t("slug:recommended")}</h2>
+            <h2>{t('slug:recommended')}</h2>
             {!!recommended.recommended &&
               recommended.recommended.length !== 0 &&
               recommended.recommended.map((article) => (
@@ -251,7 +255,7 @@ const ArticleHeader = styled.header`
     }
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
 
       /* position tooltip correctly */
