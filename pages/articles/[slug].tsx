@@ -72,6 +72,13 @@ const ArticlePage = ({
   const { t } = useTranslation();
   const router = useRouter();
   const { query } = router;
+
+  let disableComments = true;
+
+  if (query.disableComment === 'false') {
+    disableComments = false;
+  }
+
   const articleDate = useFormattedDate(
     article?.createdAt ? new Date(article.createdAt) : new Date(),
     'distance'
@@ -93,8 +100,6 @@ const ArticlePage = ({
       url: fullPath,
     });
   };
-
-  const disableComments = query.disableComment === 'true';
 
   return (
     <Container>
