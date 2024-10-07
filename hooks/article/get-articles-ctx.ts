@@ -28,7 +28,7 @@ export type ReturnValue = {
 
 export const getArticlesCtx = async (variables?: { locale?: string }) => {
   const res = await fetcherApi<ArticleCtx>(getArticlesCtxQuery, variables);
-  console.log(res.Home);
+  // console.log(res.Home);
   let temp: ReturnValue = {
     Home: {
       items: [],

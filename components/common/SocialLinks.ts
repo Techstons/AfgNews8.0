@@ -2,7 +2,7 @@ import { Instagram } from '@styled-icons/bootstrap/Instagram';
 
 import { Youtube } from '@styled-icons/bootstrap/Youtube';
 import { Facebook } from '@styled-icons/material/Facebook';
-import TwitterX from '@components/icons/twitterX';
+import TwitterX from '@components/icons/TwitterX';
 
 const socialLinks = [
   {

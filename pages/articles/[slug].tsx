@@ -73,10 +73,10 @@ const ArticlePage = ({
   const router = useRouter();
   const { query } = router;
 
-  let disableComments = true;
+  let enableComments = false;
 
-  if (query.disableComment === 'false') {
-    disableComments = false;
+  if (query.enableComments === 'true') {
+    enableComments = true;
   }
 
   const articleDate = useFormattedDate(
@@ -107,7 +107,7 @@ const ArticlePage = ({
         title={article?.title}
         author={article?.author}
         description={article?.excerpt}
-        ogImage={article?.featuredImage.url}
+        ogImage={article?.featuredImage?.url ?? undefined}
         canonical={article?.slug}
       />
       <Wrapper>
@@ -151,7 +151,7 @@ const ArticlePage = ({
               {documentToReactComponents(article?.body.json)}
             </ArticleMdx>
           </ArticleBody>
-          {!disableComments && (
+          {enableComments && (
             <Comments
               websiteId={7660}
               title={article.title}
