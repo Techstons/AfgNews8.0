@@ -27,6 +27,8 @@ const ArticleCard: FC<IArticle> = ({
   width,
   layout,
 }) => {
+  console.log(typeof card.createdAt);
+
   return variant === 'primary' ? (
     <PrimaryWrapper>
       <Link href={`/articles/${card.slug}`} passHref={true}>

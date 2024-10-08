@@ -1,8 +1,8 @@
-import { Article } from "@components/types";
-import styled from "@emotion/styled";
-import useFormattedDate from "@hooks/useFormattedDate";
+import { Article } from '@components/types';
+import styled from '@emotion/styled';
+import useFormattedDate from '@hooks/useFormattedDate';
 
-interface ICategoryMinimal extends Pick<Article, "category" | "createdAt"> {
+interface ICategoryMinimal extends Pick<Article, 'category' | 'createdAt'> {
   className?: string;
 }
 
@@ -13,7 +13,7 @@ const CategoryMinimal = ({
 }: ICategoryMinimal) => {
   const articleDate = useFormattedDate(
     !!createdAt ? new Date(createdAt) : new Date(),
-    "distance"
+    'distance'
   );
   return (
     <Wrapper className={className}>
@@ -30,7 +30,7 @@ const Wrapper = styled.p`
   font-size: 0.6rem;
 
   &::before {
-    content: " ";
+    content: ' ';
     display: inline-block;
     margin-right: 0.5rem;
     border-left: 2px solid var(--primary-color);
