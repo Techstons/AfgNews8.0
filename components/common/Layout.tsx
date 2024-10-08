@@ -1,9 +1,10 @@
-import styled from "@emotion/styled";
-import { ReturnValue } from "@hooks/article/get-articles-ctx";
-import { ArrowUp } from "@styled-icons/bootstrap";
-import { ReactNode, useEffect, useState } from "react";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+import React from 'react';
+import styled from '@emotion/styled';
+import { ReturnValue } from '@hooks/article/get-articles-ctx';
+import { ArrowUp } from '@styled-icons/bootstrap';
+import { ReactNode, useEffect, useState } from 'react';
+import Footer from './Footer';
+import Navbar from './Navbar';
 interface ILayout {
   children: ReactNode;
   articles: ReturnValue;
@@ -18,7 +19,7 @@ const Layout = ({ articles, children }: ILayout) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -27,22 +28,21 @@ const Layout = ({ articles, children }: ILayout) => {
       setIsVisible(isVisible);
     };
 
-    window.addEventListener("scroll", () => scrollEvent());
+    window.addEventListener('scroll', () => scrollEvent());
 
     return () => {
-      window.removeEventListener("scroll", () => scrollEvent());
+      window.removeEventListener('scroll', () => scrollEvent());
     };
   }, []);
 
   return (
     <>
       <Navbar articles={articles} isDark={isDark} setIsDark={setIsDark} />
-      <Main className={isDark ? "dark-theme" : "light-theme"}>{children}</Main>
+      <Main className={isDark ? 'dark-theme' : 'light-theme'}>{children}</Main>
       <AccessibilityScroller
         isVisible={isVisible}
         onClick={scrollToTop}
-        aria-label="Scroll to top button"
-      >
+        aria-label="Scroll to top button">
         <ArrowUp size={24} />
       </AccessibilityScroller>
       <Footer isDark={isDark} />
@@ -60,7 +60,7 @@ const Main = styled.main`
 `;
 
 const AccessibilityScroller = styled.button<Scroller>`
-  display: ${(props) => (props.isVisible ? "flex" : "none")};
+  display: ${(props) => (props.isVisible ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
   position: fixed;
