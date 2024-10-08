@@ -1,34 +1,33 @@
-import { Article } from "@components/types";
-import styled from "@emotion/styled";
-import Image from "next/image";
+import { Article } from '@components/types';
+import styled from '@emotion/styled';
+import Image from 'next/image';
 
 interface IImage {
   width?: string;
   height?: string;
-  layout?: "fixed" | "fill" | "raw" | "intrinsic" | "responsive" | undefined;
+  layout?: 'fixed' | 'fill' | 'raw' | 'intrinsic' | 'responsive' | undefined;
   className?: string;
 }
 
-type CloudinaryImageProps = Pick<Partial<Article>, "featuredImage" | "title"> &
+type CloudinaryImageProps = Pick<Partial<Article>, 'featuredImage' | 'title'> &
   IImage;
 
 const CloudinaryImage = ({
   featuredImage,
   title,
   priority,
-  width = "1980",
-  height = "1020",
-  layout = "responsive",
+  width = '1980',
+  height = '1020',
+  layout = 'responsive',
   className,
 }: CloudinaryImageProps & { priority?: boolean }) => {
   return (
     <Wrapper
-      width={width === "1980" ? "auto" : width}
-      height={height === "1020" ? "auto" : height}
-      className={className}
-    >
+      width={width === '1980' ? 'auto' : width}
+      height={height === '1020' ? 'auto' : height}
+      className={className}>
       <Image
-        src={`q_auto/f_auto/${featuredImage?.id}` ?? "cld-sample"}
+        src={`q_auto/f_auto/${featuredImage?.id}` ?? 'cld-sample'}
         className="image"
         alt={title}
         layout={layout}

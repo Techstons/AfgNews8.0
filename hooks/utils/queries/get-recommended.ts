@@ -8,6 +8,9 @@ const getRecommendedQuery = `
                 category {
                     name
                 }
+                sys {
+                    publishedAt
+                }
             }
         }
         recommended:articleCollection ( limit: 3, order:sys_publishedAt_DESC, locale: $locale , where: {category: {name: $category}}) {
@@ -17,6 +20,9 @@ const getRecommendedQuery = `
                 slug
                 category {
                     name
+                }
+                 sys {
+                    publishedAt
                 }
             }
         }

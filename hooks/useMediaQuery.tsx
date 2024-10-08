@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const useMediaQuery = (query: string) => {
   const [matches, setMatches] = React.useState(false);
@@ -10,10 +10,10 @@ const useMediaQuery = (query: string) => {
 
     setMatches(m.matches);
 
-    m.addEventListener("change", handleChange);
+    m.addEventListener('change', handleChange);
 
     return () => {
-      m.removeEventListener("change", handleChange);
+      m.removeEventListener('change', handleChange);
     };
   }, [query]);
 
