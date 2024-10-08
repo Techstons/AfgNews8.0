@@ -1,16 +1,16 @@
-import { CategorySection } from "@components/category";
-import { SEOHeader } from "@components/seo";
+import { CategorySection } from '@components/category';
+import { SEOHeader } from '@components/seo';
 import {
   getAllCategoriesSlugs,
   getArticleByCategory,
   getArticlesCtx,
-} from "@hooks/article";
+} from '@hooks/article';
 import {
   GetStaticPaths,
   GetStaticPropsContext,
   InferGetStaticPropsType,
-} from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+} from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const res = await getAllCategoriesSlugs();
@@ -52,8 +52,8 @@ export const getStaticProps = async ({
       articles,
       articlesPerCategory,
       slug: params!.category,
-      category: articlesPerCategory[0]?.category || params!.category,
-      ...(await serverSideTranslations(locale || "en", ["common"])),
+      category: params!.category,
+      ...(await serverSideTranslations(locale || 'en', ['common'])),
     },
     revalidate: 60,
     notFound: articlesPerCategory.length === 0,
@@ -74,7 +74,7 @@ const Category = ({
         title={category}
         slug={category}
       /> */}
-      <CategorySection title={category} articles={articlesPerCategory} />
+      <CategorySection slug={category} articles={articlesPerCategory} />
     </>
   );
 };

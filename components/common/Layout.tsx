@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { ReturnValue } from '@hooks/article/get-articles-ctx';
 import { ArrowUp } from '@styled-icons/bootstrap';

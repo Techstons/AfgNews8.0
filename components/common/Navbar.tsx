@@ -1,15 +1,16 @@
-import { CloseIcon, MenuIcon } from "@components/icons";
-import { Container, SocialCircle } from "@components/ui";
-import { LocaleSwitcher, NavCurrencyWidget } from "@components/widgets";
-import styled from "@emotion/styled";
-import { ReturnValue } from "@hooks/article/get-articles-ctx";
-import { MoonFill, SunFill, Youtube } from "@styled-icons/bootstrap";
-import { useTranslation } from "next-i18next";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import SocialLinks from "./SocialLinks";
+import { CloseIcon, MenuIcon } from '@components/icons';
+import { Container, SocialCircle } from '@components/ui';
+import { LocaleSwitcher, NavCurrencyWidget } from '@components/widgets';
+import styled from '@emotion/styled';
+import { ReturnValue } from '@hooks/article/get-articles-ctx';
+import { MoonFill, SunFill, Youtube } from '@styled-icons/bootstrap';
+import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import SocialLinks from './SocialLinks';
+import useNavLinks from '@hooks/useNavLinks';
 
 type BottomType = {
   active: boolean;
@@ -29,63 +30,15 @@ type ToggleProps = {
   active: boolean;
 };
 
-type NavLinks = {
-  default: keyof ReturnValue;
-  title: string;
-  slug: string;
-};
-
 const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   const [active, setActive] = useState(false);
+  const navLinks = useNavLinks({ isCategory: false });
   const router = useRouter();
 
   const { t } = useTranslation();
 
-  const navLinks: NavLinks[] = [
-    {
-      default: "Home",
-      title: t("common:home"),
-      slug: "/",
-    },
-    {
-      default: "Afg",
-      title: t("common:afg") === "Afghanistan" ? "AFG" : t("common:afg"),
-      slug: "/afg",
-    },
-    {
-      default: "World",
-      title: t("common:world"),
-      slug: "/world",
-    },
-    {
-      default: "Business",
-      title: t("common:business"),
-      slug: "/business",
-    },
-    {
-      default: "Tech",
-      title: t("common:tech"),
-      slug: "/tech-and-science",
-    },
-    {
-      default: "Crypto",
-      title: t("common:crypto"),
-      slug: "/crypto",
-    },
-    {
-      default: "Health",
-      title: t("common:health"),
-      slug: "/health",
-    },
-    {
-      default: "Sports",
-      title: t("common:sports"),
-      slug: "/sports",
-    },
-  ];
-
   const renderSocialIcons = () =>
-    SocialLinks.filter((social) => social.name !== "Youtube").map((item) => {
+    SocialLinks.filter((social) => social.name !== 'Youtube').map((item) => {
       return (
         <a key={item.name} href={item.url} target="_blank" rel="noreferrer">
           <item.icon size={14} />
@@ -96,9 +49,9 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
   // change direction of the page
   useEffect(() => {
     const changeDir = () => {
-      let dir = router.locale == "ps" || router.locale === "fa" ? "rtl" : "ltr";
+      let dir = router.locale == 'ps' || router.locale === 'fa' ? 'rtl' : 'ltr';
 
-      document?.querySelector("html")?.setAttribute("dir", dir);
+      document?.querySelector('html')?.setAttribute('dir', dir);
     };
 
     changeDir();
@@ -110,10 +63,10 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
         <Image
           src={
             isDark
-              ? "f_auto,q_10/assets/nrf_flag_wyi03q"
-              : "f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa"
+              ? 'f_auto,q_10/assets/nrf_flag_wyi03q'
+              : 'f_auto,q_10/assets/topbar_10_10px1_z427ti_hcpcxa'
           }
-          alt={isDark ? "National Resistance Front Flag" : "Afghanistan Flag"}
+          alt={isDark ? 'National Resistance Front Flag' : 'Afghanistan Flag'}
           layout="fill"
         />
       </div>
@@ -145,8 +98,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
           <button
             onClick={() => setActive(!active)}
             aria-label="Navigation Toggle"
-            className="nav-toggle"
-          >
+            className="nav-toggle">
             {active ? (
               <CloseIcon width="25px" height="25px" />
             ) : (
@@ -156,8 +108,7 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
           <Link href="/">
             <a
               aria-label="AFGNews Logo which links to home when clicked"
-              className="logo"
-            >
+              className="logo">
               <Image
                 src="c_limit,h_60,q_auto:low,w_130/assets/logo_wjawfm.png"
                 alt="AFGNews Logo"
@@ -182,10 +133,9 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
                       active={isDark}
                       className={`${
                         router.asPath === menu.slug &&
-                        router.asPath !== "/" &&
-                        "active"
-                      }`}
-                    >
+                        router.asPath !== '/' &&
+                        'active'
+                      }`}>
                       {menu.title}
                     </MenuItem>
                   </Link>
@@ -213,10 +163,9 @@ const Navbar = ({ isDark, setIsDark, articles }: INavbar) => {
             <div className="youtube">
               <a
                 href="https://www.youtube.com/channel/UC1JjrqGsFWlcVpcImM98Xjw"
-                target={"_blank"}
+                target={'_blank'}
                 rel="noreferrer"
-                aria-label="AfgNews Youtube Channel"
-              >
+                aria-label="AfgNews Youtube Channel">
                 <Youtube className="youtube-logo" height={21} width={21} />
               </a>
             </div>
@@ -234,14 +183,14 @@ export default Navbar;
 
 const Root = styled.nav<ToggleProps>`
   background-color: ${(props) =>
-    props.active ? "var(--nav-text)" : "var(--nav-color)"};
+    props.active ? 'var(--nav-text)' : 'var(--nav-color)'};
   font-weight: var(--font-medium);
-  color: ${(props) => (props.active ? "var(--nav-color)" : "var(--nav-text)")};
+  color: ${(props) => (props.active ? 'var(--nav-color)' : 'var(--nav-text)')};
   padding: 0 0.5rem;
 
   &::after {
     // Adds solid line at the bottom of the navbar
-    content: "";
+    content: '';
     display: block;
     margin: 0 auto;
     width: 100%;
@@ -250,7 +199,7 @@ const Root = styled.nav<ToggleProps>`
 
   .top-banner {
     position: absolute;
-    height: ${(props) => (props.active ? "5px" : "3px")};
+    height: ${(props) => (props.active ? '5px' : '3px')};
     width: 100%;
     left: 0;
     top: 0;
@@ -371,7 +320,7 @@ const BottomContent = styled.div<BottomType>`
   }
 
   @media screen and (max-width: 901px) {
-    display: ${(props) => (props.active ? "flex" : "none")};
+    display: ${(props) => (props.active ? 'flex' : 'none')};
     align-items: flex-start;
     transform-origin: top;
     animation: growDown 300ms ease;
@@ -393,8 +342,8 @@ const MenuItem = styled.a<ToggleProps>`
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-color: ${(props) => (props.active ? "white" : "black")};
-  font-family: "Vollkorn SC", serif;
+  background-color: ${(props) => (props.active ? 'white' : 'black')};
+  font-family: 'Vollkorn SC', serif;
   text-transform: uppercase;
   font-size: 1.1rem;
 
@@ -487,8 +436,8 @@ const ToggleDarkWrapper = styled.label<ToggleProps>`
     width: 45%;
     bottom: 0;
     transition: 0.4s;
-    background-color: ${(props) => (props.active ? "white" : "black")};
-    color: ${(props) => (props.active ? "black" : "yellow")};
+    background-color: ${(props) => (props.active ? 'white' : 'black')};
+    color: ${(props) => (props.active ? 'black' : 'yellow')};
     border-radius: 30px;
     box-shadow: 0px 0px 0px 3px #4d4d4d;
   }

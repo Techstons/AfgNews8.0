@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Article } from '@components/types';
 import styled from '@emotion/styled';
 import Link from 'next/link';

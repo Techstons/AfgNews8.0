@@ -1,21 +1,27 @@
-import styled from "@emotion/styled";
-import { Article } from "@components/types";
-import { CategoryCard, CategoryHeaderCard } from "@components/news";
-import { Container } from "@components/ui";
+import styled from '@emotion/styled';
+import { Article } from '@components/types';
+import { CategoryCard, CategoryHeaderCard } from '@components/news';
+import { Container } from '@components/ui';
+import { useTranslation } from 'next-i18next';
+import useNavLinks from '@hooks/useNavLinks';
 
 interface ICategorySection {
-  title: string;
+  slug: string;
   articles?: Article[];
 }
 
-const CategorySection = ({ title, articles }: ICategorySection) => {
+const CategorySection = ({ slug, articles }: ICategorySection) => {
+  const navLinks = useNavLinks({ isCategory: true });
+
+  const categoryTitle = navLinks.find(
+    (navLink) => navLink.slug === '/' + slug
+  )?.title;
+
   return (
     <>
       <Container>
         <Header>
-          <h1 className="header-title">
-            {title?.toLowerCase() === "afg" ? "Afghanistan" : title}
-          </h1>
+          <h1 className="header-title">{categoryTitle}</h1>
           <Wrapper>
             <MainChannel>
               <TopChannel>
@@ -39,7 +45,7 @@ const CategorySection = ({ title, articles }: ICategorySection) => {
           <Wrapper>
             <div>
               <h2 className="section-header">
-                More from <span>{title}</span>
+                More from <span>{categoryTitle}</span>
               </h2>
               <MoreNews>
                 <CategoryCard card={articles?.[0]} />
@@ -69,7 +75,7 @@ const Header = styled.header`
     text-transform: uppercase;
     font-size: 2.25rem;
     font-weight: 400;
-    font-family: "Vollkorn SC", serif;
+    font-family: 'Vollkorn SC', serif;
     border-bottom: 4px solid var(--primary-color);
     width: max-content;
   }
@@ -93,7 +99,7 @@ const MainChannel = styled.div`
   padding-right: 2rem;
 
   &::after {
-    content: "";
+    content: '';
     width: 0.75px;
 
     position: absolute;
